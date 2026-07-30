@@ -1,0 +1,78 @@
+{
+  "candidate": "docusaurus",
+  "trailingSlash": "always",
+  "routes": [
+    {
+      "id": "ohs-player",
+      "path": "/docusaurus/",
+      "title": "OHS Player",
+      "heading": "OHS Player",
+      "content": "A cross-stack reference toolkit for evaluating, assembling, and adapting Open Health Stack components",
+      "searchIndexed": true
+    },
+    {
+      "id": "setups",
+      "path": "/docusaurus/setups/",
+      "title": "Setups",
+      "heading": "Setups",
+      "content": "OHS Player is evaluated as an environment, not as a standalone Client App",
+      "searchIndexed": true
+    },
+    {
+      "id": "analytics-setup",
+      "path": "/docusaurus/setups/analytics/",
+      "title": "Reference Analytics",
+      "heading": "Reference Analytics",
+      "content": "Analytics transforms FHIR data from the OHS Player reference app",
+      "searchIndexed": true
+    },
+    {
+      "id": "reference-infrastructure",
+      "path": "/docusaurus/setups/reference-infrastructure/",
+      "title": "Reference Infrastructure",
+      "heading": "Reference Infrastructure",
+      "content": "Reference Infrastructure",
+      "searchIndexed": true
+    },
+    {
+      "id": "client-app",
+      "path": "/docusaurus/setups/client-app/",
+      "title": "Run the Client App",
+      "heading": "Run the Client App",
+      "content": "You need JDK 21",
+      "searchIndexed": true
+    },
+    {
+      "id": "web-portal",
+      "path": "/docusaurus/setups/web-portal/",
+      "title": "Run the Web Portal",
+      "heading": "Run the Web Portal",
+      "content": "Node 20 or later, pnpm 9 or later, and Docker",
+      "searchIndexed": true
+    },
+    {
+      "id": "backend-extension",
+      "path": "/docusaurus/setups/backend-extension/",
+      "title": "Add backend extensions",
+      "heading": "Add backend extensions",
+      "content": "You need JDK 21 to build the extensions",
+      "searchIndexed": true
+    },
+    {
+      "id": "component-relationships",
+      "path": "/docusaurus/concepts/how-player-uses-ohs-components/",
+      "title": "How Player uses OHS components",
+      "heading": "How Player uses OHS components",
+      "content": "Player owns the reference composition",
+      "searchIndexed": true
+    },
+    {
+      "id": "configuration-concepts",
+      "path": "/docusaurus/concepts/configuration/",
+      "title": "Adapt UI configuration",
+      "heading": "Adapt UI configuration",
+      "content": "renders healthcare UI from configuration",
+      "searchIndexed": true
+    }
+  ]
+}

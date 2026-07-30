@@ -1,0 +1,6 @@
+{
+  "viewports": [
+    {"id": "desktop", "width": 1440, "height": 900, "deviceScaleFactor": 1},
+    {"id": "mobile", "width": 390, "height": 844, "deviceScaleFactor": 3}
+  ]
+}
