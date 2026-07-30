@@ -15,7 +15,7 @@
       "path": "/docusaurus/setups/",
       "title": "Setups",
       "heading": "Setups",
-      "content": "OHS Player is evaluated as an environment, not as a standalone Client App",
+      "content": "Prepare the shared Player environment",
       "searchIndexed": true
     },
     {
