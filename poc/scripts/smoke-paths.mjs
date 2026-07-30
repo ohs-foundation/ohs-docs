@@ -27,7 +27,7 @@ async function walk(directory) {
 await walk(outputRoot);
 
 function emittedPath(target) {
-  const relativeTarget = target.slice("/docusaurus/".length);
+  const relativeTarget = target.slice("/ohs-docs/".length);
   return target.endsWith("/") ? `${relativeTarget}index.html` : relativeTarget;
 }
 
@@ -55,7 +55,7 @@ for (const route of contract.routes) {
     const target = match[1];
     if (
       /^(https?:|mailto:|data:)/.test(target) ||
-      !target.startsWith("/docusaurus/")
+      !target.startsWith("/ohs-docs/")
     )
       continue;
     const requiredPath = emittedPath(target);

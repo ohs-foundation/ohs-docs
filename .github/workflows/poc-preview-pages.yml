@@ -1,0 +1,46 @@
+name: PoC Preview
+
+# Preview-branch only. Publishes the poc/ Docusaurus candidate as the root of
+# this fork's Pages site for review before the upstream PR is merged.
+# Not intended for ohs-foundation/ohs-docs.
+
+on:
+  push:
+    branches: [docs/poc-preview]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24.18.0'
+      - run: npm install --global npm@11.16.0
+      - run: npm --prefix poc run bootstrap
+      - run: npm --prefix poc run validate -- --candidate=docusaurus
+      - run: npm --prefix poc run build -- --candidate=docusaurus
+      - run: npm --prefix poc run smoke:paths -- --candidate=docusaurus
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: poc/.output/docusaurus
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-24.04
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

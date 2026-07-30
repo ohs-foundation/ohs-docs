@@ -5,7 +5,7 @@ await ensureCandidate(candidateFromArgs());
 const contract = await readJson(`${pocRoot}/brief/routes.json`);
 if (contract.trailingSlash !== 'always' || contract.candidate !== 'docusaurus') throw new Error('Route contract must specify docusaurus and trailingSlash: always.');
 for (const route of contract.routes) {
-  if (!route.path.startsWith('/docusaurus/') || !route.path.endsWith('/')) throw new Error(`Invalid canonical route: ${route.path}`);
+  if (!route.path.startsWith('/ohs-docs/') || !route.path.endsWith('/')) throw new Error(`Invalid canonical route: ${route.path}`);
 }
 for (const file of ['landing.md', 'setups/index.md', 'setups/analytics.md']) {
   const content = await readFile(`${candidateRoot}/docs/${file}`, 'utf8');

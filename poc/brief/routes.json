@@ -4,7 +4,7 @@
   "routes": [
     {
       "id": "ohs-player",
-      "path": "/docusaurus/",
+      "path": "/ohs-docs/",
       "title": "OHS Player",
       "heading": "OHS Player",
       "content": "A cross-stack reference toolkit for evaluating, assembling, and adapting Open Health Stack components",
@@ -12,7 +12,7 @@
     },
     {
       "id": "setups",
-      "path": "/docusaurus/setups/",
+      "path": "/ohs-docs/setups/",
       "title": "Setups",
       "heading": "Setups",
       "content": "Prepare the shared Player environment",
@@ -20,7 +20,7 @@
     },
     {
       "id": "analytics-setup",
-      "path": "/docusaurus/setups/analytics/",
+      "path": "/ohs-docs/setups/analytics/",
       "title": "Reference Analytics",
       "heading": "Reference Analytics",
       "content": "Analytics transforms FHIR data from the OHS Player reference app",
@@ -28,7 +28,7 @@
     },
     {
       "id": "reference-infrastructure",
-      "path": "/docusaurus/setups/reference-infrastructure/",
+      "path": "/ohs-docs/setups/reference-infrastructure/",
       "title": "Reference Infrastructure",
       "heading": "Reference Infrastructure",
       "content": "Reference Infrastructure",
@@ -36,7 +36,7 @@
     },
     {
       "id": "client-app",
-      "path": "/docusaurus/setups/client-app/",
+      "path": "/ohs-docs/setups/client-app/",
       "title": "Run the Client App",
       "heading": "Run the Client App",
       "content": "You need JDK 21",
@@ -44,7 +44,7 @@
     },
     {
       "id": "web-portal",
-      "path": "/docusaurus/setups/web-portal/",
+      "path": "/ohs-docs/setups/web-portal/",
       "title": "Run the Web Portal",
       "heading": "Run the Web Portal",
       "content": "Node 20 or later, pnpm 9 or later, and Docker",
@@ -52,7 +52,7 @@
     },
     {
       "id": "backend-extension",
-      "path": "/docusaurus/setups/backend-extension/",
+      "path": "/ohs-docs/setups/backend-extension/",
       "title": "Add backend extensions",
       "heading": "Add backend extensions",
       "content": "You need JDK 21 to build the extensions",
@@ -60,7 +60,7 @@
     },
     {
       "id": "component-relationships",
-      "path": "/docusaurus/concepts/how-player-uses-ohs-components/",
+      "path": "/ohs-docs/concepts/how-player-uses-ohs-components/",
       "title": "How Player uses OHS components",
       "heading": "How Player uses OHS components",
       "content": "Player owns the reference composition",
@@ -68,7 +68,7 @@
     },
     {
       "id": "configuration-concepts",
-      "path": "/docusaurus/concepts/configuration/",
+      "path": "/ohs-docs/concepts/configuration/",
       "title": "Adapt UI configuration",
       "heading": "Adapt UI configuration",
       "content": "renders healthcare UI from configuration",
