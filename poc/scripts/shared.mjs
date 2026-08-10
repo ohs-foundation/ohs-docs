@@ -74,8 +74,8 @@ export async function startStaticServer(root = outputRoot) {
     try {
       const url = new URL(request.url, 'http://127.0.0.1');
       const pathname = decodeURIComponent(url.pathname);
-      if (!pathname.startsWith('/ohs-docs/')) { response.writeHead(404).end('Not found'); return; }
-      const remainder = pathname.slice('/ohs-docs/'.length);
+      if (!pathname.startsWith('/docusaurus/')) { response.writeHead(404).end('Not found'); return; }
+      const remainder = pathname.slice('/docusaurus/'.length);
       const candidate = pathname.endsWith('/')
         ? resolve(safeRoot, remainder, 'index.html')
         : resolve(safeRoot, remainder);
