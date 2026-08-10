@@ -27,13 +27,12 @@ This serves the site at `http://localhost:3000/ohs-docs/` with live reload.
 
 ## Quality gates
 
-The same four checks run locally, on every pull request, and before any deployment.
+All three run on every pull request. They are pure Node — no browser, no external network — so a full run takes seconds. Deployment re-runs `validate` and `check:build`.
 
 ```bash
 npm run validate      # frontmatter, route contract, reader-facing status language
 npm run check:build   # production build, with broken links failing the run
 npm run smoke:paths   # every route renders its expected content and search index
-npm run a11y          # Axe and keyboard checks at desktop and mobile viewports
 ```
 
 `tools/routes.json` is the route contract: the list of paths that must exist. It deliberately does not restate page copy, so editing a sentence cannot break a gate. Add an entry when you add a page.

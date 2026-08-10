@@ -67,7 +67,7 @@ State what the software does not do — that is a fact worth having. Do not stat
 
 Headings, lists, tables, links, fenced code blocks, and Docusaurus admonitions. No JSX import or HTML is required.
 
-Keep tables narrow. The shell makes a wide table horizontally scrollable, and a scrollable region that is not keyboard-focusable fails the accessibility gate at the 390px viewport. Two or three short columns are safe; a long prose column is not.
+Keep tables narrow. The shell makes a wide table horizontally scrollable, and a scrollable region that is not keyboard-focusable is inaccessible to keyboard users. Two or three short columns are safe on a 390px screen; a column of long prose is not. Nothing checks this automatically, so it is on the author.
 
 ## Page shape
 
@@ -98,7 +98,6 @@ On Node 24.18.0 with npm 11.16.0:
 npm run validate      # frontmatter, route contract, status language
 npm run check:build   # build, with broken links failing the run
 npm run smoke:paths   # every route renders its expected content
-npm run a11y          # Axe and keyboard checks at both viewports
 ```
 
 The smoke test checks that each page renders its own frontmatter title and a reasonable amount of body text, guarding against a shared shell that drops document content. It takes those expectations from the page itself, so you never restate copy in the route contract.

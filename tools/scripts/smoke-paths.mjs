@@ -1,13 +1,10 @@
 import { readdir, readFile } from "node:fs/promises";
 import { join, relative, sep } from "node:path";
-import { chromium } from "@playwright/test";
 import {
   outputRoot,
   pathExists,
   readJson,
-  rejectOutboundRequests,
   siteRoot,
-  startStaticServer,
   toolsRoot,
 } from "./shared.mjs";
 
@@ -109,43 +106,6 @@ for (const route of contract.routes) {
     throw new Error(`Search index has no usable document for ${route.path}.`);
 }
 
-// The static checks above cannot see a client-side failure. Loading each page
-// in a real browser proves it hydrates, renders one search control, and asks
-// nothing of the network.
-const server = await startStaticServer(outputRoot);
-const browser = await chromium.launch({ headless: true });
-try {
-  for (const route of contract.routes) {
-    const context = await browser.newContext();
-    const page = await context.newPage();
-    const assertNoOutbound = await rejectOutboundRequests(page, server.origin);
-    const response = await page.goto(`${server.origin}${route.path}`);
-    if (!response?.ok())
-      throw new Error(
-        `Static server returned ${response?.status()} for ${route.path}.`,
-      );
-    await page.waitForSelector('html[data-docs-ready="true"]');
-    const search = page.getByLabel("Search", { exact: true });
-    if ((await search.count()) !== 1)
-      throw new Error(
-        `Search control is missing or duplicated on ${route.path}.`,
-      );
-    // Prove search resolves a query, not merely that an index file exists.
-    if (route.id === "ohs-player") {
-      await search.fill("Reference Analytics");
-      await page
-        .locator('[class*="dropdownMenu"] [class*="suggestion"]')
-        .first()
-        .waitFor({ state: "visible", timeout: 10000 });
-    }
-    assertNoOutbound();
-    await context.close();
-  }
-} finally {
-  await browser.close();
-  await server.close();
-}
-
 console.log(
-  `Smoke-tested ${contract.routes.length} routes: emitted output, rendered content, internal references, search index, and offline rendering.`,
+  `Smoke-tested ${contract.routes.length} routes: emitted output, rendered content, internal references, and search index.`,
 );

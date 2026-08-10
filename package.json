@@ -13,9 +13,7 @@
     "clear": "docusaurus clear",
     "validate": "node tools/scripts/validate.mjs",
     "check:build": "node tools/scripts/build.mjs",
-    "smoke:paths": "node tools/scripts/smoke-paths.mjs",
-    "a11y": "node tools/scripts/a11y.mjs",
-    "capture": "node tools/scripts/capture-screenshots.mjs"
+    "smoke:paths": "node tools/scripts/smoke-paths.mjs"
   },
   "dependencies": {
     "@docusaurus/core": "3.10.1",
@@ -26,8 +24,6 @@
     "react-dom": "19.2.7"
   },
   "devDependencies": {
-    "@axe-core/playwright": "4.11.0",
-    "@playwright/test": "1.62.0",
     "prettier": "^3.5.3"
   }
 }

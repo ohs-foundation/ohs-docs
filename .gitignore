@@ -5,9 +5,6 @@
 /build
 /.docusaurus
 
-# Gate results
-/results
-
 # Working documents. Planning and review material is kept outside this
 # repository; only published content and the tooling that checks it belong here.
 *.docx
