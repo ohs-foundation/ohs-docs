@@ -89,7 +89,7 @@ try {
       throw new Error(
         `Static server returned ${response?.status()} for ${route.path}.`,
       );
-    await page.waitForSelector('html[data-poc-ready="true"]');
+    await page.waitForSelector('html[data-docs-ready="true"]');
     const search = page.getByLabel("Search", { exact: true });
     if ((await search.count()) !== 1)
       throw new Error(`Search control is missing or duplicated on ${route.path}.`);

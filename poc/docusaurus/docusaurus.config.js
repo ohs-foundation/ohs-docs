@@ -1,7 +1,7 @@
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: "OHS Player Reference",
-  tagline: "A Docusaurus feasibility PoC",
+  tagline: "Evaluate, assemble, and adapt the OHS Player reference toolkit",
   favicon: "assets/favicon.svg",
   url: "https://nawitech.github.io",
   baseUrl: "/ohs-docs/",
@@ -66,7 +66,7 @@ const config = {
     },
     footer: {
       style: "dark",
-      copyright: "OHS Player documentation feasibility PoC.",
+      copyright: "OHS Player documentation.",
     },
     docs: { sidebar: { hideable: false } },
   },

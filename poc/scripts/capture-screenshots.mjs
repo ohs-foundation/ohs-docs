@@ -17,7 +17,7 @@ try {
         const assertNoOutbound = await rejectOutboundRequests(page, server.origin);
         await page.goto(`${server.origin}${route.path}`);
         await page.addStyleTag({content: '*,*::before,*::after{animation:none!important;transition:none!important;}'});
-        await page.waitForSelector('html[data-poc-ready="true"]');
+        await page.waitForSelector('html[data-docs-ready="true"]');
         await page.screenshot({path: `${pocRoot}/results/screenshots/${route.id}-${viewport.id}.png`, fullPage: true});
         assertNoOutbound();
       } finally {

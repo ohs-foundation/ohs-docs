@@ -78,7 +78,7 @@ function Footer() {
 export default function LandingPage({ children }) {
   const { metadata, frontMatter } = useDoc();
   useEffect(() => {
-    document.documentElement.setAttribute("data-poc-ready", "true");
+    document.documentElement.setAttribute("data-docs-ready", "true");
   }, []);
   const primary = frontMatter.primary_action;
   const secondary = frontMatter.secondary_action;

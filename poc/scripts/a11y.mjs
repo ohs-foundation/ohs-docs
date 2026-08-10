@@ -51,7 +51,7 @@ try {
           server.origin,
         );
         await page.goto(`${server.origin}${route.path}`);
-        await page.waitForSelector('html[data-poc-ready="true"]');
+        await page.waitForSelector('html[data-docs-ready="true"]');
         await scan(page, viewport, route, "initial");
 
         if (viewport.id === "mobile") {
