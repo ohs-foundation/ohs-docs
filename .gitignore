@@ -1,12 +1,13 @@
 # Dependencies
 /node_modules
 
-# Production
+# Build output
 /build
+/.docusaurus
 
-# Generated files
-.docusaurus
-.cache-loader
+# Working documents. Planning and review material is kept outside this
+# repository; only published content and the tooling that checks it belong here.
+*.docx
 
 # Misc
 .DS_Store

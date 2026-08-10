@@ -1,0 +1,97 @@
+/** @type {import('@docusaurus/types').Config} */
+const config = {
+  title: "OHS Player Reference",
+  tagline: "Evaluate, assemble, and adapt the OHS Player reference toolkit",
+  favicon: "assets/favicon.svg",
+  url: "https://ohs-foundation.github.io",
+  baseUrl: "/ohs-docs/",
+  trailingSlash: true,
+  organizationName: "ohs-foundation",
+  projectName: "ohs-docs",
+  onBrokenLinks: "throw",
+  markdown: { hooks: { onBrokenMarkdownLinks: "throw" } },
+  i18n: { defaultLocale: "en", locales: ["en"] },
+  presets: [
+    [
+      "classic",
+      {
+        docs: {
+          path: "docs",
+          routeBasePath: "/",
+          sidebarPath: "./sidebars.js",
+          editUrl: undefined,
+          showLastUpdateAuthor: false,
+          showLastUpdateTime: false,
+        },
+        blog: false,
+        theme: { customCss: "./src/css/custom.css" },
+      },
+    ],
+  ],
+  plugins: [
+    [
+      "@docusaurus/plugin-client-redirects",
+      {
+        // This site previously published an OHS ecosystem catalogue under
+        // /docs/. That catalogue is owned by the Foundation projects page, so
+        // those paths now route to the landing page, which states the site's
+        // scope and links to the catalogue. Keep an entry for every path that
+        // has ever been published here.
+        redirects: [
+          { from: "/docs", to: "/" },
+          { from: "/docs/ohs-player", to: "/" },
+          { from: "/docs/contributing", to: "/resources/" },
+          { from: "/docs/android-fhir-sdk", to: "/" },
+          { from: "/docs/fhir-app-examples", to: "/" },
+          { from: "/docs/fhir-data-pipes", to: "/" },
+          { from: "/docs/fhir-gateway", to: "/" },
+          { from: "/docs/kotlin-fhir", to: "/" },
+        ],
+      },
+    ],
+  ],
+  themes: [
+    [
+      "@easyops-cn/docusaurus-search-local",
+      {
+        hashed: true,
+        language: ["en"],
+        indexDocs: true,
+        indexBlog: false,
+        docsRouteBasePath: "/",
+        searchResultLimits: 8,
+      },
+    ],
+  ],
+  themeConfig: {
+    navbar: {
+      title: "OHS Player",
+      logo: { alt: "", src: "assets/favicon.svg" },
+      items: [
+        { to: "/", label: "Overview", position: "left" },
+        {
+          to: "/setups/",
+          label: "Setups",
+          position: "left",
+        },
+        {
+          to: "/concepts/how-player-uses-ohs-components/",
+          label: "Concepts",
+          position: "left",
+        },
+        {
+          href: "https://github.com/ohs-foundation/ohs-player",
+          label: "GitHub",
+          position: "right",
+        },
+      ],
+    },
+    footer: {
+      style: "dark",
+      copyright: "OHS Player documentation.",
+    },
+    docs: { sidebar: { hideable: false } },
+  },
+};
+
+module.exports = config;

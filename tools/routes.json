@@ -1,0 +1,90 @@
+{
+  "trailingSlash": "always",
+  "routes": [
+    {
+      "id": "ohs-player",
+      "path": "/ohs-docs/",
+      "searchIndexed": true
+    },
+    {
+      "id": "get-started",
+      "path": "/ohs-docs/get-started/",
+      "searchIndexed": true
+    },
+    {
+      "id": "prerequisites",
+      "path": "/ohs-docs/prerequisites/",
+      "searchIndexed": true
+    },
+    {
+      "id": "component-relationships",
+      "path": "/ohs-docs/concepts/how-player-uses-ohs-components/",
+      "searchIndexed": true
+    },
+    {
+      "id": "configuration-model",
+      "path": "/ohs-docs/concepts/configuration-model/",
+      "searchIndexed": true
+    },
+    {
+      "id": "components",
+      "path": "/ohs-docs/components/",
+      "searchIndexed": true
+    },
+    {
+      "id": "client-app",
+      "path": "/ohs-docs/components/client-app/",
+      "searchIndexed": true
+    },
+    {
+      "id": "web-portal",
+      "path": "/ohs-docs/components/web-portal/",
+      "searchIndexed": true
+    },
+    {
+      "id": "reference-backend",
+      "path": "/ohs-docs/components/reference-backend/",
+      "searchIndexed": true
+    },
+    {
+      "id": "client-app-run",
+      "path": "/ohs-docs/components/client-app/run/",
+      "searchIndexed": true
+    },
+    {
+      "id": "web-portal-run",
+      "path": "/ohs-docs/components/web-portal/run/",
+      "searchIndexed": true
+    },
+    {
+      "id": "reference-infrastructure",
+      "path": "/ohs-docs/components/reference-infrastructure/",
+      "searchIndexed": true
+    },
+    {
+      "id": "reference-analytics",
+      "path": "/ohs-docs/components/reference-analytics/",
+      "searchIndexed": true
+    },
+    {
+      "id": "configure-screen",
+      "path": "/ohs-docs/configure/screen-from-fhir-data/",
+      "searchIndexed": true
+    },
+    {
+      "id": "extend-decide",
+      "path": "/ohs-docs/extend/decide/",
+      "searchIndexed": true
+    },
+    {
+      "id": "backend-extensions",
+      "path": "/ohs-docs/extend/backend-extensions/",
+      "searchIndexed": true
+    },
+    {
+      "id": "resources",
+      "path": "/ohs-docs/resources/",
+      "searchIndexed": true
+    }
+  ]
+}
