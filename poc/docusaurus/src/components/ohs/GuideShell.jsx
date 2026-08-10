@@ -159,7 +159,7 @@ export default function GuideShell({ children }) {
   const tocEntries = toc.filter((entry) => entry.level === 2);
   const activeHeading = useActiveHeading(tocEntries.map((entry) => entry.id));
   useEffect(() => {
-    document.documentElement.setAttribute("data-poc-ready", "true");
+    document.documentElement.setAttribute("data-docs-ready", "true");
     function onKeydown(event) {
       if (event.key === "Escape" && sidebarOpen) {
         setSidebarOpen(false);
@@ -173,7 +173,6 @@ export default function GuideShell({ children }) {
     setSidebarOpen(false);
     window.setTimeout(() => menuButton.current?.focus(), 0);
   }
-  const status = frontMatter.guide_status ?? "Source details pending";
   const focus = frontMatter.guide_focus ?? "OHS Player";
   const repository = repositoryFor(frontMatter.repository);
   return (
@@ -204,9 +203,6 @@ export default function GuideShell({ children }) {
             <h1>{metadata.title}</h1>
             <p>{metadata.description}</p>
             <div className="ohs-page-meta">
-              <span>
-                <b>STATUS</b> {status}
-              </span>
               <span>
                 <b>FOCUS</b> {focus}
               </span>

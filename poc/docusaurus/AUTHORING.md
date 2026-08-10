@@ -1,4 +1,4 @@
-# OHS PoC Markdown authoring
+# OHS Player documentation authoring
 
 The public documentation content lives in `docs/`. Authors write normal Markdown and YAML frontmatter; do not edit the site shell, React components, or CSS to update a page.
 
@@ -14,7 +14,6 @@ description: One-sentence description shown in the guide header.
 slug: /setups/example-guide/
 sidebar_position: 2
 guide_type: Setup guide
-guide_status: Guidance available
 guide_focus: What the setup helps an implementer do
 repository: client-app
 ---
@@ -24,7 +23,7 @@ repository: client-app
 Write normal Markdown here.
 ```
 
-The shared shell renders the title, description, source link, status, focus, sidebar, and on-page table of contents. Every `##` heading becomes an on-page navigation entry. `repository` must be an identifier in `src/data/playerRepositories.js`; that maintainer map owns the canonical repository name, URL, role, and dependency metadata.
+The shared shell renders the title, description, source link, focus, sidebar, and on-page table of contents. Page status is tracked internally by the docs team and is deliberately not rendered. Every `##` heading becomes an on-page navigation entry. `repository` must be an identifier in `src/data/playerRepositories.js`; that maintainer map owns the canonical repository name, URL, role, and dependency metadata.
 
 ## Use normal Markdown
 
