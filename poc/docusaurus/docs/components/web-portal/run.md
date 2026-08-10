@@ -1,17 +1,17 @@
 ---
 title: Run the Web Portal
 description: Start the OHS Player web reference portal with its local development services.
-slug: /setups/web-portal/
-sidebar_position: 3
+slug: /components/web-portal/run/
+sidebar_position: 20
 guide_type: Setup guide
-guide_status: Guidance available
+guide_status: ready
 guide_focus: Web-based workforce and configuration portal
 repository: web-portal
 ---
 
 ## About the Web Portal
 
-The Web Portal is a configurable, extensible web application for healthcare organizations to manage workforce hierarchies, user accounts, access controls, and configuration. It is step 2 of the [quick start](/setups/): use it after the shared Player environment is available and before running the Client App, so the environment has the users and administration data it needs.
+The Web Portal is a configurable, extensible web application for healthcare organizations to manage workforce hierarchies, user accounts, access controls, and configuration. It is step 2 of the [get started sequence](/get-started/): use it after the shared Player environment is available and before running the Client App, so the environment has the users and administration data it needs.
 
 ## Before you begin
 
@@ -88,4 +88,4 @@ Follow the [repository quickstart recovery procedure](https://github.com/ohs-fou
 
 ## Next step
 
-[Run the Client App](/setups/client-app/) after the shared Player environment and Portal administration are ready.
+[Run the Client App](/components/client-app/run/) after the shared Player environment and Portal administration are ready.

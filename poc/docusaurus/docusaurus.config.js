@@ -28,6 +28,31 @@ const config = {
       },
     ],
   ],
+  plugins: [
+    [
+      "@docusaurus/plugin-client-redirects",
+      {
+        // The v1 information architecture replaced the flat /setups/ tree.
+        // These paths were published on the preview site, so they redirect
+        // rather than 404. Keep an entry for every path that has ever shipped.
+        redirects: [
+          { from: "/setups", to: "/get-started/" },
+          { from: "/setups/client-app", to: "/components/client-app/run/" },
+          { from: "/setups/web-portal", to: "/components/web-portal/run/" },
+          {
+            from: "/setups/reference-infrastructure",
+            to: "/components/reference-infrastructure/",
+          },
+          { from: "/setups/analytics", to: "/components/reference-analytics/" },
+          {
+            from: "/setups/backend-extension",
+            to: "/extend/backend-extensions/",
+          },
+          { from: "/concepts/configuration", to: "/concepts/configuration-model/" },
+        ],
+      },
+    ],
+  ],
   themes: [
     [
       "@easyops-cn/docusaurus-search-local",

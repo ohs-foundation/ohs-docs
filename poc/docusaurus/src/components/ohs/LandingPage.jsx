@@ -27,7 +27,7 @@ function LandingHeader() {
           aria-label="Primary navigation"
         >
           <Link to="/">Overview</Link>
-          <Link to="/setups/">Setups</Link>
+          <Link to="/get-started/">Get started</Link>
           <Link to="/concepts/how-player-uses-ohs-components/">Concepts</Link>
         </nav>
         <div className="ohs-nav-actions">
@@ -64,7 +64,7 @@ function Footer() {
           <p>Documentation for evaluating and adapting the OHS Player reference toolkit.</p>
         </div>
         <div className="ohs-footer-links">
-          <Link to="/setups/">Setups</Link>
+          <Link to="/get-started/">Get started</Link>
           <Link to="/concepts/how-player-uses-ohs-components/">Concepts</Link>
           <a href="https://github.com/ohs-foundation/ohs-player">OHS Player source</a>
           <a href="https://ohs.foundation/projects">OHS components</a>

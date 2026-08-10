@@ -2,9 +2,9 @@
 title: How Player uses OHS components
 description: The dependency relationships that matter when evaluating and adapting OHS Player.
 slug: /concepts/how-player-uses-ohs-components/
-sidebar_position: 1
+sidebar_position: 10
 guide_type: Concept
-guide_status: Guidance available
+guide_status: ready
 guide_focus: Player repository responsibilities
 repository: ohs-player
 ---
@@ -30,4 +30,4 @@ The Foundation site owns the broad OHS component catalogue. Player owns the refe
 
 ## Next step
 
-[Follow the setup sequence](/setups/) to see where these relationships appear in an implementation path.
+[Follow the setup sequence](/get-started/) to see where these relationships appear in an implementation path.

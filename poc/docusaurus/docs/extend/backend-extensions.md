@@ -1,10 +1,10 @@
 ---
 title: Add backend extensions
 description: Build the OHS Player backend extensions and load them into a FHIR Gateway host.
-slug: /setups/backend-extension/
-sidebar_position: 5
+slug: /extend/backend-extensions/
+sidebar_position: 20
 guide_type: Setup guide
-guide_status: Guidance available
+guide_status: ready
 guide_focus: FHIR Gateway extensions for Player clients
 repository: backend-extension
 ---
@@ -13,7 +13,7 @@ repository: backend-extension
 
 Reference Backend provides custom endpoints and access-checker plugins for OHS Player Kotlin Multiplatform and web clients. FHIR Gateway loads the JAR at runtime. The extensions add user, group, role, practitioner-detail, location-hierarchy, and bulk-import APIs; they use the gateway's upstream FHIR server and identity provider.
 
-This is part of the shared Player environment stage of the [quick start](/setups/). The Web Portal uses its gateway endpoint for custom APIs, and the Client App is run after the shared Player environment and Portal administration are ready.
+This is part of the shared Player environment stage of the [get started sequence](/get-started/). The Web Portal uses its gateway endpoint for custom APIs, and the Client App is run after the shared Player environment and Portal administration are ready.
 
 ## Before you begin
 
@@ -68,4 +68,4 @@ The gateway exposes the Reference Backend APIs at `/api/*` and enforces bearer-t
 
 ## Next step
 
-[Run the Web Portal](/setups/web-portal/) to administer the environment before running the Client App.
+[Run the Web Portal](/components/web-portal/run/) to administer the environment before running the Client App.

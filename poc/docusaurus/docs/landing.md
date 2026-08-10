@@ -4,13 +4,13 @@ title: OHS Player
 description: A cross-stack reference toolkit for evaluating, assembling, and adapting Open Health Stack components.
 slug: /
 sidebar_label: Overview
-sidebar_position: 1
+sidebar_position: 10
 hide_title: true
 page_type: landing
 eyebrow: OHS PLAYER DOCUMENTATION
 primary_action:
   label: How to get started
-  to: /setups/
+  to: /get-started/
 secondary_action:
   label: View OHS Player source
   href: https://github.com/ohs-foundation/ohs-player
@@ -54,7 +54,7 @@ This guide shows how to prepare, run, evaluate, and adapt the Player reference c
 
 For a usable reference application, prepare the shared Player environment first, use the Web Portal for user administration, then run the Client App. This is one guided sequence, not two unrelated application choices.
 
-[How to get started](/setups/)
+[How to get started](/get-started/)
 
 ## Where things live
 
@@ -81,4 +81,4 @@ The [OHS Foundation Projects page](https://ohs.foundation/projects) is the compo
 
 Player is a starting point. Its client application, portal, backend extensions, configuration, and deployment material are intended to be adapted to the needs of an implementation.
 
-The [configuration concepts](/concepts/configuration/) explain the relationship between the Player client library and the configuration implementation guide.
+[The configuration model](/concepts/configuration-model/) explains the relationship between the Player client library and the configuration implementation guide.

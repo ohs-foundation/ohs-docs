@@ -1,10 +1,10 @@
 ---
 title: Run the Client App
 description: Build and run the Kotlin Multiplatform OHS Player reference client.
-slug: /setups/client-app/
-sidebar_position: 2
+slug: /components/client-app/run/
+sidebar_position: 20
 guide_type: Setup guide
-guide_status: Guidance available
+guide_status: partial
 guide_focus: Kotlin Multiplatform client application
 repository: client-app
 ---
@@ -13,7 +13,7 @@ repository: client-app
 
 The Client App is the Kotlin Multiplatform and Compose Multiplatform end-user reference application for Android, iOS, JVM desktop, JavaScript browser, and Wasm browser. It demonstrates how the reusable Player Client library renders healthcare UI from declarative FHIR configuration: FHIR search results become typed view state, then registered renderers display that state.
 
-This guide is step 3 of the [quick start](/setups/) for a usable integrated workflow: first prepare the shared Player environment and use the [Web Portal](/setups/web-portal/) to administer it, then evaluate the Client App in that prepared environment.
+This guide is step 3 of the [get started sequence](/get-started/) for a usable integrated workflow: first prepare the shared Player environment and use the [Web Portal](/components/web-portal/run/) to administer it, then evaluate the Client App in that prepared environment.
 
 ## Before you begin
 
@@ -93,7 +93,7 @@ Adding a new renderer also requires Kotlin application code:
 
 The reference application already loads configuration through `LocalConfigSource` and `ConfigStore`, then uses `GenericStateExtractor.extract<T>()` to turn a FHIR `SearchResult` into the generated state type.
 
-To add a field, update the `ViewDefinition`, build again, then use the regenerated field in the renderer. Read [Adapt UI configuration](/concepts/configuration/) before deciding whether the change belongs in declarative configuration, a renderer, or the reference application.
+To add a field, update the `ViewDefinition`, build again, then use the regenerated field in the renderer. Read [Decide when code is necessary](/extend/decide/) before deciding whether the change belongs in declarative configuration, a renderer, or the reference application.
 
 ## Expected result
 
@@ -115,4 +115,4 @@ Use the [Client App deployment documentation](https://github.com/ohs-foundation/
 
 ## Next step
 
-[Adapt UI configuration](/concepts/configuration/) to decide whether the next change belongs in configuration, a renderer, or the application. For renderer API detail and FHIR configuration examples, use the [Player Client repository](https://github.com/ohs-foundation/player-client) and [Player Configuration IG](https://github.com/ohs-foundation/player-reference-ig).
+[Decide when code is necessary](/extend/decide/) to work out whether the next change belongs in configuration, a renderer, or the application. For renderer API detail and FHIR configuration examples, use the [Player Client repository](https://github.com/ohs-foundation/player-client) and [Player Configuration IG](https://github.com/ohs-foundation/player-reference-ig).

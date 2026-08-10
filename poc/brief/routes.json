@@ -11,51 +11,11 @@
       "searchIndexed": true
     },
     {
-      "id": "setups",
-      "path": "/ohs-docs/setups/",
-      "title": "Setups",
-      "heading": "Setups",
+      "id": "get-started",
+      "path": "/ohs-docs/get-started/",
+      "title": "Get started",
+      "heading": "Get started",
       "content": "Prepare the shared Player environment",
-      "searchIndexed": true
-    },
-    {
-      "id": "analytics-setup",
-      "path": "/ohs-docs/setups/analytics/",
-      "title": "Reference Analytics",
-      "heading": "Reference Analytics",
-      "content": "Analytics transforms FHIR data from the OHS Player reference app",
-      "searchIndexed": true
-    },
-    {
-      "id": "reference-infrastructure",
-      "path": "/ohs-docs/setups/reference-infrastructure/",
-      "title": "Reference Infrastructure",
-      "heading": "Reference Infrastructure",
-      "content": "Reference Infrastructure",
-      "searchIndexed": true
-    },
-    {
-      "id": "client-app",
-      "path": "/ohs-docs/setups/client-app/",
-      "title": "Run the Client App",
-      "heading": "Run the Client App",
-      "content": "You need JDK 21",
-      "searchIndexed": true
-    },
-    {
-      "id": "web-portal",
-      "path": "/ohs-docs/setups/web-portal/",
-      "title": "Run the Web Portal",
-      "heading": "Run the Web Portal",
-      "content": "Node 20 or later, pnpm 9 or later, and Docker",
-      "searchIndexed": true
-    },
-    {
-      "id": "backend-extension",
-      "path": "/ohs-docs/setups/backend-extension/",
-      "title": "Add backend extensions",
-      "heading": "Add backend extensions",
-      "content": "You need JDK 21 to build the extensions",
       "searchIndexed": true
     },
     {
@@ -67,11 +27,67 @@
       "searchIndexed": true
     },
     {
-      "id": "configuration-concepts",
-      "path": "/ohs-docs/concepts/configuration/",
-      "title": "Adapt UI configuration",
-      "heading": "Adapt UI configuration",
+      "id": "configuration-model",
+      "path": "/ohs-docs/concepts/configuration-model/",
+      "title": "The configuration model",
+      "heading": "The configuration model",
       "content": "renders healthcare UI from configuration",
+      "searchIndexed": true
+    },
+    {
+      "id": "client-app-run",
+      "path": "/ohs-docs/components/client-app/run/",
+      "title": "Run the Client App",
+      "heading": "Run the Client App",
+      "content": "You need JDK 21",
+      "searchIndexed": true
+    },
+    {
+      "id": "web-portal-run",
+      "path": "/ohs-docs/components/web-portal/run/",
+      "title": "Run the Web Portal",
+      "heading": "Run the Web Portal",
+      "content": "Node 20 or later, pnpm 9 or later, and Docker",
+      "searchIndexed": true
+    },
+    {
+      "id": "reference-infrastructure",
+      "path": "/ohs-docs/components/reference-infrastructure/",
+      "title": "Reference Infrastructure",
+      "heading": "Reference Infrastructure",
+      "content": "deployment material for the shared Player environment",
+      "searchIndexed": true
+    },
+    {
+      "id": "reference-analytics",
+      "path": "/ohs-docs/components/reference-analytics/",
+      "title": "Reference Analytics",
+      "heading": "Reference Analytics",
+      "content": "dashboard-ready datasets",
+      "searchIndexed": true
+    },
+    {
+      "id": "configure-screen",
+      "path": "/ohs-docs/configure/screen-from-fhir-data/",
+      "title": "Configure a screen from FHIR data",
+      "heading": "Configure a screen from FHIR data",
+      "content": "Which FHIR fields a screen reads",
+      "searchIndexed": true
+    },
+    {
+      "id": "extend-decide",
+      "path": "/ohs-docs/extend/decide/",
+      "title": "Decide when code is necessary",
+      "heading": "Decide when code is necessary",
+      "content": "most adaptations have an obvious home",
+      "searchIndexed": true
+    },
+    {
+      "id": "backend-extensions",
+      "path": "/ohs-docs/extend/backend-extensions/",
+      "title": "Add backend extensions",
+      "heading": "Add backend extensions",
+      "content": "You need JDK 21 to build the extensions",
       "searchIndexed": true
     }
   ]
