@@ -18,9 +18,7 @@ jobs:
           cache: npm
       - run: npm install --global npm@11.16.0
       - run: npm ci
-      - run: npm run validate
-      - run: npm run check:build
-      - run: npm run smoke:paths
+      - run: npm run gates
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         with:
           name: documentation-build
