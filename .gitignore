@@ -1,20 +1,16 @@
 # Dependencies
 /node_modules
-/poc/node_modules
-/poc/.npm-cache
-/poc/docusaurus/node_modules
-/poc/docusaurus/.docusaurus
 
-# Production
+# Build output
 /build
-/poc/.output
-/poc/docusaurus/build
-/poc/results/screenshots
-/poc/results/accessibility
+/.docusaurus
 
-# Generated files
-.docusaurus
-.cache-loader
+# Gate results
+/results
+
+# Working documents. Planning and review material is kept outside this
+# repository; only published content and the tooling that checks it belong here.
+*.docx
 
 # Misc
 .DS_Store

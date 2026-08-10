@@ -1,0 +1,32 @@
+name: Documentation checks
+
+on:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate-build-review:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '24.18.0'
+      - run: npm install --global npm@11.16.0
+      - run: npm ci
+      - run: npm run validate
+      - run: npm run check:build
+      - run: npm run smoke:paths
+      - run: npm run a11y
+      - run: npm run capture
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: documentation-review
+          path: |
+            build
+            results/accessibility
+            results/screenshots
+          retention-days: 14
