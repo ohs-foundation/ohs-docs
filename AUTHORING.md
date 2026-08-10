@@ -67,6 +67,8 @@ State what the software does not do — that is a fact worth having. Do not stat
 
 Headings, lists, tables, links, fenced code blocks, and Docusaurus admonitions. No JSX import or HTML is required.
 
+Start body headings at `##` — the frontmatter title is the page's `h1` — and do not skip a level. Give every image alt text describing what it shows. `npm run validate` enforces both, ignoring anything inside code fences.
+
 Keep tables narrow. The shell makes a wide table horizontally scrollable, and a scrollable region that is not keyboard-focusable is inaccessible to keyboard users. Two or three short columns are safe on a 390px screen; a column of long prose is not. Nothing checks this automatically, so it is on the author.
 
 ## Page shape
@@ -95,7 +97,7 @@ Published slugs are permanent. If a page moves, add a redirect to the `@docusaur
 On Node 24.18.0 with npm 11.16.0:
 
 ```sh
-npm run validate      # frontmatter, route contract, status language
+npm run validate      # frontmatter, route contract, status language, alt text, heading order
 npm run check:build   # build, with broken links failing the run
 npm run smoke:paths   # every route renders its expected content
 ```

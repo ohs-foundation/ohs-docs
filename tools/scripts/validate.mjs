@@ -35,6 +35,14 @@ const bannedInBody = [
 ];
 const allowedStatus = new Set(['ready', 'partial', 'pending']);
 
+// A shell comment inside a fenced block looks exactly like a heading, and an
+// example of image syntax looks exactly like an image. Strip code first.
+function withoutCode(markdown) {
+  return markdown
+    .replace(/^```[\s\S]*?^```/gm, '')
+    .replace(/`[^`\n]*`/g, '');
+}
+
 for (const file of files) {
   const name = file.slice(docsRoot.length + 1);
   const content = await readFile(file, 'utf8');
@@ -53,6 +61,24 @@ for (const file of files) {
   for (const phrase of bannedInBody) {
     if (lowerBody.includes(phrase)) throw new Error(`${name} tells readers that documentation is outstanding ("${phrase}"). Describe what the component is for and link to its source instead.`);
   }
+
+  const prose = withoutCode(body);
+
+  // Every image needs alternative text. A screen reader announces nothing for
+  // an empty alt, and a diagram carrying real information becomes invisible.
+  for (const image of prose.matchAll(/!\[([^\]]*)\]\(([^)]*)\)/g)) {
+    if (!image[1].trim()) throw new Error(`${name} has an image with no alt text (${image[2] || 'no source'}). Describe what the image shows.`);
+  }
+
+  // The frontmatter title is the h1, so body headings start at level two and
+  // must not skip a level. Skipping breaks screen-reader navigation.
+  let previous = 1;
+  for (const heading of prose.matchAll(/^(#{1,6}) +(.+)$/gm)) {
+    const level = heading[1].length;
+    if (level === 1) throw new Error(`${name} uses a top-level heading ("# ${heading[2]}"). The frontmatter title is the h1; start body headings at "##".`);
+    if (level > previous + 1) throw new Error(`${name} jumps from h${previous} to h${level} at "${heading[2]}". Do not skip heading levels.`);
+    previous = level;
+  }
 }
 
 // Analytics has no published procedure, so it must route readers to the owning
@@ -62,4 +88,4 @@ for (const link of ['https://github.com/ohs-foundation/ohs-player-reference-anal
   if (!analytics.includes(link)) throw new Error(`Reference Analytics must link ${link}.`);
 }
 
-console.log(`Validated ${files.length} Markdown pages, ${contract.routes.length} canonical routes, frontmatter, and reader-facing status language.`);
+console.log(`Validated ${files.length} Markdown pages, ${contract.routes.length} canonical routes, frontmatter, status language, image alt text, and heading order.`);

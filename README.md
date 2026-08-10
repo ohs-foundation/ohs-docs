@@ -30,7 +30,7 @@ This serves the site at `http://localhost:3000/ohs-docs/` with live reload.
 All three run on every pull request. They are pure Node — no browser, no external network — so a full run takes seconds. Deployment re-runs `validate` and `check:build`.
 
 ```bash
-npm run validate      # frontmatter, route contract, reader-facing status language
+npm run validate      # frontmatter, route contract, status language, alt text, heading order
 npm run check:build   # production build, with broken links failing the run
 npm run smoke:paths   # every route renders its expected content and search index
 ```
