@@ -36,7 +36,7 @@ npm run smoke:paths   # every route renders its expected content and search inde
 npm run a11y          # Axe and keyboard checks at desktop and mobile viewports
 ```
 
-`tools/routes.json` is the route contract: every published path, with the heading and content the smoke test asserts. Add an entry when you add a page.
+`tools/routes.json` is the route contract: the list of paths that must exist. It deliberately does not restate page copy, so editing a sentence cannot break a gate. Add an entry when you add a page.
 
 ## Authoring
 

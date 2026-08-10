@@ -101,7 +101,7 @@ npm run smoke:paths   # every route renders its expected content
 npm run a11y          # Axe and keyboard checks at both viewports
 ```
 
-The smoke test asserts that key Markdown text is present in the built page, guarding against a shared shell that drops document content.
+The smoke test checks that each page renders its own frontmatter title and a reasonable amount of body text, guarding against a shared shell that drops document content. It takes those expectations from the page itself, so you never restate copy in the route contract.
 
 ## Contributions from component maintainers
 
