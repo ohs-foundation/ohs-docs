@@ -3,9 +3,7 @@ const config = {
   title: "OHS Player Reference",
   tagline: "Evaluate, assemble, and adapt the OHS Player reference toolkit",
   favicon: "assets/favicon.svg",
-  // The canonical site. The preview workflow on a fork sets DOCS_URL so its
-  // canonical tags and sitemap point at the fork rather than at production.
-  url: process.env.DOCS_URL ?? "https://ohs-foundation.github.io",
+  url: "https://ohs-foundation.github.io",
   baseUrl: "/ohs-docs/",
   trailingSlash: true,
   organizationName: "ohs-foundation",

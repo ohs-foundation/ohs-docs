@@ -47,5 +47,3 @@ Component maintainers contributing material about their own component should use
 ## Deployment
 
 Pushes to `main` build and deploy to GitHub Pages via `.github/workflows/deploy.yml`, after the gates pass. The repository's Settings → Pages → Source must be set to "GitHub Actions" — a one-time manual step, not part of this repository.
-
-`DOCS_URL` overrides the canonical site URL, which the preview workflow uses so a fork's canonical tags and sitemap point at the fork rather than at production.
