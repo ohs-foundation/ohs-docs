@@ -7,10 +7,8 @@
  * Reserved positions, named but not yet published. Create each one when it
  * has content; do not publish an empty section to hold the slot.
  *
- *   20  Prerequisites          knowledge prerequisites
  *   50  Guides                 cross-component recipes only
  *   80  Technical reference    lookup material
- *   90  Resources              repositories, contributing, support
  *  100  Labs                   reproducible exercises
  *
  * Single-component procedures nest under their component in Reference
@@ -22,6 +20,7 @@ const sidebars = {
   playerReference: [
     "landing",
     "get-started",
+    "prerequisites",
     {
       type: "category",
       label: "Core concepts",
@@ -35,17 +34,21 @@ const sidebars = {
       type: "category",
       label: "Reference components",
       collapsible: false,
+      link: { type: "doc", id: "components/overview" },
       items: [
         {
           type: "category",
           label: "Client App",
+          link: { type: "doc", id: "components/client-app/overview" },
           items: ["components/client-app/run"],
         },
         {
           type: "category",
           label: "Web Portal",
+          link: { type: "doc", id: "components/web-portal/overview" },
           items: ["components/web-portal/run"],
         },
+        "components/reference-backend/overview",
         "components/reference-infrastructure/overview",
         "components/reference-analytics/overview",
       ],
@@ -62,6 +65,7 @@ const sidebars = {
       collapsible: false,
       items: ["extend/decide", "extend/backend-extensions"],
     },
+    "resources",
   ],
 };
 

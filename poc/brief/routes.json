@@ -19,6 +19,14 @@
       "searchIndexed": true
     },
     {
+      "id": "prerequisites",
+      "path": "/ohs-docs/prerequisites/",
+      "title": "What to know first",
+      "heading": "What to know first",
+      "content": "the background that makes the rest of the site make sense",
+      "searchIndexed": true
+    },
+    {
       "id": "component-relationships",
       "path": "/ohs-docs/concepts/how-player-uses-ohs-components/",
       "title": "How Player uses OHS components",
@@ -32,6 +40,38 @@
       "title": "The configuration model",
       "heading": "The configuration model",
       "content": "renders healthcare UI from configuration",
+      "searchIndexed": true
+    },
+    {
+      "id": "components",
+      "path": "/ohs-docs/components/",
+      "title": "Reference components",
+      "heading": "Reference components",
+      "content": "five components plus the libraries that configure them",
+      "searchIndexed": true
+    },
+    {
+      "id": "client-app",
+      "path": "/ohs-docs/components/client-app/",
+      "title": "Client App",
+      "heading": "Client App",
+      "content": "One Kotlin source tree builds for Android, iOS, desktop, and the browser",
+      "searchIndexed": true
+    },
+    {
+      "id": "web-portal",
+      "path": "/ohs-docs/components/web-portal/",
+      "title": "Web Portal",
+      "heading": "Web Portal",
+      "content": "manages workforce hierarchies, user accounts, access controls",
+      "searchIndexed": true
+    },
+    {
+      "id": "reference-backend",
+      "path": "/ohs-docs/components/reference-backend/",
+      "title": "Reference Backend",
+      "heading": "Reference Backend",
+      "content": "custom endpoints and access checker plugins",
       "searchIndexed": true
     },
     {
@@ -88,6 +128,14 @@
       "title": "Add backend extensions",
       "heading": "Add backend extensions",
       "content": "You need JDK 21 to build the extensions",
+      "searchIndexed": true
+    },
+    {
+      "id": "resources",
+      "path": "/ohs-docs/resources/",
+      "title": "Resources and contributing",
+      "heading": "Resources and contributing",
+      "content": "Each component is maintained in its own repository",
       "searchIndexed": true
     }
   ]
