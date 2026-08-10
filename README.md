@@ -47,3 +47,5 @@ Component maintainers contributing material about their own component should use
 ## Deployment
 
 Pushes to `main` build and deploy to GitHub Pages via `.github/workflows/deploy.yml`, after the gates pass. The repository's Settings → Pages → Source must be set to "GitHub Actions" — a one-time manual step, not part of this repository.
+
+The site publishes at `https://ohs-foundation.github.io/ohs-docs/`. Paths published there are permanent: if a page moves, add an entry to the `@docusaurus/plugin-client-redirects` list in `docusaurus.config.js` in the same change.

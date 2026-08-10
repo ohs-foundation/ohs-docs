@@ -32,23 +32,20 @@ const config = {
     [
       "@docusaurus/plugin-client-redirects",
       {
-        // The v1 information architecture replaced the flat /setups/ tree.
-        // These paths were published on the preview site, so they redirect
-        // rather than 404. Keep an entry for every path that has ever shipped.
+        // This site previously published an OHS ecosystem catalogue under
+        // /docs/. That catalogue is owned by the Foundation projects page, so
+        // those paths now route to the landing page, which states the site's
+        // scope and links to the catalogue. Keep an entry for every path that
+        // has ever been published here.
         redirects: [
-          { from: "/setups", to: "/get-started/" },
-          { from: "/setups/client-app", to: "/components/client-app/run/" },
-          { from: "/setups/web-portal", to: "/components/web-portal/run/" },
-          {
-            from: "/setups/reference-infrastructure",
-            to: "/components/reference-infrastructure/",
-          },
-          { from: "/setups/analytics", to: "/components/reference-analytics/" },
-          {
-            from: "/setups/backend-extension",
-            to: "/extend/backend-extensions/",
-          },
-          { from: "/concepts/configuration", to: "/concepts/configuration-model/" },
+          { from: "/docs", to: "/" },
+          { from: "/docs/ohs-player", to: "/" },
+          { from: "/docs/contributing", to: "/resources/" },
+          { from: "/docs/android-fhir-sdk", to: "/" },
+          { from: "/docs/fhir-app-examples", to: "/" },
+          { from: "/docs/fhir-data-pipes", to: "/" },
+          { from: "/docs/fhir-gateway", to: "/" },
+          { from: "/docs/kotlin-fhir", to: "/" },
         ],
       },
     ],
