@@ -1,0 +1,236 @@
+import React, { useEffect, useRef, useState } from "react";
+import Link from "@docusaurus/Link";
+import { useLocation } from "@docusaurus/router";
+import { useDoc, useDocsSidebar } from "@docusaurus/plugin-content-docs/client";
+import DocSidebarItems from "@theme/DocSidebarItems";
+import SearchBar from "@theme/SearchBar";
+import Brand from "./Brand";
+import { repositoryFor } from "@site/src/data/repositories";
+
+/**
+ * Tracks the heading currently under the guide topbar. The theme's own
+ * useTOCHighlight is unusable here because it reads `.navbar` height, and the
+ * OHS layout deliberately renders no Docusaurus navbar.
+ */
+function useActiveHeading(headingIds) {
+  const key = headingIds.join("|");
+  const [activeId, setActiveId] = useState(headingIds[0]);
+  useEffect(() => {
+    const ids = key ? key.split("|") : [];
+    if (!ids.length) return undefined;
+    function update() {
+      // Anchor jumps land a heading at scroll-padding-top, so the highlight
+      // line has to sit just below it for clicks and scrolling to agree.
+      const scrollPadding = parseFloat(
+        getComputedStyle(document.documentElement).scrollPaddingTop,
+      );
+      const topbar = document.querySelector(".ohs-guide-topbar");
+      const offset =
+        (Number.isFinite(scrollPadding)
+          ? scrollPadding
+          : (topbar?.clientHeight ?? 66) + 30) + 12;
+      let current = ids[0];
+      for (const id of ids) {
+        const element = document.getElementById(id);
+        if (element && element.getBoundingClientRect().top - offset <= 0)
+          current = id;
+      }
+      const atBottom =
+        window.innerHeight + window.scrollY >=
+        document.documentElement.scrollHeight - 2;
+      setActiveId(atBottom ? ids[ids.length - 1] : current);
+    }
+    update();
+    window.addEventListener("scroll", update, { passive: true });
+    window.addEventListener("resize", update);
+    return () => {
+      window.removeEventListener("scroll", update);
+      window.removeEventListener("resize", update);
+    };
+  }, [key]);
+  return activeId;
+}
+
+function PageToc({ entries, activeId, mobile = false }) {
+  const className = mobile ? "ohs-mobile-toc-nav" : "ohs-guide-toc-links";
+  return (
+    <nav className={className}>
+      {entries.map((entry) => (
+        <a
+          key={entry.id}
+          className={entry.id === activeId ? "active" : undefined}
+          aria-current={entry.id === activeId ? "location" : undefined}
+          href={`#${entry.id}`}
+        >
+          {entry.value}
+        </a>
+      ))}
+    </nav>
+  );
+}
+
+function GuideSidebar({ open, onClose }) {
+  const sidebar = useDocsSidebar();
+  const { pathname } = useLocation();
+  return (
+    <>
+      <button
+        className="ohs-guide-backdrop"
+        hidden={!open}
+        type="button"
+        aria-label="Close documentation navigation"
+        onClick={onClose}
+      />
+      <aside
+        tabIndex="0"
+        className={`ohs-guide-sidebar ${open ? "is-open" : ""}`}
+        id="docs-sidebar"
+        aria-label="Documentation navigation"
+      >
+        <div className="ohs-sidebar-mobile-head">
+          <Brand />
+          <button type="button" aria-label="Close navigation" onClick={onClose}>
+            ×
+          </button>
+        </div>
+        <nav
+          aria-label="Documentation sections"
+          className="ohs-sidebar-navigation"
+        >
+          {sidebar && (
+            <ul className="menu__list">
+              <DocSidebarItems
+                items={sidebar.items}
+                activePath={pathname}
+                level={1}
+              />
+            </ul>
+          )}
+        </nav>
+        <div className="ohs-sidebar-help">
+          <strong>Need the source material?</strong>
+          <p>Each page links to its owning component repository.</p>
+          <a href="https://github.com/orgs/ohs-foundation/discussions">
+            Get help ↗
+          </a>
+        </div>
+      </aside>
+    </>
+  );
+}
+
+function GuideHeader({ menuRef, onOpen, sidebarOpen }) {
+  return (
+    <header className="ohs-guide-topbar">
+      <div className="ohs-guide-topbar-inner">
+        <button
+          ref={menuRef}
+          className="ohs-sidebar-toggle"
+          type="button"
+          aria-label="Open documentation navigation"
+          aria-expanded={sidebarOpen}
+          aria-controls="docs-sidebar"
+          onClick={onOpen}
+        >
+          <span />
+          <span />
+          <span />
+        </button>
+        <Brand />
+        <div className="ohs-header-divider" />
+        <span className="ohs-docs-label">TECHNICAL DOCS</span>
+        <div className="ohs-header-actions">
+          <div className="ohs-header-search">
+            <SearchBar />
+          </div>
+          <a href="https://github.com/ohs-foundation">GitHub ↗</a>
+          <a href="https://ohs.foundation/">Foundation ↗</a>
+        </div>
+      </div>
+    </header>
+  );
+}
+
+/** Guide shell only. Titles, sections, requirements, and outcomes come from MDX. */
+export default function GuideShell({ children }) {
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+  const menuButton = useRef(null);
+  const { metadata, frontMatter, toc } = useDoc();
+  const tocEntries = toc.filter((entry) => entry.level === 2);
+  const activeHeading = useActiveHeading(tocEntries.map((entry) => entry.id));
+  useEffect(() => {
+    document.documentElement.setAttribute("data-docs-ready", "true");
+    function onKeydown(event) {
+      if (event.key === "Escape" && sidebarOpen) {
+        setSidebarOpen(false);
+        window.setTimeout(() => menuButton.current?.focus(), 0);
+      }
+    }
+    document.addEventListener("keydown", onKeydown);
+    return () => document.removeEventListener("keydown", onKeydown);
+  }, [sidebarOpen]);
+  function closeSidebar() {
+    setSidebarOpen(false);
+    window.setTimeout(() => menuButton.current?.focus(), 0);
+  }
+  const status = frontMatter.guide_status ?? "Source details pending";
+  const focus = frontMatter.guide_focus ?? "Open Health Stack";
+  const repository = repositoryFor(frontMatter.repository);
+  return (
+    <div className="ohs-guide-page" id="top">
+      <GuideHeader
+        menuRef={menuButton}
+        onOpen={() => setSidebarOpen(true)}
+        sidebarOpen={sidebarOpen}
+      />
+      <div className="ohs-guide-layout">
+        <GuideSidebar open={sidebarOpen} onClose={closeSidebar} />
+        <main className="ohs-guide-article">
+          <div className="ohs-breadcrumbs">
+            <Link to="/">Docs</Link>
+            <span>/</span>
+            <b>{metadata.title}</b>
+          </div>
+          <details className="ohs-mobile-toc">
+            <summary>
+              On this page <span>⌄</span>
+            </summary>
+            <PageToc mobile entries={tocEntries} activeId={activeHeading} />
+          </details>
+          <header className="ohs-guide-heading">
+            <span className="ohs-page-type">
+              {frontMatter.guide_type ?? "GUIDE"}
+            </span>
+            <h1>{metadata.title}</h1>
+            <p>{metadata.description}</p>
+            <div className="ohs-page-meta">
+              <span>
+                <b>STATUS</b> {status}
+              </span>
+              <span>
+                <b>FOCUS</b> {focus}
+              </span>
+            </div>
+          </header>
+          {children}
+        </main>
+        <aside className="ohs-guide-toc" aria-label="On this page">
+          <h2>On this page</h2>
+          <PageToc entries={tocEntries} activeId={activeHeading} />
+          <div className="ohs-toc-divider" />
+          <span>SOURCE</span>
+          <a
+            className="ohs-source-link"
+            href={
+              repository?.url ??
+              frontMatter.source_url ??
+              "https://github.com/ohs-foundation"
+            }
+          >
+            {frontMatter.source_label ?? `${repository?.label ?? "Repository"} ↗`}
+          </a>
+        </aside>
+      </div>
+    </div>
+  );
+}

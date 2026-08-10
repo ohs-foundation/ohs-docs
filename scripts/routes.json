@@ -1,0 +1,102 @@
+{
+  "baseUrl": "/ohs-docs/",
+  "trailingSlash": "always",
+  "routes": [
+    {
+      "source": "index.md",
+      "path": "/ohs-docs/",
+      "title": "Open Health Stack",
+      "content": "Interoperable, FHIR-native components for building offline-capable, mobile-first digital health software."
+    },
+    {
+      "source": "android-fhir-sdk/index.md",
+      "path": "/ohs-docs/android-fhir-sdk/",
+      "title": "Android FHIR SDK",
+      "content": "Kotlin libraries for building offline-capable, mobile-first healthcare applications on Android."
+    },
+    {
+      "source": "kotlin-fhir/index.md",
+      "path": "/ohs-docs/kotlin-fhir/",
+      "title": "Kotlin FHIR",
+      "content": "Kotlin Multiplatform implementations of the FHIR data model, FHIRPath, storage, and structured data capture."
+    },
+    {
+      "source": "fhir-gateway/index.md",
+      "path": "/ohs-docs/fhir-gateway/",
+      "title": "FHIR Gateway",
+      "content": "A proxy server that applies access-control policies in front of a FHIR store."
+    },
+    {
+      "source": "fhir-data-pipes/index.md",
+      "path": "/ohs-docs/fhir-data-pipes/",
+      "title": "FHIR Data Pipes",
+      "content": "Tools for extracting FHIR resources and running analytics services on top of that data."
+    },
+    {
+      "source": "ohs-player/index.md",
+      "path": "/ohs-docs/ohs-player/",
+      "title": "OHS Player",
+      "content": "A cross-stack reference toolkit for evaluating, assembling, and adapting Open Health Stack components."
+    },
+    {
+      "source": "ohs-player/setups/index.md",
+      "path": "/ohs-docs/ohs-player/setups/",
+      "title": "Setups",
+      "content": "Prepare the shared Player environment, administer it through the Web Portal, then run the Client App."
+    },
+    {
+      "source": "ohs-player/setups/reference-infrastructure.md",
+      "path": "/ohs-docs/ohs-player/setups/reference-infrastructure/",
+      "title": "Reference Infrastructure",
+      "content": "Available source material for the infrastructure that supports integrated Player services."
+    },
+    {
+      "source": "ohs-player/setups/backend-extension.md",
+      "path": "/ohs-docs/ohs-player/setups/backend-extension/",
+      "title": "Add backend extensions",
+      "content": "Build the OHS Player backend extensions and load them into a FHIR Gateway host."
+    },
+    {
+      "source": "ohs-player/setups/web-portal.md",
+      "path": "/ohs-docs/ohs-player/setups/web-portal/",
+      "title": "Run the Web Portal",
+      "content": "Start the OHS Player web reference portal with its local development services."
+    },
+    {
+      "source": "ohs-player/setups/client-app.md",
+      "path": "/ohs-docs/ohs-player/setups/client-app/",
+      "title": "Run the Client App",
+      "content": "Build and run the Kotlin Multiplatform OHS Player reference client."
+    },
+    {
+      "source": "ohs-player/setups/analytics.md",
+      "path": "/ohs-docs/ohs-player/setups/analytics/",
+      "title": "Reference Analytics",
+      "content": "Planned analytics extension for a running shared Player environment."
+    },
+    {
+      "source": "ohs-player/concepts/how-player-uses-ohs-components.md",
+      "path": "/ohs-docs/ohs-player/concepts/how-player-uses-ohs-components/",
+      "title": "How Player uses OHS components",
+      "content": "The dependency relationships that matter when evaluating and adapting OHS Player."
+    },
+    {
+      "source": "ohs-player/concepts/configuration.md",
+      "path": "/ohs-docs/ohs-player/concepts/configuration/",
+      "title": "Adapt UI configuration",
+      "content": "Understand the Player client library and configuration implementation guide before adapting a client screen."
+    },
+    {
+      "source": "fhir-app-examples/index.md",
+      "path": "/ohs-docs/fhir-app-examples/",
+      "title": "FHIR App Examples",
+      "content": "Worked examples showing how Open Health Stack components are used together."
+    },
+    {
+      "source": "contributing/index.md",
+      "path": "/ohs-docs/contributing/",
+      "title": "Contributing",
+      "content": "How to propose changes to Open Health Stack components and to this documentation site."
+    }
+  ]
+}

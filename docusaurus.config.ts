@@ -5,7 +5,7 @@ import type * as Preset from '@docusaurus/preset-classic';
 const config: Config = {
   title: 'Open Health Stack Docs',
   tagline: 'Documentation for the Open Health Stack ecosystem',
-  favicon: 'img/favicon.ico',
+  favicon: 'assets/favicon.svg',
 
   future: {
     v4: true,
@@ -13,13 +13,18 @@ const config: Config = {
 
   url: 'https://ohs-foundation.github.io',
   baseUrl: '/ohs-docs/',
+  trailingSlash: true,
 
   organizationName: 'ohs-foundation',
   projectName: 'ohs-docs',
   deploymentBranch: 'gh-pages',
 
   onBrokenLinks: 'throw',
-  onBrokenMarkdownLinks: 'warn',
+  markdown: {
+    hooks: {
+      onBrokenMarkdownLinks: 'throw',
+    },
+  },
 
   i18n: {
     defaultLocale: 'en',
@@ -32,7 +37,7 @@ const config: Config = {
       {
         docs: {
           path: 'docs-content',
-          routeBasePath: 'docs',
+          routeBasePath: '/',
           sidebarPath: './sidebars.ts',
           editUrl: 'https://github.com/ohs-foundation/ohs-docs/tree/main/',
         },
@@ -52,51 +57,19 @@ const config: Config = {
         language: ['en'],
         indexDocs: true,
         indexBlog: false,
-        docsRouteBasePath: '/docs',
+        docsRouteBasePath: '/',
+        searchResultLimits: 8,
       },
     ],
   ],
 
+  // The OHS shells in src/components/ohs render the site's own header, sidebar,
+  // and footer, so the classic theme's navbar and footer are left unconfigured.
   themeConfig: {
-    image: 'img/docusaurus-social-card.jpg',
-    navbar: {
-      title: 'OHS Docs',
-      logo: {
-        alt: 'Open Health Stack Logo',
-        src: 'img/logo.svg',
+    docs: {
+      sidebar: {
+        hideable: false,
       },
-      items: [
-        {
-          type: 'docSidebar',
-          sidebarId: 'docsSidebar',
-          position: 'left',
-          label: 'Docs',
-        },
-        {
-          href: 'https://github.com/ohs-foundation',
-          label: 'GitHub',
-          position: 'right',
-        },
-      ],
-    },
-    footer: {
-      style: 'dark',
-      links: [
-        {
-          title: 'More',
-          items: [
-            {
-              label: 'OHS Foundation',
-              href: 'https://ohs.foundation/',
-            },
-            {
-              label: 'GitHub',
-              href: 'https://github.com/ohs-foundation',
-            },
-          ],
-        },
-      ],
-      copyright: `Copyright © ${new Date().getFullYear()} Open Health Stack Foundation.`,
     },
     prism: {
       theme: prismThemes.github,

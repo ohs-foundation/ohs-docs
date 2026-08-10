@@ -1,20 +1,15 @@
 # Dependencies
 /node_modules
-/poc/node_modules
-/poc/.npm-cache
-/poc/docusaurus/node_modules
-/poc/docusaurus/.docusaurus
 
 # Production
 /build
-/poc/.output
-/poc/docusaurus/build
-/poc/results/screenshots
-/poc/results/accessibility
 
 # Generated files
 .docusaurus
 .cache-loader
+
+# Authoring notes, never published
+/docs/superpowers
 
 # Misc
 .DS_Store
