@@ -13,7 +13,8 @@
     "clear": "docusaurus clear",
     "validate": "node tools/scripts/validate.mjs",
     "check:build": "node tools/scripts/build.mjs",
-    "smoke:paths": "node tools/scripts/smoke-paths.mjs"
+    "smoke:paths": "node tools/scripts/smoke-paths.mjs",
+    "gates": "npm run validate && npm run check:build && npm run smoke:paths"
   },
   "dependencies": {
     "@docusaurus/core": "3.10.1",
