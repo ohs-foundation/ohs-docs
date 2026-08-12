@@ -60,4 +60,4 @@ The gateway sits in front of the FHIR store and decides who may read or write wh
 
 ## Where to go next
 
-[How Player uses OHS components](/concepts/how-player-uses-ohs-components/) puts these pieces in relation to one another, and [the configuration model](/concepts/configuration-model/) explains how a screen is assembled.
+This is the end of the background reading. [Get started](/get-started/) brings up a reference environment and runs the components against it.

@@ -41,7 +41,15 @@ The desktop application opens and renders the reference healthcare screens from 
 
 ## Connect to the shared Player environment
 
-This documentation will add connection guidance for the Client App and shared Player environment when source-backed setup material is published.
+The application signs in against the identity service in your environment and syncs FHIR data through the gateway, so it needs three things from the earlier stages:
+
+- the **gateway base URL**, from [set up the environment](/components/reference-infrastructure/)
+- the **identity issuer** — the realm the environment publishes — and a client for the application
+- a **health worker account** created in [the Web Portal](/components/web-portal/run/), to sign in as
+
+Point the application at those values and sign in. Data captured on the device is held locally and synced through the gateway to the FHIR server, which is what makes the round trip observable: register a household on the app, then find the same resources through the Portal's FHIR browser.
+
+The [player-reference repository](https://github.com/ohs-foundation/player-reference) states which setting carries each value for the target you are building.
 
 ## Run another target
 
@@ -52,48 +60,13 @@ This documentation will add connection guidance for the Client App and shared Pl
 | Web (JS) | `./gradlew :ohs-player-reference-app:jsBrowserDevelopmentRun` |
 | iOS | Open `iosApp/` in Xcode and run it. |
 
-## Configure a screen from FHIR data
+## Change what a screen shows
 
-The reference client renders typed view state rather than mapping raw FHIR resources directly in a screen. Start in `ohs-player-reference-app/src/commonMain/composeResources/files/`:
+The reference client renders typed view state rather than mapping FHIR resources in a screen, so changing a screen usually means changing configuration and rebuilding — not editing application code.
 
-For a configuration-only change:
+Configuration ships with the application as FHIR resources under `ohs-player-reference-app/src/commonMain/composeResources/files/`, divided into `states/`, `configs/`, and `viewtypes/`. The `ig-codegen` Gradle plugin turns them into Kotlin types during compilation, so a rebuild is the only step after an edit.
 
-1. Add or update a `ViewDefinition` in `states/`, such as [`Binary-PatientSummary.json`](https://github.com/ohs-foundation/player-reference/blob/main/ohs-player-reference-app/src/commonMain/composeResources/files/states/Binary-PatientSummary.json), to define the fields and FHIRPath expressions a screen needs.
-2. Add or update its `ViewJoinMap` in `states/`, such as [`Binary-PatientSummaryState.json`](https://github.com/ohs-foundation/player-reference/blob/main/ohs-player-reference-app/src/commonMain/composeResources/files/states/Binary-PatientSummaryState.json), to name the view state and bind it to its pivot view.
-3. Add or update a `ViewConfig` in `configs/`, such as [`Binary-PatientCardConfig.json`](https://github.com/ohs-foundation/player-reference/blob/main/ohs-player-reference-app/src/commonMain/composeResources/files/configs/Binary-PatientCardConfig.json), to set the renderer options.
-4. Build the app. The `ig-codegen` Gradle plugin runs as part of compilation and generates the corresponding Kotlin state and configuration types.
-
-A `ViewDefinition` declares each field as a column with a name and the FHIRPath expression that fills it. This is one column excerpted from `Binary-PatientSummary.json`:
-
-```json
-{
-  "name": "familyName",
-  "path": "name.family.first()",
-  "type": "http://hl7.org/fhir/StructureDefinition/string"
-}
-```
-
-A `ViewJoinMap` is short enough to read whole. This is `Binary-PatientSummaryState.json` in full, where `from`, `resource`, and `view` bind the named view state to its pivot view:
-
-```json
-{
-  "resourceType": "http://ohs.dev/StructureDefinition/ViewJoinMap",
-  "name": "patientSummary",
-  "from": "root",
-  "resource": "Patient",
-  "view": "PatientSummary"
-}
-```
-
-Adding a new renderer also requires Kotlin application code:
-
-1. Add a view type to [`viewtypes/CodeSystem-ViewTypes.json`](https://github.com/ohs-foundation/player-reference/blob/main/ohs-player-reference-app/src/commonMain/composeResources/files/viewtypes/CodeSystem-ViewTypes.json) when the renderer introduces a new view type.
-2. Build the app after changing the CodeSystem so `ig-codegen` generates the corresponding `ViewTypeCS` entry.
-3. Implement a `ComponentRenderer`, register it in `ViewRegistry` under the generated view type, and render the state with `ListScaffold` or `DetailScaffold`.
-
-The reference application already loads configuration through `LocalConfigSource` and `ConfigStore`, then uses `GenericStateExtractor.extract<T>()` to turn a FHIR `SearchResult` into the generated state type.
-
-To add a field, update the `ViewDefinition`, build again, then use the regenerated field in the renderer. Read [Decide when code is necessary](/extend/decide/) before deciding whether the change belongs in declarative configuration, a renderer, or the reference application.
+[Configure a screen from FHIR data](/configure/screen-from-fhir-data/) walks through a change with worked examples, and [decide when code is necessary](/extend/decide/) covers when a change needs a renderer instead.
 
 ## Expected result
 

@@ -1,45 +1,53 @@
 ---
-title: Reference Backend
-description: Player-specific endpoints and access checkers loaded into a FHIR Gateway host.
+title: Backend
+description: The gateway, its Player extensions, identity, and the FHIR server behind them.
 slug: /components/reference-backend/
-sidebar_position: 10
+sidebar_position: 30
 guide_type: Component overview
 guide_status: partial
-guide_focus: FHIR Gateway extensions for Player clients
+guide_focus: The gateway layer and what sits behind it
 repository: backend-extension
 ---
 
-## What it is
+## What the backend is
 
-The Reference Backend is not a server of its own. It is a set of extensions — custom endpoints and access checker plugins — loaded into a [FHIR Gateway](https://github.com/ohs-foundation/fhir-gateway) host at runtime, giving Player clients APIs and access rules the gateway does not provide by itself.
+"Backend" here means four things working as one layer: the **FHIR Gateway**, the **Reference Backend** extensions loaded into it, **Keycloak** for identity, and a **FHIR server** behind them. Both applications talk to this layer and nothing else.
 
-## What it demonstrates
+The gateway is the centre of it. It sits in front of the FHIR store, validates the token on every request, applies access rules, serves the endpoints the extensions add, and proxies everything else through.
 
-How to add programme-specific behaviour in front of a FHIR store without forking the gateway or putting that logic in each client. Both the Client App and the Web Portal consume the same endpoints, so the rule lives in one place.
+## Why a gateway rather than a modified FHIR server
 
-The access checker is the clearest example: it grants a request only when the caller holds a role matching the request's verb and resource type, and for a bundle every entry must be authorised individually.
+Adding authentication and access control by extending the FHIR server is the obvious approach and the wrong one. It couples your security model to a particular server and leaves you maintaining a fork.
 
-## When to use it
+Putting a gateway in front instead means:
 
-Use it when clients need endpoints beyond plain FHIR, or when access control needs to be enforced centrally rather than trusted to each application.
+**The FHIR server stays unmodified.** Player uses HAPI FHIR, but nothing above the gateway depends on that choice.
 
-You do not need it to evaluate either application. The Web Portal runs against a FHIR store directly.
+**Access rules live in one place.** Scoping a health worker to their assigned location, organisation, or care team is enforced once, at the gateway, rather than trusted to each application.
 
-## What it needs
+**Clients never implement authorisation.** The Web Portal was built entirely on these APIs — its team wrote no user-management or authentication logic.
 
-| Depends on | Needed for |
-| --- | --- |
-| JDK 21 | Building the plugin |
-| A JDK 11+ runtime | Running it |
-| A FHIR Gateway host | Running it |
+## What the extensions add
 
-The build and the runtime have different requirements. Building needs JDK 21 because the build tooling depends on JDK 21 APIs, but the output targets Java 11 bytecode, so the host it loads into can be older.
+The gateway is generic. The Reference Backend is the Player-specific part: a plugin loaded into the gateway host at runtime, adding what the reference needs beyond plain FHIR.
 
-The plugin does not bundle gateway classes. The host supplies them at runtime, which is why a compatible gateway is a prerequisite rather than a dependency you install.
+**Custom endpoints**, because some things a health programme needs are not FHIR operations. Creating a user has to create a Keycloak account and a FHIR Practitioner together. A location hierarchy has to be walked and returned as a tree. Users, organisations, and locations have to be imported in bulk when a programme is first stood up.
+
+**An access checker**, which decides whether a request is allowed. It grants a request when the caller holds a role matching the request's verb and resource type, and for a bundle every entry must be authorised individually.
+
+Endpoints use their own path prefix so they can never collide with FHIR paths, now or in a future version of FHIR.
+
+## How it is packaged
+
+The extensions ship as a separate artifact from the gateway rather than as one combined build. That is deliberate: a gateway upgrade does not force a release of your plugins, and a programme's own extensions can live in their own repository.
+
+This is the extension point an implementing team is most likely to use. Adding a programme-specific endpoint or access rule means writing a plugin, not forking anything.
 
 ## Where to start
 
-[Add backend extensions](/extend/backend-extensions/) builds the plugin and loads it into a gateway host.
+[Set up the backend](/components/reference-backend/run/) builds the plugin and loads it into a gateway host as part of preparing the environment.
+
+[Add backend extensions](/extend/backend-extensions/) covers writing endpoints and access checkers of your own.
 
 ## Source and releases
 

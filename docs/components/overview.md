@@ -1,43 +1,52 @@
 ---
-title: Reference components
-description: What each OHS Player component is for, and what you can do with it today.
+title: What each piece does
+description: Which component provides a capability, and which page to open for it.
 slug: /components/
 sidebar_position: 10
-guide_type: Component overview
+guide_type: Concept
 guide_status: ready
-guide_focus: The Player component set
+guide_focus: Mapping capabilities to components
 repository: ohs-player
 ---
 
-## What you can do today
+## Which piece does what
 
-Player is five components plus the libraries that configure them. They are separately useful: you do not need all of them to see something working.
+Player is five components built on the Open Health Stack's foundational libraries. This is the lookup for which one provides a capability, and what it is built on.
 
-| Component | What you can do with it | Source |
+| To do this | Player component | Built on |
 | --- | --- | --- |
-| [Client App](/components/client-app/) | Build and run the reference application on Android, iOS, desktop, and browser | [player-reference](https://github.com/ohs-foundation/player-reference) |
-| [Web Portal](/components/web-portal/) | Start it with its own FHIR and identity services and administer workforce data | [ohs-player-reference-web-portal](https://github.com/ohs-foundation/ohs-player-reference-web-portal) |
-| [Reference Backend](/components/reference-backend/) | Build Player endpoints and access checkers into a FHIR Gateway host | [ohs-player-reference-backend](https://github.com/ohs-foundation/ohs-player-reference-backend) |
-| [Reference Infrastructure](/components/reference-infrastructure/) | Understand the shared environment the other components run against | [ohs-player-reference-infrastructure](https://github.com/ohs-foundation/ohs-player-reference-infrastructure) |
-| [Reference Analytics](/components/reference-analytics/) | Understand how Player FHIR data becomes dashboards | [ohs-player-reference-analytics](https://github.com/ohs-foundation/ohs-player-reference-analytics) |
+| Store health data on a device | Client App | `kotlin-fhir-engine` |
+| Work offline | Client App | `kotlin-fhir-engine` |
+| Sync with a server | Client App | `kotlin-fhir-engine` |
+| Render a form and capture an answer | Client App | `kotlin-fhir-data-capture` |
+| Turn FHIR into what a screen shows | Client App | Player Client, using SQL-on-FHIR ViewDefinitions |
+| Declare what a screen shows | Configuration IG | SQL-on-FHIR |
+| Evaluate an expression over FHIR | Client App | `kotlin-fhirpath` |
+| Sign a user in | Client App and Web Portal | Keycloak, through the FHIR Gateway |
+| Decide whether a FHIR request is allowed | Backend | FHIR Gateway access checkers |
+| Serve APIs beyond plain FHIR | Backend | FHIR Gateway custom endpoints |
+| Manage users, roles, organisations, care teams, and locations | Web Portal | Backend endpoints |
+| Store FHIR data | — | HAPI FHIR |
+| Flatten FHIR into reportable tables | Analytics | FHIR Data Pipes |
+| Serve dashboards and ad-hoc queries | Analytics | PostgreSQL and Apache Superset |
+| Bring the whole environment up | Reference Infrastructure | Docker Compose |
 
-The Web Portal is the quickest thing to see working, because it starts the services it needs.
+Storing FHIR data has no Player component beside it on purpose. The FHIR server stays unmodified — that is the point of putting the gateway in front of it.
 
-## The two layers
+## The component pages
 
-**The applications you run** are the Client App and the Web Portal. They are what an end user or an administrator actually opens.
+| Component | What it is |
+| --- | --- |
+| [Client App](/components/client-app/) | The application frontline health workers use, on four platforms |
+| [Configuration IG](/concepts/configuration-ig/) | The FHIR contract that drives what the app renders |
+| [Backend](/components/reference-backend/) | The gateway, its Player extensions, identity, and the FHIR server |
+| [Web Portal](/components/web-portal/) | Browser administration for programme structure and users |
+| [Analytics](/components/reference-analytics/) | The reporting pipeline and dashboard |
 
-**The services they run against** are Reference Infrastructure, the Reference Backend, and Reference Analytics. Infrastructure provides the shared environment, the Backend adds Player-specific APIs and access rules to the gateway in front of it, and Analytics reads from it for reporting.
-
-## The configuration layer
-
-Two libraries sit underneath rather than beside the components, and neither is something you deploy.
-
-- **[Player Client](https://github.com/ohs-foundation/player-client)** is the Kotlin Multiplatform library inside the Client App that renders healthcare UI from configuration.
-- **[Player Configuration IG](https://github.com/ohs-foundation/player-reference-ig)** defines the FHIR resources and vocabulary that configuration is written in.
-
-[The configuration model](/concepts/configuration-model/) explains how they work together.
+Reference Infrastructure is not in that list. It is deployment material rather than a component you use, so it opens [Run it](/get-started/) instead.
 
 ## Where to go next
 
-[Get started](/get-started/) for the order to take these in, or open a component above to see what it is for and what guidance exists.
+[The architecture](/concepts/architecture/) shows how these connect and why every request routes through the gateway.
+
+[How Player uses OHS components](/concepts/how-player-uses-ohs-components/) draws the line between what Player owns and what the wider Open Health Stack owns.
