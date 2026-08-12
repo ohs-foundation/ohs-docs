@@ -1,0 +1,321 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1700 1000" width="1700" height="1000" role="img" aria-labelledby="diagramTitle diagramDesc">
+  <title id="diagramTitle">OHS Player end-to-end architecture</title>
+  <desc id="diagramDesc">The Client App and Web Admin Portal both reach the HAPI FHIR server through the FHIR Gateway with the Reference Backend plugins, with Keycloak alongside as the auth layer. The FHIR Foundations libraries and the Player Configuration IG both feed the Client App. FHIR data flows from HAPI FHIR through FHIR Data Pipes into PostgreSQL, which serves the reference dashboard. Reference Infrastructure packages the gateway, Keycloak, FHIR server, pipeline, and database as a Docker Compose stack.</desc>
+
+  <style>
+    :root, svg {
+      --player:      #5A44C4;
+      --player-fill: #EDEAF9;
+      --found:       #2D86C4;
+      --found-fill:  #E3F1FA;
+      --store:       #5F6368;
+      --store-fill:  #F1F3F4;
+      --ink:         #1A1A2E;
+      --muted:       #6B7280;
+      --line:        #9AA0A6;
+      --paper:       #FFFFFF;
+      --bg:          #FFFFFF;
+      --hair:        #DADCE0;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root, svg {
+        --player:      #A996F0;
+        --player-fill: #2A2340;
+        --found:       #6FB6E8;
+        --found-fill:  #16293A;
+        --store:       #9AA0A6;
+        --store-fill:  #24262B;
+        --ink:         #E8EAED;
+        --muted:       #9AA0A6;
+        --line:        #6B7280;
+        --paper:       #1B1C1F;
+        --bg:          #131417;
+        --hair:        #3C4043;
+      }
+    }
+    .bg      { fill: var(--bg); }
+    .lbl     { font: 600 23px "Hanken Grotesk", "Google Sans", Inter, system-ui, sans-serif; text-anchor: middle; }
+    .sub     { font: 400 17px "Hanken Grotesk", "Google Sans", Inter, system-ui, sans-serif; text-anchor: middle; fill: var(--muted); }
+    .lbl-p   { fill: var(--player); }
+    .lbl-f   { fill: var(--found); }
+    .lbl-s   { fill: var(--ink); }
+    .leg     { font: 400 19px "Hanken Grotesk", "Google Sans", Inter, system-ui, sans-serif; fill: var(--ink); }
+    .infra-l { font: 600 18px "Hanken Grotesk", "Google Sans", Inter, system-ui, sans-serif; fill: var(--muted); text-anchor: middle; letter-spacing: .04em; }
+    .chip-t  { font: 600 15px "Hanken Grotesk", "Google Sans", Inter, system-ui, sans-serif; fill: #FFFFFF; text-anchor: middle; }
+    .kc-t    { font: 600 20px "Hanken Grotesk", "Google Sans", Inter, system-ui, sans-serif; fill: #FFFFFF; text-anchor: middle; }
+    .flow    { fill: none; stroke: var(--line); stroke-width: 2.6; }
+    .flow-d  { fill: none; stroke: var(--line); stroke-width: 2.6; stroke-dasharray: 7 7; }
+    .p-fill  { fill: var(--player-fill); stroke: var(--player); stroke-width: 2.4; }
+    .f-fill  { fill: var(--found-fill);  stroke: var(--found);  stroke-width: 2.4; }
+    .paper   { fill: var(--paper); stroke: var(--player); stroke-width: 2.4; }
+    .paper-f { fill: var(--paper); stroke: var(--found);  stroke-width: 2.4; }
+    .ghost-p { fill: var(--player-fill); stroke: var(--player); stroke-width: 2.2; opacity: .55; }
+    .ghost-f { fill: var(--found-fill);  stroke: var(--found);  stroke-width: 2.2; opacity: .55; }
+    .tick-p  { stroke: var(--player); stroke-width: 3.4; stroke-linecap: round; opacity: .5; }
+    .tick-f  { stroke: var(--found);  stroke-width: 3.4; stroke-linecap: round; opacity: .5; }
+    .cyl     { fill: var(--store); }
+    .cyl-t   { fill: #7E848A; }
+    .hair    { stroke: var(--hair); stroke-width: 1.6; }
+  </style>
+
+  <defs>
+    <marker id="ah" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0.6 L 10 5 L 0 9.4 z" fill="var(--line)"/>
+    </marker>
+    <marker id="ah2" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0.6 L 10 5 L 0 9.4 z" fill="var(--line)"/>
+    </marker>
+  </defs>
+
+  <rect class="bg" x="0" y="0" width="1700" height="1000"/>
+
+  <!-- ══════════ REFERENCE INFRASTRUCTURE BOUNDARY ══════════ -->
+  <rect x="378" y="452" width="1212" height="438" rx="22"
+        fill="none" stroke="var(--line)" stroke-width="2.2" stroke-dasharray="9 8" opacity=".75"/>
+  <text class="infra-l" x="984" y="868">REFERENCE INFRASTRUCTURE &#183; DOCKER COMPOSE</text>
+
+  <!-- ══════════════════ TOP ROW LABELS ══════════════════ -->
+  <text class="lbl lbl-p" x="190"  y="64">Client App</text>
+  <text class="sub"        x="190"  y="90">Android &#183; iOS &#183; Desktop &#183; Web</text>
+
+  <text class="lbl lbl-p" x="520"  y="64">Web Admin Portal</text>
+  <text class="sub"        x="520"  y="90">programme administration</text>
+
+  <text class="lbl lbl-p" x="850"  y="64">Player Configuration IG</text>
+  <text class="sub"        x="850"  y="90">the app&#8217;s configuration package</text>
+
+  <text class="lbl lbl-p" x="1466" y="64">Reference dashboard</text>
+  <text class="sub"        x="1466" y="90">indicators and reporting</text>
+
+  <!-- ══════════════════ CLIENT APP (multi-device) ══════════════════ -->
+  <g>
+    <!-- monitor / desktop -->
+    <rect class="p-fill" x="104" y="120" width="158" height="106" rx="9"/>
+    <rect x="120" y="136" width="86" height="8" rx="4" fill="var(--player)" opacity=".45"/>
+    <rect x="120" y="154" width="126" height="7" rx="3.5" fill="var(--player)" opacity=".25"/>
+    <rect x="120" y="170" width="106" height="7" rx="3.5" fill="var(--player)" opacity=".25"/>
+    <rect x="120" y="186" width="120" height="7" rx="3.5" fill="var(--player)" opacity=".25"/>
+    <rect x="120" y="202" width="70"  height="7" rx="3.5" fill="var(--player)" opacity=".25"/>
+    <!-- stand -->
+    <path d="M 168 226 L 168 242 M 140 244 L 226 244" stroke="var(--player)" stroke-width="2.6" stroke-linecap="round" fill="none"/>
+    <!-- tablet, behind-left -->
+    <rect class="ghost-p" x="66" y="158" width="52" height="80" rx="7"/>
+    <!-- phone, front-right -->
+    <rect class="paper" x="222" y="150" width="60" height="106" rx="11"/>
+    <rect x="238" y="164" width="28" height="6" rx="3" fill="var(--player)" opacity=".45"/>
+    <rect x="234" y="180" width="36" height="5" rx="2.5" fill="var(--player)" opacity=".22"/>
+    <rect x="234" y="193" width="30" height="5" rx="2.5" fill="var(--player)" opacity=".22"/>
+    <circle cx="240" cy="212" r="6" fill="none" stroke="var(--player)" stroke-width="2.2"/>
+    <path d="M 237 212 l 2.4 2.6 l 4.4 -5.2" stroke="var(--player)" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="252" y="207" width="20" height="5" rx="2.5" fill="var(--player)" opacity=".22"/>
+    <circle cx="240" cy="232" r="6" fill="none" stroke="var(--player)" stroke-width="2.2"/>
+    <rect x="252" y="227" width="16" height="5" rx="2.5" fill="var(--player)" opacity=".22"/>
+  </g>
+
+  <!-- ══════════════════ WEB ADMIN PORTAL ══════════════════ -->
+  <g>
+    <rect class="ghost-p" x="456" y="130" width="164" height="122" rx="9"/>
+    <rect class="p-fill"  x="440" y="118" width="164" height="122" rx="9"/>
+    <path d="M 440 142 h 164" class="hair" stroke="var(--player)" opacity=".45"/>
+    <!-- toggles -->
+    <rect x="458" y="158" width="34" height="18" rx="9" fill="none" stroke="var(--player)" stroke-width="2.2" opacity=".6"/>
+    <circle cx="467" cy="167" r="5.6" fill="var(--player)" opacity=".6"/>
+    <rect x="502" y="163" width="76" height="8" rx="4" fill="var(--player)" opacity=".25"/>
+
+    <rect x="458" y="186" width="34" height="18" rx="9" fill="var(--player)"/>
+    <circle cx="483" cy="195" r="5.6" fill="var(--paper)"/>
+    <rect x="502" y="191" width="60" height="8" rx="4" fill="var(--player)" opacity=".25"/>
+
+    <rect x="458" y="214" width="34" height="18" rx="9" fill="none" stroke="var(--player)" stroke-width="2.2" opacity=".6"/>
+    <circle cx="467" cy="223" r="5.6" fill="var(--player)" opacity=".6"/>
+    <rect x="502" y="219" width="70" height="8" rx="4" fill="var(--player)" opacity=".25"/>
+  </g>
+
+  <!-- ══════════════════ CONFIGURATION IG ══════════════════ -->
+  <g>
+    <rect class="ghost-p" x="790" y="136" width="152" height="118" rx="9"/>
+    <rect class="ghost-p" x="778" y="127" width="152" height="118" rx="9"/>
+    <rect class="p-fill"  x="766" y="118" width="152" height="118" rx="9"/>
+    <!-- FHIR flame -->
+    <path d="M 800 196 c -14 -12 -8 -30 2 -38 c 1 8 6 11 10 13 c 4 -8 2 -16 -2 -22 c 14 5 24 20 22 34 c -1 10 -9 17 -17 18 c -6 1 -12 -1 -15 -5 z"
+          fill="var(--player)" opacity=".85"/>
+    <rect x="838" y="146" width="30" height="7" rx="3.5" fill="var(--player)" opacity=".45"/>
+    <rect x="874" y="146" width="26" height="7" rx="3.5" fill="var(--player)" opacity=".22"/>
+    <rect x="838" y="166" width="62" height="7" rx="3.5" fill="var(--player)" opacity=".22"/>
+    <rect x="838" y="186" width="40" height="7" rx="3.5" fill="var(--player)" opacity=".22"/>
+    <rect x="838" y="206" width="54" height="7" rx="3.5" fill="var(--player)" opacity=".22"/>
+    <path d="M 884 199 l -7 7 l 7 7 M 898 199 l 7 7 l -7 7" stroke="var(--player)" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round" opacity=".65"/>
+  </g>
+
+  <!-- ══════════════════ REFERENCE DASHBOARD ══════════════════ -->
+  <g>
+    <rect class="ghost-p" x="1400" y="130" width="164" height="122" rx="9"/>
+    <rect class="p-fill"  x="1384" y="118" width="164" height="122" rx="9"/>
+    <path d="M 1384 142 h 164" class="hair" stroke="var(--player)" opacity=".45"/>
+    <!-- bars -->
+    <rect x="1404" y="196" width="20" height="28" rx="3" fill="var(--player)" opacity=".35"/>
+    <rect x="1432" y="178" width="20" height="46" rx="3" fill="var(--player)" opacity=".55"/>
+    <rect x="1460" y="188" width="20" height="36" rx="3" fill="var(--player)" opacity=".35"/>
+    <rect x="1488" y="164" width="20" height="60" rx="3" fill="var(--player)" opacity=".75"/>
+    <!-- trend line -->
+    <path d="M 1404 176 L 1432 164 L 1460 170 L 1488 152 L 1520 158"
+          fill="none" stroke="var(--player)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="1520" cy="158" r="4" fill="var(--player)"/>
+    <path d="M 1404 224 h 128" stroke="var(--player)" stroke-width="2" opacity=".35"/>
+  </g>
+
+  <!-- ══════════════════ KEYCLOAK ══════════════════ -->
+  <g>
+    <rect x="560" y="470" width="196" height="58" rx="29" fill="var(--store)"/>
+    <!-- key -->
+    <circle cx="592" cy="499" r="8.5" fill="none" stroke="#FFFFFF" stroke-width="2.6"/>
+    <path d="M 600 499 h 18 m -6 0 v 7 m 6 -7 v 6" stroke="#FFFFFF" stroke-width="2.6" fill="none" stroke-linecap="round"/>
+    <text class="kc-t" x="676" y="506">Keycloak</text>
+  </g>
+  <text class="sub" x="658" y="552">identity and access</text>
+
+  <!-- ══════════════════ FHIR FOUNDATIONS ══════════════════ -->
+  <g>
+    <!-- open package -->
+    <path d="M 112 664 L 190 700 L 268 664 L 268 736 L 190 772 L 112 736 Z" fill="var(--store-fill)" stroke="var(--line)" stroke-width="2.2" stroke-linejoin="round"/>
+    <path d="M 112 664 L 190 700 L 268 664" fill="none" stroke="var(--line)" stroke-width="2.2" stroke-linejoin="round"/>
+    <path d="M 190 700 L 190 772" fill="none" stroke="var(--line)" stroke-width="2.2"/>
+    <!-- flaps -->
+    <path d="M 112 664 L 148 636 L 226 636 L 268 664" fill="none" stroke="var(--line)" stroke-width="2.2" stroke-linejoin="round" opacity=".6"/>
+    <!-- library cards emerging -->
+    <rect class="ghost-f" x="176" y="596" width="80" height="92" rx="7"/>
+    <rect class="ghost-f" x="164" y="586" width="80" height="92" rx="7"/>
+    <rect class="paper-f" x="152" y="576" width="80" height="92" rx="7"/>
+    <path d="M 176 634 c -10 -9 -6 -21 1 -27 c .7 5.6 4.2 7.7 7 9.1 c 2.8 -5.6 1.4 -11.2 -1.4 -15.4 c 9.8 3.5 16.8 14 15.4 23.8 c -.7 7 -6.3 11.9 -11.9 12.6 c -4.2 .7 -8.4 -.7 -10.5 -3.5 z"
+          fill="var(--found)" opacity=".85"/>
+    <rect x="164" y="650" width="56" height="6" rx="3" fill="var(--found)" opacity=".25"/>
+  </g>
+
+  <!-- ══════════════════ GATEWAY + REFERENCE BACKEND ══════════════════ -->
+  <g>
+    <!-- bracket -->
+    <path d="M 452 606 L 438 606 L 438 726 L 452 726 M 438 666 L 452 666"
+          fill="none" stroke="var(--found)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" opacity=".7"/>
+    <!-- top avatar -->
+    <circle cx="480" cy="606" r="20" class="f-fill"/>
+    <circle cx="480" cy="601" r="6.4" fill="var(--found)"/>
+    <path d="M 469 617 c 2.4 -6 19.6 -6 22 0" fill="var(--found)"/>
+    <!-- middle: locked avatar -->
+    <circle cx="480" cy="666" r="22" fill="var(--store-fill)" stroke="var(--store)" stroke-width="2.4"/>
+    <circle cx="480" cy="661" r="6.8" fill="var(--store)"/>
+    <path d="M 468 678 c 2.6 -6.4 21.4 -6.4 24 0" fill="var(--store)"/>
+    <rect x="440" y="650" width="22" height="18" rx="3.4" fill="var(--found)"/>
+    <path d="M 445 650 v -6 a 6 6 0 0 1 12 0 v 6" fill="none" stroke="var(--found)" stroke-width="2.6"/>
+    <!-- bottom avatar -->
+    <circle cx="480" cy="726" r="20" class="f-fill"/>
+    <circle cx="480" cy="721" r="6.4" fill="var(--found)"/>
+    <path d="M 469 737 c 2.4 -6 19.6 -6 22 0" fill="var(--found)"/>
+    <!-- plugin chip -->
+    <rect x="506" y="649" width="172" height="34" rx="8" fill="var(--player)"/>
+    <path d="M 520 660 h 7 v -4 h 5 v 4 h 7 v 15 h -19 z" fill="#FFFFFF" opacity=".9"/>
+    <text class="chip-t" x="605" y="671">Reference Backend</text>
+  </g>
+
+  <!-- ══════════════════ HAPI FHIR SERVER ══════════════════ -->
+  <g>
+    <ellipse cx="850" cy="614" rx="58" ry="17" class="cyl-t"/>
+    <path d="M 792 614 v 24 a 58 17 0 0 0 116 0 v -24 z" class="cyl"/>
+    <ellipse cx="850" cy="654" rx="58" ry="17" class="cyl-t"/>
+    <path d="M 792 654 v 24 a 58 17 0 0 0 116 0 v -24 z" class="cyl"/>
+    <ellipse cx="850" cy="694" rx="58" ry="17" class="cyl-t"/>
+    <path d="M 792 694 v 24 a 58 17 0 0 0 116 0 v -24 z" class="cyl"/>
+  </g>
+
+  <!-- ══════════════════ FHIR DATA PIPES ══════════════════ -->
+  <g>
+    <rect class="ghost-f" x="1104" y="608" width="76" height="98" rx="7"/>
+    <rect class="paper-f" x="1092" y="598" width="76" height="98" rx="7"/>
+    <path d="M 1116 654 c -10 -9 -6 -21 1 -27 c .7 5.6 4.2 7.7 7 9.1 c 2.8 -5.6 1.4 -11.2 -1.4 -15.4 c 9.8 3.5 16.8 14 15.4 23.8 c -.7 7 -6.3 11.9 -11.9 12.6 c -4.2 .7 -8.4 -.7 -10.5 -3.5 z"
+          fill="var(--found)" opacity=".85"/>
+    <rect x="1104" y="672" width="52" height="6" rx="3" fill="var(--found)" opacity=".25"/>
+    <!-- transform arrow -->
+    <path d="M 1190 652 h 32" class="flow" marker-end="url(#ah)"/>
+    <!-- flat table -->
+    <rect x="1234" y="606" width="106" height="92" rx="7" fill="var(--found-fill)" stroke="var(--found)" stroke-width="2.4"/>
+    <path d="M 1234 630 h 106 M 1234 654 h 106 M 1234 678 h 106 M 1270 606 v 92 M 1306 606 v 92"
+          stroke="var(--found)" stroke-width="1.8" opacity=".45" fill="none"/>
+    <rect x="1234" y="606" width="106" height="24" rx="7" fill="var(--found)" opacity=".22"/>
+  </g>
+
+  <!-- ══════════════════ POSTGRESQL ══════════════════ -->
+  <g>
+    <ellipse cx="1466" cy="614" rx="58" ry="17" class="cyl-t"/>
+    <path d="M 1408 614 v 24 a 58 17 0 0 0 116 0 v -24 z" class="cyl"/>
+    <ellipse cx="1466" cy="654" rx="58" ry="17" class="cyl-t"/>
+    <path d="M 1408 654 v 24 a 58 17 0 0 0 116 0 v -24 z" class="cyl"/>
+    <ellipse cx="1466" cy="694" rx="58" ry="17" class="cyl-t"/>
+    <path d="M 1408 694 v 24 a 58 17 0 0 0 116 0 v -24 z" class="cyl"/>
+  </g>
+
+  <!-- ══════════════════ BOTTOM ROW LABELS ══════════════════ -->
+  <text class="lbl lbl-f" x="190"  y="812">FHIR Foundations</text>
+  <text class="sub"        x="190"  y="836">KMP libraries</text>
+
+  <text class="lbl lbl-f" x="512"  y="790">FHIR Gateway</text>
+  <text class="sub"        x="512"  y="814">+ Reference Backend plugins</text>
+
+  <text class="lbl lbl-s" x="850"  y="790">HAPI FHIR server</text>
+  <text class="sub"        x="850"  y="814">source of truth</text>
+
+  <text class="lbl lbl-f" x="1200" y="790">FHIR Data Pipes</text>
+  <text class="sub"        x="1200" y="814">SQL-on-FHIR ViewDefinitions</text>
+
+  <text class="lbl lbl-s" x="1466" y="790">PostgreSQL</text>
+  <text class="sub"        x="1466" y="814">analytics schema</text>
+
+  <!-- ══════════════════ FLOWS ══════════════════ -->
+
+  <!-- FHIR Foundations -> Client App -->
+  <path class="flow" d="M 190 570 L 190 300" marker-end="url(#ah)"/>
+
+  <!-- Configuration IG -> Client App -->
+  <path class="flow" d="M 766 200 C 640 372, 420 372, 292 262" marker-end="url(#ah)"/>
+
+  <!-- Configuration IG -> HAPI FHIR (profiles and definitions) -->
+  <path class="flow-d" d="M 900 240 C 936 380, 900 500, 862 596" marker-end="url(#ah)"/>
+
+  <!-- Client App -> Gateway -->
+  <path class="flow" d="M 262 268 C 356 400, 400 500, 452 596" marker-end="url(#ah)"/>
+
+  <!-- Web Portal -> Gateway -->
+  <path class="flow" d="M 512 248 C 508 380, 500 500, 496 592" marker-end="url(#ah)"/>
+
+  <!-- Keycloak <-> Gateway (auth layer) -->
+  <path class="flow" d="M 566 512 L 520 578" marker-end="url(#ah)" marker-start="url(#ah2)"/>
+
+  <!-- Gateway -> HAPI FHIR -->
+  <path class="flow" d="M 692 666 L 780 666" marker-end="url(#ah)"/>
+
+  <!-- HAPI FHIR -> Data Pipes -->
+  <path class="flow" d="M 912 666 L 1080 666" marker-end="url(#ah)"/>
+
+  <!-- Data Pipes -> PostgreSQL -->
+  <path class="flow" d="M 1352 666 L 1396 666" marker-end="url(#ah)"/>
+
+  <!-- PostgreSQL -> Reference dashboard -->
+  <path class="flow" d="M 1466 596 L 1466 262" marker-end="url(#ah)"/>
+
+  <!-- ══════════════════ LEGEND ══════════════════ -->
+  <path d="M 300 928 h 1100" stroke="var(--hair)" stroke-width="1.6"/>
+
+  <circle cx="336" cy="966" r="11" fill="var(--player)"/>
+  <text class="leg" x="358" y="973">OHS Player reference components</text>
+
+  <circle cx="790" cy="966" r="11" fill="var(--found)"/>
+  <text class="leg" x="812" y="973">OHS foundational components</text>
+
+  <g transform="translate(1188,952)">
+    <ellipse cx="11" cy="4"  rx="11" ry="3.6" class="cyl-t"/>
+    <path d="M 0 4 v 6 a 11 3.6 0 0 0 22 0 v -6 z" class="cyl"/>
+    <ellipse cx="11" cy="14" rx="11" ry="3.6" class="cyl-t"/>
+    <path d="M 0 14 v 6 a 11 3.6 0 0 0 22 0 v -6 z" class="cyl"/>
+    <ellipse cx="11" cy="24" rx="11" ry="3.6" class="cyl-t"/>
+    <path d="M 0 24 v 6 a 11 3.6 0 0 0 22 0 v -6 z" class="cyl"/>
+  </g>
+  <text class="leg" x="1224" y="973">Third-party services and storage</text>
+</svg>

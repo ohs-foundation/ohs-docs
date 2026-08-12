@@ -70,13 +70,23 @@ const config = {
       items: [
         { to: "/", label: "Overview", position: "left" },
         {
-          to: "/setups/",
-          label: "Setups",
+          to: "/concepts/what-ohs-player-is/",
+          label: "Understand",
           position: "left",
         },
         {
-          to: "/concepts/how-player-uses-ohs-components/",
-          label: "Concepts",
+          to: "/get-started/",
+          label: "Run it",
+          position: "left",
+        },
+        {
+          to: "/configure/screen-from-fhir-data/",
+          label: "Configure",
+          position: "left",
+        },
+        {
+          to: "/extend/decide/",
+          label: "Extend",
           position: "left",
         },
         {

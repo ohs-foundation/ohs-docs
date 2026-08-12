@@ -9,7 +9,7 @@ hide_title: true
 page_type: landing
 eyebrow: OHS PLAYER DOCUMENTATION
 primary_action:
-  label: How to get started
+  label: Get started
   to: /get-started/
 secondary_action:
   label: View OHS Player source
@@ -18,67 +18,36 @@ secondary_action:
 
 ## What OHS Player is
 
-[Open Health Stack (OHS)](https://ohs.foundation/) provides open-source building blocks for healthcare software. OHS Player is a cross-stack reference toolkit that brings those components together into a working healthcare solution. It demonstrates how components can be combined, deployed, and adapted, giving healthcare implementers and developers a practical starting point for an implementation-specific solution.
+[Open Health Stack](https://ohs.foundation/) provides open-source building blocks for FHIR-native healthcare software. OHS Player is the reference toolkit that shows how those blocks assemble into a working end-to-end platform: a multiplatform client for frontline health workers, a browser portal for administrators, a gateway that carries authentication and access control, and an analytics pipeline behind them.
 
-Player also showcases OHS features and provides a platform for sharing best practice across common use cases.
+It is a working skeleton. Everything in it runs, and everything in it is meant to be replaced with your own. The value is not the code you keep — it is knowing what a FHIR-native, offline-first, multiplatform system looks like once the pieces are connected.
 
-Player is not a deployable end-user product, and it is not a runtime embedded inside the client application. It is a reference composition and a starting point for adaptation.
+Player stops at a reference environment you can run and study. Hardening, scaling, and production operations are the implementing team's work, because those decisions belong to a specific programme.
 
-Its pieces fall into three groups.
+## Where to start
 
-### The applications you run
+| If you want to | Go to |
+| --- | --- |
+| Decide whether Player suits your programme | [What OHS Player is](/concepts/what-ohs-player-is/) |
+| See how the components connect | [The architecture](/concepts/architecture/) |
+| Get a reference environment running | [Get started](/get-started/) |
+| Adapt it without writing code | [Configure a screen from FHIR data](/configure/screen-from-fhir-data/) |
+| Extend a component or contribute | [Resources and contributing](/resources/) |
 
-- **Reference Web Portal** manages workforce hierarchies, user accounts, access controls, and configuration.
-- **Player Reference Client App** is the end-user Kotlin Multiplatform application, built from one source tree for Android, iOS, desktop, and browser.
+## What is in the toolkit
 
-### The services they depend on
+| Component | Role |
+| --- | --- |
+| [Client App](/components/client-app/) | The Kotlin Multiplatform application for frontline health workers, built for Android, iOS, desktop, and browser from one source tree |
+| [Web Portal](/components/web-portal/) | Browser administration for users, roles, organisations, care teams, and locations |
+| [Reference Backend](/components/reference-backend/) | Custom endpoints and access rules loaded into a FHIR Gateway host |
+| [Reference Infrastructure](/components/reference-infrastructure/) | The deployment material that brings the shared environment up |
+| [Reference Analytics](/components/reference-analytics/) | ViewDefinitions, indicators, and the reference dashboard |
 
-- **Reference Infrastructure** is the deployment material for the shared Player environment.
-- **Reference Backend** supplies Player-specific endpoints and access-control plugins for a FHIR Gateway host.
-- **Reference Analytics** turns Player FHIR data into PostgreSQL datasets and Superset dashboards.
+Two libraries sit underneath rather than beside these. [Player Client](https://github.com/ohs-foundation/player-client) renders healthcare screens from configuration, and the [Player Configuration IG](https://github.com/ohs-foundation/player-reference-ig) defines the FHIR vocabulary that configuration is written in. [The configuration model](/concepts/configuration-model/) explains how they work together.
 
-### The configuration layer you adapt
+## The wider ecosystem
 
-- **Player Client** is the reusable Kotlin Multiplatform UI library inside the Client App, used when changing how healthcare screens render.
-- **Player Configuration IG** defines the FHIR resources and vocabulary that configure what Player Client renders. An implementation guide, or IG, is a published set of such FHIR definitions and rules.
+Player assembles components that exist independently of it. The [OHS Foundation projects page](https://ohs.foundation/projects) is the catalogue for those components and the source for their maturity.
 
-## How the pieces work together
-
-Player assembles the [FHIR Foundations building blocks](https://github.com/ohs-foundation#01--fhir-foundations) into working solutions. [FHIR](https://hl7.org/fhir/) is the standard used to exchange the healthcare information that those solutions manage.
-
-The full reference journey starts with the shared Player environment. HAPI FHIR stores the healthcare data, Keycloak manages identity and issues sign-in tokens, and FHIR Gateway can protect FHIR access and load the Reference Backend APIs. Use the Web Portal to prepare users, roles, workforce information, and configuration. Then run the Client App against that prepared environment. FHIR Data Pipes, PostgreSQL, and Superset are added later for analytics.
-
-## How to get started
-
-This guide shows how to prepare, run, evaluate, and adapt the Player reference components.
-
-For a usable reference application, prepare the shared Player environment first, use the Web Portal for user administration, then run the Client App. This is one guided sequence, not two unrelated application choices.
-
-[How to get started](/get-started/)
-
-## Where things live
-
-### OHS Player repositories
-
-Use these repositories for component source, API detail, releases, and contribution guidance.
-
-- [OHS Player](https://github.com/ohs-foundation/ohs-player)
-- [Player Reference Client App](https://github.com/ohs-foundation/player-reference)
-- [Reference Web Portal](https://github.com/ohs-foundation/ohs-player-reference-web-portal)
-- [Reference Backend](https://github.com/ohs-foundation/ohs-player-reference-backend)
-- [Reference Infrastructure](https://github.com/ohs-foundation/ohs-player-reference-infrastructure)
-- [Reference Analytics](https://github.com/ohs-foundation/ohs-player-reference-analytics)
-- [Player Client](https://github.com/ohs-foundation/player-client)
-- [Player Configuration IG](https://github.com/ohs-foundation/player-reference-ig)
-
-### Upstream OHS components
-
-The [OHS Foundation Projects page](https://ohs.foundation/projects) is the component catalogue and source of maturity information. This site explains only how Player repositories use components in a setup.
-
-[How OHS Player uses OHS components](/concepts/how-player-uses-ohs-components/)
-
-## Adapt and own it
-
-Player is a starting point. Its client application, portal, backend extensions, configuration, and deployment material are intended to be adapted to the needs of an implementation.
-
-[The configuration model](/concepts/configuration-model/) explains the relationship between the Player client library and the configuration implementation guide.
+This site covers only how Player uses them — see [How Player uses OHS components](/concepts/how-player-uses-ohs-components/).

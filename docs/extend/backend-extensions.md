@@ -1,71 +1,60 @@
 ---
-title: Add backend extensions
-description: Build the OHS Player backend extensions and load them into a FHIR Gateway host.
+title: Extend the backend
+description: Add custom endpoints and access checkers to the FHIR Gateway without forking it.
 slug: /extend/backend-extensions/
 sidebar_position: 20
-guide_type: Setup guide
-guide_status: ready
-guide_focus: FHIR Gateway extensions for Player clients
+guide_type: Extension guide
+guide_status: partial
+guide_focus: Writing your own gateway endpoints and access rules
 repository: backend-extension
 ---
 
-## About the Reference Backend
+## When you need this
 
-Reference Backend provides custom endpoints and access-checker plugins for OHS Player Kotlin Multiplatform and web clients. FHIR Gateway loads the JAR at runtime. The extensions add user, group, role, practitioner-detail, location-hierarchy, and bulk-import APIs; they use the gateway's upstream FHIR server and identity provider.
+The gateway gives you authenticated, access-controlled FHIR. The Reference Backend adds the endpoints the reference implementation needs on top of it. A programme usually needs a third thing: its own endpoints, or its own rule about who may see what.
 
-This is part of the shared Player environment stage of the [get started sequence](/get-started/). The Web Portal uses its gateway endpoint for custom APIs, and the Client App is run after the shared Player environment and Portal administration are ready.
+Two extension points cover almost all of it.
 
-## Before you begin
+**A custom endpoint** when a programme needs an operation that is not a FHIR operation — something that spans FHIR and identity, aggregates across resources, or accepts a payload FHIR does not describe.
 
-You need JDK 21 to build the extensions and a compatible FHIR Gateway host to run them. The compiled JAR targets Java 11 bytecode, so the host can use JDK 11 or later.
+**An access checker** when the rule about who may read or write a resource is specific to how your programme is organised.
 
-## Get a FHIR Gateway host
+If what you need is a different screen rather than a different rule, you are in the wrong place — [decide when code is necessary](/extend/decide/) sorts that out.
 
-The [FHIR Gateway repository](https://github.com/ohs-foundation/fhir-gateway) provides the host JAR. Build its executable host from the repository root:
+## The extension model
 
-```sh
-mvn package -Dspotless.apply.skip=true
-```
+Extensions are a plugin JAR loaded into the gateway host at runtime. The plugin does not bundle gateway classes; the host supplies them.
 
-The executable host is `exec/target/fhir-gateway-exec.jar`.
+That separation is the point. You are not forking the gateway, and you are not maintaining a patched copy of it. A gateway upgrade does not force a release of your plugin, and your plugin can live in its own repository with its own release cycle.
 
-## Build the extension
+The Reference Backend is itself an example of this — it is a plugin, built and loaded exactly the way yours would be. [Setting up the backend](/components/reference-backend/run/) walks through that build-and-load cycle, and the same commands apply to a plugin of your own.
 
-Clone the Reference Backend repository, enter it, then build the extension.
+## Writing an access checker
 
-```sh
-git clone https://github.com/ohs-foundation/ohs-player-reference-backend.git
-cd ohs-player-reference-backend
-mvn clean package
-```
+The gateway resolves access checkers through its plugin mechanism and selects one by configuration, so a deployment chooses which rule applies without a code change.
 
-The repository identifies the output as `target/ohs-player-backend-extensions-1.0-SNAPSHOT.jar`.
+The gateway ships sample checkers, and the Reference Backend's own checker is a worked example of a role-based rule: it grants a request when the caller holds a role matching the request's verb and resource type, and for a bundle it requires every entry to be authorised individually.
 
-## Load it into FHIR Gateway
+That bundle behaviour is worth copying rather than reinventing. A bundle that is authorised as a whole rather than per entry is a common way to accidentally grant more than intended.
 
-```sh
-java -Dloader.path="PATH_TO_PLUGIN/ohs-player-backend-extensions-1.0-SNAPSHOT.jar" \
-  -jar PATH_TO_FHIR_GATEWAY/exec/target/fhir-gateway-exec.jar --server.port=8081
-```
+The [FHIR Gateway repository](https://github.com/ohs-foundation/fhir-gateway) owns the access checker interfaces, the plugin discovery mechanism, and its sample implementations.
 
-Replace `PATH_TO_PLUGIN` with the absolute path to the JAR produced in the previous step. Replace `PATH_TO_FHIR_GATEWAY` with the absolute path to the FHIR Gateway repository where its host JAR was built.
+## Writing a custom endpoint
 
-## Configure the extension
+Custom endpoints use a path prefix that keeps them clear of FHIR paths, so an endpoint you add cannot collide with a FHIR route now or in a future version of FHIR. Keep to that convention.
 
-Set these values in the FHIR Gateway host environment before starting it.
+Endpoints run inside the gateway, which means they inherit its authentication rather than reimplementing it. The alternative — a separate service beside the gateway — means rebuilding token validation and maintaining another deployable, which is the situation the gateway exists to avoid.
 
-- `PROXY_TO`: upstream FHIR server base URL.
-- `IAM_PROVIDER`: identity provider; `keycloak` is the default and supported value.
-- `TOKEN_ISSUER`: Keycloak issuer URL, for example `http://keycloak:8080/realms/my-realm`.
-- `IAM_PROVIDER_CLIENT_ID`: Keycloak administration client ID.
-- `IAM_PROVIDER_CLIENT_SECRET`: Keycloak administration client secret.
+The [ohs-player-reference-backend repository](https://github.com/ohs-foundation/ohs-player-reference-backend) owns the endpoint implementations, the role model they enforce, and their configuration.
 
-The Keycloak administration client needs a service account with `manage-users`, `view-users`, `manage-realm`, and `view-realm` roles from the `realm-management` client. When using the Web Portal's local Docker Compose environment, replace its nginx development proxy with a gateway image that loads this extension before relying on custom `/api/*` endpoints. Use [FHIR Gateway deployment documentation](https://github.com/ohs-foundation/fhir-gateway#modules) for host deployment details.
+## Packaging
 
-## Expected result
+Keep your extensions in their own repository and build them as a separate artifact rather than combining them with the gateway into a single build. Decoupled, you redeploy against a new gateway release without cutting a release of your own.
 
-The gateway exposes the Reference Backend APIs at `/api/*` and enforces bearer-token access. After the Portal signs in with an `ohs` realm user, its custom API requests can use the configured gateway endpoint. Keycloak is the default identity provider.
+## Where to go next
 
-## Next step
+[Set up the backend](/components/reference-backend/run/) covers building a plugin and loading it into a host.
 
-[Run the Web Portal](/components/web-portal/run/) to administer the environment before running the Client App.
+[Decide when code is necessary](/extend/decide/) covers the boundary between configuration and code across the whole toolkit.
+
+To contribute an extension back, see [resources and contributing](/resources/).

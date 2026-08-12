@@ -1,39 +1,62 @@
 ---
 title: Get started
-description: Prepare the shared Player environment, administer it through the Web Portal, then run the Client App.
+description: Bring up a reference environment, administer it, run the Client App against it, and add reporting.
 slug: /get-started/
 sidebar_position: 20
 guide_type: Get started
 guide_status: partial
-guide_focus: OHS Player getting-started guidance
+guide_focus: The order to take the Player components in
 repository: ohs-player
 ---
 
-## The shortest path
+## What you will have at the end
 
-[Run the Web Portal](/components/web-portal/run/). Its Docker Compose setup starts HAPI FHIR, Keycloak, and a development gateway locally, so it is the one component you can bring up on its own and sign in to. If you are evaluating Player and want to see something working in an afternoon, start there.
+One shared environment, with every Player component running against it.
 
-## The full sequence
+A programme structure you created — organisations, locations, care teams, and health workers — administered through the Web Portal. A health worker signed in on the Client App, capturing data and syncing it through the gateway to the FHIR server. And a dashboard reading that same data through the analytics pipeline.
 
-For a usable reference implementation rather than a single component, prepare the shared Player environment first and treat the Client App as the end of the path rather than the beginning.
+That is the whole reference: the round trip from a health worker in a village to an indicator on a chart.
 
-1. **Prepare the shared Player environment.** HAPI FHIR stores the data, Keycloak supplies identity and access management, and FHIR Gateway hosts protected Player APIs. Start with [Reference Infrastructure](/components/reference-infrastructure/) and add the [Reference Backend](/extend/backend-extensions/) when the environment needs Player-specific APIs.
-2. **Run the Web Portal and administer the environment.** The Portal starts its local services, then lets an administrator work with users, roles, workforce structures, and configuration. Follow [Run the Web Portal](/components/web-portal/run/).
-3. **Run the Client App.** After the shared Player environment and its administration are ready, follow [Run the Client App](/components/client-app/run/) to build and launch the Kotlin Multiplatform application.
-4. **Adapt the user interface.** Use [Decide when code is necessary](/extend/decide/) to work out whether a change belongs in configuration, a renderer, or the application itself.
-5. **Add Analytics for reporting.** [Reference Analytics](/components/reference-analytics/) reads from an already-running shared Player environment. It is a continuation of the operational setup, not a first-run requirement.
+## Before you start
 
-Stages 1 to 3 depend on each other in that order. Stages 4 and 5 are independent of one another and can be taken in either order once the client runs.
+Each guide states its own versions, but you need all of the following somewhere on the path, so it is worth having them ready.
 
-## Where each guide lives
-
-| To do this | Go to |
+| For | You need |
 | --- | --- |
-| Understand what Player is and how its parts relate | [How Player uses OHS components](/concepts/how-player-uses-ohs-components/) |
-| Bring up the shared environment | [Reference Infrastructure](/components/reference-infrastructure/) |
-| Add Player-specific gateway APIs | [Add backend extensions](/extend/backend-extensions/) |
-| Administer users and workforce data | [Run the Web Portal](/components/web-portal/run/) |
-| Run the end-user application | [Run the Client App](/components/client-app/run/) |
-| Change what a screen shows | [Configure a screen from FHIR data](/configure/screen-from-fhir-data/) |
-| Work out whether a change needs code | [Decide when code is necessary](/extend/decide/) |
-| Add reporting and dashboards | [Reference Analytics](/components/reference-analytics/) |
+| The environment and the analytics stack | Docker Engine with Compose v2 |
+| The environment scripts | Bash, GNU gettext for `envsubst`, and OpenSSL. On Windows use WSL |
+| Building the Reference Backend and the Client App | JDK 21 |
+| The Web Portal | Node and pnpm |
+| Android and iOS builds | Android Studio, and Xcode on macOS |
+
+Nothing conceptual is required first. [What to know first](/prerequisites/) is background that makes the rest of the site easier, not a gate.
+
+## The sequence
+
+The order matters. Each stage depends on the one before it, because every client reaches FHIR through the gateway rather than directly.
+
+**1. Bring up the reference environment.** [Set up the environment](/components/reference-infrastructure/) starts PostgreSQL, Keycloak, HAPI FHIR, and the FHIR Gateway together, and tells you how to confirm they are healthy. This is the shared environment everything else points at.
+
+**2. Load the Reference Backend into the gateway.** [Set up the backend](/components/reference-backend/run/) builds the plugin and loads it into the gateway host. Both the Web Portal and the Client App consume the endpoints it adds, so this is part of preparing the environment rather than an optional extra.
+
+**3. Administer the programme in the Web Portal.** [Run the Web Portal](/components/web-portal/run/) against the environment from step 1, then create the organisations, locations, care teams, and users your scenario needs. What you set up here determines what each health worker's device receives.
+
+**4. Run the Client App.** [Run the Client App](/components/client-app/run/) builds the application for your target and points it at the same environment. Sign in as one of the health workers you created, capture data, and sync.
+
+**5. Add analytics.** [Set up analytics](/components/reference-analytics/run/) starts the pipeline and the dashboard with an additional profile on the same stack from step 1. It ships pointed at a synthetic dataset so dashboards are populated immediately, and can be pointed at the data you captured in the previous steps instead.
+
+## How the pieces find each other
+
+Every client needs the same three things, and knowing that makes the configuration in each guide easier to follow:
+
+- **The FHIR base URL** — reached through the gateway, never the FHIR server directly
+- **The gateway URL** — which also serves the Reference Backend endpoints
+- **The identity issuer** — the Keycloak realm, plus a client for the application signing in
+
+The environment from step 1 supplies all three. Each guide states which setting carries which value for that component.
+
+## Where to go next
+
+Once the reference runs, [Configure a screen from FHIR data](/configure/screen-from-fhir-data/) is the first step from *running* to *yours*.
+
+[Decide when code is necessary](/extend/decide/) helps work out whether a change belongs in configuration, a renderer, or the application itself.

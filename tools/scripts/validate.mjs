@@ -81,11 +81,18 @@ for (const file of files) {
   }
 }
 
-// Analytics has no published procedure, so it must route readers to the owning
-// repository and the upstream engine rather than infer a setup path.
-const analytics = await readFile(`${docsRoot}/components/reference-analytics/overview.md`, 'utf8');
-for (const link of ['https://github.com/ohs-foundation/ohs-player-reference-analytics', 'https://github.com/ohs-foundation/fhir-data-pipes']) {
-  if (!analytics.includes(link)) throw new Error(`Reference Analytics must link ${link}.`);
+// Analytics is not a separate repository. Its pipeline configuration and
+// ViewDefinitions ship in the infrastructure repository, and FHIR Data Pipes is
+// the engine underneath. Both pages must route readers to those two sources
+// rather than imply an analytics repository of its own.
+for (const page of ['components/reference-analytics/overview.md', 'components/reference-analytics/run.md']) {
+  const analytics = await readFile(`${docsRoot}/${page}`, 'utf8');
+  for (const link of ['https://github.com/ohs-foundation/ohs-player-reference-infrastructure', 'https://github.com/ohs-foundation/fhir-data-pipes']) {
+    if (!analytics.includes(link)) throw new Error(`${page} must link ${link}.`);
+  }
+  if (analytics.includes('ohs-player-reference-analytics')) {
+    throw new Error(`${page} links a separate analytics repository, which does not exist. Analytics ships in the infrastructure repository.`);
+  }
 }
 
 console.log(`Validated ${files.length} Markdown pages, ${contract.routes.length} canonical routes, frontmatter, status language, image alt text, and heading order.`);

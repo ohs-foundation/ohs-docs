@@ -38,12 +38,15 @@ const repositories = {
     dependencies: [],
   },
   analytics: {
-    label: "Reference Analytics",
-    url: "https://github.com/ohs-foundation/ohs-player-reference-analytics",
-    role: "Analytics pipeline, ViewDefinitions, and reference dashboards.",
+    // Analytics is not a separate repository. The pipeline configuration,
+    // ViewDefinitions, and compose services live in the infrastructure repo
+    // under a dedicated profile.
+    label: "Reference Infrastructure",
+    url: "https://github.com/ohs-foundation/ohs-player-reference-infrastructure",
+    role: "Analytics pipeline configuration, ViewDefinitions, and dashboard services.",
     dependencies: [
       {label: "FHIR Data Pipes", url: "https://github.com/ohs-foundation/fhir-data-pipes", relationship: "Analytics pipeline engine."},
-      {repository: "infrastructure", relationship: "Expected Player service boundary; setup detail is pending."},
+      {repository: "infrastructure", relationship: "Ships in the same stack, started with an additional profile."},
     ],
   },
   "player-client": {

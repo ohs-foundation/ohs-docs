@@ -4,7 +4,7 @@ description: The browser-based administration portal for workforce, access, and 
 slug: /components/web-portal/
 sidebar_position: 10
 guide_type: Component overview
-guide_status: partial
+guide_status: ready
 guide_focus: Web-based workforce and configuration portal
 repository: web-portal
 ---
@@ -17,29 +17,31 @@ The Reference Web Portal is the administrative interface in the reference set. I
 
 That programme administration can be built directly on FHIR resources and gateway APIs rather than on a separate administrative database. The organisations, practitioners, and locations an administrator manages are the same FHIR resources the Client App reads.
 
+## What an administrator does with it
+
+It is where a programme is set up before anyone uses it operationally: creating the organisations and facilities, building the location hierarchy, forming care teams, and creating the health worker accounts that sign in on the Client App.
+
+That last point is the one worth understanding, because it is easy to misread. **The Portal does not push anything to devices.** The assignments made here — a health worker's location, care team, and organisation — are stored as FHIR resources, and the gateway's access rules read them to decide what that worker's device is allowed to receive. The Portal shapes access; the gateway enforces it.
+
+It also carries a FHIR browser, so an administrator can look at the records the Client App produced without writing a FHIR query.
+
 ## When to use it
 
 Use it to prepare an environment before running the Client App against it, and as the starting point for a programme's own administration tooling.
 
-It is also the quickest component to see working. Its Docker Compose setup starts HAPI FHIR, Keycloak, and a development gateway locally, so it does not wait on a shared environment.
-
 ## What it needs
 
-| Depends on | Required or optional | Notes |
-| --- | --- | --- |
-| Node and pnpm | Required | The run guide states supported versions |
-| Docker | Required | Runs the backing services |
-| HAPI FHIR | Required | Started locally by the Portal's own Compose setup |
-| Keycloak | Required | Started locally, with a realm imported at first run |
-| A FHIR Gateway | For custom endpoints | Player-specific endpoints are served by the gateway, not by the Portal |
+| Depends on | Notes |
+| --- | --- |
+| Node and pnpm | The run guide states supported versions |
+| A running environment | The FHIR server, identity, and gateway from [set up the environment](/components/reference-infrastructure/) |
+| The Reference Backend | Its user, role, and location-hierarchy endpoints are what the Portal calls |
 
-The last row is the boundary worth knowing: the Portal talks to the FHIR store directly by default, and custom Player APIs come from a gateway alongside it rather than from the Portal itself.
+The Portal is a browser application with no backend of its own. Everything it does is a call to the gateway, which is what makes it a demonstration rather than a dependency — a programme can replace it entirely and keep the same API layer underneath.
 
 ## Where to start
 
-[Run the Web Portal](/components/web-portal/run/) brings up the services, imports the realm, and signs you in.
-
-For Player-specific gateway APIs on top of it, [add the Reference Backend extensions](/extend/backend-extensions/).
+[Run the Web Portal](/components/web-portal/run/) points it at your environment and signs you in.
 
 ## Source and releases
 

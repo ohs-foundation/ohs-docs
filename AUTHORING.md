@@ -2,19 +2,34 @@
 
 The public documentation content lives in `docs/`. Authors write normal Markdown and YAML frontmatter; do not edit the site shell, React components, or CSS to update a page.
 
-## Where a page goes
+## The information architecture
 
 The sidebar is defined explicitly in `sidebars.js`, so a new file does not appear until it is listed there. That is deliberate: the order is the information architecture, not an accident of the directory tree.
 
+The spine is the reader's journey rather than a taxonomy of document kinds:
+
+```
+Understand  ->  Run it  ->  Configure  ->  Extend  ->  Project and community
+```
+
+Each audience enters at the same place and travels a different distance. An evaluator stops after Understand. An implementor continues through Configure and Extend. A contributor arrives at Project and community.
+
+**Section order and directory paths are independent.** Published slugs are permanent, so a page keeps its URL when it moves between sidebar sections. Decide where a page belongs for the reader in `sidebars.js`; decide where the file lives by the table below.
+
+## Where a page goes
+
 | Kind of page | Directory |
 | --- | --- |
-| Component overview and its run-and-operate procedures | `docs/components/<component>/` |
 | A model a reader needs before acting | `docs/concepts/` |
+| Component overview and its run-and-operate procedures | `docs/components/<component>/` |
 | Changing behaviour without code | `docs/configure/` |
 | Changing behaviour with code | `docs/extend/` |
 | A recipe spanning several components | `docs/guides/` — create it when the first one exists |
+| Diagrams and other page images | `docs/images/` |
 
 Single-component procedures nest under their component. Adaptation does not: configuration goes to `configure/` and code changes to `extend/`, whichever component they touch.
+
+Images live in `docs/images/` and are referenced with a relative path, so the build resolves them, applies the base URL, and adds a content hash. Do not put page images in `static/` — a file there is copied verbatim as well as bundled, which publishes it twice.
 
 ## Frontmatter
 
