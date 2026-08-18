@@ -14,6 +14,8 @@ Understand  ->  Run it  ->  Configure  ->  Extend  ->  Project and community
 
 Each audience enters at the same place and travels a different distance. An evaluator stops after Understand. An implementor continues through Configure and Extend. A contributor arrives at Project and community.
 
+Beside the journey sit **groups**: sets of repositories documented together for developers consuming them directly, each with its own sidebar in `sidebars.js` and its own directory under `docs/`. FHIR Foundation (`docs/fhir-foundation/`, the `fhirFoundation` sidebar) is the first; future groups follow the same pattern. Within a group, every repository gets the same page skeleton — overview, get started, task guides — and group-wide reference pages (platform matrix, version pairing) close the sidebar. A new group needs a directory, a sidebar, entries in `tools/routes.json`, and an entry point on the landing page and in `LandingPage.jsx` navigation.
+
 **Section order and directory paths are independent.** Published slugs are permanent, so a page keeps its URL when it moves between sidebar sections. Decide where a page belongs for the reader in `sidebars.js`; decide where the file lives by the table below.
 
 ## Where a page goes
@@ -25,6 +27,7 @@ Each audience enters at the same place and travels a different distance. An eval
 | Changing behaviour without code | `docs/configure/` |
 | Changing behaviour with code | `docs/extend/` |
 | A recipe spanning several components | `docs/guides/` — create it when the first one exists |
+| A page in a documentation group | `docs/<group>/` or `docs/<group>/<repository>/`, e.g. `docs/fhir-foundation/kotlin-fhir/` |
 | Diagrams and other page images | `docs/images/` |
 
 Single-component procedures nest under their component. Adaptation does not: configuration goes to `configure/` and code changes to `extend/`, whichever component they touch.
@@ -52,13 +55,15 @@ Write normal Markdown here.
 
 Number `sidebar_position` in tens, so a page can be inserted later without renumbering its neighbours.
 
-`repository` must be an identifier in `src/data/playerRepositories.js`; that map owns the canonical repository name, URL, role, and dependency metadata.
+`repository` must be an identifier in `src/data/playerRepositories.js`; that map owns the canonical repository name, URL, role, and dependency metadata. A page with no single owning repository — a group overview, a cross-library reference — omits `repository` and sets `source_url` and `source_label` instead, which the shell renders as the source link.
 
 The shared shell renders the title, description, source link, focus, sidebar, and on-page table of contents. Every `##` heading becomes an on-page navigation entry.
 
 ### `guide_type`
 
-The page's purpose, shown as the eyebrow above the title. Use one of `Get started`, `Component overview`, `Setup guide`, `Configuration guide`, `Extension guide`, `Concept`, `Technical reference`.
+The page's purpose, shown as the eyebrow above the title. Use one of `Get started`, `Group overview`, `Component overview`, `Setup guide`, `Usage guide`, `Configuration guide`, `Extension guide`, `Concept`, `Technical reference`.
+
+`Group overview` introduces a documentation group as a whole. `Usage guide` is for library documentation: using a published API in the reader's own code, as opposed to a `Setup guide`'s run-and-operate procedure.
 
 It names a kind of page, never a state. `Setup pending` is not a page type.
 

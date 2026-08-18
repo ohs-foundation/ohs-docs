@@ -90,6 +90,11 @@ const config = {
           position: "left",
         },
         {
+          to: "/fhir-foundation/",
+          label: "FHIR Foundation",
+          position: "left",
+        },
+        {
           href: "https://github.com/ohs-foundation/ohs-player",
           label: "GitHub",
           position: "right",

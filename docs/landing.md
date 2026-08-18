@@ -32,6 +32,7 @@ Player stops at a reference environment you can run and study. Hardening, scalin
 | See how the components connect | [The architecture](/concepts/architecture/) |
 | Get a reference environment running | [Get started](/get-started/) |
 | Adapt it without writing code | [Configure a screen from FHIR data](/configure/screen-from-fhir-data/) |
+| Build directly on the FHIR libraries | [FHIR Foundation](/fhir-foundation/) |
 | Extend a component or contribute | [Resources and contributing](/resources/) |
 
 ## What is in the toolkit
@@ -45,6 +46,10 @@ Player stops at a reference environment you can run and study. Hardening, scalin
 | [Reference Analytics](/components/reference-analytics/) | ViewDefinitions, indicators, and the reference dashboard |
 
 Two libraries sit underneath rather than beside these. [Player Client](https://github.com/ohs-foundation/player-client) renders healthcare screens from configuration, and the [Player Configuration IG](https://github.com/ohs-foundation/player-reference-ig) defines the FHIR vocabulary that configuration is written in. [The configuration model](/concepts/configuration-model/) explains how they work together.
+
+## The FHIR Foundation libraries
+
+Beneath the whole toolkit sits [FHIR Foundation](/fhir-foundation/): the Kotlin Multiplatform libraries for the FHIR data model, FHIRPath evaluation, on-device storage and sync, and Questionnaire-based data capture. Player's client is built on them, and they are equally usable in your own applications without the rest of Player. Their documentation is its own section, written for developers consuming the libraries directly.
 
 ## The wider ecosystem
 

@@ -109,7 +109,7 @@ function GuideSidebar({ open, onClose }) {
         </nav>
         <div className="ohs-sidebar-help">
           <strong>Need the source material?</strong>
-          <p>Each guide links to its owning Player repository.</p>
+          <p>Each guide links to its owning repository.</p>
           <a href="https://github.com/orgs/ohs-foundation/discussions">
             Get help ↗
           </a>

@@ -57,6 +57,41 @@ const repositories = {
       {repository: "configuration-ig", relationship: "Defines the configuration vocabulary consumed by the library."},
     ],
   },
+  // FHIR Foundation group: the Kotlin Multiplatform FHIR libraries that Player
+  // and third-party applications build on. All publish under the Maven group
+  // dev.ohs.fhir.
+  "kotlin-fhir": {
+    label: "Kotlin FHIR",
+    url: "https://github.com/ohs-foundation/kotlin-fhir",
+    role: "FHIR R4, R4B, and R5 data model and JSON serialization for Kotlin Multiplatform.",
+    dependencies: [],
+  },
+  "kotlin-fhirpath": {
+    label: "Kotlin FHIRPath",
+    url: "https://github.com/ohs-foundation/kotlin-fhirpath",
+    role: "FHIRPath expression engine over the Kotlin FHIR data model.",
+    dependencies: [
+      {repository: "kotlin-fhir", relationship: "Evaluates expressions against its generated data classes."},
+    ],
+  },
+  "kotlin-fhir-engine": {
+    label: "Kotlin FHIR Engine",
+    url: "https://github.com/ohs-foundation/kotlin-fhir-engine",
+    role: "On-device FHIR R4 persistence, type-safe search, and server synchronization.",
+    dependencies: [
+      {repository: "kotlin-fhir", relationship: "Stores and exchanges its R4 resource types."},
+      {repository: "kotlin-fhirpath", relationship: "Evaluates search-parameter expressions when indexing resources."},
+    ],
+  },
+  "kotlin-fhir-data-capture": {
+    label: "Kotlin FHIR Data Capture",
+    url: "https://github.com/ohs-foundation/kotlin-fhir-data-capture",
+    role: "FHIR Questionnaire rendering, validation, and extraction with Compose Multiplatform.",
+    dependencies: [
+      {repository: "kotlin-fhir", relationship: "Parses and produces Questionnaire and QuestionnaireResponse resources."},
+      {repository: "kotlin-fhirpath", relationship: "Evaluates SDC expressions such as enablement and calculated values."},
+    ],
+  },
   "configuration-ig": {
     label: "Player Configuration IG",
     url: "https://github.com/ohs-foundation/player-reference-ig",

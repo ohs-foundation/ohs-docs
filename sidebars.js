@@ -91,6 +91,80 @@ const sidebars = {
       items: ["resources"],
     },
   ],
+
+  /**
+   * FHIR Foundation is the first documentation *group*: a set of repositories
+   * documented together, with its own sidebar beside the Player journey.
+   * Future groups (player-client-app, player-web, ...) follow the same
+   * pattern — a directory under docs/, a sidebar here, an entry point on the
+   * landing page.
+   *
+   * Within a group every library follows the same skeleton — overview, get
+   * started, task guides — so a reader who has learned one can navigate the
+   * others. Group-wide reference material (platform matrix, version pairing)
+   * closes the sidebar.
+   */
+  fhirFoundation: [
+    "fhir-foundation/overview",
+    {
+      type: "category",
+      label: "Kotlin FHIR",
+      collapsible: false,
+      link: { type: "doc", id: "fhir-foundation/kotlin-fhir/overview" },
+      items: [
+        "fhir-foundation/kotlin-fhir/get-started",
+        "fhir-foundation/kotlin-fhir/working-with-resources",
+        "fhir-foundation/kotlin-fhir/serialization",
+        "fhir-foundation/kotlin-fhir/search-parameters",
+      ],
+    },
+    {
+      type: "category",
+      label: "Kotlin FHIRPath",
+      collapsible: false,
+      link: { type: "doc", id: "fhir-foundation/kotlin-fhirpath/overview" },
+      items: [
+        "fhir-foundation/kotlin-fhirpath/get-started",
+        "fhir-foundation/kotlin-fhirpath/evaluation-semantics",
+        "fhir-foundation/kotlin-fhirpath/conformance",
+      ],
+    },
+    {
+      type: "category",
+      label: "Kotlin FHIR Engine",
+      collapsible: false,
+      link: { type: "doc", id: "fhir-foundation/kotlin-fhir-engine/overview" },
+      items: [
+        "fhir-foundation/kotlin-fhir-engine/get-started",
+        "fhir-foundation/kotlin-fhir-engine/persist-and-search",
+        "fhir-foundation/kotlin-fhir-engine/synchronization",
+        "fhir-foundation/kotlin-fhir-engine/web-targets",
+      ],
+    },
+    {
+      type: "category",
+      label: "Kotlin FHIR Data Capture",
+      collapsible: false,
+      link: {
+        type: "doc",
+        id: "fhir-foundation/kotlin-fhir-data-capture/overview",
+      },
+      items: [
+        "fhir-foundation/kotlin-fhir-data-capture/get-started",
+        "fhir-foundation/kotlin-fhir-data-capture/render-a-questionnaire",
+        "fhir-foundation/kotlin-fhir-data-capture/customize-and-extend",
+      ],
+    },
+    {
+      type: "category",
+      label: "Across the libraries",
+      collapsible: false,
+      items: [
+        "fhir-foundation/platform-support",
+        "fhir-foundation/versions",
+      ],
+    },
+  ],
 };
 
 module.exports = sidebars;
