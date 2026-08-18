@@ -107,9 +107,9 @@ a { color: inherit; }
   min-height: var(--ohs-header-h);
   margin: auto;
   align-items: center;
-  gap: clamp(22px, 4vw, 52px);
+  gap: clamp(18px, 3vw, 40px);
 }
-.ohs-main-nav { display: flex; align-self: stretch; align-items: stretch; gap: clamp(14px, 2vw, 28px); }
+.ohs-main-nav { display: flex; align-self: stretch; align-items: stretch; gap: clamp(12px, 1.8vw, 22px); }
 .ohs-main-nav a {
   display: grid;
   align-items: center;
@@ -117,6 +117,7 @@ a { color: inherit; }
   font-size: 0.84rem;
   font-weight: 600;
   text-decoration: none;
+  white-space: nowrap;
 }
 .ohs-main-nav a:hover, .ohs-main-nav a[aria-current="page"] { color: var(--ohs-purple-deep); }
 .ohs-nav-actions { display: flex; margin-left: auto; align-items: center; gap: 20px; }
@@ -338,13 +339,22 @@ a { color: inherit; }
   .ohs-mobile-toc-nav { margin-top: 14px; }
 }
 
-@media (max-width: 760px) {
-  .ohs-nav-shell { gap: 14px; }
+/* Six journey links plus search cannot share one row with everything else on
+   narrower screens, and a nav label must never wrap mid-word. Shed items
+   progressively: the Foundation-site link first (the footer keeps it), then
+   the whole nav collapses into the menu button while the row still fits. */
+@media (max-width: 1160px) {
+  .ohs-foundation-link { display: none; }
+}
+@media (max-width: 880px) {
   .ohs-menu-button { display: block; }
   .ohs-main-nav { position: absolute; top: var(--ohs-header-h); right: var(--ohs-gutter); left: var(--ohs-gutter); display: none; padding: 10px; border: 1px solid var(--ohs-line); border-radius: 12px; flex-direction: column; background: var(--ohs-surface); box-shadow: var(--ohs-shadow); }
   .ohs-main-nav.is-open { display: flex; }
   .ohs-main-nav a { display: block; padding: 10px; }
-  .ohs-foundation-link { display: none; }
+}
+
+@media (max-width: 760px) {
+  .ohs-nav-shell { gap: 14px; }
   .ohs-header-search .navbar__search-input { width: clamp(112px, 22vw, 168px); }
   .ohs-footer-inner { grid-template-columns: 1fr; }
   .ohs-guide-topbar-inner { width: calc(100% - 32px); }
