@@ -90,6 +90,12 @@ const sidebars = {
       collapsible: false,
       items: ["resources"],
     },
+    // Cross-link into the FHIR Foundation group, which has its own sidebar.
+    {
+      type: "link",
+      label: "FHIR Foundation",
+      href: "/fhir-foundation/",
+    },
   ],
 
   /**
