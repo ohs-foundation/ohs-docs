@@ -85,14 +85,14 @@
   <path class="flow" d="M 400 288 L 400 529 L 464 529" marker-end="url(#ffah)"/>
   <text class="cap" x="412" y="366">SDC expressions</text>
 
-  <path class="flow" d="M 280 288 L 280 715 L 464 715" marker-end="url(#ffah)"/>
-  <text class="cap-e" x="268" y="622">resource models</text>
+  <path class="flow" d="M 340 288 L 340 715 L 464 715" marker-end="url(#ffah)"/>
+  <text class="cap-e" x="328" y="622">resource models</text>
 
   <path class="flow" d="M 980 288 L 980 529 L 936 529" marker-end="url(#ffah)"/>
   <text class="cap-e" x="968" y="366">search indexing</text>
 
-  <path class="flow" d="M 1100 288 L 1100 715 L 936 715" marker-end="url(#ffah)"/>
-  <text class="cap" x="1114" y="622">resource models</text>
+  <path class="flow" d="M 1060 288 L 1060 715 L 936 715" marker-end="url(#ffah)"/>
+  <text class="cap" x="1074" y="622">resource models</text>
 
   <path class="flow" d="M 700 594 L 700 644" marker-end="url(#ffah)"/>
   <text class="cap" x="716" y="625">navigates the model</text>
