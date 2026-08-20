@@ -11,7 +11,7 @@ repository: kotlin-fhir-data-capture
 
 ## Goal and scope
 
-Add the library to a Compose Multiplatform (or Android Compose) project and render a Questionnaire end to end: display, fill, validate, submit.
+Add the SDK to a Compose Multiplatform (or Android Compose) project and render a Questionnaire end to end. That means display, fill, validate, submit.
 
 ## Prerequisites
 
@@ -31,7 +31,7 @@ kotlin {
 }
 ```
 
-Android-only projects put the same coordinate in the ordinary `dependencies` block. The library brings the FHIR model and FHIRPath engine transitively; add explicit model/engine dependencies only when your own code uses their types directly ([versions and compatibility](/fhir-foundation/versions/)).
+Android-only projects put the same coordinate in the ordinary `dependencies` block. The SDK brings the FHIR model and FHIRPath engine transitively. Add explicit model dependencies only when your own code uses their types directly, as covered in [versions and compatibility](/fhir-foundation/versions/).
 
 ## Render a Questionnaire
 
@@ -47,7 +47,7 @@ fun IntakeForm(questionnaireJson: String, onDone: (QuestionnaireResponse) -> Uni
     questionnaireJson = questionnaireJson,
     onSubmit = { getResponse ->
       scope.launch {
-        val response = getResponse() // runs validation; throws if invalid
+        val response = getResponse() // runs validation and throws if invalid
         onDone(response)
       }
     },
@@ -56,17 +56,17 @@ fun IntakeForm(questionnaireJson: String, onDone: (QuestionnaireResponse) -> Uni
 }
 ```
 
-Two things in that signature matter:
+Two things in that signature matter.
 
-- `onSubmit` does not hand you a response — it hands you a **suspend getter**. Calling `getResponse()` runs validation; if answers are invalid, the library shows its validation dialog and the getter throws a `CancellationException` instead of returning, so your success path only ever sees valid responses.
-- The composable takes the Questionnaire as a **JSON string** and returns a typed `QuestionnaireResponse` from [Kotlin FHIR](/fhir-foundation/kotlin-fhir/) — serialize it with a plain `Json` instance when you need to store or transmit it.
+- `onSubmit` does not hand you a response. It hands you a **suspend getter**. Calling `getResponse()` runs validation. If answers are invalid, the SDK shows its validation dialog and the getter throws a `CancellationException` instead of returning, so your success path only ever sees valid responses.
+- The composable takes the Questionnaire as a **JSON string** and returns a typed `QuestionnaireResponse` from [Kotlin FHIR](/fhir-foundation/kotlin-fhir/). Serialize it with a plain `Json` instance when you need to store or transmit it.
 
 ## Pre-filling and context
 
-Two optional parameters cover the common launch scenarios:
+Two optional parameters cover the common launch scenarios.
 
-- `questionnaireResponseJson` — a previously saved response to continue editing.
-- `questionnaireLaunchContextMap` — SDC launch context: named resources (such as the current `patient`) that the Questionnaire's expressions can reference.
+- `questionnaireResponseJson` takes a previously saved response to continue editing.
+- `questionnaireLaunchContextMap` supplies SDC launch context, meaning named resources (such as the current `patient`) that the Questionnaire's expressions can reference.
 
 ## Checkpoint
 
@@ -74,4 +74,4 @@ The form renders your Questionnaire's items, a required question left empty bloc
 
 ## Next step
 
-[Control rendering behavior](/fhir-foundation/kotlin-fhir-data-capture/render-a-questionnaire/) — configuration flags, review flows, and resolvers.
+[Control rendering behavior](/fhir-foundation/kotlin-fhir-data-capture/render-a-questionnaire/) with configuration flags, review flows, and resolvers.

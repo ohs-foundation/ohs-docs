@@ -49,7 +49,7 @@ Two libraries sit underneath rather than beside these. [Player Client](https://g
 
 ## The FHIR Foundation libraries
 
-Beneath the whole toolkit sits [FHIR Foundation](/fhir-foundation/): Kotlin Multiplatform libraries for the FHIR data model and FHIRPath evaluation, and client SDKs built on them for on-device storage and sync and Questionnaire-based data capture. Player's client is built on this stack, and it is equally usable in your own applications without the rest of Player. Its documentation is its own section, written for developers consuming the libraries and SDKs directly.
+Beneath the whole toolkit sits [FHIR Foundation](/fhir-foundation/). It provides Kotlin Multiplatform libraries for the FHIR data model and FHIRPath evaluation, plus client SDKs built on them for on-device storage and sync and for Questionnaire-based data capture. Player's client is built on this stack, and it is equally usable in your own applications without the rest of Player. Its documentation is its own section, written for developers consuming the libraries and SDKs directly.
 
 ## The wider ecosystem
 

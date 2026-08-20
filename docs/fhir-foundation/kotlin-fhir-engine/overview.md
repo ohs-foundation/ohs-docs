@@ -11,31 +11,31 @@ repository: kotlin-fhir-engine
 
 ## What it is
 
-Kotlin FHIR Engine is the storage-and-sync layer of the FHIR Foundation stack: a Kotlin Multiplatform library for building offline-capable healthcare applications on FHIR R4. It persists resources on the device, indexes them for typed search, records local edits as a change log, and synchronizes both directions with a remote FHIR server.
+Kotlin FHIR Engine is the storage-and-sync layer of the FHIR Foundation stack. It is a Kotlin Multiplatform SDK for building offline-capable healthcare applications on FHIR R4. It persists resources on the device, indexes them for typed search, records local edits as a change log, and synchronizes both directions with a remote FHIR server.
 
-It is the Kotlin Multiplatform successor to the engine from the Android FHIR SDK, which is why a young library carries a mature API shape — and why the same programming model now runs on Android, iOS, desktop JVM, and the browser.
+It is the Kotlin Multiplatform successor to the engine from the Android FHIR SDK, which is why a young library carries a mature API shape, and why the same programming model now runs on Android, iOS, desktop JVM, and the browser.
 
 ## What you get
 
 - **Persistence** backed by Room for Kotlin Multiplatform over SQLite. Resources are stored alongside typed index tables (string, token, date, number, quantity, reference, URI, position), populated by evaluating each resource's search-parameter FHIRPath expressions with [Kotlin FHIRPath](/fhir-foundation/kotlin-fhirpath/).
-- **A type-safe search DSL**: `engine.search<Patient> { filter(...); sort(...) }` with typed parameter classes per FHIR search type, plus nested searches, includes, reverse includes, and counts.
+- **A type-safe search DSL.** `engine.search<Patient> { ... }` takes filters and sorting with typed parameter classes per FHIR search type, plus nested searches, includes, reverse includes, and counts.
 - **An offline change log.** Local creates, updates, and deletes are captured as `LocalChange` records, which is what makes upload possible after disconnected operation.
-- **Two-phase synchronization** — download then upload — with pluggable conflict resolution (`AcceptLocalConflictResolver` / `AcceptRemoteConflictResolver`), configurable upload strategies (transaction bundles or per-resource requests, patch or full-resource), and first-class WorkManager scheduling on Android.
-- **A working demo app** (`engine-app` in the repository): a Compose Multiplatform patient-list application for Android, iOS, desktop, and web that exercises storage, search, and per-platform sync scheduling. When a question is about wiring rather than API, the demo is the reference answer.
+- **Two-phase synchronization**, download then upload, with pluggable conflict resolution (`AcceptLocalConflictResolver` and `AcceptRemoteConflictResolver`), configurable upload strategies (transaction bundles or per-resource requests, patch or full-resource), and first-class WorkManager scheduling on Android.
+- **A working demo app** (`engine-app` in the repository). It is a Compose Multiplatform patient-list application for Android, iOS, desktop, and web that exercises storage, search, and per-platform sync scheduling. When a question is about wiring rather than API, the demo is the reference answer.
 
 ## API shape at a glance
 
-`FhirEngineProvider.init(configuration, context)` once at startup, `FhirEngineProvider.getInstance(context)` for the `FhirEngine`, then `create` / `get` / `update` / `delete` / `search`. Sync is expressed as a `FhirSyncTask` your app schedules per platform. The engine's method signatures use the R4 types from [Kotlin FHIR](/fhir-foundation/kotlin-fhir/) directly, so your app depends on `fhir-model-r4` as well.
+Call `FhirEngineProvider.init(configuration, context)` once at startup and `FhirEngineProvider.getInstance(context)` for the `FhirEngine`, then use `create`, `get`, `update`, `delete`, and `search`. Sync is expressed as a `FhirSyncTask` your app schedules per platform. The engine's method signatures use the R4 types from [Kotlin FHIR](/fhir-foundation/kotlin-fhir/) directly, so your app depends on `fhir-model-r4` as well.
 
 ## What it is not
 
-- **Not encrypted storage.** Data at rest is unencrypted. The configuration flag for encryption exists for source compatibility but raises an error rather than pretending: `enableEncryptionIfSupported = true` throws.
-- **Not a scheduler outside Android.** Android gets WorkManager integration (`FhirSyncWorker`, one-time and periodic sync). On iOS you schedule via `BGTaskScheduler`, and on desktop and web your app decides when to run sync — the library supplies the sync execution, not the timer.
-- **Not a complete download policy.** What to fetch from the server is your decision: you implement `DownloadWorkManager` (or use the shipped resource-parameters-based one) rather than inheriting a default.
+- **Not encrypted storage.** Data at rest is unencrypted. The configuration flag for encryption exists for source compatibility but raises an error rather than pretending. Setting `enableEncryptionIfSupported = true` throws.
+- **Not a scheduler outside Android.** Android gets WorkManager integration (`FhirSyncWorker`, one-time and periodic sync). On iOS you schedule via `BGTaskScheduler`, and on desktop and web your app decides when to run sync. The library supplies the sync execution, not the timer.
+- **Not a complete download policy.** What to fetch from the server is your decision. You implement `DownloadWorkManager` (or use the shipped resource-parameters-based one) rather than inheriting a default.
 - **R4 only.** No R4B or R5.
 - **Search coverage is bounded by FHIRPath support.** Search parameters whose expressions the FHIRPath engine cannot evaluate are skipped during indexing, so a handful of standard parameters are not queryable.
-- The `syncUpload` and `syncDownload` methods on `FhirEngine` are marked for deprecation — schedule sync through `FhirSyncTask` instead.
+- The `syncUpload` and `syncDownload` methods on `FhirEngine` are marked for deprecation. Schedule sync through `FhirSyncTask` instead.
 
 ## Next step
 
-[Get the engine running](/fhir-foundation/kotlin-fhir-engine/get-started/) — dependency, initialization, and first stored resource.
+[Get the engine running](/fhir-foundation/kotlin-fhir-engine/get-started/) with the dependency, initialization, and a first stored resource.

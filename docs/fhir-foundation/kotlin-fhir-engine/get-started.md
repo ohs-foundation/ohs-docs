@@ -15,8 +15,8 @@ Add the engine to a Kotlin Multiplatform or Android project, initialize it, and 
 
 ## Prerequisites
 
-- A supported [target platform](/fhir-foundation/platform-support/); note Android minSdk 26 and no Intel iOS simulator target.
-- Browser targets need additional project setup before anything runs — do [the web setup](/fhir-foundation/kotlin-fhir-engine/web-targets/) first if you target JS or Wasm.
+- A supported [target platform](/fhir-foundation/platform-support/). Note Android minSdk 26 and no Intel iOS simulator target.
+- Browser targets need additional project setup before anything runs. Do [the web setup](/fhir-foundation/kotlin-fhir-engine/web-targets/) first if you target JS or Wasm.
 
 ## Add the dependencies
 
@@ -31,7 +31,7 @@ kotlin {
 }
 ```
 
-The model dependency is explicit because the engine's API signatures use those R4 types — your code constructs `Patient` objects, not engine-specific wrappers. Keep the model version aligned with what the engine builds against ([versions and compatibility](/fhir-foundation/versions/)).
+The model dependency is explicit because the engine's API signatures use those R4 types. Your code constructs `Patient` objects, not engine-specific wrappers. Keep the model version aligned with what the engine builds against, as listed in [versions and compatibility](/fhir-foundation/versions/).
 
 ## Initialize once, then use everywhere
 
@@ -42,16 +42,16 @@ import dev.ohs.fhir.engine.ServerConfiguration
 
 FhirEngineProvider.init(
   FhirEngineConfiguration(
-    // Optional: a remote server to sync against.
+    // Optionally, a remote server to sync against.
     serverConfiguration = ServerConfiguration(baseUrl = "https://hapi.fhir.org/baseR4/"),
   ),
-  platformContext, // Android: applicationContext; other platforms: Unit
+  platformContext, // Android passes applicationContext, other platforms pass Unit
 )
 
 val fhirEngine = FhirEngineProvider.getInstance(platformContext)
 ```
 
-`init` runs once at application startup. On Android the platform context is the application `Context`; every other platform passes `Unit`. `ServerConfiguration` is only required if you sync — a purely local store can omit it.
+`init` runs once at application startup. On Android the platform context is the application `Context`, and every other platform passes `Unit`. `ServerConfiguration` is only required if you sync. A purely local store can omit it.
 
 ## Create, read, update, delete
 
@@ -60,25 +60,25 @@ import dev.ohs.fhir.engine.delete
 import dev.ohs.fhir.engine.get
 import dev.ohs.fhir.model.r4.Patient
 
-// Create — returns the assigned ids
+// Create. Returns the assigned ids.
 val ids = fhirEngine.create(Patient(id = "patient-1"))
 
-// Read (reified helper)
+// Read with the reified helper.
 val patient = fhirEngine.get<Patient>("patient-1")
 
-// Update and delete
+// Update and delete.
 fhirEngine.update(patient)
 fhirEngine.delete<Patient>("patient-1")
 ```
 
-All of these are suspend functions — call them from a coroutine. Every local mutation is also recorded in the engine's change log, which is what sync later uploads.
+All of these are suspend functions, so call them from a coroutine. Every local mutation is also recorded in the engine's change log, which is what sync later uploads.
 
 ## Where the data lives
 
-- **Android**: the app's `filesDir`
-- **iOS**: Application Support
-- **Desktop**: `~/.fhir-engine`, unless you set `storageDirectory` in the configuration
-- **Browser**: the origin-private file system (OPFS)
+- **Android** uses the app's `filesDir`.
+- **iOS** uses Application Support.
+- **Desktop** uses `~/.fhir-engine`, unless you set `storageDirectory` in the configuration.
+- **Browser** uses the origin-private file system (OPFS).
 
 Data is stored unencrypted on all platforms.
 

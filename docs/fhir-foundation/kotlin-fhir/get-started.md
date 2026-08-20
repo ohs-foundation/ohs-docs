@@ -11,17 +11,17 @@ repository: kotlin-fhir
 
 ## Goal and scope
 
-Add Kotlin FHIR to a project, create a resource in code, and serialize it to FHIR JSON. Everything here uses FHIR R4; substitute `r4b` or `r5` throughout for the other versions.
+Add Kotlin FHIR to a project, create a resource in code, and serialize it to FHIR JSON. Everything here uses FHIR R4. Substitute `r4b` or `r5` throughout for the other versions.
 
 ## Prerequisites
 
 - A Kotlin project using a current Kotlin release, with the `kotlinx-serialization` plugin applied if you will serialize resources.
-- For JVM projects: a Java 21 runtime — the current release candidate's JVM artifact targets Java 21.
+- For JVM projects, a Java 21 runtime, because the current release candidate's JVM artifact targets Java 21.
 - Your target platform on the [support matrix](/fhir-foundation/platform-support/).
 
 ## Add the dependency
 
-In a Kotlin Multiplatform project:
+In a Kotlin Multiplatform project the dependency goes in `commonMain`.
 
 ```kotlin
 kotlin {
@@ -33,7 +33,7 @@ kotlin {
 }
 ```
 
-In an Android-only or JVM-only project the same coordinate goes in the ordinary `dependencies` block:
+In an Android-only or JVM-only project the same coordinate goes in the ordinary `dependencies` block.
 
 ```kotlin
 dependencies {
@@ -45,7 +45,7 @@ Use `fhir-model` instead of `fhir-model-r4` only if you need R4, R4B, and R5 tog
 
 ## Create a resource
 
-Resources are plain Kotlin classes in `dev.ohs.fhir.model.r4`. FHIR primitives are wrapped types — a FHIR `string` is `FhirString`, a FHIR `date` is `Date` carrying a `FhirDate` value — so the structure of the spec is visible in the code:
+Resources are plain Kotlin classes in `dev.ohs.fhir.model.r4`. FHIR primitives are wrapped types. A FHIR `string` is `FhirString`, and a FHIR `date` is `Date` carrying a `FhirDate` value, so the structure of the spec is visible in the code.
 
 ```kotlin
 import dev.ohs.fhir.model.r4.Date
@@ -61,11 +61,11 @@ val patient = Patient(
 )
 ```
 
-The generated primitive types reuse FHIR's own names — the FHIR `string` type is literally `dev.ohs.fhir.model.r4.String` — so import them with an alias to avoid clashing with Kotlin's built-ins.
+The generated primitive types reuse FHIR's own names, so the FHIR `string` type is literally `dev.ohs.fhir.model.r4.String`. Import them with an alias to avoid clashing with Kotlin's built-ins.
 
 ## Serialize and deserialize
 
-Use a plain `kotlinx.serialization` `Json` instance — the generated serializers do the FHIR-specific work:
+Use a plain `kotlinx.serialization` `Json` instance. The generated serializers do the FHIR-specific work.
 
 ```kotlin
 import dev.ohs.fhir.model.r4.Patient
@@ -77,7 +77,7 @@ val json = Json { prettyPrint = true }
 val encoded = json.encodeToString(patient)
 val decoded = json.decodeFromString<Patient>(encoded)
 
-// When the resource type is not known in advance, decode the base type:
+// When the resource type is not known in advance, decode the base type.
 val resource = json.decodeFromString<Resource>(encoded)
 ```
 
@@ -89,4 +89,4 @@ Decoding as `Resource` dispatches on the JSON `resourceType` field and returns t
 
 ## Next step
 
-[Work with resources in more depth](/fhir-foundation/kotlin-fhir/working-with-resources/) — modification, dates and decimals, and choice types.
+[Work with resources in more depth](/fhir-foundation/kotlin-fhir/working-with-resources/), covering modification, dates and decimals, and choice types.
