@@ -1,0 +1,99 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 880" width="1400" height="880" role="img" aria-labelledby="ffTitle ffDesc">
+  <title id="ffTitle">FHIR Foundations architecture</title>
+  <desc id="ffDesc">Kotlin FHIR Data Capture and Kotlin FHIR Engine are client-side SDKs. Both depend on Kotlin FHIRPath for expression evaluation and on Kotlin FHIR for the data model. Kotlin FHIRPath itself navigates the Kotlin FHIR data model, the base of the pillar.</desc>
+
+  <style>
+    :root, svg {
+      --found:       #2D86C4;
+      --found-fill:  #E3F1FA;
+      --ink:         #1A1A2E;
+      --muted:       #6B7280;
+      --line:        #9AA0A6;
+      --paper:       #FFFFFF;
+      --bg:          #FFFFFF;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root, svg {
+        --found:       #6FB6E8;
+        --found-fill:  #16293A;
+        --ink:         #E8EAED;
+        --muted:       #9AA0A6;
+        --line:        #6B7280;
+        --paper:       #1B1C1F;
+        --bg:          #131417;
+      }
+    }
+    .bg      { fill: var(--bg); }
+    .lbl     { font: 600 23px "Hanken Grotesk", "Google Sans", Inter, system-ui, sans-serif; text-anchor: middle; fill: var(--found); }
+    .sub     { font: 400 17px "Hanken Grotesk", "Google Sans", Inter, system-ui, sans-serif; text-anchor: middle; fill: var(--muted); }
+    .art     { font: 500 15px "IBM Plex Mono", ui-monospace, monospace; text-anchor: middle; fill: var(--muted); letter-spacing: .02em; }
+    .band    { font: 600 18px "Hanken Grotesk", "Google Sans", Inter, system-ui, sans-serif; fill: var(--muted); letter-spacing: .06em; }
+    .cap     { font: 400 16px "Hanken Grotesk", "Google Sans", Inter, system-ui, sans-serif; fill: var(--muted); }
+    .cap-e   { font: 400 16px "Hanken Grotesk", "Google Sans", Inter, system-ui, sans-serif; fill: var(--muted); text-anchor: end; }
+    .flow    { fill: none; stroke: var(--line); stroke-width: 2.6; }
+    .f-fill  { fill: var(--found-fill); stroke: var(--found); stroke-width: 2.4; }
+    .paper-f { fill: var(--paper); stroke: var(--found); stroke-width: 2.4; }
+  </style>
+
+  <defs>
+    <marker id="ffah" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0.6 L 10 5 L 0 9.4 z" fill="var(--line)"/>
+    </marker>
+  </defs>
+
+  <rect class="bg" x="0" y="0" width="1400" height="880"/>
+
+  <!-- ══════════ SDK BAND ══════════ -->
+  <rect x="120" y="64" width="1160" height="260" rx="20"
+        fill="none" stroke="var(--line)" stroke-width="2.2" stroke-dasharray="9 8" opacity=".75"/>
+  <text class="band" x="150" y="104">SDKS</text>
+
+  <g>
+    <rect class="f-fill" x="180" y="138" width="440" height="150" rx="14"/>
+    <text class="lbl" x="400" y="196">Kotlin FHIR Data Capture</text>
+    <text class="sub" x="400" y="226">forms, validation, extraction</text>
+    <text class="art" x="400" y="258">fhir-data-capture</text>
+  </g>
+
+  <g>
+    <rect class="f-fill" x="760" y="138" width="440" height="150" rx="14"/>
+    <text class="lbl" x="980" y="196">Kotlin FHIR Engine</text>
+    <text class="sub" x="980" y="226">storage, search, synchronization</text>
+    <text class="art" x="980" y="258">fhir-engine</text>
+  </g>
+
+  <!-- ══════════ CORE LIBRARY BAND ══════════ -->
+  <rect x="120" y="396" width="1160" height="420" rx="20"
+        fill="none" stroke="var(--line)" stroke-width="2.2" stroke-dasharray="9 8" opacity=".75"/>
+  <text class="band" x="150" y="436">CORE LIBRARIES</text>
+
+  <g>
+    <rect class="paper-f" x="470" y="464" width="460" height="130" rx="14"/>
+    <text class="lbl" x="700" y="516">Kotlin FHIRPath</text>
+    <text class="sub" x="700" y="545">expression engine</text>
+    <text class="art" x="700" y="572">fhir-path</text>
+  </g>
+
+  <g>
+    <rect class="paper-f" x="470" y="650" width="460" height="130" rx="14"/>
+    <text class="lbl" x="700" y="702">Kotlin FHIR</text>
+    <text class="sub" x="700" y="731">data model and serialization</text>
+    <text class="art" x="700" y="758">fhir-model</text>
+  </g>
+
+  <!-- ══════════ DEPENDENCY ARROWS ══════════ -->
+  <path class="flow" d="M 400 288 L 400 529 L 464 529" marker-end="url(#ffah)"/>
+  <text class="cap-e" x="388" y="402">SDC expressions</text>
+
+  <path class="flow" d="M 280 288 L 280 715 L 464 715" marker-end="url(#ffah)"/>
+  <text class="cap-e" x="268" y="622">resource models</text>
+
+  <path class="flow" d="M 980 288 L 980 529 L 936 529" marker-end="url(#ffah)"/>
+  <text class="cap" x="994" y="402">search indexing</text>
+
+  <path class="flow" d="M 1100 288 L 1100 715 L 936 715" marker-end="url(#ffah)"/>
+  <text class="cap" x="1114" y="622">R4 resources</text>
+
+  <path class="flow" d="M 700 594 L 700 644" marker-end="url(#ffah)"/>
+  <text class="cap" x="716" y="625">navigates the model</text>
+</svg>
