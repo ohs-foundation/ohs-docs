@@ -19,7 +19,7 @@ Everything publishes under the Maven group `dev.ohs.fhir` and is licensed Apache
 
 ## Core libraries and SDKs
 
-The pillar has two tiers, and the difference matters when you choose what to depend on.
+The pillar has two kinds of projects, and the difference matters when you choose what to depend on.
 
 **Core libraries** are unopinionated building blocks that take no position on what kind of program uses them. Both run everywhere, server-side JVM and native targets included, so a backend service can share the exact model code a mobile app uses.
 
@@ -35,7 +35,7 @@ The pillar has two tiers, and the difference matters when you choose what to dep
 | [Kotlin FHIR Engine](/fhir-foundations/kotlin-fhir-engine/) | `fhir-engine` | On-device storage, typed search, and synchronization with a FHIR server |
 | [Kotlin FHIR Data Capture](/fhir-foundations/kotlin-fhir-data-capture/) | `fhir-data-capture` | Questionnaire rendering, validation, and extraction with Compose Multiplatform |
 
-## How the tiers layer
+## How the projects fit together
 
 The pillar is a stack, not a bundle. Each piece depends only on the ones below it, and you take only the layers you need.
 
@@ -57,7 +57,7 @@ The two SDKs do not depend on each other. A typical offline-first data-collectio
 
 ## Choosing your entry point
 
-**Building a client application?** Start at the SDK tier. The SDKs bring the core libraries with them.
+**Building a client application?** Start with an SDK. The SDKs bring the core libraries with them.
 
 - Use [Kotlin FHIR Engine](/fhir-foundations/kotlin-fhir-engine/) for an offline-capable app that stores resources locally and syncs with a server.
 - Use [Kotlin FHIR Data Capture](/fhir-foundations/kotlin-fhir-data-capture/) to collect structured data with FHIR Questionnaires.

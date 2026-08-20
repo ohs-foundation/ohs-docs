@@ -31,7 +31,7 @@ The repository ships a catalog application with several dozen small Questionnair
 ## What it is not
 
 - **Not storage and not sync.** The SDK is purely in-memory. Persisting the `QuestionnaireResponse` (or extracted resources) is your application's job, typically with [Kotlin FHIR Engine](/fhir-foundations/kotlin-fhir-engine/), on which this SDK deliberately does not depend.
-- **R4 only**, matching the rest of the SDK tier.
+- **R4 only**, matching the other SDK.
 - **FHIRPath expressions only.** Questionnaires using CQL or other expression languages raise an error at the offending expression.
 - **Extraction is template-based only.** StructureMap-based extraction is not implemented, and definition-based extraction is not part of the published library.
 - **Unsupported item types fail loudly.** An unrecognized question type raises rather than rendering a degraded fallback, so authoring mistakes surface in development.

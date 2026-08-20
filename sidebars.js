@@ -102,13 +102,13 @@ const sidebars = {
    * directory under docs/, a sidebar here, an entry point on the landing
    * page and in the SectionNav switcher.
    *
-   * The pillar has two tiers. *Core libraries* are unopinionated building
-   * blocks usable in any Kotlin program, client or server. *SDKs* are
-   * opinionated, application-facing toolkits built on them; today's SDKs are
-   * client-side, and server-side SDKs would join as a sibling category.
-   * Within a tier every repository follows the same skeleton — overview, get
-   * started, task guides. Pillar-wide reference material (platform matrix,
-   * version pairing) closes the sidebar.
+   * The pillar has two kinds of projects. *Core libraries* are unopinionated
+   * building blocks usable in any Kotlin program, client or server. *SDKs*
+   * are opinionated, application-facing toolkits built on them; today's SDKs
+   * are client-side, and server-side SDKs would join as a sibling category.
+   * Every repository follows the same skeleton — overview, get started, task
+   * guides. Pillar-wide reference material (platform matrix, version
+   * pairing) closes the sidebar.
    */
   fhirFoundations: [
     "fhir-foundations/overview",
