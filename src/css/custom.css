@@ -256,7 +256,10 @@ a { color: inherit; }
 }
 .ohs-sidebar-toggle span { display: block; width: 15px; height: 2px; margin: 3px auto; background: var(--ohs-ink); }
 .ohs-header-divider { width: 1px; height: 22px; background: var(--ohs-line); }
-.ohs-docs-label { color: var(--ohs-ink-faint); font-family: "IBM Plex Mono", monospace; font-size: 0.63rem; letter-spacing: 0.1em; }
+.ohs-section-nav { display: flex; align-items: center; gap: 18px; }
+.ohs-section-nav a { color: var(--ohs-ink-soft); font-size: 0.84rem; font-weight: 600; text-decoration: none; white-space: nowrap; }
+.ohs-section-nav a:hover, .ohs-section-nav a.active { color: var(--ohs-purple-deep); }
+.ohs-sidebar-sections { display: none; }
 .ohs-header-actions { display: flex; margin-left: auto; gap: 18px; }
 .ohs-header-actions .ohs-header-search { margin-right: 2px; }
 .ohs-header-actions a { color: var(--ohs-ink-soft); font-size: 0.78rem; font-weight: 600; text-decoration: none; }
@@ -359,9 +362,12 @@ a { color: inherit; }
   .ohs-footer-inner { grid-template-columns: 1fr; }
   .ohs-guide-topbar-inner { width: calc(100% - 32px); }
   .ohs-sidebar-toggle { display: block; }
-  .ohs-header-divider, .ohs-docs-label { display: none; }
+  .ohs-header-divider, .ohs-section-nav { display: none; }
   .ohs-header-actions { gap: 12px; }
   .ohs-header-actions a { font-size: 0.7rem; }
+  .ohs-sidebar-sections { display: flex; gap: 18px; margin-bottom: 14px; padding-bottom: 14px; border-bottom: 1px solid var(--ohs-line); }
+  .ohs-sidebar-sections a { color: var(--ohs-ink-soft); font-size: 0.84rem; font-weight: 600; text-decoration: none; }
+  .ohs-sidebar-sections a.active { color: var(--ohs-purple-deep); }
   .ohs-guide-layout { display: block; width: min(760px, calc(100% - 2 * 20px)); }
   .ohs-guide-sidebar { position: fixed; z-index: 40; top: 0; bottom: 0; left: 0; width: min(340px, 88vw); height: 100vh; padding: 0 20px 30px; border: 0; background: var(--ohs-surface); box-shadow: var(--ohs-shadow); transform: translateX(-105%); transition: transform 0.2s ease; }
   .ohs-guide-sidebar.is-open { transform: translateX(0); }
