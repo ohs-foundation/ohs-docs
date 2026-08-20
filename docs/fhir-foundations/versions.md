@@ -21,7 +21,7 @@ All artifacts publish to Maven Central under the group `dev.ohs.fhir`. The table
 | Kotlin FHIR Engine | `fhir-engine` | 2.0.0-alpha02 |
 | Kotlin FHIR Data Capture | `fhir-data-capture` | 2.0.0-alpha02 |
 
-Each repository's Maven Central badges are the canonical source for the latest release. This table exists to show the shape of the stack, not to race the release process.
+Each repository's Maven Central badges are the canonical source for the latest release.
 
 ## Maturity
 

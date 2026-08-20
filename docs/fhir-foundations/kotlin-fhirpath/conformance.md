@@ -13,7 +13,7 @@ repository: kotlin-fhirpath
 
 The engine implements the FHIRPath Specification v3.0.0 (STU3) and, for the FHIR-specific additions, the FHIRPath section of FHIR R5. Conformance is verified against the official FHIR test-case suite on JVM and Android.
 
-The repository maintains the authoritative per-feature conformance table, covering every function and operator with its status and a link to the implementing source, in [`docs/conformance.md`](https://github.com/ohs-foundation/kotlin-fhirpath/blob/main/docs/conformance.md). This page summarizes the shape of that table so you can tell quickly whether your expressions are safe. Consult the repository document for a specific feature's status before relying on it.
+The repository maintains the authoritative per-feature conformance table, listing every function and operator with its status and linking implemented ones to their source, in [`docs/conformance.md`](https://github.com/ohs-foundation/kotlin-fhirpath/blob/main/docs/conformance.md). This page summarizes it. Check the repository document for a specific feature before relying on it.
 
 ## What is solidly covered
 
@@ -40,11 +40,11 @@ Places where behavior differs from a literal spec reading, tracked in the confor
 
 - The indexer `[n]` raises on out-of-bounds access instead of returning `{}`.
 - `combine` does not deduplicate.
-- Some numeric conversions omit edge-case handling. `Long` inputs are not handled, `toDecimal` can lose precision on certain paths, and `toQuantity` with a unit argument has a hardcoded default unit for bare numbers.
+- Some numeric conversions omit edge-case handling. `Long` inputs are not handled, `toDecimal` can lose precision on large mantissas, and `toQuantity` with a unit argument ignores the requested unit on bare numbers, hardcoding the default unit instead.
 - Timezone comparisons are deliberately stricter than the spec permits, as described under [evaluation semantics](/fhir-foundations/kotlin-fhirpath/evaluation-semantics/).
 - Resource equality compares full object structure, including `id`.
 
-A further set of divergences exists against the official test suite itself, where the engine's authors judged the test or the spec to be wrong. Each is documented with a link to the corresponding HL7 discussion.
+A further set of divergences exists against the official test suite itself, where the engine's authors judged the test or the spec to be wrong. Each is documented, with links to the upstream discussions where they exist.
 
 ## What to do at a gap
 

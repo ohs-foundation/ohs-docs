@@ -64,16 +64,15 @@ CompositionLocalProvider(
 
 These are the hooks.
 
-- **`ExternalAnswerValueSetResolver`** serves answer options declared as a ValueSet URL rather than inline. You decide where ValueSets come from, whether a bundled file, a terminology service, or a local store.
-- **`XFhirQueryResolver`** serves answer options declared as an x-fhir-query, for example "all Practitioners at this facility". A natural implementation runs the query against [Kotlin FHIR Engine](/fhir-foundations/kotlin-fhir-engine/)'s local store.
-- **`UrlResolver`** fetches media attachments referenced by URL for item-media display.
-- A factory for custom widget matchers, covered in [customize and extend](/fhir-foundations/kotlin-fhir-data-capture/customize-and-extend/).
+- **`ExternalAnswerValueSetResolver`** serves answer options declared as a ValueSet URL rather than inline, for choice and open-choice questions.
+- **`XFhirQueryResolver`** serves answer options declared as an x-fhir-query.
+- **`UrlResolver`** fetches media binaries referenced by URL for item-media display.
 
-A Questionnaire that uses none of these features needs no `DataCaptureConfig` at all.
+A Questionnaire that uses none of these features needs no `DataCaptureConfig` at all. Custom widget matchers are separate from this config and pass directly to the composable, covered in [customize and extend](/fhir-foundations/kotlin-fhir-data-capture/customize-and-extend/).
 
 ## Checkpoint
 
-With `showReviewPage = true`, submission shows your answers read-only with an edit path before the final submit. If a dropdown backed by an external ValueSet renders empty, the `ExternalAnswerValueSetResolver` is missing or not finding the ValueSet. The form renders, but that question has no options to offer.
+With `showReviewPage = true`, submission shows your answers read-only with an edit path before the final submit. If a dropdown backed by an external ValueSet renders empty, the `ExternalAnswerValueSetResolver` is missing or not finding the ValueSet.
 
 ## Next step
 

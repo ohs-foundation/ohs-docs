@@ -12,7 +12,7 @@ source_label: OHS Foundation on GitHub ↗
 
 ## Support matrix
 
-The four repositories target different platform sets, so check this table before assuming the whole stack runs where your app does. A check means a published Maven Central artifact exists for that target, and a cross means none does.
+The four repositories target different platform sets, so check this table before assuming the whole stack runs where your app does. A check means the repository's latest release publishes a Maven Central artifact for that target, and a cross means it does not.
 
 | Target | FHIR | FHIRPath | Engine | Data Capture |
 | --- | --- | --- | --- | --- |
@@ -47,4 +47,4 @@ The only repository in the pillar that ships `iosX64`, because Compose Multiplat
 
 ## Reading the repositories
 
-Each repository's README carries a per-artifact badge matrix that reflects exactly what is on Maven Central for the latest release. When this page and a repository disagree, the repository is right. Update this page via the normal documentation change process.
+Each repository's README carries a per-artifact badge matrix for its latest release. When this page and Maven Central disagree, Maven Central is right.

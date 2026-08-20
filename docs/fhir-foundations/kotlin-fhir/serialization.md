@@ -50,7 +50,7 @@ Because the generated serializers control encoding directly, several `Json` opti
 
 ## Other formats
 
-JSON is the only format the library targets and tests. FHIR XML and Turtle are not supported. Other `kotlinx.serialization` formats (such as ProtoBuf) may run against the generated serializers, but they are untested and their output is not a FHIR exchange format. Treat JSON as the wire format.
+JSON is the only format the library targets and tests. FHIR XML and Turtle are not supported. Other `kotlinx.serialization` formats (such as ProtoBuf) may run against the generated serializers, but they are untested and their output is not a FHIR exchange format.
 
 ## Next step
 

@@ -11,7 +11,7 @@ repository: kotlin-fhir-engine
 
 ## Goal and scope
 
-The engine runs in the browser, in both the `js` and `wasmJs` Kotlin targets, with real SQLite persistence. Getting there requires project-level setup that the library cannot do for you, which this page walks through at the level of what and why. The repository README carries the exact current file contents to copy.
+The engine runs in the browser, in both the `js` and `wasmJs` Kotlin targets, with real SQLite persistence. Getting there requires project-level setup that the library cannot do for you. The repository README carries the exact file contents to copy.
 
 ## How browser storage works
 
@@ -26,11 +26,11 @@ Cross-Origin-Opener-Policy: same-origin
 Cross-Origin-Embedder-Policy: require-corp
 ```
 
-Without them the engine fails at startup in the browser regardless of anything else being correct. For local development the repository shows the webpack dev-server configuration that sets them.
+Without them `SharedArrayBuffer` is unavailable and the database cannot start. For local development the demo app sets them in its webpack configuration.
 
 ## The worker module workaround
 
-The SQLite worker is a *local* npm module inside the engine, and Gradle cannot propagate local npm modules to projects that consume `fhir-engine` from Maven. Without intervention, a `js` or `wasmJs` build fails with `Can't resolve 'sqlite-wasm-worker/worker.js'`. The fix is to copy the module's two files (`package.json` and `worker.js`) into your own project and declare a matching local `npm(...)` dependency on your web source set, so your build resolves the same specifier the engine's compiled code looks for. Follow the numbered steps in the [repository README](https://github.com/ohs-foundation/kotlin-fhir-engine#web-wasm) verbatim for your engine version. The demo app has the workaround wired up as a copy-pasteable reference, and this is the part of the setup most likely to change between alphas.
+The SQLite worker is a *local* npm module inside the engine, and Gradle cannot propagate local npm modules to projects that consume `fhir-engine` from Maven. Without intervention, a `js` or `wasmJs` build fails with `Can't resolve 'sqlite-wasm-worker/worker.js'`. The fix is to copy the module's two files (`package.json` and `worker.js`) into your own project and declare a matching local `npm(...)` dependency on your web source set, so your build resolves the same specifier the engine's compiled code looks for. Follow the numbered steps in the [repository README](https://github.com/ohs-foundation/kotlin-fhir-engine#web-wasm) for your engine version. The demo app has the workaround wired up as a copy-pasteable reference, and the README labels it a workaround pending upstream web-worker support.
 
 ## What is different on web, operationally
 

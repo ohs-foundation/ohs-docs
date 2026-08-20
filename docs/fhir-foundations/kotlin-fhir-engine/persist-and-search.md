@@ -35,7 +35,7 @@ Each hit is a `SearchResult` carrying the matched `resource`, plus any included 
 
 ## Typed parameters per FHIR search type
 
-FHIR defines search parameter types, and the DSL mirrors them with one filter class each, so a date filter cannot be given a string's options.
+The DSL mirrors FHIR's search parameter types with one filter class each.
 
 | FHIR search type | DSL parameter class |
 | --- | --- |
@@ -51,7 +51,7 @@ The parameter name is the FHIR search parameter's name (`"name"`, `"birthdate"`,
 
 ```kotlin
 import dev.ohs.fhir.engine.search.NumberClientParam
-import dev.ohs.fhir.engine.search.SearchComparator
+import dev.ohs.fhir.model.r4.SearchParameter.SearchComparator
 
 filter(
   NumberClientParam("probability"),
@@ -66,12 +66,12 @@ Beyond flat filters, the DSL supports nested searches on referenced resources, f
 
 ## String queries
 
-`search(xFhirQuery: String)` accepts an x-fhir-query string (`"Patient?name=Jo"`) for cases where the query arrives as data, such as configuration-driven UIs. Its translator supports plain parameter matching only. There are no modifiers, prefixes, chained parameters, global common parameters, or embedded FHIRPath. When you control the query at compile time, prefer the typed DSL.
+`search(xFhirQuery: String)` accepts an x-fhir-query string (`"Patient?name=Jo"`) for queries that arrive as data. Its translator supports plain parameter matching and sorting only. There are no modifiers, prefixes, chained parameters, global common parameters, or embedded FHIRPath. When you control the query at compile time, prefer the typed DSL.
 
 ## What is queryable
 
 - Indexing happens at write time, driven by the standard R4 search-parameter definitions. Parameters whose FHIRPath expressions the [FHIRPath engine](/fhir-foundations/kotlin-fhirpath/) cannot evaluate, such as `resolve()`-based ones, are skipped, so those parameters return no results rather than failing.
-- Custom search parameters can be registered at initialization through a `SearchParamDefinitionsProvider` in the engine configuration. Resources written after registration are indexed for them.
+- Custom search parameters can be supplied at initialization through `customSearchParameters` in `FhirEngineConfiguration`. They add to the spec-defined parameters and must not redefine existing ones.
 
 ## Checkpoint
 

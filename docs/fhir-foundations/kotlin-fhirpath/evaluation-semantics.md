@@ -11,7 +11,7 @@ repository: kotlin-fhirpath
 
 ## Why this page exists
 
-Most FHIRPath surprises are not parser bugs. They are the spec's own semantics around empty collections, dates, and types. This page describes the behavior this engine commits to, including two places where it is deliberately stricter than the spec permits.
+This page describes the behavior the engine commits to around types, empty collections, and dates, including two places where it is deliberately stricter than the spec permits.
 
 ## Result values and their types
 
@@ -22,6 +22,7 @@ Most FHIRPath surprises are not parser bugs. They are the spec's own semantics a
 | String | `kotlin.String` |
 | Boolean | `kotlin.Boolean` |
 | Integer | `kotlin.Int` |
+| Long | `kotlin.Long` |
 | Decimal | `BigDecimal` (multiplatform, arbitrary precision) |
 | Date / DateTime / Time | `FhirPathDate` / `FhirPathDateTime` / `FhirPathTime` |
 | Quantity | `FhirPathQuantity` |
@@ -30,14 +31,14 @@ FHIR values convert to FHIRPath values lazily, at the last possible moment. That
 
 ## Empty is an answer
 
-Per the spec, evaluation over missing data yields the empty collection `{}`, and most operators propagate emptiness rather than failing. An empty result therefore means "no value", not "error". If you want a wrong property name to be an error, create the engine with `strictMode = true`. Lenient mode is spec behavior, and strict mode is the developer-experience override.
+Per the spec, evaluation over missing data yields the empty collection `{}`, and most operators propagate emptiness rather than failing. An empty result therefore means "no value", not "error". If you want an undefined property access to be an error, create the engine with `strictMode = true`.
 
 ## Dates, times, and timezones
 
 Two deliberate decisions, both on the conservative side for clinical data.
 
-- **No default timezone is ever assumed.** Comparing a date-time that has a timezone offset with one that has none returns `{}` for `=` and the ordering operators, and the equivalence operator `~` returns `false`. The spec permits filling in a default zone. This engine refuses, because "equal if you assume the server's timezone" is exactly the kind of assumption that misfiles observations recorded across regions.
-- **Partial dates keep their precision.** FHIRPath dates can be a year, a year-month, or a full date, and comparisons respect precision. Values that only might overlap compare to `{}`. The `precision()`, `lowBoundary()`, and `highBoundary()` functions expose precision explicitly. Passing an invalid precision argument raises an error rather than returning empty.
+- **No default timezone is ever assumed.** Comparing a date-time that has a timezone offset with one that has none returns `{}` for `=` and the ordering operators, and the equivalence operator `~` returns `false`. The spec permits filling in a default zone, but the engine refuses because the data may come from a system whose timezone is unknown, making any guess unsafe. Two values that both lack an offset compare as if they shared one, so local timestamps remain comparable.
+- **Precision is respected.** FHIRPath dates can be a year, a year-month, or a full date, and comparisons that cannot be decided at the values' precisions return `{}`. This includes comparing partial date-times that carry timezone offsets. The `precision()`, `lowBoundary()`, and `highBoundary()` functions expose precision explicitly, and passing an invalid precision argument to them raises an error rather than returning empty.
 
 ## Quantities and UCUM
 
@@ -46,7 +47,7 @@ Two deliberate decisions, both on the conservative side for clinical data.
 ## Errors
 
 - **Syntax errors fail fast.** The parser uses a bail-out strategy plus an end-of-input check, so a malformed expression raises immediately with the offending fragment. It never half-evaluates.
-- **Semantic gaps behave per mode.** Lenient mode yields an empty collection. Strict mode raises an exception naming the invalid access.
+- **Undefined property access behaves per mode.** Lenient mode yields an empty collection. Strict mode throws an `IllegalStateException`.
 
 ## Engine state and concurrency
 

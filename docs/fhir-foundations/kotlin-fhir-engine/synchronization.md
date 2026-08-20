@@ -28,25 +28,25 @@ interface FhirSyncTask {
 }
 ```
 
-Execute it with the `runSync(taskName, onProgress)` extension, which runs a full cycle and returns the terminal `SyncJobStatus`. Progress statuses stream through `onProgress` along the way, and the terminal status of a named task is persisted so the app can show "last synced" honestly.
+Execute it with the `runSync(taskName, onProgress)` extension, which runs a full cycle and returns the terminal `SyncJobStatus`. Progress statuses stream through `onProgress`, and the terminal status of a named task is persisted.
 
 ## The three decisions you own
 
-- **`DownloadWorkManager`** decides what to fetch. This is an interface, not a default, because download scope is an application decision. It could be per-patient, per-region, or since-last-sync. The library ships `ResourceParamsBasedDownloadWorkManager` for parameter-driven downloads, and the demo app contains a timestamp-based implementation to copy from.
+- **`DownloadWorkManager`** decides what to fetch, per-patient, per-region, or since-last-sync. The library ships `ResourceParamsBasedDownloadWorkManager` for parameter-driven downloads, and the demo app contains a timestamp-based implementation to copy from.
 - **`ConflictResolver`** decides who wins when the server and the device both changed a resource. Two policies ship, `AcceptLocalConflictResolver` and `AcceptRemoteConflictResolver`.
-- **`UploadStrategy`** decides how local changes become requests. The choices are bundled transactions or individual requests, patches or full resources, squashed or per-change. Build it via `UploadStrategy.forBundleRequest(...)` and its URL-request counterparts. Not every combination is implemented, and the factory raises on unsupported ones. For example, bundled `PUT` updates and unsquashed changes are rejected.
+- **`UploadStrategy`** decides how local changes become requests. The choices are bundled transactions or individual requests, patches or full resources, squashed or per-change. Build it via `UploadStrategy.forBundleRequest(...)` or `UploadStrategy.forIndividualRequest(...)`. Not every combination is implemented, and the factories throw `NotImplementedError` on unsupported ones, such as `PUT` updates and unsquashed bundle uploads.
 
 ## Scheduling per platform
 
 The engine executes sync, and each platform brings its own timer.
 
-- **Android** is first-class. Extend `FhirSyncWorker`, a WorkManager `CoroutineWorker` that implements `FhirSyncTask`, then schedule with the `Sync` object. It offers `Sync.oneTimeSync<MyWorker>()`, `Sync.periodicSync<MyWorker>(...)` with constraints and retry configuration, `cancelOneTimeSync` and `cancelPeriodicSync`, and `getWorkerInfo` for observing status. Sync then runs under WorkManager's guarantees, including while the app is backgrounded.
+- **Android** is first-class. Extend `FhirSyncWorker`, a WorkManager `CoroutineWorker` that implements `FhirSyncTask`, then schedule with the `Sync` object. `Sync.oneTimeSync<MyWorker>(context)` and `Sync.periodicSync<MyWorker>(...)` take retry and periodic configuration and each return a `Flow` of sync status, and `cancelOneTimeSync<MyWorker>(context)` and `cancelPeriodicSync<MyWorker>(context)` cancel the jobs. Sync then runs under WorkManager's guarantees, including while the app is backgrounded.
 - **iOS** registers a `BGTaskScheduler` background task and calls your task's `runSync()` when it fires. The demo app's iOS source and its README document the `Info.plist` entries and the simulator tricks for triggering background tasks.
 - **Desktop and web** have no OS scheduler, so the app invokes `runSync()` itself, typically in a coroutine loop while the process or tab is alive. Sync stops when the process does.
 
 ## Observing sync
 
-`SyncJobStatus` models the lifecycle. It can be started, in-progress with phase and counts, succeeded, or failed. On Android, `getWorkerInfo` exposes the same through WorkManager. Elsewhere your `onProgress` callback is the feed. Design the UI around the persisted terminal status rather than assuming a sync happened recently, because on every platform except Android nothing runs unless the app is running.
+`SyncJobStatus` models the lifecycle as started, in progress, succeeded, or failed. On Android the flows returned by `Sync.oneTimeSync` and `Sync.periodicSync` are the feed, and `Sync.getLastSyncTimestamp(context)` recalls the last completion. Elsewhere your `onProgress` callback is the feed. Design the UI around the persisted terminal status rather than assuming a sync happened recently, because on every platform except Android nothing runs unless the app is running.
 
 ## Checkpoint
 

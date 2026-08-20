@@ -38,15 +38,15 @@ val updated = patient.toBuilder().apply {
 }.build()
 ```
 
-Mutations never leak into the original instance. Builders can also construct resources from scratch (`Patient.Builder().apply { ... }.build()`) when constructor calls nest too deeply to read well.
+Builders can also construct resources from scratch (`Patient.Builder().apply { ... }.build()`) when constructor calls nest too deeply to read well.
 
 ## FHIR primitives are wrapped types
 
-A FHIR primitive is more than its value, since it can carry an `id` and extensions. The model therefore wraps every primitive in a class named after the FHIR type. The FHIR `string` type is `dev.ohs.fhir.model.r4.String`, `boolean` is `dev.ohs.fhir.model.r4.Boolean`, and so on. Since those names shadow Kotlin's built-ins, import them with an alias such as `import dev.ohs.fhir.model.r4.String as FhirString`. Three primitives get hand-written value types because Kotlin's standard types cannot represent them faithfully.
+A FHIR primitive is more than its value, since it can carry an `id` and extensions. The model therefore wraps every primitive in a class named after the FHIR type. The FHIR `string` type is `dev.ohs.fhir.model.r4.String`, `boolean` is `dev.ohs.fhir.model.r4.Boolean`, and so on. Since those names shadow Kotlin's built-ins, import them with an alias such as `import dev.ohs.fhir.model.r4.String as FhirString`. Three primitives get hand-written types because Kotlin's standard types cannot represent them faithfully.
 
 - **`FhirDate`** is a date at year, year-month, or full-date precision, as FHIR allows. Construct from text with `FhirDate.fromString("2000-01")`.
-- **`FhirDateTime`** has the same variable precision plus optional time and timezone offset.
-- **`FhirDecimal`** is an arbitrary-precision decimal that preserves trailing zeros and scale, backed by a multiplatform big-decimal implementation, because `Double` would corrupt clinical quantities.
+- **`FhirDateTime`** supports the same partial precisions plus full date-time precision with a required UTC offset.
+- **`FhirDecimal`** is a precision-preserving decimal backed by a multiplatform big-decimal implementation. It emits the exact lexical form it was parsed from.
 
 ## Choice types are sealed interfaces
 
@@ -69,7 +69,7 @@ Where the spec binds an element to a required ValueSet, the model generates an e
 
 ## Documentation in the IDE
 
-Every generated class and property carries the FHIR specification's own definition and comments as KDoc, so the spec text is available on hover. It is spec-quality prose, occasionally terse, but it means the model is self-describing without leaving the editor.
+Every generated class and property carries the FHIR specification's own definition and comments as KDoc, so the spec text is available on hover in the editor.
 
 ## Next step
 

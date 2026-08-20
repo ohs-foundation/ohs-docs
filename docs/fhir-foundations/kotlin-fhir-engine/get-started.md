@@ -31,7 +31,7 @@ kotlin {
 }
 ```
 
-The model dependency is explicit because the engine's API signatures use those R4 types. Your code constructs `Patient` objects, not engine-specific wrappers. Keep the model version aligned with what the engine builds against, as listed in [versions and compatibility](/fhir-foundations/versions/).
+The model dependency is explicit because the engine's API signatures use those R4 types. Keep the model version aligned with what the engine builds against, as listed in [versions and compatibility](/fhir-foundations/versions/).
 
 ## Initialize once, then use everywhere
 
@@ -84,7 +84,7 @@ Data is stored unencrypted on all platforms.
 
 ## Checkpoint
 
-`fhirEngine.get<Patient>("patient-1")` returns the resource you created, and it survives an app restart. A `ResourceNotFoundException` means the create did not run or ran against a different storage directory.
+`fhirEngine.get<Patient>("patient-1")` returns the resource you created, and it survives an app restart. `get` throws `ResourceNotFoundException` when the id is absent.
 
 ## Next steps
 

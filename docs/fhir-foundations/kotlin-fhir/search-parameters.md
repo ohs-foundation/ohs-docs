@@ -35,7 +35,7 @@ val birthDates: List<Date> = patient.extract(PatientSearchParams.birthdate)
 
 Not every search parameter's FHIRPath pattern is supported by the code generator. Each `SearchParams` object therefore exposes two lists.
 
-- **`all`** holds the parameters whose extraction is implemented. It is safe to iterate, which is exactly what building a search index needs.
+- **`all`** holds the parameters whose extraction is implemented and is safe to iterate.
 
   ```kotlin
   PatientSearchParams.all.forEach { searchParam ->
@@ -46,13 +46,11 @@ Not every search parameter's FHIRPath pattern is supported by the code generator
 
 - **`unsupported`** holds the parameters whose `extractFrom()` throws `NotImplementedError`. They are listed so the gap is visible, not so you call them.
 
-Iterate `all`, never the union of every declared parameter.
-
 ## Coverage boundaries
 
 - The repository documents which FHIRPath patterns the generator supports and which parameters fall outside them. Consult it when a parameter you need is in `unsupported`. For those parameters, the `expression` metadata still carries the original FHIRPath string, so you can evaluate it with [Kotlin FHIRPath](/fhir-foundations/kotlin-fhirpath/) instead.
-- In the current release candidate, parameters whose expression is a union of several paths extract only the first branch. If a parameter matters clinically to your application, verify its extraction against your own data rather than assuming full-expression semantics.
+- In the current release candidate, parameters whose expression is a union of several paths extract only the first branch. Verify extraction against your own data for parameters your application depends on.
 
 ## Where this sits in the stack
 
-These extractors exist to make search indexing cheap and multiplatform. [Kotlin FHIR Engine](/fhir-foundations/kotlin-fhir-engine/) does not use them directly, since it evaluates search-parameter expressions with the FHIRPath engine for broader coverage. The two approaches are complementary. Use generated extraction when you control the parameter set and want zero interpretation overhead, and engine evaluation when you need arbitrary expressions.
+[Kotlin FHIR Engine](/fhir-foundations/kotlin-fhir-engine/) does not use these extractors. It evaluates search-parameter expressions with the FHIRPath engine for broader coverage. Use generated extraction when you control the parameter set and want no interpretation overhead, and a FHIRPath engine when you need arbitrary expressions.

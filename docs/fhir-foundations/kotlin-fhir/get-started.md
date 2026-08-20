@@ -15,7 +15,7 @@ Add Kotlin FHIR to a project, create a resource in code, and serialize it to FHI
 
 ## Prerequisites
 
-- A Kotlin project using a current Kotlin release, with the `kotlinx-serialization` plugin applied if you will serialize resources.
+- A Kotlin project on a current Kotlin release. The serializers ship pre-generated in the library, so no compiler plugin is needed.
 - For JVM projects, a Java 21 runtime, because the current release candidate's JVM artifact targets Java 21.
 - Your target platform on the [support matrix](/fhir-foundations/platform-support/).
 
@@ -45,7 +45,7 @@ Use `fhir-model` instead of `fhir-model-r4` only if you need R4, R4B, and R5 tog
 
 ## Create a resource
 
-Resources are plain Kotlin classes in `dev.ohs.fhir.model.r4`. FHIR primitives are wrapped types. A FHIR `string` is `FhirString`, and a FHIR `date` is `Date` carrying a `FhirDate` value, so the structure of the spec is visible in the code.
+Resources are plain Kotlin classes in `dev.ohs.fhir.model.r4`. FHIR primitives are wrapped types named after the FHIR type, so the FHIR `string` type is literally `dev.ohs.fhir.model.r4.String`. Import those with an alias to avoid clashing with Kotlin's built-ins.
 
 ```kotlin
 import dev.ohs.fhir.model.r4.Date
@@ -60,8 +60,6 @@ val patient = Patient(
   birthDate = Date(value = FhirDate.fromString("2000-01-01")),
 )
 ```
-
-The generated primitive types reuse FHIR's own names, so the FHIR `string` type is literally `dev.ohs.fhir.model.r4.String`. Import them with an alias to avoid clashing with Kotlin's built-ins.
 
 ## Serialize and deserialize
 
@@ -85,7 +83,7 @@ Decoding as `Resource` dispatches on the JSON `resourceType` field and returns t
 
 ## Checkpoint
 
-`encoded` is spec-compliant FHIR R4 JSON with `"resourceType": "Patient"`, and `decoded == patient`. If decoding fails with a serialization error, the input JSON does not match the FHIR version of the artifact you imported.
+`encoded` is spec-compliant FHIR R4 JSON with `"resourceType": "Patient"`, and `decoded == patient`. A decoding failure usually means the input JSON does not match the model, for example a payload from a different FHIR version.
 
 ## Next step
 

@@ -54,11 +54,11 @@ val results = engine.evaluateExpression(
 )
 ```
 
-The result is a `Collection<Any>` of FHIRPath system values, meaning strings, booleans, big decimals, and the engine's own date, time, and quantity types, because a FHIRPath expression can produce a heterogeneous collection. An empty collection is a normal outcome, not an error. It is FHIRPath's way of saying "nothing there".
+The result is a `Collection<Any>` of FHIRPath system values, meaning strings, booleans, big decimals, and the engine's own date, time, and quantity types. An empty collection is a normal outcome, not an error.
 
 ## Strict mode
 
-By default the engine is lenient. Accessing a property that does not exist on the input yields an empty collection, as the spec's dynamic evaluation model prescribes. While developing and testing expressions, prefer strict mode, which raises on invalid property access instead of quietly returning nothing.
+By default the engine is lenient. Accessing a property that does not exist on the input yields an empty collection, as the spec's dynamic evaluation model prescribes. While developing and testing expressions, prefer strict mode, which throws an `IllegalStateException` on undefined property access.
 
 ```kotlin
 val strictEngine = FhirPathEngine.forR4(strictMode = true)
@@ -77,4 +77,4 @@ An engine instance holds per-evaluation state internally. Create engine instance
 
 ## Next step
 
-[Evaluation semantics](/fhir-foundations/kotlin-fhirpath/evaluation-semantics/) covers how types, dates, and timezones behave, which is where FHIRPath surprises people.
+[Evaluation semantics](/fhir-foundations/kotlin-fhirpath/evaluation-semantics/) covers how types, dates, and timezones behave.

@@ -26,12 +26,13 @@ kotlin {
   sourceSets {
     commonMain.dependencies {
       implementation("dev.ohs.fhir:fhir-data-capture:2.0.0-alpha02")
+      implementation("dev.ohs.fhir:fhir-model:1.0.0-beta05")
     }
   }
 }
 ```
 
-Android-only projects put the same coordinate in the ordinary `dependencies` block. The SDK brings the FHIR model and FHIRPath engine transitively. Add explicit model dependencies only when your own code uses their types directly, as covered in [versions and compatibility](/fhir-foundations/versions/).
+Android-only projects put the same coordinates in the ordinary `dependencies` block. The model dependency is explicit because your code handles the submitted response as a model type. Keep its version aligned with what the SDK builds against, as listed in [versions and compatibility](/fhir-foundations/versions/).
 
 ## Render a Questionnaire
 
@@ -58,7 +59,7 @@ fun IntakeForm(questionnaireJson: String, onDone: (QuestionnaireResponse) -> Uni
 
 Two things in that signature matter.
 
-- `onSubmit` does not hand you a response. It hands you a **suspend getter**. Calling `getResponse()` runs validation. If answers are invalid, the SDK shows its validation dialog and the getter throws a `CancellationException` instead of returning, so your success path only ever sees valid responses.
+- `onSubmit` does not hand you a response. It hands you a **suspend getter**. Calling `getResponse()` runs validation. If answers are invalid, the SDK shows its validation dialog and the getter throws a `CancellationException` instead of returning. The dialog offers a submit-anyway path by default, which delivers the response without validation, so set `showSubmitAnywayWhenValidationFails = false` when invalid data must never leave the form.
 - The composable takes the Questionnaire as a **JSON string** and returns a typed `QuestionnaireResponse` from [Kotlin FHIR](/fhir-foundations/kotlin-fhir/). Serialize it with a plain `Json` instance when you need to store or transmit it.
 
 ## Pre-filling and context
