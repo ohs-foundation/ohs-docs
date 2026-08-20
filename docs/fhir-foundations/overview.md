@@ -39,7 +39,7 @@ The pillar has two kinds of projects, and the difference matters when you choose
 
 The pillar is a stack, not a bundle. Each piece depends only on the ones below it, and you take only the layers you need.
 
-![The FHIR Foundations stack. The kotlin-fhir-datacapture and kotlin-fhir-engine repositories are the client-side SDKs. Both depend on kotlin-fhirpath for expression evaluation and on kotlin-fhir for the data model. kotlin-fhirpath itself navigates the kotlin-fhir data model, the base of the pillar.](../images/fhir-foundations-architecture.svg)
+![The FHIR Foundations stack. Kotlin FHIR Data Capture and Kotlin FHIR Engine are the client-side SDKs. Both depend on Kotlin FHIRPath for expression evaluation and on Kotlin FHIR for the data model. Kotlin FHIRPath itself navigates the Kotlin FHIR data model, the base of the pillar.](../images/fhir-foundations-architecture.svg)
 
 The two SDKs do not depend on each other. A typical offline-first data-collection app uses both and wires them together itself. Data Capture fills in a Questionnaire, and the Engine stores and syncs the resulting resources.
 

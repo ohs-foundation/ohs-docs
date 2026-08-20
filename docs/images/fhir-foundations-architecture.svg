@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 880" width="1400" height="880" role="img" aria-labelledby="ffTitle ffDesc">
   <title id="ffTitle">FHIR Foundations architecture</title>
-  <desc id="ffDesc">kotlin-fhir-datacapture and kotlin-fhir-engine are client-side SDKs. Both depend on kotlin-fhirpath for expression evaluation and on kotlin-fhir for the data model. kotlin-fhirpath itself navigates the kotlin-fhir data model, the base of the pillar.</desc>
+  <desc id="ffDesc">Kotlin FHIR Data Capture and Kotlin FHIR Engine are client-side SDKs. Both depend on Kotlin FHIRPath for expression evaluation and on Kotlin FHIR for the data model. Kotlin FHIRPath itself navigates the Kotlin FHIR data model, the base of the pillar.</desc>
 
   <style>
     :root, svg {
@@ -24,7 +24,7 @@
       }
     }
     .bg      { fill: var(--bg); }
-    .lbl     { font: 600 21px "IBM Plex Mono", ui-monospace, monospace; text-anchor: middle; fill: var(--found); letter-spacing: -0.01em; }
+    .lbl     { font: 600 23px "Hanken Grotesk", "Google Sans", Inter, system-ui, sans-serif; text-anchor: middle; fill: var(--found); }
     .sub     { font: 400 17px "Hanken Grotesk", "Google Sans", Inter, system-ui, sans-serif; text-anchor: middle; fill: var(--muted); }
     .art     { font: 500 15px "IBM Plex Mono", ui-monospace, monospace; text-anchor: middle; fill: var(--muted); letter-spacing: .02em; }
     .band    { font: 600 18px "Hanken Grotesk", "Google Sans", Inter, system-ui, sans-serif; fill: var(--muted); letter-spacing: .06em; }
@@ -50,14 +50,14 @@
 
   <g>
     <rect class="f-fill" x="180" y="138" width="440" height="150" rx="14"/>
-    <text class="lbl" x="400" y="196">kotlin-fhir-datacapture</text>
+    <text class="lbl" x="400" y="196">Kotlin FHIR Data Capture</text>
     <text class="sub" x="400" y="226">forms, validation, extraction</text>
     <text class="art" x="400" y="258">fhir-data-capture</text>
   </g>
 
   <g>
     <rect class="f-fill" x="760" y="138" width="440" height="150" rx="14"/>
-    <text class="lbl" x="980" y="196">kotlin-fhir-engine</text>
+    <text class="lbl" x="980" y="196">Kotlin FHIR Engine</text>
     <text class="sub" x="980" y="226">storage, search, synchronization</text>
     <text class="art" x="980" y="258">fhir-engine</text>
   </g>
@@ -69,14 +69,14 @@
 
   <g>
     <rect class="paper-f" x="470" y="464" width="460" height="130" rx="14"/>
-    <text class="lbl" x="700" y="516">kotlin-fhirpath</text>
+    <text class="lbl" x="700" y="516">Kotlin FHIRPath</text>
     <text class="sub" x="700" y="545">expression engine</text>
     <text class="art" x="700" y="572">fhir-path</text>
   </g>
 
   <g>
     <rect class="paper-f" x="470" y="650" width="460" height="130" rx="14"/>
-    <text class="lbl" x="700" y="702">kotlin-fhir</text>
+    <text class="lbl" x="700" y="702">Kotlin FHIR</text>
     <text class="sub" x="700" y="731">data model and serialization</text>
     <text class="art" x="700" y="758">fhir-model</text>
   </g>
