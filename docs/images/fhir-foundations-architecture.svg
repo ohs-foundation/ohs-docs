@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 880" width="1400" height="880" role="img" aria-labelledby="ffTitle ffDesc">
   <title id="ffTitle">FHIR Foundations architecture</title>
-  <desc id="ffDesc">kotlin-fhir-data-capture and kotlin-fhir-engine are client-side SDKs. Both depend on kotlin-fhirpath for expression evaluation and on kotlin-fhir for the data model. kotlin-fhirpath itself navigates the kotlin-fhir data model, the base of the pillar.</desc>
+  <desc id="ffDesc">kotlin-fhir-datacapture and kotlin-fhir-engine are client-side SDKs. Both depend on kotlin-fhirpath for expression evaluation and on kotlin-fhir for the data model. kotlin-fhirpath itself navigates the kotlin-fhir data model, the base of the pillar.</desc>
 
   <style>
     :root, svg {
@@ -50,7 +50,7 @@
 
   <g>
     <rect class="f-fill" x="180" y="138" width="440" height="150" rx="14"/>
-    <text class="lbl" x="400" y="196">kotlin-fhir-data-capture</text>
+    <text class="lbl" x="400" y="196">kotlin-fhir-datacapture</text>
     <text class="sub" x="400" y="226">forms, validation, extraction</text>
     <text class="art" x="400" y="258">fhir-data-capture</text>
   </g>
