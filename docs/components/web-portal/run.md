@@ -11,7 +11,7 @@ repository: web-portal
 
 ## About the Web Portal
 
-The Web Portal is a configurable, extensible web application for healthcare organizations to manage workforce hierarchies, user accounts, access controls, and configuration. It is step 2 of the [get started sequence](/get-started/): use it after the shared Player environment is available and before running the Client App, so the environment has the users and administration data it needs.
+The Web Portal is a configurable, extensible web application for healthcare organizations to manage workforce hierarchies, user accounts, access controls, and configuration. It is step 2 of the [get started sequence](/get-started/). Use it after the shared Player environment is available and before running the Client App, so the environment has the users and administration data it needs.
 
 ## Before you begin
 
@@ -31,11 +31,11 @@ pnpm install
 docker compose up -d
 ```
 
-Docker Compose starts these services and a containerised Portal preview:
+Docker Compose starts these services and a containerised Portal preview.
 
 - **HAPI FHIR** stores the FHIR resources used by the Portal at `http://localhost:8080/fhir`. The local Portal defaults to this service.
 - **Keycloak** provides the `ohs` realm and OpenID Connect sign-in for Portal users at `http://localhost:8090`.
-- **OHS Info Gateway** proxies FHIR requests at `http://localhost:8180/fhir`. The default image is an nginx development proxy; set `OHS_GATEWAY_IMAGE` to use a published gateway image.
+- **OHS Info Gateway** proxies FHIR requests at `http://localhost:8180/fhir`. The default image is an nginx development proxy. Set `OHS_GATEWAY_IMAGE` to use a published gateway image.
 - **OHS Player Web** builds and serves the containerised Portal using the configured FHIR and OIDC URLs at `http://localhost:3000`.
 
 Wait for HAPI FHIR at `http://localhost:8080/fhir/metadata` and Keycloak at `http://localhost:8090`. Keycloak imports the `ohs` realm from `infra/keycloak/ohs-realm.json`.
@@ -44,7 +44,7 @@ Wait for HAPI FHIR at `http://localhost:8080/fhir/metadata` and Keycloak at `htt
 
 Use the containerised preview at `http://localhost:3000` when you only need the Portal supplied by Docker Compose.
 
-Use the local development server when you are working on Portal source code:
+Use the local development server when you are working on Portal source code.
 
 ```sh
 cp .env.example .env
@@ -63,7 +63,7 @@ FHIR_BASE_URL=http://localhost:8080/fhir pnpm seed
 
 ## Prepare the environment for the Client App
 
-Sign in as an administrator, then complete the preparation needed for the reference workflow:
+Sign in as an administrator, then complete the preparation needed for the reference workflow.
 
 - Confirm that the intended realm users can sign in and have the required roles.
 - Create or review the organization and location hierarchy used by the workforce.

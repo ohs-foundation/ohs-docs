@@ -13,7 +13,7 @@ repository: ohs-player
 
 The Open Health Stack provides building blocks. They exist independently of Player, are useful without it, and are maintained on their own.
 
-Player is the composition. It does not reimplement the building blocks — it assembles them, adds what a working implementation needs beyond them, and shows the result running.
+Player is the composition. It does not reimplement the building blocks. It assembles them, adds what a working implementation needs beyond them, and shows the result running.
 
 Keeping that boundary clear matters when something needs changing, because it tells you which repository owns the answer. The Foundation site owns the component catalogue and their maturity. This site owns how Player uses them.
 
@@ -42,7 +42,7 @@ The four Kotlin libraries are the Multiplatform generation of the Open Health St
 | Reference Analytics | ViewDefinitions, indicator queries, and a reference dashboard |
 | Reference Infrastructure | The deployment material that runs all of it together |
 
-Read down that list and the pattern is consistent: each entry is configuration, composition, or packaging. None of it reimplements a building block.
+Read down that list and the pattern is consistent. Each entry is configuration, composition, or packaging. None of it reimplements a building block.
 
 ## Choose the right documentation
 

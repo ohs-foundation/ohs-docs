@@ -31,7 +31,7 @@ The answer is not a second database that duplicates the clinical record. It is a
 
 Two properties of this arrangement matter more than the mechanics.
 
-**The pipeline is read-only with respect to FHIR.** It never writes back. The core stack — FHIR server, identity, gateway — is untouched by analytics, so reporting cannot affect the clinical record.
+**The pipeline is read-only with respect to FHIR.** It never writes back. The core stack (FHIR server, identity, gateway) is untouched by analytics, so reporting cannot affect the clinical record.
 
 **It is scheduled, not live.** The pipeline runs on a schedule and can also be triggered by hand. Reports reflect data as of the last run rather than the current moment, which is the right trade for reporting and the wrong one for anything operational.
 
@@ -41,7 +41,7 @@ Two properties of this arrangement matter more than the mechanics.
 
 One idea, two destinations. A team that has understood how a register is configured has already understood how a reporting table is defined.
 
-The reference set covers the resource types the community health scenario produces: patients, practitioners and their roles, organisations, locations, households, related people, encounters, conditions, observations, care plans, tasks, immunizations, medication requests, procedures, and diagnostic reports.
+The reference set covers the resource types the community health scenario produces. Those are patients, practitioners and their roles, organisations, locations, households, related people, encounters, conditions, observations, care plans, tasks, immunizations, medication requests, procedures, and diagnostic reports.
 
 ## Which FHIR server it reads
 
@@ -53,13 +53,13 @@ That is a convenience, not a limitation. Dashboards are populated from the first
 
 The analytics database holds two kinds of thing, and knowing which you are querying saves a lot of confusion.
 
-**Flat tables** are one-to-one projections of FHIR resources — a faithful, unaggregated view of the clinical record. They are rewritten by every pipeline run.
+**Flat tables** are one-to-one projections of FHIR resources, a faithful, unaggregated view of the clinical record. They are rewritten by every pipeline run.
 
-**Indicator views** are pre-aggregated: counts and rates at a reporting grain such as month, location, or health worker, joined against resolved dimensions like a location hierarchy or an age band. These are what a dashboard should usually query, because they carry the aggregation and the joins that every chart would otherwise repeat.
+**Indicator views** are pre-aggregated. They hold counts and rates at a reporting grain such as month, location, or health worker, joined against resolved dimensions like a location hierarchy or an age band. These are what a dashboard should usually query, because they carry the aggregation and the joins that every chart would otherwise repeat.
 
 ## A modelling note worth knowing early
 
-ViewDefinitions expand repeated FHIR elements into multiple rows. A household with four members produces four rows in the household table, one per member — which is what makes that table double as the patient-to-household join.
+ViewDefinitions expand repeated FHIR elements into multiple rows. A household with four members produces four rows in the household table, one per member, which is what makes that table double as the patient-to-household join.
 
 The consequence is that counting rows is not the same as counting resources. Any query that aggregates over an expanded table has to deduplicate first. This catches people once, and then never again.
 

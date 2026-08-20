@@ -11,7 +11,7 @@ repository: ohs-player
 
 ## Repositories
 
-Each component is maintained in its own repository, which owns its build commands, API detail, releases, and issues. This site explains how the pieces relate; the repositories are authoritative for everything specific to one of them.
+Each component is maintained in its own repository, which owns its build commands, API detail, releases, and issues. This site explains how the pieces relate. The repositories are authoritative for everything specific to one of them.
 
 | Repository | Owns |
 | --- | --- |
@@ -39,4 +39,4 @@ For documentation, write the page in the repository the material belongs to and 
 
 ## The wider ecosystem
 
-Player assembles components that exist independently of it. The [OHS Foundation projects page](https://ohs.foundation/projects) is the catalogue for those components and the source for their maturity. This site covers only how Player uses them — see [How Player uses OHS components](/concepts/how-player-uses-ohs-components/).
+Player assembles components that exist independently of it. The [OHS Foundation projects page](https://ohs.foundation/projects) is the catalogue for those components and the source for their maturity. This site covers only how Player uses them. See [How Player uses OHS components](/concepts/how-player-uses-ohs-components/).

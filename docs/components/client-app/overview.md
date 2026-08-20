@@ -11,7 +11,7 @@ repository: client-app
 
 ## What it is
 
-The Client App is the end-user application in the reference set — the one a frontline health worker actually opens. One Kotlin source tree builds it for Android, iOS, desktop, and the browser, using Compose Multiplatform for the interface.
+The Client App is the end-user application in the reference set, the one a frontline health worker actually opens. One Kotlin source tree builds it for Android, iOS, desktop, and the browser, using Compose Multiplatform for the interface.
 
 It is the component most of the Open Health Stack converges on, and the one an implementing team is most likely to carry forward as the basis of their own application.
 
@@ -19,7 +19,7 @@ It is the component most of the Open Health Stack converges on, and the one an i
 
 **Offline-first data capture.** The app holds FHIR resources in an on-device database and works without connectivity, because community health work happens where connectivity does not reach. It syncs with the FHIR server through the gateway when a connection is available.
 
-**Forms driven by FHIR.** Data capture is FHIR Structured Data Capture: a `Questionnaire` describes the form, its validation, and its expressions, and the answers are extracted back into FHIR resources.
+**Forms driven by FHIR.** Data capture is FHIR Structured Data Capture. A `Questionnaire` describes the form, its validation, and its expressions, and the answers are extracted back into FHIR resources.
 
 **Screens driven by configuration.** FHIR search results are projected into typed view state by declarative ViewDefinitions, and registered renderers draw that state. Adding a field to a screen is a configuration change, not new mapping code.
 
@@ -36,7 +36,7 @@ The app is an assembly of the OHS foundational libraries rather than a monolith.
 | [`kotlin-fhir-engine`](https://github.com/ohs-foundation/kotlin-fhir-engine) | On-device storage, search, and sync with a FHIR server |
 | [`kotlin-fhir-data-capture`](https://github.com/ohs-foundation/kotlin-fhir-data-capture) | Questionnaire rendering and extraction |
 
-These are the Kotlin Multiplatform generation of the libraries, which is what lets one application target four platforms. They are also earlier in their release cycle than the Android-only generation they replace — [what you can do today](/concepts/what-you-can-do-today/) sets out what that means.
+These are the Kotlin Multiplatform generation of the libraries, which is what lets one application target four platforms. They are also earlier in their release cycle than the Android-only generation they replace. [What you can do today](/concepts/what-you-can-do-today/) sets out what that means.
 
 Between the libraries and the application sits [Player Client](https://github.com/ohs-foundation/player-client), the library that turns configuration into screens, and the [Configuration IG](/concepts/configuration-ig/), which is the configuration it reads.
 
@@ -46,7 +46,7 @@ Not a finished product. Its screens, forms, and content are a reference composit
 
 ## Where to start
 
-[Run the Client App](/components/client-app/run/) builds it and opens the desktop target, which is the fastest path — it needs only a JDK.
+[Run the Client App](/components/client-app/run/) builds it and opens the desktop target, which is the fastest path because it needs only a JDK.
 
 To change what a screen shows, [configure a screen from FHIR data](/configure/screen-from-fhir-data/). To work out whether a change needs code at all, read [decide when code is necessary](/extend/decide/).
 

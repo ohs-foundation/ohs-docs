@@ -79,6 +79,23 @@ for (const file of files) {
     if (level > previous + 1) throw new Error(`${name} jumps from h${previous} to h${level} at "${heading[2]}". Do not skip heading levels.`);
     previous = level;
   }
+
+  // House style: displayed text carries no em dashes, semicolons, or colons,
+  // anywhere on the site. Restructure the sentence instead. Machine syntax is
+  // exempt: frontmatter keys, code fences and spans, and link targets.
+  const bannedPunctuation = /[—;:]/;
+  for (const line of frontmatter.split('\n')) {
+    const field = line.match(/^\s*(title|description|sidebar_label|guide_focus|eyebrow|label|source_label):\s*(.+)$/);
+    if (field && bannedPunctuation.test(field[2])) {
+      throw new Error(`${name} displays banned punctuation (em dash, semicolon, or colon) in ${field[1]}: "${field[2].trim()}". Restructure the sentence instead.`);
+    }
+  }
+  const readerText = prose.replace(/\]\([^)]*\)/g, ']()');
+  for (const line of readerText.split('\n')) {
+    if (bannedPunctuation.test(line)) {
+      throw new Error(`${name} displays banned punctuation (em dash, semicolon, or colon): "${line.trim().slice(0, 90)}". Restructure the sentence instead.`);
+    }
+  }
 }
 
 // Analytics is not a separate repository. Its pipeline configuration and

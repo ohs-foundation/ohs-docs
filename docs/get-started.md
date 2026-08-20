@@ -13,9 +13,9 @@ repository: ohs-player
 
 One shared environment, with every Player component running against it.
 
-A programme structure you created — organisations, locations, care teams, and health workers — administered through the Web Portal. A health worker signed in on the Client App, capturing data and syncing it through the gateway to the FHIR server. And a dashboard reading that same data through the analytics pipeline.
+A programme structure you created (organisations, locations, care teams, and health workers), administered through the Web Portal. A health worker signed in on the Client App, capturing data and syncing it through the gateway to the FHIR server. And a dashboard reading that same data through the analytics pipeline.
 
-That is the whole reference: the round trip from a health worker in a village to an indicator on a chart.
+That is the whole reference, the round trip from a health worker in a village to an indicator on a chart.
 
 ## Before you start
 
@@ -47,11 +47,11 @@ The order matters. Each stage depends on the one before it, because every client
 
 ## How the pieces find each other
 
-Every client needs the same three things, and knowing that makes the configuration in each guide easier to follow:
+Every client needs the same three things, and knowing that makes the configuration in each guide easier to follow.
 
-- **The FHIR base URL** — reached through the gateway, never the FHIR server directly
-- **The gateway URL** — which also serves the Reference Backend endpoints
-- **The identity issuer** — the Keycloak realm, plus a client for the application signing in
+- **The FHIR base URL**, reached through the gateway, never the FHIR server directly
+- **The gateway URL**, which also serves the Reference Backend endpoints
+- **The identity issuer**, meaning the Keycloak realm, plus a client for the application signing in
 
 The environment from step 1 supplies all three. Each guide states which setting carries which value for that component.
 

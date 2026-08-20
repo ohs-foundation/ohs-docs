@@ -69,6 +69,36 @@ function PageToc({ entries, activeId, mobile = false }) {
   );
 }
 
+/**
+ * Top-level section switcher. The site has one docs area per sidebar (the
+ * Player journey, the FHIR Foundations pillar), and this is the persistent
+ * way to move between them from any page. Add an entry here when a new
+ * section lands. Rendered in the topbar on desktop and inside the sidebar
+ * panel on mobile, selected purely by CSS.
+ */
+function SectionNav({ className }) {
+  const { pathname } = useLocation();
+  const inFoundation = pathname.includes("/fhir-foundations/");
+  return (
+    <nav className={className} aria-label="Documentation sections">
+      <Link
+        to="/concepts/what-ohs-player-is/"
+        className={inFoundation ? undefined : "active"}
+        aria-current={inFoundation ? undefined : "true"}
+      >
+        Player
+      </Link>
+      <Link
+        to="/fhir-foundations/"
+        className={inFoundation ? "active" : undefined}
+        aria-current={inFoundation ? "true" : undefined}
+      >
+        FHIR Foundations
+      </Link>
+    </nav>
+  );
+}
+
 function GuideSidebar({ open, onClose }) {
   const sidebar = useDocsSidebar();
   const { pathname } = useLocation();
@@ -93,6 +123,7 @@ function GuideSidebar({ open, onClose }) {
             ×
           </button>
         </div>
+        <SectionNav className="ohs-sidebar-sections" />
         <nav
           aria-label="Documentation sections"
           className="ohs-sidebar-navigation"
@@ -109,7 +140,7 @@ function GuideSidebar({ open, onClose }) {
         </nav>
         <div className="ohs-sidebar-help">
           <strong>Need the source material?</strong>
-          <p>Each guide links to its owning Player repository.</p>
+          <p>Each guide links to its owning repository.</p>
           <a href="https://github.com/orgs/ohs-foundation/discussions">
             Get help ↗
           </a>
@@ -138,7 +169,7 @@ function GuideHeader({ menuRef, onOpen, sidebarOpen }) {
         </button>
         <Brand />
         <div className="ohs-header-divider" />
-        <span className="ohs-docs-label">TECHNICAL DOCS</span>
+        <SectionNav className="ohs-section-nav" />
         <div className="ohs-header-actions">
           <div className="ohs-header-search">
             <SearchBar />

@@ -91,6 +91,103 @@ const sidebars = {
       items: ["resources"],
     },
   ],
+
+  /**
+   * FHIR Foundations is the first documentation *section* beside the Player
+   * journey: a set of repositories documented together with its own sidebar.
+   * The name and structure follow the Foundation's official taxonomy at
+   * https://ohs.foundation/projects, where "FHIR Foundations" is Pillar 01
+   * and projects are labelled "Core Library" and "SDK". Future sections
+   * (player-client-app, player-web, ...) follow the same mechanics — a
+   * directory under docs/, a sidebar here, an entry point on the landing
+   * page and in the SectionNav switcher.
+   *
+   * The pillar has two kinds of projects. *Core libraries* are unopinionated
+   * building blocks usable in any Kotlin program, client or server. *SDKs*
+   * are opinionated, application-facing toolkits built on them; today's SDKs
+   * are client-side, and server-side SDKs would join as a sibling category.
+   * Every repository follows the same skeleton — overview, get started, task
+   * guides. Pillar-wide reference material (platform matrix, version
+   * pairing) closes the sidebar.
+   */
+  fhirFoundations: [
+    "fhir-foundations/overview",
+    {
+      type: "category",
+      label: "Core libraries",
+      collapsible: false,
+      items: [
+        {
+          type: "category",
+          label: "Kotlin FHIR",
+          collapsible: false,
+          link: { type: "doc", id: "fhir-foundations/kotlin-fhir/overview" },
+          items: [
+            "fhir-foundations/kotlin-fhir/get-started",
+            "fhir-foundations/kotlin-fhir/working-with-resources",
+            "fhir-foundations/kotlin-fhir/serialization",
+            "fhir-foundations/kotlin-fhir/search-parameters",
+          ],
+        },
+        {
+          type: "category",
+          label: "Kotlin FHIRPath",
+          collapsible: false,
+          link: { type: "doc", id: "fhir-foundations/kotlin-fhirpath/overview" },
+          items: [
+            "fhir-foundations/kotlin-fhirpath/get-started",
+            "fhir-foundations/kotlin-fhirpath/evaluation-semantics",
+            "fhir-foundations/kotlin-fhirpath/conformance",
+          ],
+        },
+      ],
+    },
+    {
+      type: "category",
+      label: "SDKs",
+      collapsible: false,
+      items: [
+        {
+          type: "category",
+          label: "Kotlin FHIR Engine",
+          collapsible: false,
+          link: {
+            type: "doc",
+            id: "fhir-foundations/kotlin-fhir-engine/overview",
+          },
+          items: [
+            "fhir-foundations/kotlin-fhir-engine/get-started",
+            "fhir-foundations/kotlin-fhir-engine/persist-and-search",
+            "fhir-foundations/kotlin-fhir-engine/synchronization",
+            "fhir-foundations/kotlin-fhir-engine/web-targets",
+          ],
+        },
+        {
+          type: "category",
+          label: "Kotlin FHIR Data Capture",
+          collapsible: false,
+          link: {
+            type: "doc",
+            id: "fhir-foundations/kotlin-fhir-data-capture/overview",
+          },
+          items: [
+            "fhir-foundations/kotlin-fhir-data-capture/get-started",
+            "fhir-foundations/kotlin-fhir-data-capture/render-a-questionnaire",
+            "fhir-foundations/kotlin-fhir-data-capture/customize-and-extend",
+          ],
+        },
+      ],
+    },
+    {
+      type: "category",
+      label: "Across the stack",
+      collapsible: false,
+      items: [
+        "fhir-foundations/platform-support",
+        "fhir-foundations/versions",
+      ],
+    },
+  ],
 };
 
 module.exports = sidebars;

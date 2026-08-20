@@ -21,7 +21,7 @@ You need JDK 21 to build the extensions and a compatible FHIR Gateway host to ru
 
 ## Get a FHIR Gateway host
 
-The [FHIR Gateway repository](https://github.com/ohs-foundation/fhir-gateway) provides the host JAR. Build its executable host from the repository root:
+The [FHIR Gateway repository](https://github.com/ohs-foundation/fhir-gateway) provides the host JAR. Build its executable host from the repository root.
 
 ```sh
 mvn package -Dspotless.apply.skip=true
@@ -56,11 +56,11 @@ The gateway host reads the plugin from the loader path rather than bundling it, 
 
 Set these values in the FHIR Gateway host environment before starting it.
 
-- `PROXY_TO`: upstream FHIR server base URL.
-- `IAM_PROVIDER`: identity provider; `keycloak` is the default and supported value.
-- `TOKEN_ISSUER`: Keycloak issuer URL, for example `http://keycloak:8080/realms/my-realm`.
-- `IAM_PROVIDER_CLIENT_ID`: Keycloak administration client ID.
-- `IAM_PROVIDER_CLIENT_SECRET`: Keycloak administration client secret.
+- `PROXY_TO` is the upstream FHIR server base URL.
+- `IAM_PROVIDER` is the identity provider. `keycloak` is the default and supported value.
+- `TOKEN_ISSUER` is the Keycloak issuer URL, for example `http://keycloak:8080/realms/my-realm`.
+- `IAM_PROVIDER_CLIENT_ID` is the Keycloak administration client ID.
+- `IAM_PROVIDER_CLIENT_SECRET` is the Keycloak administration client secret.
 
 The Keycloak administration client needs a service account with `manage-users`, `view-users`, `manage-realm`, and `view-realm` roles from the `realm-management` client. Without those roles, requests return `403 Forbidden`.
 
@@ -68,7 +68,7 @@ Use the [FHIR Gateway deployment documentation](https://github.com/ohs-foundatio
 
 ## Expected result
 
-The gateway exposes the Reference Backend APIs under `/api/*` and enforces bearer-token access on them. Requests without a valid token are rejected; requests with one are checked against the caller's roles before reaching the FHIR server.
+The gateway exposes the Reference Backend APIs under `/api/*` and enforces bearer-token access on them. Requests without a valid token are rejected, and requests with one are checked against the caller's roles before reaching the FHIR server.
 
 ## Next step
 

@@ -26,12 +26,12 @@ Player is five components built on the Open Health Stack's foundational librarie
 | Decide whether a FHIR request is allowed | Backend | FHIR Gateway access checkers |
 | Serve APIs beyond plain FHIR | Backend | FHIR Gateway custom endpoints |
 | Manage users, roles, organisations, care teams, and locations | Web Portal | Backend endpoints |
-| Store FHIR data | — | HAPI FHIR |
+| Store FHIR data | none | HAPI FHIR |
 | Flatten FHIR into reportable tables | Analytics | FHIR Data Pipes |
 | Serve dashboards and ad-hoc queries | Analytics | PostgreSQL and Apache Superset |
 | Bring the whole environment up | Reference Infrastructure | Docker Compose |
 
-Storing FHIR data has no Player component beside it on purpose. The FHIR server stays unmodified — that is the point of putting the gateway in front of it.
+Storing FHIR data has no Player component beside it on purpose. The FHIR server stays unmodified. That is the point of putting the gateway in front of it.
 
 ## The component pages
 

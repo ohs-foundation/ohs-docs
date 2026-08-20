@@ -11,13 +11,13 @@ repository: infrastructure
 
 ## Goal and scope
 
-Reference Infrastructure brings up the services every other component depends on: a FHIR server, identity, the gateway in front of them, and the database underneath. It is deployment material rather than an application — nothing in it is a component you use directly, which is why it is the first stage rather than an item in the component set.
+Reference Infrastructure brings up the services every other component depends on. Those are a FHIR server, identity, the gateway in front of them, and the database underneath. It is deployment material rather than an application. Nothing in it is a component you use directly, which is why it is the first stage rather than an item in the component set.
 
 This is stage one of the [get started sequence](/get-started/). Everything after it points at what this creates.
 
 ## Before you begin
 
-Docker Engine with Compose v2, plus a shell environment the setup scripts can run in — they use `envsubst` for template rendering and OpenSSL for secret generation. On Windows use WSL; the scripts do not run under native `cmd.exe` or PowerShell.
+Docker Engine with Compose v2, plus a shell environment the setup scripts can run in. They use `envsubst` for template rendering and OpenSSL for secret generation. On Windows use WSL, because the scripts do not run under native `cmd.exe` or PowerShell.
 
 ## Bring it up
 
@@ -46,7 +46,7 @@ Clients never reach the FHIR server directly. Everything routes through the gate
 
 ## Confirm it is healthy
 
-Identity and the FHIR server both take appreciably longer to become ready than the database does — allow up to ninety seconds for Keycloak and up to three minutes for HAPI FHIR on a first run. Then:
+Identity and the FHIR server both take appreciably longer to become ready than the database does. Allow up to ninety seconds for Keycloak and up to three minutes for HAPI FHIR on a first run, then run the checks.
 
 ```sh
 curl -sf http://localhost:8081/health/ready | grep -q UP
@@ -58,7 +58,7 @@ Three silent successes mean identity is up, the FHIR server is serving, and the 
 
 ## Choose an authentication mode
 
-The FHIR server can run open or validating tokens from identity, selected by one value in `.env`:
+The FHIR server can run open or validating tokens from identity, selected by one value in `.env`.
 
 | Value | Behaviour |
 | --- | --- |
@@ -67,7 +67,7 @@ The FHIR server can run open or validating tokens from identity, selected by one
 
 Open is convenient while exploring. Token validation is the mode that matches how the components are meant to fit together, and the one to use before running the Portal and the Client App against the environment.
 
-Switching is a change to `.env` followed by `./dev.sh up` — no compose file is edited.
+Switching is a change to `.env` followed by `./dev.sh up`. No compose file is edited.
 
 ## Managing the stack
 
@@ -82,11 +82,11 @@ Switching is a change to `.env` followed by `./dev.sh up` — no compose file is
 
 `reset` is the one to reach for when the environment has drifted into a state you cannot explain. It is faster than diagnosing a local-only problem.
 
-Additional profiles extend the stack — `--pipes` adds the analytics pipeline and dashboard, covered in [set up analytics](/components/reference-analytics/run/).
+Additional profiles extend the stack. The `--pipes` profile adds the analytics pipeline and dashboard, covered in [set up analytics](/components/reference-analytics/run/).
 
 ## Expected result
 
-Four services running and healthy, and the three values every other component needs: the FHIR base URL through the gateway, the gateway URL itself, and the identity issuer.
+Four services running and healthy, and the three values every other component needs. Those are the FHIR base URL through the gateway, the gateway URL itself, and the identity issuer.
 
 ## Next step
 

@@ -11,13 +11,13 @@ repository: client-app
 
 ## About the Client App
 
-The Client App is the Kotlin Multiplatform and Compose Multiplatform end-user reference application for Android, iOS, JVM desktop, JavaScript browser, and Wasm browser. It demonstrates how the reusable Player Client library renders healthcare UI from declarative FHIR configuration: FHIR search results become typed view state, then registered renderers display that state.
+The Client App is the Kotlin Multiplatform and Compose Multiplatform end-user reference application for Android, iOS, JVM desktop, JavaScript browser, and Wasm browser. It demonstrates how the reusable Player Client library renders healthcare UI from declarative FHIR configuration. FHIR search results become typed view state, then registered renderers display that state.
 
-This guide is step 3 of the [get started sequence](/get-started/) for a usable integrated workflow: first prepare the shared Player environment and use the [Web Portal](/components/web-portal/run/) to administer it, then evaluate the Client App in that prepared environment.
+This guide is step 3 of the [get started sequence](/get-started/) for a usable integrated workflow. First prepare the shared Player environment and use the [Web Portal](/components/web-portal/run/) to administer it, then evaluate the Client App in that prepared environment.
 
 ## Before you begin
 
-You need JDK 21. Android builds also need the Android SDK; iOS builds need Xcode on macOS.
+You need JDK 21. Android builds also need the Android SDK, and iOS builds need Xcode on macOS.
 
 ## Build the client
 
@@ -41,13 +41,13 @@ The desktop application opens and renders the reference healthcare screens from 
 
 ## Connect to the shared Player environment
 
-The application signs in against the identity service in your environment and syncs FHIR data through the gateway, so it needs three things from the earlier stages:
+The application signs in against the identity service in your environment and syncs FHIR data through the gateway, so it needs three things from the earlier stages.
 
 - the **gateway base URL**, from [set up the environment](/components/reference-infrastructure/)
-- the **identity issuer** — the realm the environment publishes — and a client for the application
+- the **identity issuer** (the realm the environment publishes) and a client for the application
 - a **health worker account** created in [the Web Portal](/components/web-portal/run/), to sign in as
 
-Point the application at those values and sign in. Data captured on the device is held locally and synced through the gateway to the FHIR server, which is what makes the round trip observable: register a household on the app, then find the same resources through the Portal's FHIR browser.
+Point the application at those values and sign in. Data captured on the device is held locally and synced through the gateway to the FHIR server, which is what makes the round trip observable. Register a household on the app, then find the same resources through the Portal's FHIR browser.
 
 The [player-reference repository](https://github.com/ohs-foundation/player-reference) states which setting carries each value for the target you are building.
 
@@ -62,7 +62,7 @@ The [player-reference repository](https://github.com/ohs-foundation/player-refer
 
 ## Change what a screen shows
 
-The reference client renders typed view state rather than mapping FHIR resources in a screen, so changing a screen usually means changing configuration and rebuilding — not editing application code.
+The reference client renders typed view state rather than mapping FHIR resources in a screen, so changing a screen usually means changing configuration and rebuilding, not editing application code.
 
 Configuration ships with the application as FHIR resources under `ohs-player-reference-app/src/commonMain/composeResources/files/`, divided into `states/`, `configs/`, and `viewtypes/`. The `ig-codegen` Gradle plugin turns them into Kotlin types during compilation, so a rebuild is the only step after an edit.
 
