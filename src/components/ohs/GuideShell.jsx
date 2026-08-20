@@ -82,7 +82,7 @@ function SectionNav({ className }) {
   return (
     <nav className={className} aria-label="Documentation sections">
       <Link
-        to="/"
+        to="/concepts/what-ohs-player-is/"
         className={inFoundation ? undefined : "active"}
         aria-current={inFoundation ? undefined : "true"}
       >
