@@ -57,7 +57,7 @@ const repositories = {
       {repository: "configuration-ig", relationship: "Defines the configuration vocabulary consumed by the library."},
     ],
   },
-  // FHIR Foundation group: the Kotlin Multiplatform FHIR libraries that Player
+  // FHIR Foundations pillar: the Kotlin Multiplatform FHIR libraries that Player
   // and third-party applications build on. All publish under the Maven group
   // dev.ohs.fhir.
   "kotlin-fhir": {

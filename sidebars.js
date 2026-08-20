@@ -93,55 +93,58 @@ const sidebars = {
   ],
 
   /**
-   * FHIR Foundation is the first documentation *group*: a set of repositories
-   * documented together, with its own sidebar beside the Player journey.
-   * Future groups (player-client-app, player-web, ...) follow the same
-   * pattern — a directory under docs/, a sidebar here, an entry point on the
-   * landing page.
+   * FHIR Foundations is the first documentation *section* beside the Player
+   * journey: a set of repositories documented together with its own sidebar.
+   * The name and structure follow the Foundation's official taxonomy at
+   * https://ohs.foundation/projects, where "FHIR Foundations" is Pillar 01
+   * and projects are labelled "Core Library" and "SDK". Future sections
+   * (player-client-app, player-web, ...) follow the same mechanics — a
+   * directory under docs/, a sidebar here, an entry point on the landing
+   * page and in the SectionNav switcher.
    *
-   * The group has two tiers. *Libraries* are unopinionated building blocks
-   * usable in any Kotlin program, client or server. *SDKs* are opinionated,
-   * application-facing toolkits built on them; today's SDKs are client-side,
-   * and server-side SDKs would join as a sibling category. Within a tier
-   * every repository follows the same skeleton — overview, get started, task
-   * guides. Group-wide reference material (platform matrix, version pairing)
-   * closes the sidebar.
+   * The pillar has two tiers. *Core libraries* are unopinionated building
+   * blocks usable in any Kotlin program, client or server. *SDKs* are
+   * opinionated, application-facing toolkits built on them; today's SDKs are
+   * client-side, and server-side SDKs would join as a sibling category.
+   * Within a tier every repository follows the same skeleton — overview, get
+   * started, task guides. Pillar-wide reference material (platform matrix,
+   * version pairing) closes the sidebar.
    */
-  fhirFoundation: [
-    "fhir-foundation/overview",
+  fhirFoundations: [
+    "fhir-foundations/overview",
     {
       type: "category",
-      label: "Libraries",
+      label: "Core libraries",
       collapsible: false,
       items: [
         {
           type: "category",
           label: "Kotlin FHIR",
           collapsible: false,
-          link: { type: "doc", id: "fhir-foundation/kotlin-fhir/overview" },
+          link: { type: "doc", id: "fhir-foundations/kotlin-fhir/overview" },
           items: [
-            "fhir-foundation/kotlin-fhir/get-started",
-            "fhir-foundation/kotlin-fhir/working-with-resources",
-            "fhir-foundation/kotlin-fhir/serialization",
-            "fhir-foundation/kotlin-fhir/search-parameters",
+            "fhir-foundations/kotlin-fhir/get-started",
+            "fhir-foundations/kotlin-fhir/working-with-resources",
+            "fhir-foundations/kotlin-fhir/serialization",
+            "fhir-foundations/kotlin-fhir/search-parameters",
           ],
         },
         {
           type: "category",
           label: "Kotlin FHIRPath",
           collapsible: false,
-          link: { type: "doc", id: "fhir-foundation/kotlin-fhirpath/overview" },
+          link: { type: "doc", id: "fhir-foundations/kotlin-fhirpath/overview" },
           items: [
-            "fhir-foundation/kotlin-fhirpath/get-started",
-            "fhir-foundation/kotlin-fhirpath/evaluation-semantics",
-            "fhir-foundation/kotlin-fhirpath/conformance",
+            "fhir-foundations/kotlin-fhirpath/get-started",
+            "fhir-foundations/kotlin-fhirpath/evaluation-semantics",
+            "fhir-foundations/kotlin-fhirpath/conformance",
           ],
         },
       ],
     },
     {
       type: "category",
-      label: "Client SDKs",
+      label: "SDKs",
       collapsible: false,
       items: [
         {
@@ -150,13 +153,13 @@ const sidebars = {
           collapsible: false,
           link: {
             type: "doc",
-            id: "fhir-foundation/kotlin-fhir-engine/overview",
+            id: "fhir-foundations/kotlin-fhir-engine/overview",
           },
           items: [
-            "fhir-foundation/kotlin-fhir-engine/get-started",
-            "fhir-foundation/kotlin-fhir-engine/persist-and-search",
-            "fhir-foundation/kotlin-fhir-engine/synchronization",
-            "fhir-foundation/kotlin-fhir-engine/web-targets",
+            "fhir-foundations/kotlin-fhir-engine/get-started",
+            "fhir-foundations/kotlin-fhir-engine/persist-and-search",
+            "fhir-foundations/kotlin-fhir-engine/synchronization",
+            "fhir-foundations/kotlin-fhir-engine/web-targets",
           ],
         },
         {
@@ -165,12 +168,12 @@ const sidebars = {
           collapsible: false,
           link: {
             type: "doc",
-            id: "fhir-foundation/kotlin-fhir-data-capture/overview",
+            id: "fhir-foundations/kotlin-fhir-data-capture/overview",
           },
           items: [
-            "fhir-foundation/kotlin-fhir-data-capture/get-started",
-            "fhir-foundation/kotlin-fhir-data-capture/render-a-questionnaire",
-            "fhir-foundation/kotlin-fhir-data-capture/customize-and-extend",
+            "fhir-foundations/kotlin-fhir-data-capture/get-started",
+            "fhir-foundations/kotlin-fhir-data-capture/render-a-questionnaire",
+            "fhir-foundations/kotlin-fhir-data-capture/customize-and-extend",
           ],
         },
       ],
@@ -180,8 +183,8 @@ const sidebars = {
       label: "Across the stack",
       collapsible: false,
       items: [
-        "fhir-foundation/platform-support",
-        "fhir-foundation/versions",
+        "fhir-foundations/platform-support",
+        "fhir-foundations/versions",
       ],
     },
   ],

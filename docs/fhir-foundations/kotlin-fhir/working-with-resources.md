@@ -1,7 +1,7 @@
 ---
 title: Work with resources
 description: Creating, modifying, and reading FHIR resources in Kotlin, using builders, primitives, choice types, and coded values.
-slug: /fhir-foundation/kotlin-fhir/working-with-resources/
+slug: /fhir-foundations/kotlin-fhir/working-with-resources/
 sidebar_position: 30
 guide_type: Usage guide
 guide_status: ready
@@ -73,4 +73,4 @@ Every generated class and property carries the FHIR specification's own definiti
 
 ## Next step
 
-[Serialize and deserialize](/fhir-foundation/kotlin-fhir/serialization/) covers the JSON layer and its configuration limits.
+[Serialize and deserialize](/fhir-foundations/kotlin-fhir/serialization/) covers the JSON layer and its configuration limits.

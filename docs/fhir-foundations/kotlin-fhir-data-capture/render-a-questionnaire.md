@@ -1,7 +1,7 @@
 ---
 title: Control rendering behavior
 description: QuestionnaireConfig display flags, review and read-only flows, and the resolvers that connect a form to your data.
-slug: /fhir-foundation/kotlin-fhir-data-capture/render-a-questionnaire/
+slug: /fhir-foundations/kotlin-fhir-data-capture/render-a-questionnaire/
 sidebar_position: 30
 guide_type: Usage guide
 guide_status: ready
@@ -65,9 +65,9 @@ CompositionLocalProvider(
 These are the hooks.
 
 - **`ExternalAnswerValueSetResolver`** serves answer options declared as a ValueSet URL rather than inline. You decide where ValueSets come from, whether a bundled file, a terminology service, or a local store.
-- **`XFhirQueryResolver`** serves answer options declared as an x-fhir-query, for example "all Practitioners at this facility". A natural implementation runs the query against [Kotlin FHIR Engine](/fhir-foundation/kotlin-fhir-engine/)'s local store.
+- **`XFhirQueryResolver`** serves answer options declared as an x-fhir-query, for example "all Practitioners at this facility". A natural implementation runs the query against [Kotlin FHIR Engine](/fhir-foundations/kotlin-fhir-engine/)'s local store.
 - **`UrlResolver`** fetches media attachments referenced by URL for item-media display.
-- A factory for custom widget matchers, covered in [customize and extend](/fhir-foundation/kotlin-fhir-data-capture/customize-and-extend/).
+- A factory for custom widget matchers, covered in [customize and extend](/fhir-foundations/kotlin-fhir-data-capture/customize-and-extend/).
 
 A Questionnaire that uses none of these features needs no `DataCaptureConfig` at all.
 
@@ -77,4 +77,4 @@ With `showReviewPage = true`, submission shows your answers read-only with an ed
 
 ## Next step
 
-[Customize and extend](/fhir-foundation/kotlin-fhir-data-capture/customize-and-extend/) covers custom widgets, validation details, and extracting resources from responses.
+[Customize and extend](/fhir-foundations/kotlin-fhir-data-capture/customize-and-extend/) covers custom widgets, validation details, and extracting resources from responses.

@@ -31,7 +31,7 @@ function LandingHeader() {
           <Link to="/get-started/">Run it</Link>
           <Link to="/configure/screen-from-fhir-data/">Configure</Link>
           <Link to="/extend/decide/">Extend</Link>
-          <Link to="/fhir-foundation/">FHIR Foundation</Link>
+          <Link to="/fhir-foundations/">FHIR Foundations</Link>
         </nav>
         <div className="ohs-nav-actions">
           <div className="ohs-header-search">
@@ -69,7 +69,7 @@ function Footer() {
         <div className="ohs-footer-links">
           <Link to="/concepts/what-ohs-player-is/">Understand</Link>
           <Link to="/get-started/">Get started</Link>
-          <Link to="/fhir-foundation/">FHIR Foundation</Link>
+          <Link to="/fhir-foundations/">FHIR Foundations</Link>
           <Link to="/resources/">Resources and contributing</Link>
           <a href="https://github.com/ohs-foundation/ohs-player">OHS Player source</a>
           <a href="https://ohs.foundation/projects">OHS components</a>

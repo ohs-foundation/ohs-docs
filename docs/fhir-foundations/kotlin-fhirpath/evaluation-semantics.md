@@ -1,7 +1,7 @@
 ---
 title: Evaluation semantics
 description: How the engine handles types, dates, timezones, and errors, which decides whether expressions mean what you think.
-slug: /fhir-foundation/kotlin-fhirpath/evaluation-semantics/
+slug: /fhir-foundations/kotlin-fhirpath/evaluation-semantics/
 sidebar_position: 30
 guide_type: Concept
 guide_status: ready
@@ -54,4 +54,4 @@ The engine reinitializes internal evaluator state on every `evaluateExpression` 
 
 ## Next step
 
-[Conformance](/fhir-foundation/kotlin-fhirpath/conformance/) lists exactly which spec features are implemented, partial, or absent.
+[Conformance](/fhir-foundations/kotlin-fhirpath/conformance/) lists exactly which spec features are implemented, partial, or absent.

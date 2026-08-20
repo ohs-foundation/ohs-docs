@@ -1,7 +1,7 @@
 ---
 title: Get started with Kotlin FHIR Engine
 description: Add the engine, initialize it once at startup, and store your first resource on device.
-slug: /fhir-foundation/kotlin-fhir-engine/get-started/
+slug: /fhir-foundations/kotlin-fhir-engine/get-started/
 sidebar_position: 20
 guide_type: Get started
 guide_status: ready
@@ -15,8 +15,8 @@ Add the engine to a Kotlin Multiplatform or Android project, initialize it, and 
 
 ## Prerequisites
 
-- A supported [target platform](/fhir-foundation/platform-support/). Note Android minSdk 26 and no Intel iOS simulator target.
-- Browser targets need additional project setup before anything runs. Do [the web setup](/fhir-foundation/kotlin-fhir-engine/web-targets/) first if you target JS or Wasm.
+- A supported [target platform](/fhir-foundations/platform-support/). Note Android minSdk 26 and no Intel iOS simulator target.
+- Browser targets need additional project setup before anything runs. Do [the web setup](/fhir-foundations/kotlin-fhir-engine/web-targets/) first if you target JS or Wasm.
 
 ## Add the dependencies
 
@@ -31,7 +31,7 @@ kotlin {
 }
 ```
 
-The model dependency is explicit because the engine's API signatures use those R4 types. Your code constructs `Patient` objects, not engine-specific wrappers. Keep the model version aligned with what the engine builds against, as listed in [versions and compatibility](/fhir-foundation/versions/).
+The model dependency is explicit because the engine's API signatures use those R4 types. Your code constructs `Patient` objects, not engine-specific wrappers. Keep the model version aligned with what the engine builds against, as listed in [versions and compatibility](/fhir-foundations/versions/).
 
 ## Initialize once, then use everywhere
 
@@ -88,4 +88,4 @@ Data is stored unencrypted on all platforms.
 
 ## Next steps
 
-[Search the local store](/fhir-foundation/kotlin-fhir-engine/persist-and-search/), then [synchronize with a server](/fhir-foundation/kotlin-fhir-engine/synchronization/).
+[Search the local store](/fhir-foundations/kotlin-fhir-engine/persist-and-search/), then [synchronize with a server](/fhir-foundations/kotlin-fhir-engine/synchronization/).

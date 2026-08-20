@@ -1,7 +1,7 @@
 ---
 title: Get started with Kotlin FHIRPath
 description: Add the engine to your project and evaluate FHIRPath expressions against FHIR resources.
-slug: /fhir-foundation/kotlin-fhirpath/get-started/
+slug: /fhir-foundations/kotlin-fhirpath/get-started/
 sidebar_position: 20
 guide_type: Get started
 guide_status: ready
@@ -15,8 +15,8 @@ Add Kotlin FHIRPath to a project and evaluate expressions against a resource. Ex
 
 ## Prerequisites
 
-- A Kotlin project on a supported [target platform](/fhir-foundation/platform-support/).
-- Resources represented with [Kotlin FHIR](/fhir-foundation/kotlin-fhir/), because the engine evaluates against those data classes. The dependency below brings the matching model transitively.
+- A Kotlin project on a supported [target platform](/fhir-foundations/platform-support/).
+- Resources represented with [Kotlin FHIR](/fhir-foundations/kotlin-fhir/), because the engine evaluates against those data classes. The dependency below brings the matching model transitively.
 
 ## Add the dependency
 
@@ -77,4 +77,4 @@ An engine instance holds per-evaluation state internally. Create engine instance
 
 ## Next step
 
-[Evaluation semantics](/fhir-foundation/kotlin-fhirpath/evaluation-semantics/) covers how types, dates, and timezones behave, which is where FHIRPath surprises people.
+[Evaluation semantics](/fhir-foundations/kotlin-fhirpath/evaluation-semantics/) covers how types, dates, and timezones behave, which is where FHIRPath surprises people.

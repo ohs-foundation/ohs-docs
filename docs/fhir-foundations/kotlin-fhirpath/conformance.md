@@ -1,7 +1,7 @@
 ---
 title: Conformance
 description: What the engine implements from the FHIRPath specification, what is partial, and what is absent.
-slug: /fhir-foundation/kotlin-fhirpath/conformance/
+slug: /fhir-foundations/kotlin-fhirpath/conformance/
 sidebar_position: 40
 guide_type: Technical reference
 guide_status: ready
@@ -41,7 +41,7 @@ Places where behavior differs from a literal spec reading, tracked in the confor
 - The indexer `[n]` raises on out-of-bounds access instead of returning `{}`.
 - `combine` does not deduplicate.
 - Some numeric conversions omit edge-case handling. `Long` inputs are not handled, `toDecimal` can lose precision on certain paths, and `toQuantity` with a unit argument has a hardcoded default unit for bare numbers.
-- Timezone comparisons are deliberately stricter than the spec permits, as described under [evaluation semantics](/fhir-foundation/kotlin-fhirpath/evaluation-semantics/).
+- Timezone comparisons are deliberately stricter than the spec permits, as described under [evaluation semantics](/fhir-foundations/kotlin-fhirpath/evaluation-semantics/).
 - Resource equality compares full object structure, including `id`.
 
 A further set of divergences exists against the official test suite itself, where the engine's authors judged the test or the spec to be wrong. Each is documented with a link to the corresponding HL7 discussion.

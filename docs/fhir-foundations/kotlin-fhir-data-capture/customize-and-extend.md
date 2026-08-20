@@ -1,7 +1,7 @@
 ---
 title: Customize and extend
 description: Custom question widgets, the validation surface, and extracting FHIR resources from completed responses.
-slug: /fhir-foundation/kotlin-fhir-data-capture/customize-and-extend/
+slug: /fhir-foundations/kotlin-fhir-data-capture/customize-and-extend/
 sidebar_position: 40
 guide_type: Extension guide
 guide_status: partial
@@ -45,7 +45,7 @@ Validation runs when the submit getter is called, and interactively as users ans
 
 ## Extraction from response to resources
 
-A `QuestionnaireResponse` records answers, but clinical systems usually want real resources such as a `Patient` or an `Observation`. The SDK implements the SDC **template-based extraction** mechanism. The Questionnaire embeds template resources with `templateExtract` and `templateExtractValue` extensions whose FHIRPath expressions pull answers into place, and the extraction engine produces a transaction `Bundle` ready to post to a server or hand to [Kotlin FHIR Engine](/fhir-foundation/kotlin-fhir-engine/).
+A `QuestionnaireResponse` records answers, but clinical systems usually want real resources such as a `Patient` or an `Observation`. The SDK implements the SDC **template-based extraction** mechanism. The Questionnaire embeds template resources with `templateExtract` and `templateExtractValue` extensions whose FHIRPath expressions pull answers into place, and the extraction engine produces a transaction `Bundle` ready to post to a server or hand to [Kotlin FHIR Engine](/fhir-foundations/kotlin-fhir-engine/).
 
 `TemplateExtractionEngine.canExtract(questionnaire)` tells you whether a Questionnaire carries extraction templates before you offer the behavior in your UI.
 
@@ -53,7 +53,7 @@ The other two SDC extraction mechanisms are out of scope in the current release.
 
 ## Known edges
 
-This SDK is the youngest in the group, and some SDC corners are partial in the current alpha.
+This SDK is the youngest in the pillar, and some SDC corners are partial in the current alpha.
 
 - `choiceColumn` rendering is partially implemented.
 - Item-media attachments render images, and other MIME types raise.

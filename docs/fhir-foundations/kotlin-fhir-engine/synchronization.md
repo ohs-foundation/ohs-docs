@@ -1,7 +1,7 @@
 ---
 title: Synchronize with a FHIR server
 description: The two-phase sync model, the FhirSyncTask contract, and how each platform schedules it.
-slug: /fhir-foundation/kotlin-fhir-engine/synchronization/
+slug: /fhir-foundations/kotlin-fhir-engine/synchronization/
 sidebar_position: 40
 guide_type: Usage guide
 guide_status: ready
@@ -54,4 +54,4 @@ After a successful cycle against a test server, resources created on the device 
 
 ## Next step
 
-Browser targets add one build-level requirement to all of this. See [run the engine in the browser](/fhir-foundation/kotlin-fhir-engine/web-targets/).
+Browser targets add one build-level requirement to all of this. See [run the engine in the browser](/fhir-foundations/kotlin-fhir-engine/web-targets/).

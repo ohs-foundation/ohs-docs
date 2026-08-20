@@ -117,108 +117,108 @@
       "searchIndexed": true
     },
     {
-      "id": "fhir-foundation",
-      "path": "/ohs-docs/fhir-foundation/",
+      "id": "fhir-foundations",
+      "path": "/ohs-docs/fhir-foundations/",
       "searchIndexed": true
     },
     {
-      "id": "fhir-foundation-platform-support",
-      "path": "/ohs-docs/fhir-foundation/platform-support/",
+      "id": "fhir-foundations-platform-support",
+      "path": "/ohs-docs/fhir-foundations/platform-support/",
       "searchIndexed": true
     },
     {
-      "id": "fhir-foundation-versions",
-      "path": "/ohs-docs/fhir-foundation/versions/",
+      "id": "fhir-foundations-versions",
+      "path": "/ohs-docs/fhir-foundations/versions/",
       "searchIndexed": true
     },
     {
       "id": "kotlin-fhir",
-      "path": "/ohs-docs/fhir-foundation/kotlin-fhir/",
+      "path": "/ohs-docs/fhir-foundations/kotlin-fhir/",
       "searchIndexed": true
     },
     {
       "id": "kotlin-fhir-get-started",
-      "path": "/ohs-docs/fhir-foundation/kotlin-fhir/get-started/",
+      "path": "/ohs-docs/fhir-foundations/kotlin-fhir/get-started/",
       "searchIndexed": true
     },
     {
       "id": "kotlin-fhir-working-with-resources",
-      "path": "/ohs-docs/fhir-foundation/kotlin-fhir/working-with-resources/",
+      "path": "/ohs-docs/fhir-foundations/kotlin-fhir/working-with-resources/",
       "searchIndexed": true
     },
     {
       "id": "kotlin-fhir-serialization",
-      "path": "/ohs-docs/fhir-foundation/kotlin-fhir/serialization/",
+      "path": "/ohs-docs/fhir-foundations/kotlin-fhir/serialization/",
       "searchIndexed": true
     },
     {
       "id": "kotlin-fhir-search-parameters",
-      "path": "/ohs-docs/fhir-foundation/kotlin-fhir/search-parameters/",
+      "path": "/ohs-docs/fhir-foundations/kotlin-fhir/search-parameters/",
       "searchIndexed": true
     },
     {
       "id": "kotlin-fhirpath",
-      "path": "/ohs-docs/fhir-foundation/kotlin-fhirpath/",
+      "path": "/ohs-docs/fhir-foundations/kotlin-fhirpath/",
       "searchIndexed": true
     },
     {
       "id": "kotlin-fhirpath-get-started",
-      "path": "/ohs-docs/fhir-foundation/kotlin-fhirpath/get-started/",
+      "path": "/ohs-docs/fhir-foundations/kotlin-fhirpath/get-started/",
       "searchIndexed": true
     },
     {
       "id": "kotlin-fhirpath-evaluation-semantics",
-      "path": "/ohs-docs/fhir-foundation/kotlin-fhirpath/evaluation-semantics/",
+      "path": "/ohs-docs/fhir-foundations/kotlin-fhirpath/evaluation-semantics/",
       "searchIndexed": true
     },
     {
       "id": "kotlin-fhirpath-conformance",
-      "path": "/ohs-docs/fhir-foundation/kotlin-fhirpath/conformance/",
+      "path": "/ohs-docs/fhir-foundations/kotlin-fhirpath/conformance/",
       "searchIndexed": true
     },
     {
       "id": "kotlin-fhir-engine",
-      "path": "/ohs-docs/fhir-foundation/kotlin-fhir-engine/",
+      "path": "/ohs-docs/fhir-foundations/kotlin-fhir-engine/",
       "searchIndexed": true
     },
     {
       "id": "kotlin-fhir-engine-get-started",
-      "path": "/ohs-docs/fhir-foundation/kotlin-fhir-engine/get-started/",
+      "path": "/ohs-docs/fhir-foundations/kotlin-fhir-engine/get-started/",
       "searchIndexed": true
     },
     {
       "id": "kotlin-fhir-engine-persist-and-search",
-      "path": "/ohs-docs/fhir-foundation/kotlin-fhir-engine/persist-and-search/",
+      "path": "/ohs-docs/fhir-foundations/kotlin-fhir-engine/persist-and-search/",
       "searchIndexed": true
     },
     {
       "id": "kotlin-fhir-engine-synchronization",
-      "path": "/ohs-docs/fhir-foundation/kotlin-fhir-engine/synchronization/",
+      "path": "/ohs-docs/fhir-foundations/kotlin-fhir-engine/synchronization/",
       "searchIndexed": true
     },
     {
       "id": "kotlin-fhir-engine-web-targets",
-      "path": "/ohs-docs/fhir-foundation/kotlin-fhir-engine/web-targets/",
+      "path": "/ohs-docs/fhir-foundations/kotlin-fhir-engine/web-targets/",
       "searchIndexed": true
     },
     {
       "id": "kotlin-fhir-data-capture",
-      "path": "/ohs-docs/fhir-foundation/kotlin-fhir-data-capture/",
+      "path": "/ohs-docs/fhir-foundations/kotlin-fhir-data-capture/",
       "searchIndexed": true
     },
     {
       "id": "kotlin-fhir-data-capture-get-started",
-      "path": "/ohs-docs/fhir-foundation/kotlin-fhir-data-capture/get-started/",
+      "path": "/ohs-docs/fhir-foundations/kotlin-fhir-data-capture/get-started/",
       "searchIndexed": true
     },
     {
       "id": "kotlin-fhir-data-capture-render",
-      "path": "/ohs-docs/fhir-foundation/kotlin-fhir-data-capture/render-a-questionnaire/",
+      "path": "/ohs-docs/fhir-foundations/kotlin-fhir-data-capture/render-a-questionnaire/",
       "searchIndexed": true
     },
     {
       "id": "kotlin-fhir-data-capture-customize",
-      "path": "/ohs-docs/fhir-foundation/kotlin-fhir-data-capture/customize-and-extend/",
+      "path": "/ohs-docs/fhir-foundations/kotlin-fhir-data-capture/customize-and-extend/",
       "searchIndexed": true
     }
   ]

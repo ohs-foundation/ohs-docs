@@ -1,7 +1,7 @@
 ---
 title: Search the local store
 description: The type-safe search DSL with filters, sorting, counts, and the boundaries of what is queryable offline.
-slug: /fhir-foundation/kotlin-fhir-engine/persist-and-search/
+slug: /fhir-foundations/kotlin-fhir-engine/persist-and-search/
 sidebar_position: 30
 guide_type: Usage guide
 guide_status: ready
@@ -70,7 +70,7 @@ Beyond flat filters, the DSL supports nested searches on referenced resources, f
 
 ## What is queryable
 
-- Indexing happens at write time, driven by the standard R4 search-parameter definitions. Parameters whose FHIRPath expressions the [FHIRPath engine](/fhir-foundation/kotlin-fhirpath/) cannot evaluate, such as `resolve()`-based ones, are skipped, so those parameters return no results rather than failing.
+- Indexing happens at write time, driven by the standard R4 search-parameter definitions. Parameters whose FHIRPath expressions the [FHIRPath engine](/fhir-foundations/kotlin-fhirpath/) cannot evaluate, such as `resolve()`-based ones, are skipped, so those parameters return no results rather than failing.
 - Custom search parameters can be registered at initialization through a `SearchParamDefinitionsProvider` in the engine configuration. Resources written after registration are indexed for them.
 
 ## Checkpoint
@@ -79,4 +79,4 @@ Searching `StringClientParam("name")` for a prefix of a stored patient's name re
 
 ## Next step
 
-[Synchronize with a server](/fhir-foundation/kotlin-fhir-engine/synchronization/). The change log you have been silently writing becomes an upload.
+[Synchronize with a server](/fhir-foundations/kotlin-fhir-engine/synchronization/). The change log you have been silently writing becomes an upload.

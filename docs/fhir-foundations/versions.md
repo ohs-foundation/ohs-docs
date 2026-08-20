@@ -1,7 +1,7 @@
 ---
 title: Versions and compatibility
 description: Current versions, how the four libraries pair with each other, and the history of their Maven coordinates.
-slug: /fhir-foundation/versions/
+slug: /fhir-foundations/versions/
 sidebar_position: 30
 guide_type: Technical reference
 guide_status: ready

@@ -1,7 +1,7 @@
 ---
 title: Serialize and deserialize
 description: Reading and writing FHIR JSON with kotlinx.serialization, and which Json configuration options apply.
-slug: /fhir-foundation/kotlin-fhir/serialization/
+slug: /fhir-foundations/kotlin-fhir/serialization/
 sidebar_position: 40
 guide_type: Usage guide
 guide_status: ready
@@ -54,4 +54,4 @@ JSON is the only format the library targets and tests. FHIR XML and Turtle are n
 
 ## Next step
 
-[Extract search parameters](/fhir-foundation/kotlin-fhir/search-parameters/) covers pulling indexable values out of resources without a FHIRPath engine.
+[Extract search parameters](/fhir-foundations/kotlin-fhir/search-parameters/) covers pulling indexable values out of resources without a FHIRPath engine.

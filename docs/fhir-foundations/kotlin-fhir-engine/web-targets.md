@@ -1,7 +1,7 @@
 ---
 title: Run the engine in the browser
 description: What the JS and Wasm targets need, covering the SQLite web worker, OPFS storage, and cross-origin isolation headers.
-slug: /fhir-foundation/kotlin-fhir-engine/web-targets/
+slug: /fhir-foundations/kotlin-fhir-engine/web-targets/
 sidebar_position: 50
 guide_type: Setup guide
 guide_status: ready
@@ -35,7 +35,7 @@ The SQLite worker is a *local* npm module inside the engine, and Gradle cannot p
 ## What is different on web, operationally
 
 - **Storage lives in OPFS**, scoped to the origin. Clearing site data deletes the database.
-- **No background sync.** A tab that is closed runs nothing. Schedule sync as a foreground loop while the app is open, as described in [synchronization](/fhir-foundation/kotlin-fhir-engine/synchronization/).
+- **No background sync.** A tab that is closed runs nothing. Schedule sync as a foreground loop while the app is open, as described in [synchronization](/fhir-foundations/kotlin-fhir-engine/synchronization/).
 - **Both web targets behave the same** at the API level. `js` and `wasmJs` differ in compilation, not in engine capability.
 
 ## Checkpoint

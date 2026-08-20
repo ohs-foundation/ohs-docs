@@ -1,7 +1,7 @@
 ---
 title: Extract search parameters
 description: Using the generated search-parameter extractors to pull indexable values from resources, and what they cover.
-slug: /fhir-foundation/kotlin-fhir/search-parameters/
+slug: /fhir-foundations/kotlin-fhir/search-parameters/
 sidebar_position: 50
 guide_type: Usage guide
 guide_status: ready
@@ -50,9 +50,9 @@ Iterate `all`, never the union of every declared parameter.
 
 ## Coverage boundaries
 
-- The repository documents which FHIRPath patterns the generator supports and which parameters fall outside them. Consult it when a parameter you need is in `unsupported`. For those parameters, the `expression` metadata still carries the original FHIRPath string, so you can evaluate it with [Kotlin FHIRPath](/fhir-foundation/kotlin-fhirpath/) instead.
+- The repository documents which FHIRPath patterns the generator supports and which parameters fall outside them. Consult it when a parameter you need is in `unsupported`. For those parameters, the `expression` metadata still carries the original FHIRPath string, so you can evaluate it with [Kotlin FHIRPath](/fhir-foundations/kotlin-fhirpath/) instead.
 - In the current release candidate, parameters whose expression is a union of several paths extract only the first branch. If a parameter matters clinically to your application, verify its extraction against your own data rather than assuming full-expression semantics.
 
 ## Where this sits in the stack
 
-These extractors exist to make search indexing cheap and multiplatform. [Kotlin FHIR Engine](/fhir-foundation/kotlin-fhir-engine/) does not use them directly, since it evaluates search-parameter expressions with the FHIRPath engine for broader coverage. The two approaches are complementary. Use generated extraction when you control the parameter set and want zero interpretation overhead, and engine evaluation when you need arbitrary expressions.
+These extractors exist to make search indexing cheap and multiplatform. [Kotlin FHIR Engine](/fhir-foundations/kotlin-fhir-engine/) does not use them directly, since it evaluates search-parameter expressions with the FHIRPath engine for broader coverage. The two approaches are complementary. Use generated extraction when you control the parameter set and want zero interpretation overhead, and engine evaluation when you need arbitrary expressions.

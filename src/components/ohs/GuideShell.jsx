@@ -71,14 +71,14 @@ function PageToc({ entries, activeId, mobile = false }) {
 
 /**
  * Top-level section switcher. The site has one docs area per sidebar (the
- * Player journey, the FHIR Foundation group), and this is the persistent way
- * to move between them from any page. Add an entry here when a new group
- * lands. Rendered in the topbar on desktop and inside the sidebar panel on
- * mobile, selected purely by CSS.
+ * Player journey, the FHIR Foundations pillar), and this is the persistent
+ * way to move between them from any page. Add an entry here when a new
+ * section lands. Rendered in the topbar on desktop and inside the sidebar
+ * panel on mobile, selected purely by CSS.
  */
 function SectionNav({ className }) {
   const { pathname } = useLocation();
-  const inFoundation = pathname.includes("/fhir-foundation/");
+  const inFoundation = pathname.includes("/fhir-foundations/");
   return (
     <nav className={className} aria-label="Documentation sections">
       <Link
@@ -89,11 +89,11 @@ function SectionNav({ className }) {
         Player
       </Link>
       <Link
-        to="/fhir-foundation/"
+        to="/fhir-foundations/"
         className={inFoundation ? "active" : undefined}
         aria-current={inFoundation ? "true" : undefined}
       >
-        FHIR Foundation
+        FHIR Foundations
       </Link>
     </nav>
   );

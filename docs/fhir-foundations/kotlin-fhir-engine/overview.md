@@ -1,7 +1,7 @@
 ---
 title: Kotlin FHIR Engine
 description: On-device FHIR R4 persistence, type-safe search, and synchronization with remote FHIR servers, for offline-capable apps.
-slug: /fhir-foundation/kotlin-fhir-engine/
+slug: /fhir-foundations/kotlin-fhir-engine/
 sidebar_position: 10
 guide_type: Component overview
 guide_status: ready
@@ -11,13 +11,13 @@ repository: kotlin-fhir-engine
 
 ## What it is
 
-Kotlin FHIR Engine is the storage-and-sync layer of the FHIR Foundation stack. It is a Kotlin Multiplatform SDK for building offline-capable healthcare applications on FHIR R4. It persists resources on the device, indexes them for typed search, records local edits as a change log, and synchronizes both directions with a remote FHIR server.
+Kotlin FHIR Engine is the storage-and-sync layer of the FHIR Foundations stack. It is a Kotlin Multiplatform SDK for building offline-capable healthcare applications on FHIR R4. It persists resources on the device, indexes them for typed search, records local edits as a change log, and synchronizes both directions with a remote FHIR server.
 
 It is the Kotlin Multiplatform successor to the engine from the Android FHIR SDK, which is why a young library carries a mature API shape, and why the same programming model now runs on Android, iOS, desktop JVM, and the browser.
 
 ## What you get
 
-- **Persistence** backed by Room for Kotlin Multiplatform over SQLite. Resources are stored alongside typed index tables (string, token, date, number, quantity, reference, URI, position), populated by evaluating each resource's search-parameter FHIRPath expressions with [Kotlin FHIRPath](/fhir-foundation/kotlin-fhirpath/).
+- **Persistence** backed by Room for Kotlin Multiplatform over SQLite. Resources are stored alongside typed index tables (string, token, date, number, quantity, reference, URI, position), populated by evaluating each resource's search-parameter FHIRPath expressions with [Kotlin FHIRPath](/fhir-foundations/kotlin-fhirpath/).
 - **A type-safe search DSL.** `engine.search<Patient> { ... }` takes filters and sorting with typed parameter classes per FHIR search type, plus nested searches, includes, reverse includes, and counts.
 - **An offline change log.** Local creates, updates, and deletes are captured as `LocalChange` records, which is what makes upload possible after disconnected operation.
 - **Two-phase synchronization**, download then upload, with pluggable conflict resolution (`AcceptLocalConflictResolver` and `AcceptRemoteConflictResolver`), configurable upload strategies (transaction bundles or per-resource requests, patch or full-resource), and first-class WorkManager scheduling on Android.
@@ -25,7 +25,7 @@ It is the Kotlin Multiplatform successor to the engine from the Android FHIR SDK
 
 ## API shape at a glance
 
-Call `FhirEngineProvider.init(configuration, context)` once at startup and `FhirEngineProvider.getInstance(context)` for the `FhirEngine`, then use `create`, `get`, `update`, `delete`, and `search`. Sync is expressed as a `FhirSyncTask` your app schedules per platform. The engine's method signatures use the R4 types from [Kotlin FHIR](/fhir-foundation/kotlin-fhir/) directly, so your app depends on `fhir-model-r4` as well.
+Call `FhirEngineProvider.init(configuration, context)` once at startup and `FhirEngineProvider.getInstance(context)` for the `FhirEngine`, then use `create`, `get`, `update`, `delete`, and `search`. Sync is expressed as a `FhirSyncTask` your app schedules per platform. The engine's method signatures use the R4 types from [Kotlin FHIR](/fhir-foundations/kotlin-fhir/) directly, so your app depends on `fhir-model-r4` as well.
 
 ## What it is not
 
@@ -38,4 +38,4 @@ Call `FhirEngineProvider.init(configuration, context)` once at startup and `Fhir
 
 ## Next step
 
-[Get the engine running](/fhir-foundation/kotlin-fhir-engine/get-started/) with the dependency, initialization, and a first stored resource.
+[Get the engine running](/fhir-foundations/kotlin-fhir-engine/get-started/) with the dependency, initialization, and a first stored resource.

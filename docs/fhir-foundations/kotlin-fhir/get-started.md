@@ -1,7 +1,7 @@
 ---
 title: Get started with Kotlin FHIR
 description: Add the data-model dependency to a Kotlin Multiplatform or Android project and round-trip your first resource.
-slug: /fhir-foundation/kotlin-fhir/get-started/
+slug: /fhir-foundations/kotlin-fhir/get-started/
 sidebar_position: 20
 guide_type: Get started
 guide_status: ready
@@ -17,7 +17,7 @@ Add Kotlin FHIR to a project, create a resource in code, and serialize it to FHI
 
 - A Kotlin project using a current Kotlin release, with the `kotlinx-serialization` plugin applied if you will serialize resources.
 - For JVM projects, a Java 21 runtime, because the current release candidate's JVM artifact targets Java 21.
-- Your target platform on the [support matrix](/fhir-foundation/platform-support/).
+- Your target platform on the [support matrix](/fhir-foundations/platform-support/).
 
 ## Add the dependency
 
@@ -41,7 +41,7 @@ dependencies {
 }
 ```
 
-Use `fhir-model` instead of `fhir-model-r4` only if you need R4, R4B, and R5 together. Check [versions and compatibility](/fhir-foundation/versions/) before combining this library with the rest of the stack.
+Use `fhir-model` instead of `fhir-model-r4` only if you need R4, R4B, and R5 together. Check [versions and compatibility](/fhir-foundations/versions/) before combining this library with the rest of the stack.
 
 ## Create a resource
 
@@ -89,4 +89,4 @@ Decoding as `Resource` dispatches on the JSON `resourceType` field and returns t
 
 ## Next step
 
-[Work with resources in more depth](/fhir-foundation/kotlin-fhir/working-with-resources/), covering modification, dates and decimals, and choice types.
+[Work with resources in more depth](/fhir-foundations/kotlin-fhir/working-with-resources/), covering modification, dates and decimals, and choice types.

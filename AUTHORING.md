@@ -14,7 +14,7 @@ Understand  ->  Run it  ->  Configure  ->  Extend  ->  Project and community
 
 Each audience enters at the same place and travels a different distance. An evaluator stops after Understand. An implementor continues through Configure and Extend. A contributor arrives at Project and community.
 
-Beside the journey sit **groups**: sets of repositories documented together for developers consuming them directly, each with its own sidebar in `sidebars.js` and its own directory under `docs/`. FHIR Foundation (`docs/fhir-foundation/`, the `fhirFoundation` sidebar) is the first; future groups follow the same pattern. Within a group, every repository gets the same page skeleton — overview, get started, task guides — and group-wide reference pages (platform matrix, version pairing) close the sidebar. A group's sidebar may subdivide repositories into tiers when the distinction changes what a reader should depend on; FHIR Foundation splits into Libraries (unopinionated building blocks) and Client SDKs (application-facing toolkits built on them). A new group needs a directory, a sidebar, entries in `tools/routes.json`, and an entry point on the landing page and in `LandingPage.jsx` navigation.
+Beside the journey sit **sections**: sets of repositories documented together for developers consuming them directly, each with its own sidebar in `sidebars.js` and its own directory under `docs/`. FHIR Foundations (`docs/fhir-foundations/`, the `fhirFoundations` sidebar) is the first; future sections follow the same pattern. Section names and category labels follow the Foundation's official taxonomy on the [projects page](https://ohs.foundation/projects) — "FHIR Foundations" is a *pillar* there, and its projects are labelled "Core Library" and "SDK" — so displayed wording must match that page, not invent terms. Within a section, every repository gets the same page skeleton — overview, get started, task guides — and section-wide reference pages (platform matrix, version pairing) close the sidebar. A section's sidebar may subdivide repositories into tiers when the distinction changes what a reader should depend on; FHIR Foundations splits into Core libraries and SDKs. A new section needs a directory, a sidebar, entries in `tools/routes.json`, an entry point on the landing page and in `LandingPage.jsx` navigation, and a `SectionNav` entry in `GuideShell.jsx`.
 
 **Section order and directory paths are independent.** Published slugs are permanent, so a page keeps its URL when it moves between sidebar sections. Decide where a page belongs for the reader in `sidebars.js`; decide where the file lives by the table below.
 
@@ -27,7 +27,7 @@ Beside the journey sit **groups**: sets of repositories documented together for 
 | Changing behaviour without code | `docs/configure/` |
 | Changing behaviour with code | `docs/extend/` |
 | A recipe spanning several components | `docs/guides/` — create it when the first one exists |
-| A page in a documentation group | `docs/<group>/` or `docs/<group>/<repository>/`, e.g. `docs/fhir-foundation/kotlin-fhir/` |
+| A page in a documentation section | `docs/<section>/` or `docs/<section>/<repository>/`, e.g. `docs/fhir-foundations/kotlin-fhir/` |
 | Diagrams and other page images | `docs/images/` |
 
 Single-component procedures nest under their component. Adaptation does not: configuration goes to `configure/` and code changes to `extend/`, whichever component they touch.
@@ -61,9 +61,9 @@ The shared shell renders the title, description, source link, focus, sidebar, an
 
 ### `guide_type`
 
-The page's purpose, shown as the eyebrow above the title. Use one of `Get started`, `Group overview`, `Component overview`, `Setup guide`, `Usage guide`, `Configuration guide`, `Extension guide`, `Concept`, `Technical reference`.
+The page's purpose, shown as the eyebrow above the title. Use one of `Get started`, `Pillar overview`, `Component overview`, `Setup guide`, `Usage guide`, `Configuration guide`, `Extension guide`, `Concept`, `Technical reference`.
 
-`Group overview` introduces a documentation group as a whole. `Usage guide` is for library documentation: using a published API in the reader's own code, as opposed to a `Setup guide`'s run-and-operate procedure.
+`Pillar overview` introduces an Open Health Stack pillar as a whole (the term comes from the Foundation's projects page). `Usage guide` is for library documentation: using a published API in the reader's own code, as opposed to a `Setup guide`'s run-and-operate procedure.
 
 It names a kind of page, never a state. `Setup pending` is not a page type.
 

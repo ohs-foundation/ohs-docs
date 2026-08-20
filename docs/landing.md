@@ -32,7 +32,7 @@ Player stops at a reference environment you can run and study. Hardening, scalin
 | See how the components connect | [The architecture](/concepts/architecture/) |
 | Get a reference environment running | [Get started](/get-started/) |
 | Adapt it without writing code | [Configure a screen from FHIR data](/configure/screen-from-fhir-data/) |
-| Build directly on the FHIR libraries | [FHIR Foundation](/fhir-foundation/) |
+| Build directly on the FHIR libraries | [FHIR Foundations](/fhir-foundations/) |
 | Extend a component or contribute | [Resources and contributing](/resources/) |
 
 ## What is in the toolkit
@@ -47,9 +47,9 @@ Player stops at a reference environment you can run and study. Hardening, scalin
 
 Two libraries sit underneath rather than beside these. [Player Client](https://github.com/ohs-foundation/player-client) renders healthcare screens from configuration, and the [Player Configuration IG](https://github.com/ohs-foundation/player-reference-ig) defines the FHIR vocabulary that configuration is written in. [The configuration model](/concepts/configuration-model/) explains how they work together.
 
-## The FHIR Foundation libraries
+## The FHIR Foundations pillar
 
-Beneath the whole toolkit sits [FHIR Foundation](/fhir-foundation/). It provides Kotlin Multiplatform libraries for the FHIR data model and FHIRPath evaluation, plus client SDKs built on them for on-device storage and sync and for Questionnaire-based data capture. Player's client is built on this stack, and it is equally usable in your own applications without the rest of Player. Its documentation is its own section, written for developers consuming the libraries and SDKs directly.
+Beneath the whole toolkit sits [FHIR Foundations](/fhir-foundations/), one of Open Health Stack's three pillars. It provides Kotlin Multiplatform core libraries for the FHIR data model and FHIRPath evaluation, plus client SDKs built on them for on-device storage and sync and for Questionnaire-based data capture. Player's client is built on this stack, and it is equally usable in your own applications without the rest of Player. Its documentation is its own section, written for developers consuming the libraries and SDKs directly.
 
 ## The wider ecosystem
 
