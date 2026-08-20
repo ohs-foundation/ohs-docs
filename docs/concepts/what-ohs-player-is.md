@@ -11,7 +11,7 @@ repository: ohs-player
 
 ## The short version
 
-OHS Player is a reference toolkit for the [Open Health Stack](https://ohs.foundation/). It takes the OHS building blocks — the FHIR libraries, the gateway, the analytics pipeline — and shows how they assemble into an end-to-end digital health platform that runs.
+OHS Player is a reference toolkit for the [Open Health Stack](https://ohs.foundation/). It takes the OHS building blocks (the FHIR libraries, the gateway, the analytics pipeline) and shows how they assemble into an end-to-end digital health platform that runs.
 
 It is a working skeleton. Every part of it is real, runnable software, and every part of it is meant to be replaced with your own.
 
@@ -25,7 +25,7 @@ The value is not the code you keep. It is knowing, before you commit a team to a
 
 That boundary is deliberate. A reference that pretended to be production-ready would be worse than useless, because the decisions that make a system production-ready are the ones that depend on a specific programme, a specific country, and a specific set of constraints.
 
-**Not programme-specific.** The community health scenario running through this site — a district office, health facilities, villages, care teams, and community health workers — exists to give every guide the same concrete thread. It is illustrative. Nothing about Player assumes community health.
+**Not programme-specific.** The community health scenario running through this site (a district office, health facilities, villages, care teams, and community health workers) exists to give every guide the same concrete thread. It is illustrative. Nothing about Player assumes community health.
 
 ## Who it is for
 
@@ -39,9 +39,9 @@ That boundary is deliberate. A reference that pretended to be production-ready w
 
 Player separates two kinds of change, and the distinction runs through the whole site.
 
-**Configuration** changes behaviour without code. Because the configuration is FHIR — questionnaires, view definitions, and the vocabulary that binds them — a programme team can change what a screen shows, what a form asks, and what an indicator counts without a Kotlin compiler.
+**Configuration** changes behaviour without code. Because the configuration is FHIR (questionnaires, view definitions, and the vocabulary that binds them), a programme team can change what a screen shows, what a form asks, and what an indicator counts without a Kotlin compiler.
 
-**Extension** changes behaviour with code: a new renderer, a custom gateway endpoint, an access rule of your own.
+**Extension** changes behaviour with code, such as a new renderer, a custom gateway endpoint, or an access rule of your own.
 
 Most adaptation is configuration. That is the argument Player exists to make.
 
@@ -49,4 +49,4 @@ Most adaptation is configuration. That is the argument Player exists to make.
 
 [The architecture](/concepts/architecture/) shows how the components connect and why everything routes through the gateway.
 
-[What you can do today](/concepts/what-you-can-do-today/) is the honest inventory: what runs now, what is on the roadmap, and whether Player fits your programme.
+[What you can do today](/concepts/what-you-can-do-today/) is the honest inventory of what runs now, what is on the roadmap, and whether Player fits your programme.

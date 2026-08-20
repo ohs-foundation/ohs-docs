@@ -13,7 +13,7 @@ repository: ohs-player
 
 Nothing here is required before you start. The [shortest path](/get-started/) works without it.
 
-It is the background that makes the rest of the site make sense, and the list is deliberately short — each entry says why Player needs it and points somewhere better than we could write ourselves. Skim it, and come back when a guide assumes something you do not have.
+It is the background that makes the rest of the site make sense, and the list is deliberately short. Each entry says why Player needs it and points somewhere better than we could write ourselves. Skim it, and come back when a guide assumes something you do not have.
 
 Tool versions and install steps are not here. Each guide states its own, because they differ per component and change more often than the ideas below.
 
@@ -22,11 +22,11 @@ Tool versions and install steps are not here. Each guide states its own, because
 Player stores, exchanges, and renders healthcare data as FHIR resources. Understanding resources, references between them, and search parameters will carry you through most of the site.
 
 - [HL7 FHIR overview](https://hl7.org/fhir/overview.html) for the model and its vocabulary
-- [FHIR resource index](https://hl7.org/fhir/resourcelist.html) for the resource types Player uses most: Patient, Encounter, Observation, Practitioner, Location, Task
+- [FHIR resource index](https://hl7.org/fhir/resourcelist.html) for the resource types Player uses most, namely Patient, Encounter, Observation, Practitioner, Location, and Task
 
 ## SQL-on-FHIR and ViewDefinitions
 
-This is the idea that makes Player configurable. A `ViewDefinition` declares, in data rather than code, which FHIR fields become a flat row. The Client App uses it to project FHIR into screen state; Analytics uses the same idea to project FHIR into reporting tables.
+This is the idea that makes Player configurable. A `ViewDefinition` declares, in data rather than code, which FHIR fields become a flat row. The Client App uses it to project FHIR into screen state, and Analytics uses the same idea to project FHIR into reporting tables.
 
 - [SQL-on-FHIR specification](https://sql-on-fhir.org/) for ViewDefinition structure
 - [FHIRPath](https://hl7.org/fhirpath/) for the expression language inside a ViewDefinition

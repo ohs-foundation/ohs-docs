@@ -83,6 +83,12 @@ A page without a procedure describes what the component is for and links to its 
 
 State what the software does not do — that is a fact worth having. Do not state what the documentation does not yet cover.
 
+## Punctuation
+
+Displayed text must not contain em dashes, semicolons, or colons. None, zero. That covers body prose, headings, list items, table cells, and every frontmatter value that renders (title, description, sidebar_label, guide_focus, eyebrow, action labels). Restructure the sentence instead. Split at the semicolon, end the sentence where the colon introduced a list, and give an em-dash aside its own sentence or parentheses.
+
+Machine syntax is exempt because changing it breaks it. Frontmatter keys, URLs, and code in fences and spans keep their required characters, but human-readable comments inside code blocks follow the rule. `npm run validate` enforces this on every page.
+
 ## Use normal Markdown
 
 Headings, lists, tables, links, fenced code blocks, and Docusaurus admonitions. No JSX import or HTML is required.

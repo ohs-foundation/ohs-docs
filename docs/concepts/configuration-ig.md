@@ -11,11 +11,11 @@ repository: configuration-ig
 
 ## Configuration that is FHIR
 
-Most configurable applications invent a configuration format. Player does not. Its configuration is FHIR, published as an **implementation guide** — a versioned set of FHIR definitions and rules.
+Most configurable applications invent a configuration format. Player does not. Its configuration is FHIR, published as an **implementation guide**, a versioned set of FHIR definitions and rules.
 
-The guide describes *what* to show: which resources to project into rows, how to combine them, which component renders each row, and how that component is configured. Any implementation that honours these artifacts satisfies the contract — nothing in the guide is specific to one application's code.
+The guide describes *what* to show. That covers which resources to project into rows, how to combine them, which component renders each row, and how that component is configured. Any implementation that honours these artifacts satisfies the contract, because nothing in the guide is specific to one application's code.
 
-That choice has consequences worth understanding before the detail:
+That choice has consequences worth understanding before the detail.
 
 - The configuration is **portable**. Another FHIR-native tool can read the same artifacts.
 - It is **versionable and publishable**, because an implementation guide is a canonical artifact rather than a file in a repository.
@@ -27,9 +27,9 @@ Say *FHIR IG*, not *config file*. The distinction is the whole argument.
 
 The most important idea in the guide is that it operates on two levels, and confusing them is the usual source of trouble.
 
-**Blueprint** is what the guide itself defines: the `ViewJoinMap` and `ViewConfig` logical models, and the `SearchScope` vocabulary. These are the shapes an author writes against, and they change rarely.
+**Blueprint** is what the guide itself defines, meaning the `ViewJoinMap` and `ViewConfig` logical models and the `SearchScope` vocabulary. These are the shapes an author writes against, and they change rarely.
 
-**Runtime configuration** is *instances* of those models — your actual screens. These are your content, not the guide's. The guide ships only examples of them.
+**Runtime configuration** is *instances* of those models, your actual screens. These are your content, not the guide's. The guide ships only examples of them.
 
 A runtime artifact declares its kind through its top-level `resourceType`, set to the canonical URL of the blueprint it instantiates. That is how a Player tells a ViewDefinition from a ViewJoinMap from a ViewConfig without inspecting its contents.
 
@@ -37,7 +37,7 @@ A runtime artifact declares its kind through its top-level `resourceType`, set t
 
 `ViewDefinition` is **not** defined here. It comes from [SQL-on-FHIR v2](https://sql-on-fhir.org/ig/), and this guide is a consumer of that specification rather than a redefinition of it.
 
-Player supports the full projection surface: `where`, `forEach`, `forEachOrNull`, `unionAll`, nested `select`, constants, collection columns, and all FHIR primitive column types.
+Player supports the full projection surface, covering `where`, `forEach`, `forEachOrNull`, `unionAll`, nested `select`, constants, collection columns, and all FHIR primitive column types.
 
 This is the same artifact the analytics pipeline uses to flatten FHIR into reporting tables. One specification, two destinations.
 
@@ -45,7 +45,7 @@ This is the same artifact the analytics pipeline uses to flatten FHIR into repor
 
 ### ViewJoinMap
 
-A `ViewDefinition` projects one resource type. Real screens need several — a patient with their allergies, a household with its members. `ViewJoinMap` stitches them into a single flat row.
+A `ViewDefinition` projects one resource type. Real screens need several, such as a patient with their allergies or a household with its members. `ViewJoinMap` stitches them into a single flat row.
 
 | Field | Cardinality | Meaning |
 | --- | --- | --- |
@@ -56,13 +56,13 @@ A `ViewDefinition` projects one resource type. Real screens need several — a p
 | `searchParam` | 0..1 | Disambiguates same-type included resources |
 | `joins` | 0..* | Additional views whose columns merge into the row |
 
-Each entry in `joins` carries its own `view`, `from`, `resource`, optional `searchParam`, and a `matchKey` — the column in the pivot view used as a foreign key to locate the joined resource.
+Each entry in `joins` carries its own `view`, `from`, `resource`, optional `searchParam`, and a `matchKey`, the column in the pivot view used as a foreign key to locate the joined resource.
 
-Two rules govern the result. **The pivot drives row count**: one row per pivot instance, with joins appending columns rather than multiplying rows. And **column names must be unique** across the pivot and every join, because the output is a flat merge.
+Two rules govern the result. **The pivot drives row count**, with one row per pivot instance and joins appending columns rather than multiplying rows. And **column names must be unique** across the pivot and every join, because the output is a flat merge.
 
 ### SearchScope
 
-`from` refers to where in a FHIR search response a resource appears:
+`from` refers to where in a FHIR search response a resource appears.
 
 | Code | Meaning |
 | --- | --- |
@@ -74,24 +74,24 @@ So a join is not a database join. It is a statement about the shape of a FHIR se
 
 ### ViewConfig
 
-`ViewConfig` is a contract for declaring a configuration, not a fixed set of fields. It is **self-describing**: a config lists its own properties, each with a `name`, a `type`, and a default `value`.
+`ViewConfig` is a contract for declaring a configuration, not a fixed set of fields. It is **self-describing**. A config lists its own properties, each with a `name`, a `type`, and a default `value`.
 
 | Field | Cardinality | Meaning |
 | --- | --- | --- |
 | `viewType` | 1..1 | The view type this config parameterises |
-| `property` | 0..* | One configuration field: `name`, `type`, `value[x]` |
+| `property` | 0..* | One configuration field with `name`, `type`, and `value[x]` |
 
-A Player generates a typed configuration class from the property list and binds the values to the renderer selected by `viewType`. That is why adding a configurable option is a configuration change rather than a schema change — the guide never has to enumerate anyone's fields.
+A Player generates a typed configuration class from the property list and binds the values to the renderer selected by `viewType`. That is why adding a configurable option is a configuration change rather than a schema change. The guide never has to enumerate anyone's fields.
 
 ### View types are yours
 
-The guide ships a view-type CodeSystem, but it is **an example**. View types are implementer-defined: a Player provides its own CodeSystem, and its ViewConfigs bind to those codes. Mapping a code to a concrete renderer is the implementation's own business.
+The guide ships a view-type CodeSystem, but it is **an example**. View types are implementer-defined. A Player provides its own CodeSystem, and its ViewConfigs bind to those codes. Mapping a code to a concrete renderer is the implementation's own business.
 
 This matters when planning. Your view-type vocabulary is part of your configuration, not something inherited.
 
 ## How configuration reaches an application
 
-Runtime configuration is delivered to a Player at startup. It can be bundled with the application, seeded into a database, or fetched from a server — the guide does not mandate one.
+Runtime configuration is delivered to a Player at startup. It can be bundled with the application, seeded into a database, or fetched from a server. The guide does not mandate one.
 
 The reference application bundles it, which is the simplest arrangement to inspect. [Configure a screen from FHIR data](/configure/screen-from-fhir-data/) shows where those files live and what changing one involves.
 

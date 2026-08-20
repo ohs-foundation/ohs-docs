@@ -38,5 +38,6 @@ See AUTHORING.md for the full conventions. The ones the gates hard-fail on:
 - Never write that documentation is missing — phrases like "coming soon", "to be documented", "will be added" fail the build. A page without a procedure describes what the component is for and links to its repository.
 - Body headings start at `##` (frontmatter title is the h1) and must not skip a level.
 - Every image needs non-empty alt text.
+- Displayed text must contain no em dashes, semicolons, or colons — anywhere: prose, headings, table cells, and rendered frontmatter values (title, description, sidebar_label, guide_focus, eyebrow, labels). Restructure sentences instead. Code syntax, URLs, and frontmatter keys are exempt, but human-readable code comments follow the rule.
 
 Other conventions: number `sidebar_position` in tens; put page images in `docs/images/` (relative paths), never in `static/` (that publishes them twice); `docs/landing.md` owns all landing-page content — edit `LandingPage.jsx` only to change the template. Material owned by a component repository belongs in that repository; `contributing/submission-pack/` has the templates maintainers use.
