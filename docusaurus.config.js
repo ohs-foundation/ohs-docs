@@ -1,6 +1,6 @@
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: "OHS Player Reference",
+  title: "Open Health Stack",
   tagline: "Evaluate, assemble, and adapt the OHS Player reference toolkit",
   favicon: "assets/favicon.svg",
   url: "https://ohs-foundation.github.io",
