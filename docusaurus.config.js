@@ -90,8 +90,8 @@ const config = {
           position: "left",
         },
         {
-          to: "/fhir-foundation/",
-          label: "FHIR Foundation",
+          to: "/fhir-foundations/",
+          label: "FHIR Foundations",
           position: "left",
         },
         {
