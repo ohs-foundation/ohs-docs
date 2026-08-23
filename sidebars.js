@@ -51,6 +51,7 @@ const sidebars = {
             "concepts/configuration-ig",
             "components/reference-backend/overview",
             "components/web-portal/overview",
+            "components/web-portal/screens",
             "components/reference-analytics/overview",
           ],
         },
@@ -76,13 +77,21 @@ const sidebars = {
       type: "category",
       label: "Configure",
       collapsible: false,
-      items: ["configure/screen-from-fhir-data"],
+      items: [
+        "configure/screen-from-fhir-data",
+        "configure/web-portal-configuration",
+        "configure/web-portal-access",
+      ],
     },
     {
       type: "category",
       label: "Extend",
       collapsible: false,
-      items: ["extend/decide", "extend/backend-extensions"],
+      items: [
+        "extend/decide",
+        "extend/backend-extensions",
+        "extend/web-portal-extensions",
+      ],
     },
     {
       type: "category",

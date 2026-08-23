@@ -82,6 +82,11 @@
       "searchIndexed": true
     },
     {
+      "id": "web-portal-screens",
+      "path": "/ohs-docs/components/web-portal/screens/",
+      "searchIndexed": true
+    },
+    {
       "id": "reference-infrastructure",
       "path": "/ohs-docs/components/reference-infrastructure/",
       "searchIndexed": true
@@ -102,6 +107,16 @@
       "searchIndexed": true
     },
     {
+      "id": "configure-web-portal",
+      "path": "/ohs-docs/configure/web-portal-configuration/",
+      "searchIndexed": true
+    },
+    {
+      "id": "configure-web-portal-access",
+      "path": "/ohs-docs/configure/web-portal-access/",
+      "searchIndexed": true
+    },
+    {
       "id": "extend-decide",
       "path": "/ohs-docs/extend/decide/",
       "searchIndexed": true
@@ -109,6 +124,11 @@
     {
       "id": "backend-extensions",
       "path": "/ohs-docs/extend/backend-extensions/",
+      "searchIndexed": true
+    },
+    {
+      "id": "web-portal-extensions",
+      "path": "/ohs-docs/extend/web-portal-extensions/",
       "searchIndexed": true
     },
     {
