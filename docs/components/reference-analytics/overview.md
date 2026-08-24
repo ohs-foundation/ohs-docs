@@ -45,9 +45,9 @@ The reference set covers the resource types the community health scenario produc
 
 ## Which FHIR server it reads
 
-The pipeline reads from whichever FHIR server it is configured to point at, and the reference ships pointed at a separate server holding a synthetic dataset rather than at the transactional one.
+The pipeline reads from whichever FHIR server it is configured to point at, and the reference ships pointed at the transactional server the environment runs.
 
-That is a convenience, not a limitation. Dashboards are populated from the first run, so you can see what the reporting layer does without first generating enough real activity to make a chart meaningful. Pointing it at the transactional server is a configuration change.
+Dashboards therefore report on what the Player itself holds: the sample data loaded on the first run, plus whatever the Web Portal and the Client App have captured since. Pointing the pipeline elsewhere, at a server holding a synthetic dataset for instance, is a configuration change.
 
 ## Two layers of tables
 
