@@ -26,7 +26,7 @@ Docker Engine with Compose v2.29 or newer, plus a shell environment the setup sc
 | Alpine | `apk add gettext` |
 | macOS | `brew install gettext && brew link --force gettext` |
 
-The link step on macOS is not optional. Homebrew keeps `gettext` keg-only, so the package installs but `envsubst` stays off your `PATH` until the link is forced. macOS also ships Bash 3.2, which is too old; `brew install bash` replaces it.
+The link step on macOS is not optional. Homebrew keeps `gettext` keg-only, so the package installs but `envsubst` stays off your `PATH` until the link is forced. macOS also ships Bash 3.2, which is too old, so `brew install bash` replaces it.
 
 Compose must be recent because two of the images are built from source and the script skips pulling those.
 
@@ -99,7 +99,7 @@ The first run also loads sample data. That is an organisation, a six-level locat
 | `admin-user` | `Admin@123` | Super User |
 | `practitioner-user` | `Practitioner@123` | Practitioner |
 
-Both sign in to the Portal at `http://localhost:8084`. `./dev.sh up` prints them at the end of every run, together with the Keycloak admin console credentials, which are generated per install. These are sample credentials: change them for anything beyond development, staging or testing.
+Both sign in to the Portal at `http://localhost:8084`. `./dev.sh up` prints them at the end of every run, together with the Keycloak admin console credentials, which are generated per install. These are sample credentials, so change them for anything beyond development, staging or testing.
 
 ## Choose an authentication mode
 
@@ -148,7 +148,7 @@ while grep -q '=\[generated\]' .env; do
 done
 ```
 
-On macOS, `sed -i` takes an argument: use `sed -i ''` instead.
+On macOS, `sed -i` takes an argument, so use `sed -i ''` instead.
 
 Render the four service configurations. Each `envsubst` call is given an explicit list of variables, and that list is what stops it from also consuming Spring's own `${DB_HOST}` and `${DB_PORT}` placeholders, which have to survive into the rendered file for the container to expand at runtime.
 
