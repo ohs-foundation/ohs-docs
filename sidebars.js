@@ -212,6 +212,7 @@ const sidebars = {
       collapsible: false,
       items: [
         "overview/solutions-and-pathways",
+        "overview/architecture-samples",
       ],
     },
   ],

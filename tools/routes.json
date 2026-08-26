@@ -17,6 +17,11 @@
       "searchIndexed": true
     },
     {
+      "id": "architecture-samples",
+      "path": "/ohs-docs/overview/architecture-samples/",
+      "searchIndexed": true
+    },
+    {
       "id": "governance-and-standards",
       "path": "/ohs-docs/overview/governance-and-standards/",
       "searchIndexed": true
