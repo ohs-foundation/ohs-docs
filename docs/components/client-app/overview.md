@@ -29,6 +29,8 @@ It is the component most of the Open Health Stack converges on, and the one an i
 
 The app is an assembly of the OHS foundational libraries rather than a monolith. This is the clearest illustration of what Pillar 1 gives Pillar 2.
 
+![The FHIR Foundations stack showing how Kotlin Multiplatform SDKs (Data Capture and Engine) layer over Kotlin FHIRPath and Kotlin FHIR models.](../../../images/fhir-foundations-architecture.svg)
+
 | Library | What it provides |
 | --- | --- |
 | [`kotlin-fhir`](https://github.com/ohs-foundation/kotlin-fhir) | The FHIR data model as Kotlin types |

@@ -13,6 +13,8 @@ repository: ohs-player
 
 Open Health Stack provides unbundled open source building blocks that can be imported independently into any digital health project.
 
+![The FHIR Foundations stack showing how Kotlin FHIR Data Capture and Kotlin FHIR Engine layer on top of Kotlin FHIRPath and Kotlin FHIR data model.](../../images/fhir-foundations-architecture.svg)
+
 | Foundational component | Capability provided | Consumed by |
 | --- | --- | --- |
 | `kotlin-fhir` | Type-safe FHIR data models and JSON serialization | Client App |
