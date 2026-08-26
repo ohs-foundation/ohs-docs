@@ -12,7 +12,9 @@ repository: ohs-player
 
 ## The end-to-end builder journey
 
-Open Health Stack provides a clear, sequential path from bringing up local infrastructure to running multiplatform client applications and streaming analytics dashboards.
+The fastest way to get started with Open Health Stack is to spin up the OHS Player reference implementation. It provides a clear, sequential path from bringing up local infrastructure to running multiplatform client applications and streaming analytics dashboards.
+
+Alternatively, if you are looking for component-specific examples, individual SDK integrations, or form authoring guides, explore [Tutorials and codelabs](/resources/tutorials-and-codelabs/).
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────┐
