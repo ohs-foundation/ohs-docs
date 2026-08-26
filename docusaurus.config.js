@@ -71,7 +71,17 @@ const config = {
       items: [
         { to: "/", label: "Home", position: "left" },
         { to: "/why-ohs/", label: "About", position: "left" },
-        { to: "/get-started/", label: "Learn", position: "left" },
+        {
+          type: "dropdown",
+          label: "Learn",
+          position: "left",
+          items: [
+            { to: "/fhir-foundations/", label: "FHIR Foundations (Pillar 01)" },
+            { to: "/concepts/what-ohs-player-is/", label: "OHS Player Concepts (Pillar 02)" },
+            { to: "/why-ohs/#pillar-3-for-ai-commons", label: "AI Commons (Pillar 03)" },
+          ],
+        },
+        { to: "/get-started/", label: "Build", position: "left" },
         {
           to: "/overview/solutions-and-pathways/",
           label: "Stories & Solutions",

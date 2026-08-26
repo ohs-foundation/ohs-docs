@@ -2,7 +2,7 @@
  * Explicit sidebars for the Open Health Stack documentation.
  *
  * Top-level structure:
- *   About  ->  Learn  ->  Stories & Solutions  ->  Community
+ *   About  ->  Learn (FHIR Foundations & OHS Player)  ->  Build (Blueprints & Codelabs)  ->  Stories & Solutions  ->  Community
  */
 
 const sidebars = {
@@ -18,37 +18,19 @@ const sidebars = {
     },
   ],
 
-  learnSidebar: [
+  fhirFoundationsSidebar: [
+    "fhir-foundations/overview",
     {
       type: "category",
-      label: "Get Started",
-      collapsible: false,
-      items: [
-        "get-started",
-        "prerequisites",
-      ],
-    },
-    {
-      type: "category",
-      label: "Tutorials & Codelabs",
+      label: "Core FHIR libraries",
       collapsible: true,
       collapsed: false,
-      items: [
-        "resources/tutorials-and-codelabs",
-      ],
-    },
-    {
-      type: "category",
-      label: "Pillar 01 · FHIR Foundations",
-      collapsible: true,
-      collapsed: false,
-      link: { type: "doc", id: "fhir-foundations/overview" },
       items: [
         {
           type: "category",
           label: "Kotlin FHIR (Data Model)",
           collapsible: true,
-          collapsed: true,
+          collapsed: false,
           link: { type: "doc", id: "fhir-foundations/kotlin-fhir/overview" },
           items: [
             "fhir-foundations/kotlin-fhir/get-started",
@@ -61,7 +43,7 @@ const sidebars = {
           type: "category",
           label: "Kotlin FHIRPath (Logic Engine)",
           collapsible: true,
-          collapsed: true,
+          collapsed: false,
           link: { type: "doc", id: "fhir-foundations/kotlin-fhirpath/overview" },
           items: [
             "fhir-foundations/kotlin-fhirpath/get-started",
@@ -69,11 +51,19 @@ const sidebars = {
             "fhir-foundations/kotlin-fhirpath/conformance",
           ],
         },
+      ],
+    },
+    {
+      type: "category",
+      label: "Client SDKs",
+      collapsible: true,
+      collapsed: false,
+      items: [
         {
           type: "category",
           label: "Kotlin FHIR Engine (Storage & Sync)",
           collapsible: true,
-          collapsed: true,
+          collapsed: false,
           link: {
             type: "doc",
             id: "fhir-foundations/kotlin-fhir-engine/overview",
@@ -89,7 +79,7 @@ const sidebars = {
           type: "category",
           label: "Kotlin FHIR Data Capture (SDC Forms)",
           collapsible: true,
-          collapsed: true,
+          collapsed: false,
           link: {
             type: "doc",
             id: "fhir-foundations/kotlin-fhir-data-capture/overview",
@@ -105,6 +95,14 @@ const sidebars = {
           label: "Android FHIR SDK ↗",
           href: "https://github.com/google/android-fhir",
         },
+      ],
+    },
+    {
+      type: "category",
+      label: "Back-end SDKs",
+      collapsible: true,
+      collapsed: false,
+      items: [
         {
           type: "link",
           label: "Info Gateway ↗",
@@ -115,24 +113,34 @@ const sidebars = {
           label: "FHIR Data Pipes ↗",
           href: "https://github.com/ohs-foundation/fhir-data-pipes",
         },
-        "fhir-foundations/platform-support",
-        "fhir-foundations/versions",
       ],
     },
     {
       type: "category",
-      label: "Pillar 02 · OHS Player Reference",
+      label: "Platform & Compatibility",
       collapsible: true,
       collapsed: false,
-      link: { type: "doc", id: "concepts/what-ohs-player-is" },
       items: [
+        "fhir-foundations/platform-support",
+        "fhir-foundations/versions",
+      ],
+    },
+  ],
+
+  playerSidebar: [
+    {
+      type: "category",
+      label: "OHS Player Concepts",
+      collapsible: false,
+      items: [
+        "concepts/what-ohs-player-is",
         "concepts/architecture",
         "concepts/how-player-uses-ohs-components",
         {
           type: "category",
-          label: "Player Components",
+          label: "Component Overviews",
           collapsible: true,
-          collapsed: true,
+          collapsed: false,
           link: { type: "doc", id: "components/overview" },
           items: [
             "components/client-app/overview",
@@ -142,32 +150,50 @@ const sidebars = {
             "components/reference-analytics/overview",
           ],
         },
-        {
-          type: "category",
-          label: "Run Components",
-          collapsible: true,
-          collapsed: true,
-          items: [
-            "components/reference-infrastructure/overview",
-            "components/reference-backend/run",
-            "components/web-portal/run",
-            "components/client-app/run",
-            "components/reference-analytics/run",
-          ],
-        },
-        {
-          type: "category",
-          label: "Configuration & Extension",
-          collapsible: true,
-          collapsed: true,
-          items: [
-            "concepts/configuration-model",
-            "configure/screen-from-fhir-data",
-            "extend/decide",
-            "extend/backend-extensions",
-          ],
-        },
+        "concepts/configuration-model",
         "concepts/what-you-can-do-today",
+      ],
+    },
+  ],
+
+  buildSidebar: [
+    {
+      type: "category",
+      label: "Quickstart & Setup",
+      collapsible: false,
+      items: [
+        "get-started",
+        "prerequisites",
+      ],
+    },
+    {
+      type: "category",
+      label: "Tutorials & Codelabs",
+      collapsible: false,
+      items: [
+        "resources/tutorials-and-codelabs",
+      ],
+    },
+    {
+      type: "category",
+      label: "Blueprints & Reference Deployments",
+      collapsible: false,
+      items: [
+        "components/reference-infrastructure/overview",
+        "components/reference-backend/run",
+        "components/web-portal/run",
+        "components/client-app/run",
+        "components/reference-analytics/run",
+      ],
+    },
+    {
+      type: "category",
+      label: "Configuration & Extension Recipes",
+      collapsible: false,
+      items: [
+        "configure/screen-from-fhir-data",
+        "extend/decide",
+        "extend/backend-extensions",
       ],
     },
   ],

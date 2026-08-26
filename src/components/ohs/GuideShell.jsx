@@ -80,9 +80,12 @@ function SectionNav({ className }) {
   const { pathname } = useLocation();
   const isHome = pathname === "/" || pathname === "/ohs-docs/" || pathname === "/ohs-docs";
   const inAbout = pathname.includes("/why-ohs/") || pathname.includes("/governance-and-standards/");
+  const inFHIR = pathname.includes("/fhir-foundations/");
+  const inPlayer = pathname.includes("/concepts/") || (pathname.includes("/components/") && pathname.includes("/overview"));
+  const inLearn = inFHIR || inPlayer;
+  const inBuild = pathname.includes("/get-started/") || pathname.includes("/prerequisites/") || (pathname.includes("/components/") && pathname.includes("/run")) || pathname.includes("/reference-infrastructure/") || pathname.includes("/configure/") || pathname.includes("/extend/") || pathname.includes("/tutorials-and-codelabs/");
   const inSolutions = pathname.includes("/solutions-and-pathways/");
   const inCommunity = pathname.includes("/resources/") && !pathname.includes("/tutorials-and-codelabs/");
-  const inLearn = !isHome && !inAbout && !inSolutions && !inCommunity;
 
   return (
     <nav className={className} aria-label="Documentation sections">
@@ -101,11 +104,18 @@ function SectionNav({ className }) {
         About
       </Link>
       <Link
-        to="/get-started/"
+        to="/fhir-foundations/"
         className={inLearn ? "active" : undefined}
         aria-current={inLearn ? "true" : undefined}
       >
         Learn
+      </Link>
+      <Link
+        to="/get-started/"
+        className={inBuild ? "active" : undefined}
+        aria-current={inBuild ? "true" : undefined}
+      >
+        Build
       </Link>
       <Link
         to="/overview/solutions-and-pathways/"
@@ -129,16 +139,25 @@ function GuideSidebar({ open, onClose }) {
   const sidebar = useDocsSidebar();
   const { pathname } = useLocation();
   const inAbout = pathname.includes("/why-ohs/") || pathname.includes("/governance-and-standards/");
+  const inFHIR = pathname.includes("/fhir-foundations/");
+  const inPlayer = pathname.includes("/concepts/") || (pathname.includes("/components/") && pathname.includes("/overview"));
+  const inBuild = pathname.includes("/get-started/") || pathname.includes("/prerequisites/") || (pathname.includes("/components/") && pathname.includes("/run")) || pathname.includes("/reference-infrastructure/") || pathname.includes("/configure/") || pathname.includes("/extend/") || pathname.includes("/tutorials-and-codelabs/");
   const inSolutions = pathname.includes("/solutions-and-pathways/");
   const inCommunity = pathname.includes("/resources/") && !pathname.includes("/tutorials-and-codelabs/");
 
   const sectionTitle = inAbout
     ? "ABOUT OPEN HEALTH STACK"
+    : inFHIR
+    ? "LEARN · FHIR FOUNDATIONS"
+    : inPlayer
+    ? "LEARN · OHS PLAYER CONCEPTS"
+    : inBuild
+    ? "BUILD · BLUEPRINTS & CODE"
     : inSolutions
     ? "STORIES & SOLUTIONS"
     : inCommunity
     ? "COMMUNITY & ECOSYSTEM"
-    : "LEARN & BUILD";
+    : "OPEN HEALTH STACK";
 
   return (
     <>
