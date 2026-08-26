@@ -84,12 +84,6 @@ const sidebars = {
       collapsible: false,
       items: ["extend/decide", "extend/backend-extensions"],
     },
-    {
-      type: "category",
-      label: "Project and community",
-      collapsible: false,
-      items: ["resources"],
-    },
   ],
 
   /**
@@ -114,7 +108,7 @@ const sidebars = {
     "fhir-foundations/overview",
     {
       type: "category",
-      label: "Core libraries",
+      label: "Core FHIR libraries",
       collapsible: false,
       items: [
         {
@@ -144,12 +138,12 @@ const sidebars = {
     },
     {
       type: "category",
-      label: "SDKs",
+      label: "Client SDKs",
       collapsible: false,
       items: [
         {
           type: "category",
-          label: "Kotlin FHIR Engine",
+          label: "Kotlin FHIR Engine (KMP)",
           collapsible: false,
           link: {
             type: "doc",
@@ -164,7 +158,7 @@ const sidebars = {
         },
         {
           type: "category",
-          label: "Kotlin FHIR Data Capture",
+          label: "Kotlin FHIR Data Capture (KMP)",
           collapsible: false,
           link: {
             type: "doc",
@@ -176,6 +170,28 @@ const sidebars = {
             "fhir-foundations/kotlin-fhir-data-capture/customize-and-extend",
           ],
         },
+        {
+          type: "link",
+          label: "Android FHIR SDK ↗",
+          href: "https://github.com/google/android-fhir",
+        },
+      ],
+    },
+    {
+      type: "category",
+      label: "Back-end SDKs",
+      collapsible: false,
+      items: [
+        {
+          type: "link",
+          label: "Info Gateway ↗",
+          href: "https://github.com/ohs-foundation/fhir-gateway",
+        },
+        {
+          type: "link",
+          label: "FHIR Data Pipes ↗",
+          href: "https://github.com/ohs-foundation/fhir-data-pipes",
+        },
       ],
     },
     {
@@ -186,6 +202,19 @@ const sidebars = {
         "fhir-foundations/platform-support",
         "fhir-foundations/versions",
       ],
+    },
+  ],
+
+  /**
+   * Common resources, repository links, community channels, and contributing
+   * guidance shared across all Open Health Stack pillars and projects.
+   */
+  resources: [
+    {
+      type: "category",
+      label: "Resources and Community",
+      collapsible: false,
+      items: ["resources"],
     },
   ],
 };

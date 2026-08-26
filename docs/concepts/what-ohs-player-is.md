@@ -6,6 +6,7 @@ sidebar_position: 5
 guide_type: Concept
 guide_status: ready
 guide_focus: What Player is, what it is not, and where it stops
+release_tag: Alpha Release
 repository: ohs-player
 ---
 

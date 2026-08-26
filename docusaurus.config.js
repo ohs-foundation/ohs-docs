@@ -9,6 +9,7 @@ const config = {
   organizationName: "ohs-foundation",
   projectName: "ohs-docs",
   onBrokenLinks: "throw",
+  onBrokenAnchors: "ignore",
   markdown: { hooks: { onBrokenMarkdownLinks: "throw" } },
   i18n: { defaultLocale: "en", locales: ["en"] },
   presets: [
@@ -65,37 +66,27 @@ const config = {
   ],
   themeConfig: {
     navbar: {
-      title: "OHS Player",
-      logo: { alt: "", src: "assets/favicon.svg" },
+      title: "Open Health Stack",
+      logo: { alt: "Open Health Stack", src: "assets/favicon.svg", href: "https://ohs.foundation" },
       items: [
-        { to: "/", label: "Overview", position: "left" },
-        {
-          to: "/concepts/what-ohs-player-is/",
-          label: "Understand",
-          position: "left",
-        },
-        {
-          to: "/get-started/",
-          label: "Run it",
-          position: "left",
-        },
-        {
-          to: "/configure/screen-from-fhir-data/",
-          label: "Configure",
-          position: "left",
-        },
-        {
-          to: "/extend/decide/",
-          label: "Extend",
-          position: "left",
-        },
+        { to: "/", label: "OHS Docs Home", position: "left" },
         {
           to: "/fhir-foundations/",
           label: "FHIR Foundations",
           position: "left",
         },
         {
-          href: "https://github.com/ohs-foundation/ohs-player",
+          to: "/concepts/what-ohs-player-is/",
+          label: "OHS Player",
+          position: "left",
+        },
+        {
+          to: "/resources/",
+          label: "Resources",
+          position: "left",
+        },
+        {
+          href: "https://github.com/ohs-foundation",
           label: "GitHub",
           position: "right",
         },
@@ -103,7 +94,7 @@ const config = {
     },
     footer: {
       style: "dark",
-      copyright: "OHS Player documentation.",
+      copyright: "Open Health Stack documentation.",
     },
     docs: { sidebar: { hideable: false } },
   },

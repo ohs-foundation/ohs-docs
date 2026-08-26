@@ -1,6 +1,6 @@
 ---
 title: FHIR Foundations
-description: The Kotlin Multiplatform FHIR libraries and client SDKs that OHS Player and your own applications build on.
+description: The Kotlin Multiplatform FHIR libraries, client SDKs, and backend services that OHS Player and your own applications build on.
 slug: /fhir-foundations/
 sidebar_position: 10
 sidebar_label: What FHIR Foundations is
@@ -13,56 +13,78 @@ source_label: OHS Foundation on GitHub ↗
 
 ## What FHIR Foundations is
 
-FHIR Foundations is one of [Open Health Stack's three pillars](https://ohs.foundation/projects), the Kotlin Multiplatform foundation for building FHIR-native software. OHS Player's client is built on it, but everything here exists independently of Player. Each piece is an ordinary Maven Central artifact you can add to your own Kotlin project, whether or not you use anything else from the toolkit.
+FHIR Foundations is one of [Open Health Stack's three pillars](https://ohs.foundation/projects), providing the core libraries and SDKs for building FHIR-native software. OHS Player is built on this foundation, but everything here exists independently of Player.
 
-Everything publishes under the Maven group `dev.ohs.fhir` and is licensed Apache 2.0. All of it shares one design stance. It is pure Kotlin with no platform-specific FHIR dependencies, so the same code runs on Android, iOS, desktop JVM, and the browser.
+The pillar is organized into three areas.
 
-## Core libraries and SDKs
+- **Core FHIR libraries** provide unopinionated primitives for data modeling and expression evaluation.
+- **Client SDKs** provide application-facing toolkits for Kotlin Multiplatform and Android.
+- **Back-end SDKs** provide data gateway and analytics pipeline infrastructure.
 
-The pillar has two kinds of projects, and the difference matters when you choose what to depend on.
+## Core FHIR libraries
 
-**Core libraries** are unopinionated building blocks that take no position on what kind of program uses them. Both run everywhere, server-side JVM and native targets included, so a backend service can share the exact model code a mobile app uses.
+Core libraries are unopinionated building blocks usable in any Kotlin program, client or server. Both run across JVM and native targets, so backend services and mobile applications share identical model code.
 
 | Core library | Artifact | What it gives you |
 | --- | --- | --- |
-| [Kotlin FHIR](/fhir-foundations/kotlin-fhir/) | `fhir-model` | The FHIR data model as Kotlin classes, with JSON serialization |
+| [Kotlin FHIR](/fhir-foundations/kotlin-fhir/) | `fhir-model` | The FHIR data model as Kotlin classes with JSON serialization |
 | [Kotlin FHIRPath](/fhir-foundations/kotlin-fhirpath/) | `fhir-path` | An engine that evaluates FHIRPath expressions against those classes |
 
-**SDKs** are opinionated, application-facing toolkits built on the core libraries. Each one solves a whole application concern rather than providing a primitive. Today's SDKs are both **client-side**, and they exist to make an offline-capable, form-driven app buildable. Server-side SDKs would sit beside them as a sibling category. Today, server-side use of this pillar means using the core libraries directly.
+## Client SDKs
+
+Client SDKs are application-facing toolkits that solve client-side storage, synchronization, workflow execution, and structured data capture.
+
+### Kotlin Multiplatform SDKs
+
+The Kotlin Multiplatform SDKs publish under the Maven group `dev.ohs.fhir` and run across Android, iOS, desktop, and web targets.
 
 | SDK | Artifact | What it gives you |
 | --- | --- | --- |
 | [Kotlin FHIR Engine](/fhir-foundations/kotlin-fhir-engine/) | `fhir-engine` | On-device storage, typed search, and synchronization with a FHIR server |
-| [Kotlin FHIR Data Capture](/fhir-foundations/kotlin-fhir-data-capture/) | `fhir-data-capture` | Questionnaire rendering, validation, and extraction with Compose Multiplatform |
+| [Kotlin FHIR Data Capture](/fhir-foundations/kotlin-fhir-data-capture/) | `fhir-data-capture` | Structured Data Capture (SDC) questionnaire rendering, validation, and extraction |
+| [Kotlin FHIR Workflow](https://github.com/ohs-foundation) | `fhir-workflow` | Workflow execution and care plan management |
+
+### Android FHIR SDK
+
+The [Android FHIR SDK](https://github.com/google/android-fhir) is a native Android library developed by Google and the Open Health Stack community. It provides offline-first SQLite-based resource management, synchronization with FHIR endpoints, and structured questionnaire rendering for native Android apps.
+
+## Back-end SDKs
+
+Back-end SDKs handle routing, access control, and large-scale analytical pipelines behind applications.
+
+| Back-end service | Repository | Role |
+| --- | --- | --- |
+| [Info Gateway](https://github.com/ohs-foundation/fhir-gateway) | `fhir-gateway` | Authentication proxy, granular access control, and endpoint customization |
+| [FHIR Data Pipes](https://github.com/ohs-foundation/fhir-data-pipes) | `fhir-data-pipes` | Batch and streaming pipelines for data extraction and SQL-on-FHIR analytics |
 
 ## How the projects fit together
 
-The pillar is a stack, not a bundle. Each piece depends only on the ones below it, and you take only the layers you need.
+The pillar is modular. Each layer depends only on the primitives below it, and teams adopt only the components their architecture requires.
 
 ![The FHIR Foundations stack. Kotlin FHIR Data Capture and Kotlin FHIR Engine are the client-side SDKs. Both depend on Kotlin FHIRPath for expression evaluation and on Kotlin FHIR for the data model. Kotlin FHIRPath itself navigates the Kotlin FHIR data model, the base of the pillar.](../images/fhir-foundations-architecture.svg)
 
-The two SDKs do not depend on each other. A typical offline-first data-collection app uses both and wires them together itself. Data Capture fills in a Questionnaire, and the Engine stores and syncs the resulting resources.
+The client SDKs operate independently. A typical offline-first data-collection app uses both Data Capture and Engine together. Data Capture fills in a Questionnaire, and the Engine stores and syncs the resulting resources through Info Gateway.
 
 ## Choosing your entry point
 
-**Building a client application?** Start with an SDK. The SDKs bring the core libraries with them.
+**Building a multiplatform mobile or web application?** Start with the Kotlin Multiplatform SDKs.
 
-- Use [Kotlin FHIR Engine](/fhir-foundations/kotlin-fhir-engine/) for an offline-capable app that stores resources locally and syncs with a server.
+- Use [Kotlin FHIR Engine](/fhir-foundations/kotlin-fhir-engine/) for local resource storage and synchronization.
 - Use [Kotlin FHIR Data Capture](/fhir-foundations/kotlin-fhir-data-capture/) to collect structured data with FHIR Questionnaires.
 
-**Building a server, a tool, or anything else in Kotlin?** Use the core libraries directly.
+**Building a native Android application?** Explore the [Android FHIR SDK](https://github.com/google/android-fhir).
 
-- Use [Kotlin FHIR](/fhir-foundations/kotlin-fhir/) to read, build, or exchange FHIR resources. It is the base of everything else and useful entirely on its own.
-- Add [Kotlin FHIRPath](/fhir-foundations/kotlin-fhirpath/) to evaluate FHIRPath expressions for clinical logic, extraction rules, or anything spec-driven.
+**Building a server, service, or CLI tool?** Use the core libraries directly.
 
-Every repository follows the same documentation shape here. Each has an overview of what it is and is not, a get-started page, and task guides. Facts that span the stack live in two shared references, [platform support](/fhir-foundations/platform-support/) and [versions and compatibility](/fhir-foundations/versions/).
+- Use [Kotlin FHIR](/fhir-foundations/kotlin-fhir/) to read, validate, or serialize FHIR resources.
+- Add [Kotlin FHIRPath](/fhir-foundations/kotlin-fhirpath/) to evaluate clinical logic and search parameters.
+
+**Managing analytics or access gateways?** Connect [Info Gateway](https://github.com/ohs-foundation/fhir-gateway) and [FHIR Data Pipes](https://github.com/ohs-foundation/fhir-data-pipes).
 
 ## FHIR version coverage
 
-The core libraries support FHIR R4, R4B, and R5, each as a separate artifact so you only ship the version you use. The SDKs support R4 only.
+The core libraries support FHIR R4, R4B, and R5, each as a separate artifact so you only ship the version you use. The SDKs support R4.
 
 ## How Player uses this pillar
 
-OHS Player's [Client App](/components/client-app/) is the reference consumer. It demonstrates this stack assembled into a working offline-first, configuration-driven application. If you are evaluating Player rather than building directly on the stack, start from [What OHS Player is](/concepts/what-ohs-player-is/) instead. This section is for developers writing code against the libraries and SDKs themselves.
-
-Each repository remains the source of truth for its releases, API detail, and contribution process. Every page here links to the repository it documents.
+OHS Player's [Client App](/components/client-app/) is the reference consumer for the Kotlin Multiplatform SDKs. Its backend integrates with [Reference Backend](/components/reference-backend/) and [Reference Analytics](/components/reference-analytics/), demonstrating end-to-end assembly.

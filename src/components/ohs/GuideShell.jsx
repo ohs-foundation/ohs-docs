@@ -78,15 +78,18 @@ function PageToc({ entries, activeId, mobile = false }) {
  */
 function SectionNav({ className }) {
   const { pathname } = useLocation();
+  const isHome = pathname === "/" || pathname === "/ohs-docs/" || pathname === "/ohs-docs";
   const inFoundation = pathname.includes("/fhir-foundations/");
+  const inResources = pathname.includes("/resources/");
+  const inPlayer = !isHome && !inFoundation && !inResources;
   return (
     <nav className={className} aria-label="Documentation sections">
       <Link
-        to="/concepts/what-ohs-player-is/"
-        className={inFoundation ? undefined : "active"}
-        aria-current={inFoundation ? undefined : "true"}
+        to="/"
+        className={isHome ? "active" : undefined}
+        aria-current={isHome ? "true" : undefined}
       >
-        Player
+        OHS Docs Home
       </Link>
       <Link
         to="/fhir-foundations/"
@@ -94,6 +97,23 @@ function SectionNav({ className }) {
         aria-current={inFoundation ? "true" : undefined}
       >
         FHIR Foundations
+      </Link>
+      <Link
+        to="/concepts/what-ohs-player-is/"
+        className={inPlayer ? "active" : undefined}
+        aria-current={inPlayer ? "true" : undefined}
+      >
+        OHS Player
+      </Link>
+      <span className="ohs-section-nav-disabled">
+        AI Commons<span className="ohs-nav-badge">Soon</span>
+      </span>
+      <Link
+        to="/resources/"
+        className={inResources ? "active" : undefined}
+        aria-current={inResources ? "true" : undefined}
+      >
+        Resources
       </Link>
     </nav>
   );
@@ -175,7 +195,6 @@ function GuideHeader({ menuRef, onOpen, sidebarOpen }) {
             <SearchBar />
           </div>
           <a href="https://github.com/ohs-foundation">GitHub ↗</a>
-          <a href="https://ohs.foundation/">Foundation ↗</a>
         </div>
       </div>
     </header>
@@ -228,15 +247,27 @@ export default function GuideShell({ children }) {
             <PageToc mobile entries={tocEntries} activeId={activeHeading} />
           </details>
           <header className="ohs-guide-heading">
-            <span className="ohs-page-type">
-              {frontMatter.guide_type ?? "GUIDE"}
-            </span>
+            <div className="ohs-heading-tags">
+              <span className="ohs-page-type">
+                {frontMatter.guide_type ?? "GUIDE"}
+              </span>
+              {frontMatter.release_tag && (
+                <span className="ohs-release-badge ohs-release-alpha">
+                  {frontMatter.release_tag}
+                </span>
+              )}
+            </div>
             <h1>{metadata.title}</h1>
             <p>{metadata.description}</p>
             <div className="ohs-page-meta">
               <span>
                 <b>FOCUS</b> {focus}
               </span>
+              {frontMatter.release_tag && (
+                <span>
+                  <b>STATUS</b> {frontMatter.release_tag}
+                </span>
+              )}
             </div>
           </header>
           {children}
