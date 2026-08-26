@@ -69,26 +69,17 @@ const config = {
       title: "Open Health Stack",
       logo: { alt: "Open Health Stack", src: "assets/favicon.svg", href: "https://ohs.foundation" },
       items: [
-        { to: "/", label: "OHS Docs Home", position: "left" },
-        { to: "/why-ohs/", label: "Why OHS", position: "left" },
+        { to: "/", label: "Home", position: "left" },
+        { to: "/why-ohs/", label: "About", position: "left" },
+        { to: "/get-started/", label: "Learn", position: "left" },
         {
-          to: "/fhir-foundations/",
-          label: "FHIR Foundations",
-          position: "left",
-        },
-        {
-          to: "/concepts/what-ohs-player-is/",
-          label: "OHS Player",
-          position: "left",
-        },
-        {
-          to: "/resources/tutorials-and-codelabs/",
-          label: "Tutorials & Codelabs",
+          to: "/overview/solutions-and-pathways/",
+          label: "Stories & Solutions",
           position: "left",
         },
         {
           to: "/resources/",
-          label: "Resources",
+          label: "Community",
           position: "left",
         },
         {

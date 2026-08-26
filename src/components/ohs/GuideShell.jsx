@@ -79,11 +79,11 @@ function PageToc({ entries, activeId, mobile = false }) {
 function SectionNav({ className }) {
   const { pathname } = useLocation();
   const isHome = pathname === "/" || pathname === "/ohs-docs/" || pathname === "/ohs-docs";
-  const inWhyOhs = pathname.includes("/why-ohs/") || pathname.includes("/overview/");
-  const inFoundation = pathname.includes("/fhir-foundations/");
-  const inTutorials = pathname.includes("/resources/tutorials-and-codelabs/");
-  const inResources = pathname.includes("/resources/") && !inTutorials;
-  const inPlayer = !isHome && !inWhyOhs && !inFoundation && !inResources && !inTutorials;
+  const inAbout = pathname.includes("/why-ohs/") || pathname.includes("/governance-and-standards/");
+  const inSolutions = pathname.includes("/solutions-and-pathways/");
+  const inCommunity = pathname.includes("/resources/") && !pathname.includes("/tutorials-and-codelabs/");
+  const inLearn = !isHome && !inAbout && !inSolutions && !inCommunity;
+
   return (
     <nav className={className} aria-label="Documentation sections">
       <Link
@@ -91,42 +91,35 @@ function SectionNav({ className }) {
         className={isHome ? "active" : undefined}
         aria-current={isHome ? "true" : undefined}
       >
-        OHS Docs Home
+        Home
       </Link>
       <Link
         to="/why-ohs/"
-        className={inWhyOhs ? "active" : undefined}
-        aria-current={inWhyOhs ? "true" : undefined}
+        className={inAbout ? "active" : undefined}
+        aria-current={inAbout ? "true" : undefined}
       >
-        Why OHS
+        About
       </Link>
       <Link
-        to="/fhir-foundations/"
-        className={inFoundation ? "active" : undefined}
-        aria-current={inFoundation ? "true" : undefined}
+        to="/get-started/"
+        className={inLearn ? "active" : undefined}
+        aria-current={inLearn ? "true" : undefined}
       >
-        FHIR Foundations
+        Learn
       </Link>
       <Link
-        to="/concepts/what-ohs-player-is/"
-        className={inPlayer ? "active" : undefined}
-        aria-current={inPlayer ? "true" : undefined}
+        to="/overview/solutions-and-pathways/"
+        className={inSolutions ? "active" : undefined}
+        aria-current={inSolutions ? "true" : undefined}
       >
-        OHS Player
-      </Link>
-      <Link
-        to="/resources/tutorials-and-codelabs/"
-        className={inTutorials ? "active" : undefined}
-        aria-current={inTutorials ? "true" : undefined}
-      >
-        Tutorials & Codelabs
+        Stories & Solutions
       </Link>
       <Link
         to="/resources/"
-        className={inResources ? "active" : undefined}
-        aria-current={inResources ? "true" : undefined}
+        className={inCommunity ? "active" : undefined}
+        aria-current={inCommunity ? "true" : undefined}
       >
-        Resources
+        Community
       </Link>
     </nav>
   );
@@ -135,20 +128,17 @@ function SectionNav({ className }) {
 function GuideSidebar({ open, onClose }) {
   const sidebar = useDocsSidebar();
   const { pathname } = useLocation();
-  const inWhyOhs = pathname.includes("/why-ohs/") || pathname.includes("/overview/");
-  const inFoundation = pathname.includes("/fhir-foundations/");
-  const inTutorials = pathname.includes("/resources/tutorials-and-codelabs/");
-  const inResources = pathname.includes("/resources/") && !inTutorials;
+  const inAbout = pathname.includes("/why-ohs/") || pathname.includes("/governance-and-standards/");
+  const inSolutions = pathname.includes("/solutions-and-pathways/");
+  const inCommunity = pathname.includes("/resources/") && !pathname.includes("/tutorials-and-codelabs/");
 
-  const sectionTitle = inWhyOhs
-    ? "STRATEGY & EVALUATION"
-    : inFoundation
-    ? "FHIR FOUNDATIONS PILLAR"
-    : inTutorials
-    ? "DEVELOPER TUTORIALS"
-    : inResources
-    ? "RESOURCES & COMMUNITY"
-    : "OHS PLAYER REFERENCE";
+  const sectionTitle = inAbout
+    ? "ABOUT OPEN HEALTH STACK"
+    : inSolutions
+    ? "STORIES & SOLUTIONS"
+    : inCommunity
+    ? "COMMUNITY & ECOSYSTEM"
+    : "LEARN & BUILD";
 
   return (
     <>

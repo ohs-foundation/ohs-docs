@@ -26,14 +26,11 @@ function LandingHeader() {
           className={menuOpen ? "ohs-main-nav is-open" : "ohs-main-nav"}
           aria-label="Primary navigation"
         >
-          <Link to="/" aria-current="page">OHS Docs Home</Link>
-          <Link to="/why-ohs/">Why OHS</Link>
-          <Link to="/fhir-foundations/">FHIR Foundations</Link>
-          <Link to="/concepts/what-ohs-player-is/">OHS Player</Link>
-          <span className="ohs-nav-disabled">
-            AI Commons<span className="ohs-nav-badge">Soon</span>
-          </span>
-          <Link to="/resources/">Resources</Link>
+          <Link to="/" aria-current="page">Home</Link>
+          <Link to="/why-ohs/">About</Link>
+          <Link to="/get-started/">Learn</Link>
+          <Link to="/overview/solutions-and-pathways/">Stories & Solutions</Link>
+          <Link to="/resources/">Community</Link>
         </nav>
         <div className="ohs-nav-actions">
           <div className="ohs-header-search">
@@ -125,13 +122,13 @@ function Footer() {
           <p>Documentation for Open Health Stack components, libraries, and reference toolkits.</p>
         </div>
         <div className="ohs-footer-links">
-          <Link to="/why-ohs/">Why Open Health Stack</Link>
-          <Link to="/fhir-foundations/">FHIR Foundations</Link>
-          <Link to="/concepts/what-ohs-player-is/">OHS Player</Link>
-          <Link to="/get-started/">Get started with Player</Link>
-          <Link to="/resources/">Resources and community</Link>
+          <Link to="/why-ohs/">About Open Health Stack</Link>
+          <Link to="/get-started/">Learn & Get Started</Link>
+          <Link to="/resources/tutorials-and-codelabs/">Tutorials & Codelabs</Link>
+          <Link to="/overview/solutions-and-pathways/">Stories & Solutions</Link>
+          <Link to="/resources/">Community</Link>
           <a href="https://github.com/ohs-foundation" target="_blank" rel="noopener noreferrer">
-            OHS on GitHub ↗
+            GitHub Repositories ↗
           </a>
         </div>
       </div>
