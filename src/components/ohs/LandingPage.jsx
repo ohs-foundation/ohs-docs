@@ -28,7 +28,7 @@ function LandingHeader() {
         >
           <Link to="/" aria-current="page">Home</Link>
           <Link to="/why-ohs/">About</Link>
-          <Link to="/fhir-foundations/">Learn</Link>
+          <Link to="/learn/">Learn</Link>
           <Link to="/get-started/">Build</Link>
           <Link to="/overview/solutions-and-pathways/">Stories & Solutions</Link>
           <Link to="/resources/">Community</Link>

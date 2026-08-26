@@ -2,7 +2,7 @@
  * Explicit sidebars for the Open Health Stack documentation.
  *
  * Top-level structure:
- *   About  ->  Learn (FHIR Foundations & OHS Player)  ->  Build (Blueprints & Codelabs)  ->  Stories & Solutions  ->  Community
+ *   About  ->  Learn (The 3 Pillars)  ->  Build (Blueprints & Codelabs)  ->  Stories & Solutions  ->  Community
  */
 
 const sidebars = {
@@ -18,19 +18,20 @@ const sidebars = {
     },
   ],
 
-  fhirFoundationsSidebar: [
-    "fhir-foundations/overview",
+  learnSidebar: [
+    "learn/overview",
     {
       type: "category",
-      label: "Core FHIR libraries",
+      label: "Pillar 01 · FHIR Foundations",
       collapsible: true,
       collapsed: false,
+      link: { type: "doc", id: "fhir-foundations/overview" },
       items: [
         {
           type: "category",
           label: "Kotlin FHIR (Data Model)",
           collapsible: true,
-          collapsed: false,
+          collapsed: true,
           link: { type: "doc", id: "fhir-foundations/kotlin-fhir/overview" },
           items: [
             "fhir-foundations/kotlin-fhir/get-started",
@@ -43,7 +44,7 @@ const sidebars = {
           type: "category",
           label: "Kotlin FHIRPath (Logic Engine)",
           collapsible: true,
-          collapsed: false,
+          collapsed: true,
           link: { type: "doc", id: "fhir-foundations/kotlin-fhirpath/overview" },
           items: [
             "fhir-foundations/kotlin-fhirpath/get-started",
@@ -51,19 +52,11 @@ const sidebars = {
             "fhir-foundations/kotlin-fhirpath/conformance",
           ],
         },
-      ],
-    },
-    {
-      type: "category",
-      label: "Client SDKs",
-      collapsible: true,
-      collapsed: false,
-      items: [
         {
           type: "category",
           label: "Kotlin FHIR Engine (Storage & Sync)",
           collapsible: true,
-          collapsed: false,
+          collapsed: true,
           link: {
             type: "doc",
             id: "fhir-foundations/kotlin-fhir-engine/overview",
@@ -79,7 +72,7 @@ const sidebars = {
           type: "category",
           label: "Kotlin FHIR Data Capture (SDC Forms)",
           collapsible: true,
-          collapsed: false,
+          collapsed: true,
           link: {
             type: "doc",
             id: "fhir-foundations/kotlin-fhir-data-capture/overview",
@@ -95,14 +88,6 @@ const sidebars = {
           label: "Android FHIR SDK ↗",
           href: "https://github.com/google/android-fhir",
         },
-      ],
-    },
-    {
-      type: "category",
-      label: "Back-end SDKs",
-      collapsible: true,
-      collapsed: false,
-      items: [
         {
           type: "link",
           label: "Info Gateway ↗",
@@ -113,34 +98,24 @@ const sidebars = {
           label: "FHIR Data Pipes ↗",
           href: "https://github.com/ohs-foundation/fhir-data-pipes",
         },
-      ],
-    },
-    {
-      type: "category",
-      label: "Platform & Compatibility",
-      collapsible: true,
-      collapsed: false,
-      items: [
         "fhir-foundations/platform-support",
         "fhir-foundations/versions",
       ],
     },
-  ],
-
-  playerSidebar: [
     {
       type: "category",
-      label: "OHS Player Concepts",
-      collapsible: false,
+      label: "Pillar 02 · OHS Player Reference",
+      collapsible: true,
+      collapsed: false,
+      link: { type: "doc", id: "concepts/what-ohs-player-is" },
       items: [
-        "concepts/what-ohs-player-is",
         "concepts/architecture",
         "concepts/how-player-uses-ohs-components",
         {
           type: "category",
           label: "Component Overviews",
           collapsible: true,
-          collapsed: false,
+          collapsed: true,
           link: { type: "doc", id: "components/overview" },
           items: [
             "components/client-app/overview",
@@ -153,6 +128,11 @@ const sidebars = {
         "concepts/configuration-model",
         "concepts/what-you-can-do-today",
       ],
+    },
+    {
+      type: "link",
+      label: "Pillar 03 · AI Commons (Evals)",
+      href: "/why-ohs/#pillar-3-for-ai-commons",
     },
   ],
 

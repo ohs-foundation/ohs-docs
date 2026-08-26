@@ -240,6 +240,11 @@
       "id": "tutorials-and-codelabs",
       "path": "/ohs-docs/resources/tutorials-and-codelabs/",
       "searchIndexed": true
+    },
+    {
+      "id": "learn-overview",
+      "path": "/ohs-docs/learn/",
+      "searchIndexed": true
     }
   ]
 }
