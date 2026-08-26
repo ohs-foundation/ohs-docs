@@ -1,0 +1,147 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1950 480" width="1950" height="480" role="img" aria-labelledby="etTitle etDesc">
+  <title id="etTitle">End-to-end digital health platform architecture</title>
+  <desc id="etDesc">Frontline mobile clients sync through the Info Gateway, which mediates requests to a central FHIR server. FHIR Data Pipes streams transactional data from the FHIR server into an analytical warehouse using SQL-on-FHIR view definitions, powering indicator dashboards for programme reporting.</desc>
+
+  <style>
+    :root, svg {
+      --found:      #2D86C4;
+      --found-fill: #E3F1FA;
+      --store:      #5F6368;
+      --ink:        #1A1A2E;
+      --muted:      #6B7280;
+      --line:       #9AA0A6;
+      --paper:      #FFFFFF;
+      --bg:         #FFFFFF;
+      --hair:       #DADCE0;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root, svg {
+        --found:      #6FB6E8;
+        --found-fill: #16293A;
+        --store:      #9AA0A6;
+        --ink:        #E8EAED;
+        --muted:      #9AA0A6;
+        --line:       #6B7280;
+        --paper:      #1B1C1F;
+        --bg:         #131417;
+        --hair:       #3C4043;
+      }
+    }
+    .bg      { fill: var(--bg); }
+    .lbl-f   { font: 600 22px "Hanken Grotesk", "Google Sans", Inter, system-ui, sans-serif; text-anchor: middle; fill: var(--found); }
+    .lbl-s   { font: 600 22px "Hanken Grotesk", "Google Sans", Inter, system-ui, sans-serif; text-anchor: middle; fill: var(--ink); }
+    .sub     { font: 400 16px "Hanken Grotesk", "Google Sans", Inter, system-ui, sans-serif; text-anchor: middle; fill: var(--muted); }
+    .leg     { font: 400 19px "Hanken Grotesk", "Google Sans", Inter, system-ui, sans-serif; fill: var(--ink); }
+    .flow    { fill: none; stroke: var(--line); stroke-width: 2.6; }
+    .ghost-f { fill: var(--found-fill); stroke: var(--found); stroke-width: 2.2; opacity: .55; }
+    .paper-f { fill: var(--paper); stroke: var(--found); stroke-width: 2.4; }
+    .p-fill  { fill: var(--found-fill); stroke: var(--found); stroke-width: 2.4; }
+    .cyl     { fill: var(--store); }
+    .cyl-t   { fill: #7E848A; }
+    .hair    { stroke: var(--hair); stroke-width: 1.6; }
+  </style>
+
+  <defs>
+    <marker id="etAh" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0.6 L 10 5 L 0 9.4 z" fill="var(--line)"/>
+    </marker>
+  </defs>
+
+  <rect class="bg" x="0" y="0" width="1950" height="480"/>
+
+  <!-- Mobile clients -->
+  <text class="lbl-f" x="100" y="360">Mobile clients</text>
+  <text class="sub" x="100" y="384">offline-first apps</text>
+  <g transform="translate(70,205)">
+    <rect class="p-fill" x="0" y="0" width="60" height="106" rx="11"/>
+    <rect x="16" y="14" width="28" height="6" rx="3" fill="var(--found)" opacity=".45"/>
+    <rect x="12" y="30" width="36" height="5" rx="2.5" fill="var(--found)" opacity=".22"/>
+    <rect x="12" y="43" width="30" height="5" rx="2.5" fill="var(--found)" opacity=".22"/>
+    <rect x="12" y="56" width="24" height="5" rx="2.5" fill="var(--found)" opacity=".22"/>
+  </g>
+
+  <!-- Info Gateway -->
+  <text class="lbl-f" x="440" y="360">Info Gateway</text>
+  <text class="sub" x="440" y="384">auth and sync rules</text>
+  <g transform="translate(395,208)">
+    <path d="M45 0 L90 20 V55 C90 80 68 95 45 100 C22 95 0 80 0 55 V20 Z" class="p-fill"/>
+    <rect x="27" y="50" width="36" height="28" rx="4" fill="none" stroke="var(--found)" stroke-width="2.4"/>
+    <path d="M33 50 v-10 a12 12 0 0 1 24 0 v10" fill="none" stroke="var(--found)" stroke-width="2.4"/>
+    <circle cx="45" cy="62" r="4" fill="var(--found)"/>
+  </g>
+
+  <!-- FHIR server -->
+  <text class="lbl-s" x="780" y="360">FHIR server</text>
+  <text class="sub" x="780" y="384">central store</text>
+  <g transform="translate(722,210)">
+    <ellipse cx="58" cy="0" rx="58" ry="17" class="cyl-t"/>
+    <path d="M 0 0 v 24 a 58 17 0 0 0 116 0 v -24 z" class="cyl"/>
+    <ellipse cx="58" cy="40" rx="58" ry="17" class="cyl-t"/>
+    <path d="M 0 40 v 24 a 58 17 0 0 0 116 0 v -24 z" class="cyl"/>
+    <ellipse cx="58" cy="80" rx="58" ry="17" class="cyl-t"/>
+    <path d="M 0 80 v 24 a 58 17 0 0 0 116 0 v -24 z" class="cyl"/>
+  </g>
+
+  <!-- FHIR Data Pipes -->
+  <text class="lbl-f" x="1120" y="360">FHIR Data Pipes</text>
+  <text class="sub" x="1120" y="384">SQL-on-FHIR ViewDefinitions</text>
+  <g transform="translate(546,0)">
+    <rect class="ghost-f" x="464" y="222" width="76" height="98" rx="7"/>
+    <rect class="paper-f" x="452" y="212" width="76" height="98" rx="7"/>
+    <path d="M 476 268 c -10 -9 -6 -21 1 -27 c .7 5.6 4.2 7.7 7 9.1 c 2.8 -5.6 1.4 -11.2 -1.4 -15.4 c 9.8 3.5 16.8 14 15.4 23.8 c -.7 7 -6.3 11.9 -11.9 12.6 c -4.2 .7 -8.4 -.7 -10.5 -3.5 z"
+          fill="var(--found)" opacity=".85"/>
+    <rect x="464" y="286" width="52" height="6" rx="3" fill="var(--found)" opacity=".25"/>
+    <path d="M 540 266 h 32" class="flow" marker-end="url(#etAh)"/>
+    <rect x="590" y="212" width="106" height="92" rx="7" fill="var(--found-fill)" stroke="var(--found)" stroke-width="2.4"/>
+    <path d="M 590 236 h 106 M 590 260 h 106 M 590 284 h 106 M 626 212 v 92 M 662 212 v 92"
+          stroke="var(--found)" stroke-width="1.8" opacity=".45" fill="none"/>
+    <rect x="590" y="212" width="106" height="24" rx="7" fill="var(--found)" opacity=".22"/>
+  </g>
+
+  <!-- Warehouse -->
+  <text class="lbl-s" x="1460" y="360">Analytical warehouse</text>
+  <text class="sub" x="1460" y="384">PostgreSQL &#183; BigQuery &#183; ClickHouse</text>
+  <g transform="translate(1402,210)">
+    <ellipse cx="58" cy="0" rx="58" ry="17" class="cyl-t"/>
+    <path d="M 0 0 v 24 a 58 17 0 0 0 116 0 v -24 z" class="cyl"/>
+    <ellipse cx="58" cy="40" rx="58" ry="17" class="cyl-t"/>
+    <path d="M 0 40 v 24 a 58 17 0 0 0 116 0 v -24 z" class="cyl"/>
+    <ellipse cx="58" cy="80" rx="58" ry="17" class="cyl-t"/>
+    <path d="M 0 80 v 24 a 58 17 0 0 0 116 0 v -24 z" class="cyl"/>
+  </g>
+
+  <!-- Dashboards -->
+  <text class="lbl-f" x="1800" y="360">Indicator dashboards</text>
+  <text class="sub" x="1800" y="384">population health reporting</text>
+  <g transform="translate(1718,199)">
+    <rect class="ghost-f" x="16" y="12" width="164" height="122" rx="9"/>
+    <rect class="p-fill" x="0" y="0" width="164" height="122" rx="9"/>
+    <path d="M 0 24 h 164" stroke="var(--found)" stroke-width="1.6" opacity=".45"/>
+    <rect x="20" y="78" width="20" height="28" rx="3" fill="var(--found)" opacity=".35"/>
+    <rect x="48" y="60" width="20" height="46" rx="3" fill="var(--found)" opacity=".55"/>
+    <rect x="76" y="70" width="20" height="36" rx="3" fill="var(--found)" opacity=".35"/>
+    <rect x="104" y="46" width="20" height="60" rx="3" fill="var(--found)" opacity=".75"/>
+    <path d="M 20 58 L 48 46 L 76 52 L 104 34 L 136 40"
+          fill="none" stroke="var(--found)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="136" cy="40" r="4" fill="var(--found)"/>
+  </g>
+
+  <!-- flows -->
+  <path class="flow" d="M 130 258 L 393 258" marker-end="url(#etAh)"/>
+  <path class="flow" d="M 487 258 L 720 258" marker-end="url(#etAh)"/>
+  <path class="flow" d="M 838 258 L 996 258" marker-end="url(#etAh)"/>
+  <path class="flow" d="M 1242 258 L 1400 258" marker-end="url(#etAh)"/>
+  <path class="flow" d="M 1518 258 L 1716 258" marker-end="url(#etAh)"/>
+
+  <!-- legend -->
+  <path d="M 570 415 h 800" class="hair"/>
+  <circle cx="606" cy="446" r="11" fill="var(--found)"/>
+  <text class="leg" x="628" y="453">OHS foundational components</text>
+  <g transform="translate(1000,434)">
+    <ellipse cx="11" cy="4" rx="11" ry="3.6" class="cyl-t"/>
+    <path d="M 0 4 v 6 a 11 3.6 0 0 0 22 0 v -6 z" class="cyl"/>
+    <ellipse cx="11" cy="14" rx="11" ry="3.6" class="cyl-t"/>
+    <path d="M 0 14 v 6 a 11 3.6 0 0 0 22 0 v -6 z" class="cyl"/>
+  </g>
+  <text class="leg" x="1036" y="453">Data stores, implementation-specific</text>
+</svg>

@@ -1,0 +1,102 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 747" width="1400" height="747" role="img" aria-labelledby="ssTitle ssDesc">
+  <title id="ssTitle">Open Health Stack solution samples</title>
+  <desc id="ssDesc">Five solution samples. Sample 1, offline mobile apps, Android and multiplatform structured data capture apps. Sample 2, privacy and sync proxy, Info Gateway with SMART-on-FHIR. Sample 3, analytics pipelines, scalable SQL-on-FHIR pipelines. Sample 4, end-to-end platform, a complete mobile-to-analytics stack. Sample 5, hybrid and non-FHIR coexistence architectures, data harmonization pipelines and non-FHIR backend integration adapters.</desc>
+
+  <style>
+    :root, svg {
+      --found:      #2D86C4;
+      --found-fill: #E3F1FA;
+      --ink:        #1A1A2E;
+      --muted:      #6B7280;
+      --bg:         #FFFFFF;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root, svg {
+        --found:      #6FB6E8;
+        --found-fill: #16293A;
+        --ink:        #E8EAED;
+        --muted:      #9AA0A6;
+        --bg:         #131417;
+      }
+    }
+    .bg     { fill: var(--bg); }
+    .card   { fill: var(--found-fill); stroke: var(--found); stroke-width: 2.4; }
+    .badge  { fill: var(--found); }
+    .kicker { font: 600 22px "Hanken Grotesk", "Google Sans", Inter, system-ui, sans-serif; fill: var(--found); letter-spacing: .05em; }
+    .title  { font: 700 34px "Hanken Grotesk", "Google Sans", Inter, system-ui, sans-serif; fill: var(--ink); }
+    .desc   { font: 400 23px "Hanken Grotesk", "Google Sans", Inter, system-ui, sans-serif; fill: var(--muted); }
+    .glyph  { fill: none; stroke: #FFFFFF; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+  </style>
+
+  <rect class="bg" x="0" y="0" width="1400" height="747"/>
+
+  <!-- Sample 1 -->
+  <g transform="translate(40,24)">
+    <rect class="card" width="640" height="225" rx="18"/>
+    <circle class="badge" cx="56" cy="56" r="28"/>
+    <g transform="translate(56,56)" class="glyph">
+      <rect x="-7" y="-14" width="14" height="26" rx="3"/>
+      <circle cx="0" cy="8" r="1.6" fill="#FFFFFF" stroke="none"/>
+    </g>
+    <text class="kicker" x="100" y="50">SAMPLE 1</text>
+    <text class="title" x="100" y="90">Offline Mobile Apps</text>
+    <text class="desc" x="32" y="150">Android and multiplatform structured</text>
+    <text class="desc" x="32" y="180">data capture apps</text>
+  </g>
+
+  <!-- Sample 2 -->
+  <g transform="translate(720,24)">
+    <rect class="card" width="640" height="225" rx="18"/>
+    <circle class="badge" cx="56" cy="56" r="28"/>
+    <g transform="translate(56,56)" class="glyph">
+      <path d="M0 -14 L12 -8 V4 C12 12 6 17 0 20 C-6 17 -12 12 -12 4 V-8 Z"/>
+      <rect x="-4" y="0" width="8" height="7" rx="1.5"/>
+      <path d="M-2 0 v-3 a2 2 0 0 1 4 0 v3"/>
+    </g>
+    <text class="kicker" x="100" y="50">SAMPLE 2</text>
+    <text class="title" x="100" y="90">Privacy and Sync Proxy</text>
+    <text class="desc" x="32" y="150">Info Gateway with SMART-on-FHIR</text>
+  </g>
+
+  <!-- Sample 3 -->
+  <g transform="translate(40,281)">
+    <rect class="card" width="640" height="225" rx="18"/>
+    <circle class="badge" cx="56" cy="56" r="28"/>
+    <g transform="translate(56,56)">
+      <rect x="-14" y="0" width="6" height="14" fill="#FFFFFF" opacity=".9"/>
+      <rect x="-4" y="-8" width="6" height="22" fill="#FFFFFF" opacity=".9"/>
+      <rect x="6" y="-4" width="6" height="18" fill="#FFFFFF" opacity=".9"/>
+    </g>
+    <text class="kicker" x="100" y="50">SAMPLE 3</text>
+    <text class="title" x="100" y="90">Analytics Pipelines</text>
+    <text class="desc" x="32" y="150">Scalable SQL-on-FHIR pipelines</text>
+  </g>
+
+  <!-- Sample 4 -->
+  <g transform="translate(720,281)">
+    <rect class="card" width="640" height="225" rx="18"/>
+    <circle class="badge" cx="56" cy="56" r="28"/>
+    <g transform="translate(56,56)" class="glyph">
+      <circle cx="-14" cy="0" r="4" fill="#FFFFFF" stroke="none"/>
+      <circle cx="0" cy="0" r="4" fill="#FFFFFF" stroke="none"/>
+      <circle cx="14" cy="0" r="4" fill="#FFFFFF" stroke="none"/>
+      <path d="M-10 0 H-4 M4 0 H10"/>
+    </g>
+    <text class="kicker" x="100" y="50">SAMPLE 4</text>
+    <text class="title" x="100" y="90">End-to-End Platform</text>
+    <text class="desc" x="32" y="150">Complete mobile-to-analytics stack</text>
+  </g>
+
+  <!-- Sample 5 -->
+  <g transform="translate(40,538)">
+    <rect class="card" width="1320" height="185" rx="18"/>
+    <circle class="badge" cx="56" cy="56" r="28"/>
+    <g transform="translate(56,56)" class="glyph">
+      <path d="M-14 -4 H6 M2 -8 L6 -4 L2 0"/>
+      <path d="M14 4 H-6 M-2 8 L-6 4 L-2 0"/>
+    </g>
+    <text class="kicker" x="100" y="50">SAMPLE 5</text>
+    <text class="title" x="100" y="90">Hybrid and Non-FHIR Coexistence Architectures</text>
+    <text class="desc" x="32" y="148">Data harmonization pipelines and non-FHIR backend integration adapters</text>
+  </g>
+</svg>

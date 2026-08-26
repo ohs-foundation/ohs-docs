@@ -58,5 +58,5 @@ Open Health Stack integrates directly with established tools across the FHIR and
 ## Where to go next
 
 - If you want to understand strategic benefits and total cost of ownership, read the executive briefing in [About Open Health Stack](/why-ohs/).
-- If you want to evaluate adoption models and national system coexistence, explore [Stories and solutions](/overview/solutions-and-pathways/).
+- If you want to evaluate adoption models and national system coexistence, explore [Adoption pathways](/overview/solutions-and-pathways/).
 - If you want hands-on deployment scripts, codelabs, or configuration recipes, dive into [Build and quickstart](/get-started/).

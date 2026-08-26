@@ -1,0 +1,98 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 600" width="1400" height="600" role="img" aria-labelledby="pwTitle pwDesc">
+  <title id="pwTitle">OHS adoption pathways</title>
+  <desc id="pwDesc">Four adoption pathways. Pathway A, unbundled SDKs, client and backend libraries added to existing applications. Pathway B, reference platform, a full end-to-end multiplatform stack for a rapid baseline. Pathway C, analytics hub, SQL-on-FHIR pipelines powering aggregate dashboards. Pathway D, AI development on FHIR, currently incubating, tooling for benchmarking and evals on FHIR-based models.</desc>
+
+  <style>
+    :root, svg {
+      --found:      #2D86C4;
+      --found-fill: #E3F1FA;
+      --ai:         #D97706;
+      --ai-fill:    #FEF3C7;
+      --ink:        #1A1A2E;
+      --muted:      #6B7280;
+      --bg:         #FFFFFF;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root, svg {
+        --found:      #6FB6E8;
+        --found-fill: #16293A;
+        --ai:         #FBBF24;
+        --ai-fill:    #362B14;
+        --ink:        #E8EAED;
+        --muted:      #9AA0A6;
+        --bg:         #131417;
+      }
+    }
+    .bg      { fill: var(--bg); }
+    .card    { fill: var(--found-fill); stroke: var(--found); stroke-width: 2.4; }
+    .card-ai { fill: var(--ai-fill); stroke: var(--ai); stroke-width: 2.4; stroke-dasharray: 8 7; }
+    .badge   { fill: var(--found); }
+    .badge-ai{ fill: var(--ai); }
+    .kicker  { font: 600 22px "Hanken Grotesk", "Google Sans", Inter, system-ui, sans-serif; fill: var(--found); letter-spacing: .05em; }
+    .kicker-ai{ font: 600 22px "Hanken Grotesk", "Google Sans", Inter, system-ui, sans-serif; fill: var(--ai); letter-spacing: .05em; }
+    .title   { font: 700 34px "Hanken Grotesk", "Google Sans", Inter, system-ui, sans-serif; fill: var(--ink); }
+    .desc    { font: 400 23px "Hanken Grotesk", "Google Sans", Inter, system-ui, sans-serif; fill: var(--muted); }
+    .glyph   { fill: none; stroke: #FFFFFF; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+  </style>
+
+  <rect class="bg" x="0" y="0" width="1400" height="600"/>
+
+  <!-- Pathway A -->
+  <g transform="translate(40,24)">
+    <rect class="card" width="640" height="256" rx="18"/>
+    <circle class="badge" cx="60" cy="60" r="28"/>
+    <g transform="translate(60,60)" class="glyph">
+      <rect x="-12" y="-10" width="18" height="18" rx="3"/>
+      <rect x="-4" y="-2" width="18" height="18" rx="3" opacity=".8"/>
+    </g>
+    <text class="kicker" x="108" y="52">PATHWAY A</text>
+    <text class="title" x="108" y="92">Unbundled SDKs</text>
+    <text class="desc" x="32" y="158">Client and backend libraries added to</text>
+    <text class="desc" x="32" y="188">existing applications</text>
+  </g>
+
+  <!-- Pathway B -->
+  <g transform="translate(720,24)">
+    <rect class="card" width="640" height="256" rx="18"/>
+    <circle class="badge" cx="60" cy="60" r="28"/>
+    <g transform="translate(60,60)" class="glyph">
+      <rect x="-16" y="-10" width="22" height="15" rx="2"/>
+      <path d="M -5 5 v4 M -9 9 h8"/>
+      <rect x="7" y="-6" width="11" height="19" rx="2"/>
+    </g>
+    <text class="kicker" x="108" y="52">PATHWAY B</text>
+    <text class="title" x="108" y="92">Reference Platform</text>
+    <text class="desc" x="32" y="158">Full end-to-end multiplatform stack,</text>
+    <text class="desc" x="32" y="188">a rapid baseline for new programmes</text>
+  </g>
+
+  <!-- Pathway C -->
+  <g transform="translate(40,312)">
+    <rect class="card" width="640" height="256" rx="18"/>
+    <circle class="badge" cx="60" cy="60" r="28"/>
+    <g transform="translate(60,60)">
+      <rect x="-14" y="0" width="6" height="14" fill="#FFFFFF" opacity=".9"/>
+      <rect x="-4" y="-8" width="6" height="22" fill="#FFFFFF" opacity=".9"/>
+      <rect x="6" y="-4" width="6" height="18" fill="#FFFFFF" opacity=".9"/>
+    </g>
+    <text class="kicker" x="108" y="52">PATHWAY C</text>
+    <text class="title" x="108" y="92">Analytics Hub</text>
+    <text class="desc" x="32" y="158">SQL-on-FHIR pipelines powering</text>
+    <text class="desc" x="32" y="188">aggregate dashboards</text>
+  </g>
+
+  <!-- Pathway D -->
+  <g transform="translate(720,312)">
+    <rect class="card-ai" width="640" height="256" rx="18"/>
+    <circle class="badge-ai" cx="60" cy="60" r="28"/>
+    <g transform="translate(60,60)" class="glyph">
+      <path d="M -4 -12 h8 M -3 -12 v8 l-7 14 a3 3 0 0 0 3 4 h14 a3 3 0 0 0 3 -4 l-7 -14 v-8"/>
+      <circle cx="-2" cy="6" r="1.6" fill="#FFFFFF" stroke="none"/>
+      <circle cx="3" cy="10" r="1.4" fill="#FFFFFF" stroke="none"/>
+    </g>
+    <text class="kicker-ai" x="108" y="52">PATHWAY D &#183; INCUBATING</text>
+    <text class="title" x="108" y="92">AI Development on FHIR</text>
+    <text class="desc" x="32" y="158">Tooling for benchmarking and</text>
+    <text class="desc" x="32" y="188">evals on FHIR-based models</text>
+  </g>
+</svg>

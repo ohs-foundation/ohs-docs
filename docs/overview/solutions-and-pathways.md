@@ -1,9 +1,9 @@
 ---
 id: solutions-and-pathways
-title: Solutions and Pathways
+title: Adoption pathways
 description: Adoption models and integration patterns for health ministries, digital health entrepreneurs, and enterprise architects.
 slug: /overview/solutions-and-pathways/
-sidebar_label: Solutions and pathways
+sidebar_label: Adoption pathways
 sidebar_position: 10
 guide_type: conceptual
 guide_status: ready
@@ -13,19 +13,7 @@ guide_status: ready
 
 Open Health Stack is designed to accommodate different digital health contexts, from national ministry programmes to agile technology startups. Rather than imposing a single monolithic architecture, the ecosystem provides distinct pathways that allow teams to adopt specific components or deploy complete reference systems.
 
-```
-┌─────────────────────────────────────────────────────────────────────────┐
-│                       OHS ADOPTION PATHWAYS                             │
-├───────────────────────────────────┬─────────────────────────────────────┤
-│ Pathway A: Unbundled SDKs         │ Pathway B: Reference Platform       │
-│ Client and backend libraries      │ Full end-to-end multiplatform stack │
-│ Add to existing applications      │ Rapid baseline for new programmes   │
-├───────────────────────────────────┼─────────────────────────────────────┤
-│ Pathway C: Analytics Hub          │ Pathway D: AI Evals and Tooling     │
-│ SQL-on-FHIR pipelines             │ Model benchmarking and safety       │
-│ Power aggregate dashboards        │ Structured FHIR prompt engineering  │
-└───────────────────────────────────┴─────────────────────────────────────┘
-```
+![Four OHS adoption pathways. Pathway A, unbundled SDKs, client and backend libraries added to existing applications. Pathway B, reference platform, a full end-to-end multiplatform stack for a rapid baseline. Pathway C, analytics hub, SQL-on-FHIR pipelines powering aggregate dashboards. Pathway D, AI development on FHIR, currently incubating, tooling for benchmarking and evals on FHIR-based models.](../images/pathways-overview.svg)
 
 ## Pathway A for unbundled SDK and client adoption
 

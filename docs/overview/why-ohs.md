@@ -80,20 +80,11 @@ Open Health Stack focuses on client SDKs, multiplatform offline persistence, gat
 
 Open Health Stack tools complement existing digital health investments rather than replacing them. Where standard FHIR APIs exist, interoperability works out of the box.
 
-```
-┌─────────────────────────────────────────────────────────────────────────┐
-│                      COMPLEMENTARY INTEGRATION PATTERNS                 │
-├───────────────────────────────────┬─────────────────────────────────────┤
-│ Standard FHIR APIs                │ Out-of-the-box native data exchange │
-│ DHIS2 Aggregate Reporting         │ FHIR Data Pipes + OpenFn workflow   │
-│ OpenMRS & Hospital EHRs           │ Info Gateway routing and access rules│
-│ National Master Patient Index     │ Gateway identity verification       │
-└───────────────────────────────────┴─────────────────────────────────────┘
-```
+![Four complementary integration patterns. Standard FHIR APIs get direct interoperability out of the box. DHIS2 aggregate reporting is reached through FHIR Data Pipes with OpenFn workflows. OpenMRS and hospital EHRs are enabled through a FHIR Facade layer. National Master Patient Index integrates through gateway identity verification.](../images/coexistence-overview.svg)
 
 - **Out of the box FHIR interoperability** connects directly with any system exposing standard FHIR endpoints.
 - **DHIS2 national reporting** pairs FHIR Data Pipes with integration platforms like OpenFn to flatten encounters and automate monthly payload submissions.
-- **OpenMRS and legacy EHRs** connect through standard FHIR endpoints and gateway access rules without altering core databases.
+- **OpenMRS and legacy EHRs** connect through a FHIR Facade exposing standard FHIR endpoints, routed via gateway access rules without altering core databases.
 - **National Master Patient Indexes** integrate with gateway routing for patient identifier continuity across facilities.
 
 Community implementation recipes and integration examples are shared across developer resources and community working groups.

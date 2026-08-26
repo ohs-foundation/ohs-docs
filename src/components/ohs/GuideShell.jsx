@@ -153,7 +153,7 @@ function GuideSidebar({ open, onClose }) {
     : inBuild
     ? "BUILD · BLUEPRINTS & CODE"
     : inSolutions
-    ? "PATHWAYS & SOLUTIONS"
+    ? "PATHWAYS"
     : inCommunity
     ? "COMMUNITY & ECOSYSTEM"
     : "OPEN HEALTH STACK";

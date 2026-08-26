@@ -1,0 +1,124 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1700 460" width="1700" height="460" role="img" aria-labelledby="anTitle anDesc">
+  <title id="anTitle">FHIR analytics pipeline architecture</title>
+  <desc id="anDesc">Transactional resources from a standard FHIR server are processed by FHIR Data Pipes using SQL-on-FHIR view definitions, producing flattened tables in an analytical warehouse such as PostgreSQL, BigQuery, or ClickHouse. BI dashboards including Apache Superset query that warehouse directly with SQL.</desc>
+
+  <style>
+    :root, svg {
+      --found:      #2D86C4;
+      --found-fill: #E3F1FA;
+      --store:      #5F6368;
+      --ink:        #1A1A2E;
+      --muted:      #6B7280;
+      --line:       #9AA0A6;
+      --paper:      #FFFFFF;
+      --bg:         #FFFFFF;
+      --hair:       #DADCE0;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root, svg {
+        --found:      #6FB6E8;
+        --found-fill: #16293A;
+        --store:      #9AA0A6;
+        --ink:        #E8EAED;
+        --muted:      #9AA0A6;
+        --line:       #6B7280;
+        --paper:      #1B1C1F;
+        --bg:         #131417;
+        --hair:       #3C4043;
+      }
+    }
+    .bg      { fill: var(--bg); }
+    .lbl-f   { font: 600 23px "Hanken Grotesk", "Google Sans", Inter, system-ui, sans-serif; text-anchor: middle; fill: var(--found); }
+    .lbl-s   { font: 600 23px "Hanken Grotesk", "Google Sans", Inter, system-ui, sans-serif; text-anchor: middle; fill: var(--ink); }
+    .sub     { font: 400 17px "Hanken Grotesk", "Google Sans", Inter, system-ui, sans-serif; text-anchor: middle; fill: var(--muted); }
+    .leg     { font: 400 19px "Hanken Grotesk", "Google Sans", Inter, system-ui, sans-serif; fill: var(--ink); }
+    .flow    { fill: none; stroke: var(--line); stroke-width: 2.6; }
+    .ghost-f { fill: var(--found-fill); stroke: var(--found); stroke-width: 2.2; opacity: .55; }
+    .paper-f { fill: var(--paper); stroke: var(--found); stroke-width: 2.4; }
+    .p-fill  { fill: var(--found-fill); stroke: var(--found); stroke-width: 2.4; }
+    .cyl     { fill: var(--store); }
+    .cyl-t   { fill: #7E848A; }
+    .hair    { stroke: var(--hair); stroke-width: 1.6; }
+  </style>
+
+  <defs>
+    <marker id="anAh" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0.6 L 10 5 L 0 9.4 z" fill="var(--line)"/>
+    </marker>
+  </defs>
+
+  <rect class="bg" x="0" y="0" width="1700" height="460"/>
+
+  <!-- FHIR server -->
+  <text class="lbl-s" x="150" y="360">FHIR server</text>
+  <text class="sub" x="150" y="384">transactional store</text>
+  <g transform="translate(92,210)">
+    <ellipse cx="58" cy="0" rx="58" ry="17" class="cyl-t"/>
+    <path d="M 0 0 v 24 a 58 17 0 0 0 116 0 v -24 z" class="cyl"/>
+    <ellipse cx="58" cy="40" rx="58" ry="17" class="cyl-t"/>
+    <path d="M 0 40 v 24 a 58 17 0 0 0 116 0 v -24 z" class="cyl"/>
+    <ellipse cx="58" cy="80" rx="58" ry="17" class="cyl-t"/>
+    <path d="M 0 80 v 24 a 58 17 0 0 0 116 0 v -24 z" class="cyl"/>
+  </g>
+
+  <!-- FHIR Data Pipes -->
+  <text class="lbl-f" x="574" y="360">FHIR Data Pipes</text>
+  <text class="sub" x="574" y="384">SQL-on-FHIR ViewDefinitions</text>
+  <g>
+    <rect class="ghost-f" x="464" y="222" width="76" height="98" rx="7"/>
+    <rect class="paper-f" x="452" y="212" width="76" height="98" rx="7"/>
+    <path d="M 476 268 c -10 -9 -6 -21 1 -27 c .7 5.6 4.2 7.7 7 9.1 c 2.8 -5.6 1.4 -11.2 -1.4 -15.4 c 9.8 3.5 16.8 14 15.4 23.8 c -.7 7 -6.3 11.9 -11.9 12.6 c -4.2 .7 -8.4 -.7 -10.5 -3.5 z"
+          fill="var(--found)" opacity=".85"/>
+    <rect x="464" y="286" width="52" height="6" rx="3" fill="var(--found)" opacity=".25"/>
+    <path d="M 540 266 h 32" class="flow" marker-end="url(#anAh)"/>
+    <rect x="590" y="212" width="106" height="92" rx="7" fill="var(--found-fill)" stroke="var(--found)" stroke-width="2.4"/>
+    <path d="M 590 236 h 106 M 590 260 h 106 M 590 284 h 106 M 626 212 v 92 M 662 212 v 92"
+          stroke="var(--found)" stroke-width="1.8" opacity=".45" fill="none"/>
+    <rect x="590" y="212" width="106" height="24" rx="7" fill="var(--found)" opacity=".22"/>
+  </g>
+
+  <!-- Warehouse -->
+  <text class="lbl-s" x="1000" y="360">Analytical warehouse</text>
+  <text class="sub" x="1000" y="384">PostgreSQL &#183; BigQuery &#183; ClickHouse</text>
+  <g transform="translate(942,210)">
+    <ellipse cx="58" cy="0" rx="58" ry="17" class="cyl-t"/>
+    <path d="M 0 0 v 24 a 58 17 0 0 0 116 0 v -24 z" class="cyl"/>
+    <ellipse cx="58" cy="40" rx="58" ry="17" class="cyl-t"/>
+    <path d="M 0 40 v 24 a 58 17 0 0 0 116 0 v -24 z" class="cyl"/>
+    <ellipse cx="58" cy="80" rx="58" ry="17" class="cyl-t"/>
+    <path d="M 0 80 v 24 a 58 17 0 0 0 116 0 v -24 z" class="cyl"/>
+  </g>
+
+  <!-- Dashboards -->
+  <text class="lbl-f" x="1425" y="360">BI dashboards</text>
+  <text class="sub" x="1425" y="384">Apache Superset &#183; SQL clients</text>
+  <g transform="translate(1350,195)">
+    <rect class="ghost-f" x="16" y="12" width="164" height="122" rx="9"/>
+    <rect class="p-fill" x="0" y="0" width="164" height="122" rx="9"/>
+    <path d="M 0 24 h 164" stroke="var(--found)" stroke-width="1.6" opacity=".45"/>
+    <rect x="20" y="78" width="20" height="28" rx="3" fill="var(--found)" opacity=".35"/>
+    <rect x="48" y="60" width="20" height="46" rx="3" fill="var(--found)" opacity=".55"/>
+    <rect x="76" y="70" width="20" height="36" rx="3" fill="var(--found)" opacity=".35"/>
+    <rect x="104" y="46" width="20" height="60" rx="3" fill="var(--found)" opacity=".75"/>
+    <path d="M 20 58 L 48 46 L 76 52 L 104 34 L 136 40"
+          fill="none" stroke="var(--found)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="136" cy="40" r="4" fill="var(--found)"/>
+  </g>
+
+  <!-- flows -->
+  <path class="flow" d="M 212 258 L 448 258" marker-end="url(#anAh)"/>
+  <path class="flow" d="M 700 258 L 938 258" marker-end="url(#anAh)"/>
+  <path class="flow" d="M 1062 258 L 1346 258" marker-end="url(#anAh)"/>
+
+  <!-- legend -->
+  <path d="M 460 410 h 780" class="hair"/>
+  <circle cx="496" cy="440" r="11" fill="var(--found)"/>
+  <text class="leg" x="518" y="447">OHS foundational components</text>
+  <g transform="translate(940,428)">
+    <ellipse cx="11" cy="4" rx="11" ry="3.6" class="cyl-t"/>
+    <path d="M 0 4 v 6 a 11 3.6 0 0 0 22 0 v -6 z" class="cyl"/>
+    <ellipse cx="11" cy="14" rx="11" ry="3.6" class="cyl-t"/>
+    <path d="M 0 14 v 6 a 11 3.6 0 0 0 22 0 v -6 z" class="cyl"/>
+  </g>
+  <text class="leg" x="976" y="447">Data stores, implementation-specific</text>
+</svg>
