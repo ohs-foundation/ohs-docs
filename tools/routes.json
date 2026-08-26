@@ -242,6 +242,11 @@
       "searchIndexed": true
     },
     {
+      "id": "android-fhir-overview",
+      "path": "/ohs-docs/fhir-foundations/android-fhir/",
+      "searchIndexed": true
+    },
+    {
       "id": "info-gateway-overview",
       "path": "/ohs-docs/fhir-foundations/info-gateway/",
       "searchIndexed": true

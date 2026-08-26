@@ -115,11 +115,7 @@ const sidebars = {
                 "fhir-foundations/kotlin-fhir-data-capture/customize-and-extend",
               ],
             },
-            {
-              type: "link",
-              label: "Android FHIR SDK ↗",
-              href: "https://github.com/google/android-fhir",
-            },
+            "fhir-foundations/android-fhir/overview",
           ],
         },
         {

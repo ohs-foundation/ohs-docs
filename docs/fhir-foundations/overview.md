@@ -46,7 +46,7 @@ The Kotlin Multiplatform SDKs publish under the Maven group `dev.ohs.fhir` and r
 
 ### Android FHIR SDK
 
-The [Android FHIR SDK](https://github.com/google/android-fhir) is a native Android library developed by Google and the Open Health Stack community. It provides offline-first SQLite-based resource management, synchronization with FHIR endpoints, and structured questionnaire rendering for native Android apps.
+The [Android FHIR SDK](/fhir-foundations/android-fhir/) is a native Android library developed by the Open Health Stack community in collaboration with the World Health Organization. It provides offline-first SQLite-based resource management, synchronization with FHIR endpoints, structured questionnaire rendering, and CQL clinical reasoning for native Android apps.
 
 ## Back-end SDKs
 
@@ -72,7 +72,7 @@ The client SDKs operate independently. A typical offline-first data-collection a
 - Use [Kotlin FHIR Engine](/fhir-foundations/kotlin-fhir-engine/) for local resource storage and synchronization.
 - Use [Kotlin FHIR Data Capture](/fhir-foundations/kotlin-fhir-data-capture/) to collect structured data with FHIR Questionnaires.
 
-**Building a native Android application?** Explore the [Android FHIR SDK](https://github.com/google/android-fhir).
+**Building a native Android application?** Explore the [Android FHIR SDK](/fhir-foundations/android-fhir/).
 
 **Building a server, service, or CLI tool?** Use the core libraries directly.
 
