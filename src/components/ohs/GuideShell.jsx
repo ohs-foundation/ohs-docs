@@ -122,7 +122,7 @@ function SectionNav({ className }) {
         className={inSolutions ? "active" : undefined}
         aria-current={inSolutions ? "true" : undefined}
       >
-        Stories & Solutions
+        Pathways
       </Link>
       <Link
         to="/resources/"
@@ -153,7 +153,7 @@ function GuideSidebar({ open, onClose }) {
     : inBuild
     ? "BUILD · BLUEPRINTS & CODE"
     : inSolutions
-    ? "STORIES & SOLUTIONS"
+    ? "PATHWAYS & SOLUTIONS"
     : inCommunity
     ? "COMMUNITY & ECOSYSTEM"
     : "OPEN HEALTH STACK";

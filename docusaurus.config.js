@@ -75,7 +75,7 @@ const config = {
         { to: "/get-started/", label: "Build", position: "left" },
         {
           to: "/overview/solutions-and-pathways/",
-          label: "Stories & Solutions",
+          label: "Pathways",
           position: "left",
         },
         {

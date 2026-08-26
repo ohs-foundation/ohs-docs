@@ -268,7 +268,7 @@ const sidebars = {
   solutionsSidebar: [
     {
       type: "category",
-      label: "Stories & Solutions",
+      label: "Pathways",
       collapsible: false,
       items: [
         "overview/solutions-and-pathways",
