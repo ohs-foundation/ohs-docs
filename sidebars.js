@@ -36,6 +36,16 @@ const sidebars = {
     "landing",
     {
       type: "category",
+      label: "Strategy & evaluation",
+      collapsible: false,
+      items: [
+        "overview/why-ohs",
+        "overview/solutions-and-pathways",
+        "overview/governance-and-standards",
+      ],
+    },
+    {
+      type: "category",
       label: "Understand",
       collapsible: false,
       items: [

@@ -2,7 +2,7 @@ import React from "react";
 import Link from "@docusaurus/Link";
 
 export default function Brand({
-  to = "https://ohs.foundation",
+  to = "/",
   compact = false,
 }) {
   return (

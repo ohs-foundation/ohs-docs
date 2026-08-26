@@ -70,6 +70,7 @@ const config = {
       logo: { alt: "Open Health Stack", src: "assets/favicon.svg", href: "https://ohs.foundation" },
       items: [
         { to: "/", label: "OHS Docs Home", position: "left" },
+        { to: "/why-ohs/", label: "Why OHS", position: "left" },
         {
           to: "/fhir-foundations/",
           label: "FHIR Foundations",

@@ -7,6 +7,21 @@
       "searchIndexed": true
     },
     {
+      "id": "why-ohs",
+      "path": "/ohs-docs/why-ohs/",
+      "searchIndexed": true
+    },
+    {
+      "id": "solutions-and-pathways",
+      "path": "/ohs-docs/overview/solutions-and-pathways/",
+      "searchIndexed": true
+    },
+    {
+      "id": "governance-and-standards",
+      "path": "/ohs-docs/overview/governance-and-standards/",
+      "searchIndexed": true
+    },
+    {
       "id": "get-started",
       "path": "/ohs-docs/get-started/",
       "searchIndexed": true

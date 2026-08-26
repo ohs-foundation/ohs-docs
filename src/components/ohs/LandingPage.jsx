@@ -27,6 +27,7 @@ function LandingHeader() {
           aria-label="Primary navigation"
         >
           <Link to="/" aria-current="page">OHS Docs Home</Link>
+          <Link to="/why-ohs/">Why OHS</Link>
           <Link to="/fhir-foundations/">FHIR Foundations</Link>
           <Link to="/concepts/what-ohs-player-is/">OHS Player</Link>
           <span className="ohs-nav-disabled">
@@ -53,6 +54,56 @@ function LandingHeader() {
         </div>
       </div>
     </header>
+  );
+}
+
+function PathwaysSection() {
+  return (
+    <section className="ohs-pathways-section" aria-label="Audience Pathways">
+      <div className="ohs-pathways-header">
+        <span className="ohs-eyebrow">CHOOSE YOUR PATHWAY</span>
+        <h2>Tailored entry points across the stack</h2>
+        <p>Explore strategic briefings, architectural blueprints, or hands-on developer SDKs.</p>
+      </div>
+      <div className="ohs-pathways-grid">
+        <Link to="/why-ohs/" className="ohs-pathway-card">
+          <div className="ohs-pathway-meta">
+            <span className="ohs-pathway-icon">🏛️</span>
+            <span className="ohs-pathway-audience">Ministries & Funders</span>
+          </div>
+          <h3>Strategic Briefing</h3>
+          <p>Learn how OHS reduces total cost of ownership, prevents vendor lock-in, and scales sovereign digital health.</p>
+          <span className="ohs-pathway-cta">Read briefing <span>→</span></span>
+        </Link>
+        <Link to="/overview/solutions-and-pathways/" className="ohs-pathway-card">
+          <div className="ohs-pathway-meta">
+            <span className="ohs-pathway-icon">🚀</span>
+            <span className="ohs-pathway-audience">Health Tech Builders</span>
+          </div>
+          <h3>Solutions & Pathways</h3>
+          <p>Accelerate time-to-market with pre-built multiplatform SDKs, client toolkits, and unbundled sub-assemblies.</p>
+          <span className="ohs-pathway-cta">Explore pathways <span>→</span></span>
+        </Link>
+        <Link to="/concepts/architecture/" className="ohs-pathway-card">
+          <div className="ohs-pathway-meta">
+            <span className="ohs-pathway-icon">📐</span>
+            <span className="ohs-pathway-audience">Solution Architects</span>
+          </div>
+          <h3>Architecture & Security</h3>
+          <p>Explore end-to-end reference topology, gateway access control, and offline-first database synchronization.</p>
+          <span className="ohs-pathway-cta">View architecture <span>→</span></span>
+        </Link>
+        <Link to="/get-started/" className="ohs-pathway-card">
+          <div className="ohs-pathway-meta">
+            <span className="ohs-pathway-icon">💻</span>
+            <span className="ohs-pathway-audience">Software Engineers</span>
+          </div>
+          <h3>Developer Quickstart</h3>
+          <p>Jump directly into Kotlin Multiplatform SDKs, Gradle setup, Back-End services, and runnable sample code.</p>
+          <span className="ohs-pathway-cta">Start building <span>→</span></span>
+        </Link>
+      </div>
+    </section>
   );
 }
 
@@ -149,18 +200,18 @@ function PillarsSection() {
         <div className="ohs-pillar-card is-disabled">
           <div className="ohs-pillar-header">
             <span className="ohs-pillar-tag">PILLAR 03</span>
-            <span className="ohs-coming-soon-badge">Coming soon</span>
+            <span className="ohs-coming-soon-badge">Evals & Tooling</span>
           </div>
           <h3>AI Commons</h3>
           <p>
-            Artificial intelligence and machine learning tooling, workflows,
-            and evaluation models for FHIR-native healthcare applications and
-            frontline care delivery.
+            Tooling to interact with, query, and extract structured FHIR data models,
+            combined with standardized benchmarking and clinical evaluation frameworks
+            for builders and implementers.
           </p>
           <div className="ohs-pillar-links">
-            <span>STATUS</span>
+            <span>FOCUS AREAS</span>
             <p style={{ margin: 0, fontSize: "0.82rem", color: "var(--ohs-ink-soft)" }}>
-              Documentation and guides for AI Commons are coming soon.
+              FHIR data model prompt engineering, clinical safety benchmarks, and validation tools.
             </p>
           </div>
         </div>
@@ -352,11 +403,23 @@ export default function LandingPage({ children }) {
             <h1>{metadata.title}</h1>
             <p>{metadata.description}</p>
             <div className="ohs-hero-actions">
-              {primary && <Link className="ohs-button" to={primary.to}>{primary.label}</Link>}
+              {primary && (
+                primary.to ? (
+                  <Link className="ohs-button" to={primary.to}>{primary.label}</Link>
+                ) : (
+                  <a className="ohs-button" href={primary.href}>{primary.label}</a>
+                )
+              )}
+              {secondary && (
+                secondary.to ? (
+                  <Link className="ohs-button ohs-button-secondary" to={secondary.to}>{secondary.label}</Link>
+                ) : (
+                  <a className="ohs-button ohs-button-secondary" href={secondary.href}>{secondary.label} ↗</a>
+                )
+              )}
               <a className="ohs-button ohs-button-secondary" href="#capabilities">
                 Explore Capabilities ↓
               </a>
-              {secondary && <a className="ohs-button ohs-button-secondary" href={secondary.href}>{secondary.label} ↗</a>}
             </div>
             <div className="ohs-hero-tags">
               <span className="ohs-hero-tag">Building blocks for global digital health</span>
@@ -367,6 +430,7 @@ export default function LandingPage({ children }) {
             </div>
           </div>
         </section>
+        <PathwaysSection />
         <PillarsSection />
         <article className="ohs-landing-content">{children}</article>
         <TopicExplorerSection />

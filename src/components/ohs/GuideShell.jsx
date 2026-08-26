@@ -79,9 +79,10 @@ function PageToc({ entries, activeId, mobile = false }) {
 function SectionNav({ className }) {
   const { pathname } = useLocation();
   const isHome = pathname === "/" || pathname === "/ohs-docs/" || pathname === "/ohs-docs";
+  const inWhyOhs = pathname.includes("/why-ohs/") || pathname.includes("/overview/");
   const inFoundation = pathname.includes("/fhir-foundations/");
   const inResources = pathname.includes("/resources/");
-  const inPlayer = !isHome && !inFoundation && !inResources;
+  const inPlayer = !isHome && !inWhyOhs && !inFoundation && !inResources;
   return (
     <nav className={className} aria-label="Documentation sections">
       <Link
@@ -90,6 +91,13 @@ function SectionNav({ className }) {
         aria-current={isHome ? "true" : undefined}
       >
         OHS Docs Home
+      </Link>
+      <Link
+        to="/why-ohs/"
+        className={inWhyOhs ? "active" : undefined}
+        aria-current={inWhyOhs ? "true" : undefined}
+      >
+        Why OHS
       </Link>
       <Link
         to="/fhir-foundations/"
