@@ -3,7 +3,7 @@ id: multiplatform-client
 title: Codelab · Offline-First Multiplatform Client
 description: Build a cross-platform mobile and desktop healthcare application with Kotlin FHIR and local SQLite storage.
 slug: /tutorials-and-codelabs/multiplatform-client/
-sidebar_label: 1. Multiplatform Client Codelab
+sidebar_label: Multiplatform Client Codelab
 sidebar_position: 10
 guide_type: Codelab
 guide_status: ready

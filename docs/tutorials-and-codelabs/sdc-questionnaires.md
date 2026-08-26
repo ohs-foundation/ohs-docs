@@ -3,7 +3,7 @@ id: sdc-questionnaires
 title: Tutorial · Clinical Questionnaire Authoring and Extraction
 description: Author standard Structured Data Capture questionnaires, evaluate real-time FHIRPath validation rules, and extract clinical resources.
 slug: /tutorials-and-codelabs/sdc-questionnaires/
-sidebar_label: 2. SDC Questionnaires Tutorial
+sidebar_label: SDC Questionnaires Tutorial
 sidebar_position: 20
 guide_type: Tutorial
 guide_status: ready

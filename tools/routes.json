@@ -287,6 +287,31 @@
       "searchIndexed": true
     },
     {
+      "id": "tutorials-and-codelabs-data-pipes-test-servers",
+      "path": "/ohs-docs/tutorials-and-codelabs/data-pipes-test-servers/",
+      "searchIndexed": true
+    },
+    {
+      "id": "tutorials-and-codelabs-data-pipes-single-machine",
+      "path": "/ohs-docs/tutorials-and-codelabs/data-pipes-single-machine/",
+      "searchIndexed": true
+    },
+    {
+      "id": "tutorials-and-codelabs-data-pipes-try-controller",
+      "path": "/ohs-docs/tutorials-and-codelabs/data-pipes-try-controller/",
+      "searchIndexed": true
+    },
+    {
+      "id": "tutorials-and-codelabs-data-pipes-superset",
+      "path": "/ohs-docs/tutorials-and-codelabs/data-pipes-superset/",
+      "searchIndexed": true
+    },
+    {
+      "id": "tutorials-and-codelabs-data-pipes-gcp-fhirstore",
+      "path": "/ohs-docs/tutorials-and-codelabs/data-pipes-gcp-fhirstore/",
+      "searchIndexed": true
+    },
+    {
       "id": "tutorials-and-codelabs-gateway-access-rules",
       "path": "/ohs-docs/tutorials-and-codelabs/gateway-access-rules/",
       "searchIndexed": true

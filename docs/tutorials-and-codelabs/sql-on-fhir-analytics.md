@@ -3,7 +3,7 @@ id: sql-on-fhir-analytics
 title: Tutorial · Streaming Analytics with SQL-on-FHIR
 description: Transform hierarchical FHIR data into relational database schemas with ViewDefinitions and build Apache Superset dashboards.
 slug: /tutorials-and-codelabs/sql-on-fhir-analytics/
-sidebar_label: 3. SQL-on-FHIR Analytics Tutorial
+sidebar_label: SQL-on-FHIR Analytics Tutorial
 sidebar_position: 30
 guide_type: Tutorial
 guide_status: ready

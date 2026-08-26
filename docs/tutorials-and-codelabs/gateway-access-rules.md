@@ -3,7 +3,7 @@ id: gateway-access-rules
 title: Codelab · Gateway Security and Access Rules
 description: Implement custom role-based access checkers and custom REST endpoints using Kotlin and Spring Boot in Info Gateway.
 slug: /tutorials-and-codelabs/gateway-access-rules/
-sidebar_label: 4. Gateway Security Codelab
+sidebar_label: Gateway Security Codelab
 sidebar_position: 40
 guide_type: Codelab
 guide_status: ready

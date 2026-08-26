@@ -3,7 +3,7 @@ id: zero-code-screens
 title: Tutorial · Zero-Code Screen Configuration
 description: Adapt patient registers, clinical profiles, and task lists without writing code using the Configuration Implementation Guide.
 slug: /tutorials-and-codelabs/zero-code-screens/
-sidebar_label: 5. Zero-Code Screens Tutorial
+sidebar_label: Zero-Code Screens Tutorial
 sidebar_position: 50
 guide_type: Tutorial
 guide_status: ready
