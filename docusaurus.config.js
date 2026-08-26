@@ -94,7 +94,12 @@ const config = {
       style: "dark",
       copyright: "Open Health Stack documentation.",
     },
-    docs: { sidebar: { hideable: false } },
+    docs: {
+      sidebar: {
+        hideable: false,
+        autoCollapseCategories: true,
+      },
+    },
   },
 };
 
