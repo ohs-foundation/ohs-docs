@@ -13,18 +13,10 @@ primary_action:
   to: /why-ohs/
 secondary_action:
   label: Get Started
-  to: /get-started/
+  to: '#get-started'
 ---
 
-## Modular tools for digital health
-
-[Open Health Stack](https://ohs.foundation/) is a collection of open-source tools and shared libraries for standards-native healthcare software. Rather than offering a rigid monolithic system, the ecosystem allows digital health innovators, ministries of health, and engineering teams to adopt individual libraries or evaluate a complete reference toolkit.
-
-- **FHIR Foundations** provides unbundled Kotlin Multiplatform core libraries for data models and FHIRPath evaluation, plus client SDKs for on-device storage, sync, and questionnaire rendering across Android, iOS, desktop, and web.
-- **OHS Player** is a reference toolkit demonstrating how foundational libraries assemble into a working frontline mobile client, web administration portal, backend gateway, and streaming analytics pipeline.
-- **AI Commons** provides benchmarking suites, evaluation frameworks, and structured FHIR prompt tools to test clinical artificial intelligence safety and accuracy.
-
-## Quick navigation
+## Get started
 
 | I want to | First step | Direct link |
 | --- | --- | --- |

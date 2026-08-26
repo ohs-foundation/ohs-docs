@@ -58,6 +58,12 @@ function LandingHeader() {
 function PillarsSection() {
   return (
     <section className="ohs-pillars-section" aria-label="Open Health Stack Pillars">
+      <div className="ohs-pillars-intro">
+        <h2>Modular tools for digital health</h2>
+        <p>
+          <a href="https://ohs.foundation/">Open Health Stack</a> is a collection of open-source tools and shared libraries for standards-native healthcare software. Rather than offering a rigid monolithic system, the ecosystem allows digital health innovators, ministries of health, and engineering teams to adopt individual libraries or evaluate a complete reference toolkit.
+        </p>
+      </div>
       <div className="ohs-pillars-grid">
         {/* Pillar 01: FHIR Foundations */}
         <div className="ohs-pillar-card">
