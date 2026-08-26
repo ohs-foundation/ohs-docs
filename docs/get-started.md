@@ -27,6 +27,17 @@ Alternatively, if you are looking for component-specific examples, individual SD
 └─────────────┴─────────────┴─────────────┴─────────────┴─────────────────┘
 ```
 
+## What you will achieve
+
+By completing this quickstart, you will have a running local healthcare system with end-to-end data flow.
+
+- **A live backend infrastructure** with PostgreSQL, Keycloak identity, an un-forked HAPI FHIR server, and Info Gateway.
+- **An administrative organisation structure** with health facilities, practitioner roles, and care teams managed through the Web Admin Portal.
+- **A multiplatform frontline client** capturing clinical encounters offline on mobile or desktop and syncing with the central FHIR server.
+- **A streaming analytical pipeline** transforming FHIR resources into relational schemas powering live Apache Superset dashboards.
+
+[Watch the 5-minute video demonstration ↗](https://ohs.foundation)
+
 ## System requirements
 
 Before starting, ensure the required developer tools are installed.
