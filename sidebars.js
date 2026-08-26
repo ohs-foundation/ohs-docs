@@ -12,7 +12,25 @@ const sidebars = {
       label: "About Open Health Stack",
       collapsible: false,
       items: [
-        "overview/why-ohs",
+        {
+          type: "category",
+          label: "Why Open Health Stack",
+          collapsible: true,
+          collapsed: false,
+          link: { type: "doc", id: "overview/why-ohs" },
+          items: [
+            {
+              type: "link",
+              label: "Core Advantages",
+              href: "/why-ohs/#core-advantages",
+            },
+            {
+              type: "link",
+              label: "What It Doesn't Cover",
+              href: "/why-ohs/#what-open-health-stack-does-not-cover",
+            },
+          ],
+        },
         "overview/governance-and-standards",
       ],
     },
