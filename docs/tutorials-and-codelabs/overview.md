@@ -12,22 +12,9 @@ repository: ohs-player
 
 ## Hands-on learning paths
 
-Open Health Stack provides guided tutorials and hands-on codelabs to help engineering teams, health informaticians, and enterprise architects build with foundational libraries and the reference platform.
+Here you can find guided tutorials and hands-on codelabs to help engineering teams, health informaticians, and enterprise architects build with foundational libraries and the reference platform.
 
-```
-┌─────────────────────────────────────────────────────────────────────────┐
-│                       DEVELOPER LEARNING PATHS                          │
-├───────────────────────────────────┬─────────────────────────────────────┤
-│ 1. Multiplatform Client Codelab   │ 2. SDC Questionnaire Tutorial       │
-│ Build an offline-first mobile app │ Author, validate, and extract forms │
-├───────────────────────────────────┼─────────────────────────────────────┤
-│ 3. SQL-on-FHIR Analytics Tutorial │ 4. Gateway Security Codelab         │
-│ Stream FHIR into Superset tables  │ Write custom access rules in Kotlin │
-├───────────────────────────────────┴─────────────────────────────────────┤
-│ 5. Zero-Code Screen Configuration Tutorial                              │
-│ Adapt frontline user interfaces via declarative FHIR models             │
-└─────────────────────────────────────────────────────────────────────────┘
-```
+Each module focuses on a concrete technical capability, complete with prerequisites, runnable code snippets, and expected outcomes.
 
 ## Available codelabs and tutorials
 
@@ -39,8 +26,8 @@ Open Health Stack provides guided tutorials and hands-on codelabs to help engine
 | Gateway Security and Access Rules | Codelab | Role-based Spring Boot access control plugins and custom REST endpoints | [Start codelab](/tutorials-and-codelabs/gateway-access-rules/) |
 | Zero-Code Screen Configuration | Tutorial | Dynamic patient registers and profile screens configured in FHIR | [Start tutorial](/tutorials-and-codelabs/zero-code-screens/) |
 
-## Suggested progression
+## Suggested progression by role
 
-1. **For mobile developers**, start with the [Offline-First Multiplatform Client](/tutorials-and-codelabs/multiplatform-client/) and [Clinical Questionnaires](/tutorials-and-codelabs/sdc-questionnaires/).
-2. **For backend engineers**, complete the [Gateway Security Codelab](/tutorials-and-codelabs/gateway-access-rules/).
-3. **For data analysts and informaticians**, explore [SQL-on-FHIR Analytics](/tutorials-and-codelabs/sql-on-fhir-analytics/) and [Zero-Code Screens](/tutorials-and-codelabs/zero-code-screens/).
+- **Mobile and frontend developers** can begin with the [Offline-First Multiplatform Client Codelab](/tutorials-and-codelabs/multiplatform-client/) and proceed to [Clinical Questionnaire Authoring](/tutorials-and-codelabs/sdc-questionnaires/).
+- **Backend and DevOps engineers** can follow the [Gateway Security Codelab](/tutorials-and-codelabs/gateway-access-rules/) and explore [Reference Infrastructure](/components/reference-infrastructure/).
+- **Health informaticians and data analysts** can explore [Streaming Analytics with SQL-on-FHIR](/tutorials-and-codelabs/sql-on-fhir-analytics/) and [Zero-Code Screen Configuration](/tutorials-and-codelabs/zero-code-screens/).
