@@ -754,25 +754,53 @@ a { color: inherit; }
   top: var(--ohs-header-h);
   align-self: start;
   height: calc(100vh - var(--ohs-header-h));
-  padding: 38px 0 28px;
+  padding: 24px 0 28px;
   border-right: 1px solid var(--ohs-line);
   overflow-y: auto;
 }
+.ohs-sidebar-section-header {
+  padding: 0 20px 10px 4px;
+  margin-bottom: 12px;
+  border-bottom: 1px solid var(--ohs-line);
+}
+.ohs-sidebar-section-label {
+  display: block;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  color: var(--ohs-purple-deep);
+  text-transform: uppercase;
+}
 .ohs-sidebar-mobile-head { display: none; }
-.ohs-sidebar-navigation .menu__list { margin: 0; padding: 0 20px 0 0; list-style: none; }
+.ohs-sidebar-navigation .menu__list { margin: 0; padding: 0 16px 0 0; list-style: none; }
+.ohs-sidebar-navigation .menu__list-item { margin-bottom: 2px; }
 .ohs-sidebar-navigation .menu__link {
   display: block;
-  margin: 3px 0;
-  padding: 9px 11px;
-  border-radius: 8px;
+  margin: 1px 0;
+  padding: 7px 11px;
+  border-radius: 6px;
   color: var(--ohs-ink-soft);
-  font-size: 0.84rem;
+  font-size: 0.83rem;
+  font-weight: 500;
   text-decoration: none;
+  line-height: 1.35;
+  transition: background-color 0.12s ease, color 0.12s ease;
 }
 .ohs-sidebar-navigation .menu__link:hover { color: var(--ohs-purple-deep); background: var(--ohs-purple-wash); }
 .ohs-sidebar-navigation .menu__link--active { color: var(--ohs-purple-deep); background: var(--ohs-purple-wash); font-weight: 700; }
-.ohs-sidebar-navigation .menu__list .menu__list { margin-left: 12px; padding-left: 0; }
-.ohs-sidebar-help { margin: 32px 20px 0 0; padding: 16px; border: 1px solid var(--ohs-line); border-radius: 12px; background: var(--ohs-bg); }
+.ohs-sidebar-navigation .menu__list .menu__list {
+  margin-left: 8px;
+  padding-left: 10px;
+  border-left: 1.5px solid color-mix(in oklch, var(--ohs-line) 80%, transparent);
+  margin-top: 3px;
+  margin-bottom: 6px;
+}
+.ohs-sidebar-navigation .menu__link--sublist {
+  font-weight: 650;
+  font-size: 0.81rem;
+}
+.ohs-sidebar-help { margin: 28px 16px 0 0; padding: 14px; border: 1px solid var(--ohs-line); border-radius: 10px; background: var(--ohs-bg); }
 .ohs-sidebar-help strong { font-size: 0.75rem; }
 .ohs-sidebar-help p { margin: 6px 0 10px; color: var(--ohs-ink-soft); font-size: 0.72rem; line-height: 1.45; }
 .ohs-sidebar-help a { color: var(--ohs-purple-deep); font-size: 0.72rem; font-weight: 700; }

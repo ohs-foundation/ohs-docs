@@ -235,6 +235,11 @@
       "id": "kotlin-fhir-data-capture-customize",
       "path": "/ohs-docs/fhir-foundations/kotlin-fhir-data-capture/customize-and-extend/",
       "searchIndexed": true
+    },
+    {
+      "id": "tutorials-and-codelabs",
+      "path": "/ohs-docs/resources/tutorials-and-codelabs/",
+      "searchIndexed": true
     }
   ]
 }

@@ -81,8 +81,9 @@ function SectionNav({ className }) {
   const isHome = pathname === "/" || pathname === "/ohs-docs/" || pathname === "/ohs-docs";
   const inWhyOhs = pathname.includes("/why-ohs/") || pathname.includes("/overview/");
   const inFoundation = pathname.includes("/fhir-foundations/");
-  const inResources = pathname.includes("/resources/");
-  const inPlayer = !isHome && !inWhyOhs && !inFoundation && !inResources;
+  const inTutorials = pathname.includes("/resources/tutorials-and-codelabs/");
+  const inResources = pathname.includes("/resources/") && !inTutorials;
+  const inPlayer = !isHome && !inWhyOhs && !inFoundation && !inResources && !inTutorials;
   return (
     <nav className={className} aria-label="Documentation sections">
       <Link
@@ -113,9 +114,13 @@ function SectionNav({ className }) {
       >
         OHS Player
       </Link>
-      <span className="ohs-section-nav-disabled">
-        AI Commons<span className="ohs-nav-badge">Soon</span>
-      </span>
+      <Link
+        to="/resources/tutorials-and-codelabs/"
+        className={inTutorials ? "active" : undefined}
+        aria-current={inTutorials ? "true" : undefined}
+      >
+        Tutorials & Codelabs
+      </Link>
       <Link
         to="/resources/"
         className={inResources ? "active" : undefined}
@@ -130,6 +135,21 @@ function SectionNav({ className }) {
 function GuideSidebar({ open, onClose }) {
   const sidebar = useDocsSidebar();
   const { pathname } = useLocation();
+  const inWhyOhs = pathname.includes("/why-ohs/") || pathname.includes("/overview/");
+  const inFoundation = pathname.includes("/fhir-foundations/");
+  const inTutorials = pathname.includes("/resources/tutorials-and-codelabs/");
+  const inResources = pathname.includes("/resources/") && !inTutorials;
+
+  const sectionTitle = inWhyOhs
+    ? "STRATEGY & EVALUATION"
+    : inFoundation
+    ? "FHIR FOUNDATIONS PILLAR"
+    : inTutorials
+    ? "DEVELOPER TUTORIALS"
+    : inResources
+    ? "RESOURCES & COMMUNITY"
+    : "OHS PLAYER REFERENCE";
+
   return (
     <>
       <button
@@ -152,6 +172,9 @@ function GuideSidebar({ open, onClose }) {
           </button>
         </div>
         <SectionNav className="ohs-sidebar-sections" />
+        <div className="ohs-sidebar-section-header">
+          <span className="ohs-sidebar-section-label">{sectionTitle}</span>
+        </div>
         <nav
           aria-label="Documentation sections"
           className="ohs-sidebar-navigation"

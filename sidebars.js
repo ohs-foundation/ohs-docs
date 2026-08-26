@@ -33,11 +33,11 @@
 
 const sidebars = {
   playerReference: [
-    "landing",
     {
       type: "category",
       label: "Strategy & evaluation",
-      collapsible: false,
+      collapsible: true,
+      collapsed: false,
       items: [
         "overview/why-ohs",
         "overview/solutions-and-pathways",
@@ -46,8 +46,9 @@ const sidebars = {
     },
     {
       type: "category",
-      label: "Understand",
-      collapsible: false,
+      label: "Understand the platform",
+      collapsible: true,
+      collapsed: false,
       items: [
         "concepts/what-ohs-player-is",
         "concepts/architecture",
@@ -55,6 +56,8 @@ const sidebars = {
         {
           type: "category",
           label: "The components",
+          collapsible: true,
+          collapsed: true,
           link: { type: "doc", id: "components/overview" },
           items: [
             "components/client-app/overview",
@@ -71,8 +74,9 @@ const sidebars = {
     },
     {
       type: "category",
-      label: "Run it",
-      collapsible: false,
+      label: "Run the reference stack",
+      collapsible: true,
+      collapsed: false,
       link: { type: "doc", id: "get-started" },
       items: [
         "components/reference-infrastructure/overview",
@@ -84,47 +88,39 @@ const sidebars = {
     },
     {
       type: "category",
-      label: "Configure",
-      collapsible: false,
-      items: ["configure/screen-from-fhir-data"],
+      label: "Configure & extend",
+      collapsible: true,
+      collapsed: true,
+      items: [
+        "configure/screen-from-fhir-data",
+        "extend/decide",
+        "extend/backend-extensions",
+      ],
     },
     {
       type: "category",
-      label: "Extend",
-      collapsible: false,
-      items: ["extend/decide", "extend/backend-extensions"],
+      label: "Tutorials & codelabs",
+      collapsible: true,
+      collapsed: false,
+      items: [
+        "resources/tutorials-and-codelabs",
+      ],
     },
   ],
 
-  /**
-   * FHIR Foundations is the first documentation *section* beside the Player
-   * journey: a set of repositories documented together with its own sidebar.
-   * The name and structure follow the Foundation's official taxonomy at
-   * https://ohs.foundation/projects, where "FHIR Foundations" is Pillar 01
-   * and projects are labelled "Core Library" and "SDK". Future sections
-   * (player-client-app, player-web, ...) follow the same mechanics — a
-   * directory under docs/, a sidebar here, an entry point on the landing
-   * page and in the SectionNav switcher.
-   *
-   * The pillar has two kinds of projects. *Core libraries* are unopinionated
-   * building blocks usable in any Kotlin program, client or server. *SDKs*
-   * are opinionated, application-facing toolkits built on them; today's SDKs
-   * are client-side, and server-side SDKs would join as a sibling category.
-   * Every repository follows the same skeleton — overview, get started, task
-   * guides. Pillar-wide reference material (platform matrix, version
-   * pairing) closes the sidebar.
-   */
   fhirFoundations: [
     "fhir-foundations/overview",
     {
       type: "category",
       label: "Core FHIR libraries",
-      collapsible: false,
+      collapsible: true,
+      collapsed: false,
       items: [
         {
           type: "category",
           label: "Kotlin FHIR",
-          collapsible: false,
+          collapsible: true,
+          collapsed: false,
           link: { type: "doc", id: "fhir-foundations/kotlin-fhir/overview" },
           items: [
             "fhir-foundations/kotlin-fhir/get-started",
@@ -136,7 +132,8 @@ const sidebars = {
         {
           type: "category",
           label: "Kotlin FHIRPath",
-          collapsible: false,
+          collapsible: true,
+          collapsed: false,
           link: { type: "doc", id: "fhir-foundations/kotlin-fhirpath/overview" },
           items: [
             "fhir-foundations/kotlin-fhirpath/get-started",
@@ -149,12 +146,14 @@ const sidebars = {
     {
       type: "category",
       label: "Client SDKs",
-      collapsible: false,
+      collapsible: true,
+      collapsed: false,
       items: [
         {
           type: "category",
           label: "Kotlin FHIR Engine (KMP)",
-          collapsible: false,
+          collapsible: true,
+          collapsed: false,
           link: {
             type: "doc",
             id: "fhir-foundations/kotlin-fhir-engine/overview",
@@ -169,7 +168,8 @@ const sidebars = {
         {
           type: "category",
           label: "Kotlin FHIR Data Capture (KMP)",
-          collapsible: false,
+          collapsible: true,
+          collapsed: false,
           link: {
             type: "doc",
             id: "fhir-foundations/kotlin-fhir-data-capture/overview",
@@ -190,7 +190,8 @@ const sidebars = {
     {
       type: "category",
       label: "Back-end SDKs",
-      collapsible: false,
+      collapsible: true,
+      collapsed: false,
       items: [
         {
           type: "link",
@@ -207,7 +208,8 @@ const sidebars = {
     {
       type: "category",
       label: "Across the stack",
-      collapsible: false,
+      collapsible: true,
+      collapsed: false,
       items: [
         "fhir-foundations/platform-support",
         "fhir-foundations/versions",
@@ -215,16 +217,15 @@ const sidebars = {
     },
   ],
 
-  /**
-   * Common resources, repository links, community channels, and contributing
-   * guidance shared across all Open Health Stack pillars and projects.
-   */
   resources: [
     {
       type: "category",
       label: "Resources and Community",
       collapsible: false,
-      items: ["resources"],
+      items: [
+        "resources",
+        "resources/tutorials-and-codelabs",
+      ],
     },
   ],
 };

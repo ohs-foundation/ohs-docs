@@ -82,6 +82,11 @@ const config = {
           position: "left",
         },
         {
+          to: "/resources/tutorials-and-codelabs/",
+          label: "Tutorials & Codelabs",
+          position: "left",
+        },
+        {
           to: "/resources/",
           label: "Resources",
           position: "left",

@@ -1,7 +1,7 @@
 ---
 id: why-ohs
 title: Why Open Health Stack
-description: Strategic value, total cost of ownership reduction, open standards, and AI readiness for digital health.
+description: Strategic capabilities, total cost of ownership reduction, open standards, and AI readiness for digital health.
 slug: /why-ohs/
 sidebar_label: Why Open Health Stack
 sidebar_position: 5
@@ -17,67 +17,73 @@ Many systems rely on proprietary vertical applications. These create high ongoin
 
 Open Health Stack provides an open source foundation of standards-native building blocks. It gives ministries of health, digital health entrepreneurs, and non-profit organisations the technical agility to build, adapt, and scale healthcare software without proprietary lock-in.
 
-## Five strategic advantages of Open Health Stack
+## Ecosystem architecture and the three pillars
 
-```
-┌─────────────────────────────────────────────────────────────────────────┐
-│                       OPEN HEALTH STACK VALUE                           │
-├───────────────────┬───────────────────┬─────────────────────────────────┤
-│ 1. Zero Lock-In   │ 2. Multiplatform  │ 3. Declarative Agility          │
-│ Un-forked FHIR    │ Android, iOS, Web │ Update forms via FHIR resources │
-│ R4, R5, R6 ready  │ Single codebase   │ No app recompilation            │
-├───────────────────┴───────────────────┼─────────────────────────────────┤
-│ 4. Offline Resilience                 │ 5. AI Ready Data Modeling       │
-│ Full local storage and sync           │ Precise structured FHIR schema  │
-│ Built for low-connectivity clinics    │ Standardized clinical evals     │
-└───────────────────────────────────────┴─────────────────────────────────┘
-```
+![Open Health Stack ecosystem and capabilities diagram showing three pillars including FHIR Foundations with core libraries and SDKs, OHS Player reference composition, and AI Commons evaluation tooling](../images/ohs-ecosystem-overview.svg)
 
-### 1. Open standards and sovereign data ownership
+Open Health Stack organizes its building blocks into three complementary pillars.
 
-Open Health Stack is built strictly on the HL7 FHIR standard across FHIR R4, R4B, and R5, with an architecture designed for future releases including FHIR R6.
+### Pillar 1 for FHIR Foundations
 
-All data models, questionnaires, and exchange formats use official, un-forked FHIR specifications. Health systems retain complete ownership and control over their data, data schemas, and access policies. Organisations can switch storage backends, cloud providers, or analytics platforms without migrating data formats.
+FHIR Foundations delivers unbundled Kotlin Multiplatform libraries and client SDKs that any health application can import independently.
 
-### 2. Lower total cost of ownership through multiplatform engineering
+- **Kotlin FHIR (`fhir-model`)** provides type-safe FHIR data classes, JSON serialization, and spec-compliant resource models across Android, iOS, desktop, and web for FHIR R4, R4B, and R5, with an architecture ready for future releases including FHIR R6.
+- **Kotlin FHIRPath (`fhir-path`)** provides a deterministic expression evaluation engine that evaluates clinical logic against Kotlin FHIR classes.
+- **Kotlin FHIR Engine (`fhir-engine`)** provides on-device SQLite-based offline storage, typed search parameters, and bidirectional synchronization against standard FHIR servers.
+- **Kotlin FHIR Data Capture (`fhir-data-capture`)** renders complex Structured Data Capture (SDC) forms, calculates clinical expressions in real time, and extracts completed forms into standard FHIR resource bundles.
+- **Android FHIR SDK** provides native Android libraries for offline FHIR storage, synchronization, and form rendering on Google Android devices.
+- **Info Gateway (`fhir-gateway`) and FHIR Data Pipes** provide reverse proxy authentication, granular access rules, and batch analytical streaming pipelines behind backend infrastructure.
 
-Maintaining separate codebases for native Android, native iOS, and browser portals quickly exhausts public health budgets. 
+### Pillar 2 for OHS Player reference platform
 
-Open Health Stack utilizes Kotlin Multiplatform to deliver shared clinical data models, FHIRPath evaluation, local storage, and questionnaire rendering across Android, iOS, Desktop, and Web from one unified codebase. Engineering teams write core business logic and clinical validation rules once, cutting long-term maintenance and upgrade costs substantially.
+OHS Player is an end-to-end reference toolkit demonstrating how the unbundled building blocks assemble into a working digital health platform.
+
+- **Frontline Client App** is a Kotlin Multiplatform application for community health workers and nurses, running on Android, iOS, desktop, and web from one unified source tree.
+- **Web Admin Portal** is a browser administration console for managing users, roles, organisations, care teams, and health facility locations.
+- **Reference Gateway Host** is an authenticating proxy that validates OpenID Connect tokens, enforces role-based access rules, and routes requests to un-forked FHIR stores.
+- **Reference Analytics Pipeline** streams transactional FHIR data into relational data warehouses using standard SQL-on-FHIR view definitions, powering live Apache Superset dashboards.
+- **Declarative Configuration IG** defines screen layouts, clinical forms, and indicator tables in standard FHIR resources, allowing health authorities to adapt workflows without recompiling mobile binaries.
+
+### Pillar 3 for AI Commons
+
+AI Commons focuses on the intersection of artificial intelligence and structured healthcare standards.
+
+- **FHIR data model prompt engineering tools** allow developers to use modern language models to query, translate, and extract structured FHIR resources and questionnaires accurately.
+- **Benchmarking and clinical evaluation suites** enable builders and health ministries to test artificial intelligence accuracy, clinical protocol compliance, and hallucination rates against standard clinical validation datasets.
+- **Privacy-preserving execution frameworks** support on-premise model execution and automated clinical data de-identification, ensuring zero unauthorized health data leakage.
+
+## Strategic capabilities by focus area
+
+| Capability area | What Open Health Stack provides | Key components |
+| --- | --- | --- |
+| Mobile and client applications | Offline-first data entry, patient registry, task lists, and multiplatform form rendering | Kotlin FHIR Engine, Data Capture, Compose Multiplatform |
+| Backend and gateway security | Centralized authentication, OAuth2 token validation, and patient-level access control | Info Gateway, Keycloak, Spring Boot |
+| Analytics and reporting | Streaming pipelines that transform hierarchical FHIR resources into relational database tables | FHIR Data Pipes, SQL-on-FHIR ViewDefinitions, Apache Superset |
+| Declarative configuration | Zero-code screen customization and form updates driven directly by standard FHIR resources | Player Configuration IG, Structured Data Capture |
+| Clinical AI and evaluation | Benchmarking test suites and prompt tools to evaluate clinical accuracy and safety | AI Commons validation tools, FHIR prompt templates |
+
+## Core business advantages
+
+### 1. Zero vendor lock-in and sovereign data ownership
+
+Open Health Stack is built strictly on official HL7 FHIR specifications without custom forks. Health systems retain full ownership of their data schemas, clinical forms, and access policies. Organisations can switch cloud providers, storage engines, or analytics tools without migrating data formats.
+
+### 2. Lower total cost of ownership via Kotlin Multiplatform
+
+Maintaining separate codebases for native Android, native iOS, and web portals quickly exhausts public health budgets. Open Health Stack shares core data models, local persistence, and form rendering logic across Android, iOS, Desktop, and Web from one codebase, reducing long-term maintenance costs significantly.
 
 ### 3. Rapid adaptation without recompiling applications
 
-Clinical guidelines and national health indicators evolve constantly. In traditional applications, changing an intake form or adding a clinical question requires updating source code, recompiling native apps, and distributing new binaries through app stores.
+When national clinical guidelines or indicators change, health informaticians update central FHIR Questionnaire resources and SQL-on-FHIR view definitions. Frontline devices update their screens and workflows automatically upon synchronization without requiring new app store releases.
 
-With Open Health Stack, forms and user interface screens are driven declaratively by standard FHIR Questionnaire resources and SQL-on-FHIR view definitions. Health programme informaticians update clinical forms and dashboards centrally, and frontline devices update their workflows automatically upon synchronization.
+### 4. Resilient offline frontline care
 
-### 4. Resilient offline operation for frontline health workers
+Frontline workers in rural clinics and remote communities can register patients, record encounters, calculate clinical scores, and validate complex forms completely offline. Background synchronization reconciles records securely through the FHIR Gateway whenever connectivity is restored.
 
-Healthcare delivery often occurs in remote clinics, rural outposts, and areas with intermittent electrical and network connectivity.
+## Coexistence with national health systems
 
-Open Health Stack libraries provide on-device transactional storage with SQLite and Room Multiplatform. Frontline workers can register patients, record encounters, calculate clinical metrics, and validate complex questionnaires completely offline. When network connectivity becomes available, background synchronization reconciles records securely through the FHIR Gateway.
+Open Health Stack connects directly with existing national digital health software.
 
-### 5. AI ready data foundation and clinical evaluation tooling
-
-Healthcare artificial intelligence requires clean, structured, and standards-compliant clinical data to deliver reliable insights.
-
-Open Health Stack provides structured data modeling that enables modern artificial intelligence tools to parse, translate, and query clinical datasets accurately. Through AI Commons, the ecosystem provides benchmarking and evaluation tooling that allows builders and health authorities to measure artificial intelligence performance, safety, and clinical conformance before deploying decision support into the field.
-
-## Modular adoption vs complete reference platform
-
-Open Health Stack is not an all-or-nothing proposition. Organisations choose the adoption depth that fits their existing technical infrastructure.
-
-| Adoption model | What you deploy | Ideal use case |
-| --- | --- | --- |
-| Standalone client SDKs | Kotlin FHIR Engine and Data Capture | Existing native apps needing offline storage or standardized forms |
-| Security and gateway middleware | Info Gateway access proxy | Connecting modern mobile apps securely to existing enterprise EHRs |
-| Analytics and reporting hub | FHIR Data Pipes and Superset | Health systems needing fast SQL-on-FHIR analytical dashboards |
-| Full reference platform | OHS Player reference composition | Greenfield programmes and startups needing a full multiplatform baseline |
-
-## Coexistence with existing health systems
-
-National digital health architectures rarely start from zero. Open Health Stack is designed to complement and integrate with existing national health software.
-
-- **DHIS2 integration** is supported through SQL-on-FHIR pipelines that aggregate patient-level clinical records into standard aggregate indicator datasets for national health information management reporting.
+- **DHIS2 national reporting** is supported through automated SQL-on-FHIR pipelines that aggregate patient-level clinical records into standard indicator payloads.
 - **OpenMRS and legacy EHRs** connect through standard FHIR REST endpoints and Info Gateway access rules without altering core hospital databases.
-- **National Master Patient Indexes** integrate directly with gateway identity routing to ensure patient identifier continuity across facilities.
+- **National Master Patient Indexes** integrate directly with gateway identity routing to ensure patient identifier continuity across health facilities.

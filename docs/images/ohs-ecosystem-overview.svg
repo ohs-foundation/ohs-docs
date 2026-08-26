@@ -1,0 +1,181 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 960" width="1600" height="960" role="img" aria-labelledby="ohsEcoTitle ohsEcoDesc">
+  <title id="ohsEcoTitle">Open Health Stack Ecosystem and Capabilities</title>
+  <desc id="ohsEcoDesc">Open Health Stack organizes its capabilities across three pillars: FHIR Foundations providing core libraries and client and backend SDKs, OHS Player providing reference multiplatform client, web portal, gateway, and analytics pipelines, and AI Commons providing benchmarking, evaluation, and structured data tools.</desc>
+
+  <style>
+    :root, svg {
+      --found:       #2D86C4;
+      --found-fill:  #E3F1FA;
+      --player:      #5A44C4;
+      --player-fill: #EDEAF9;
+      --ai:          #D97706;
+      --ai-fill:     #FEF3C7;
+      --ink:         #1A1A2E;
+      --ink-soft:    #4A4D68;
+      --muted:       #6B7280;
+      --line:        #9AA0A6;
+      --paper:       #FFFFFF;
+      --bg:          #FFFFFF;
+      --border:      #E2E8F0;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root, svg {
+        --found:       #6FB6E8;
+        --found-fill:  #16293A;
+        --player:      #A996F0;
+        --player-fill: #2A2340;
+        --ai:          #FBBF24;
+        --ai-fill:     #362B14;
+        --ink:         #E8EAED;
+        --ink-soft:    #9AA0A6;
+        --muted:       #9AA0A6;
+        --line:        #6B7280;
+        --paper:       #1B1C1F;
+        --bg:          #131417;
+        --border:      #2D3748;
+      }
+    }
+    .bg        { fill: var(--bg); }
+    .lbl-main  { font: 700 28px "Hanken Grotesk", "Google Sans", Inter, system-ui, sans-serif; fill: var(--ink); text-anchor: middle; letter-spacing: -0.02em; }
+    .lbl-sub   { font: 400 17px "Hanken Grotesk", "Google Sans", Inter, system-ui, sans-serif; fill: var(--ink-soft); text-anchor: middle; }
+    .pillar-t  { font: 700 22px "Hanken Grotesk", "Google Sans", Inter, system-ui, sans-serif; }
+    .pillar-tag{ font: 600 13px "IBM Plex Mono", ui-monospace, monospace; letter-spacing: .08em; text-transform: uppercase; }
+    .card-t    { font: 600 18px "Hanken Grotesk", "Google Sans", Inter, system-ui, sans-serif; }
+    .card-d    { font: 400 14px "Hanken Grotesk", "Google Sans", Inter, system-ui, sans-serif; fill: var(--ink-soft); }
+    .card-pkg  { font: 500 13px "IBM Plex Mono", ui-monospace, monospace; letter-spacing: .02em; }
+    
+    .f-box     { fill: var(--found-fill); stroke: var(--found); stroke-width: 2.2; rx: 14; }
+    .p-box     { fill: var(--player-fill); stroke: var(--player); stroke-width: 2.2; rx: 14; }
+    .ai-box    { fill: var(--ai-fill); stroke: var(--ai); stroke-width: 2.2; rx: 14; }
+    .paper-box { fill: var(--paper); stroke: var(--border); stroke-width: 1.8; rx: 12; }
+    
+    .f-text    { fill: var(--found); }
+    .p-text    { fill: var(--player); }
+    .ai-text   { fill: var(--ai); }
+    
+    .conn-line { stroke: var(--line); stroke-width: 2; stroke-dasharray: 6 6; fill: none; }
+  </style>
+
+  <rect class="bg" x="0" y="0" width="1600" height="960"/>
+
+  <!-- HEADER -->
+  <text class="lbl-main" x="800" y="56">Open Health Stack Ecosystem Architecture</text>
+  <text class="lbl-sub" x="800" y="88">Three complementary pillars providing standards-native, offline-first digital health building blocks</text>
+
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <!-- PILLAR 01: FHIR FOUNDATIONS (Left Column) -->
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <rect class="f-box" x="60" y="130" width="460" height="780" opacity="0.95"/>
+  <text class="pillar-tag f-text" x="90" y="170">PILLAR 01</text>
+  <text class="pillar-t f-text" x="90" y="200">FHIR Foundations</text>
+  <text class="card-d" x="90" y="226">Core libraries and multiplatform SDKs</text>
+
+  <!-- Card 1: Core FHIR -->
+  <rect class="paper-box" x="84" y="250" width="412" height="120"/>
+  <text class="card-t f-text" x="106" y="284">Kotlin FHIR &amp; FHIRPath</text>
+  <text class="card-d" x="106" y="310">Multiplatform FHIR data models (R4, R5, R6 ready)</text>
+  <text class="card-d" x="106" y="330">and deterministic expression evaluation</text>
+  <text class="card-pkg f-text" x="106" y="354">dev.ohs.fhir:fhir-model · fhir-path</text>
+
+  <!-- Card 2: Client SDKs -->
+  <rect class="paper-box" x="84" y="390" width="412" height="150"/>
+  <text class="card-t f-text" x="106" y="424">Client SDKs (KMP &amp; Android)</text>
+  <text class="card-d" x="106" y="450">Kotlin FHIR Engine (offline storage and sync)</text>
+  <text class="card-d" x="106" y="470">Kotlin FHIR Data Capture (SDC questionnaires)</text>
+  <text class="card-d" x="106" y="490">Android FHIR SDK (native Jetpack integration)</text>
+  <text class="card-pkg f-text" x="106" y="520">dev.ohs.fhir:fhir-engine · fhir-data-capture</text>
+
+  <!-- Card 3: Backend SDKs -->
+  <rect class="paper-box" x="84" y="560" width="412" height="130"/>
+  <text class="card-t f-text" x="106" y="594">Back-End Services</text>
+  <text class="card-d" x="106" y="620">Info Gateway (auth proxy &amp; access rules)</text>
+  <text class="card-d" x="106" y="640">FHIR Data Pipes (SQL-on-FHIR pipelines)</text>
+  <text class="card-pkg f-text" x="106" y="668">github.com/ohs-foundation</text>
+
+  <!-- Card 4: Platform Reach -->
+  <rect class="paper-box" x="84" y="710" width="412" height="170"/>
+  <text class="card-t f-text" x="106" y="744">Multiplatform Target Reach</text>
+  <text class="card-d" x="106" y="770">• Android (Phones, tablets, ruggedized)</text>
+  <text class="card-d" x="106" y="792">• iOS (iPhones, iPads via Compose Multiplatform)</text>
+  <text class="card-d" x="106" y="814">• Desktop (JVM workstation apps)</text>
+  <text class="card-d" x="106" y="836">• Browser (Wasm / JS with OPFS storage)</text>
+  <text class="card-pkg f-text" x="106" y="862">Unified Kotlin Multiplatform Codebase</text>
+
+
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <!-- PILLAR 02: OHS PLAYER (Middle Column) -->
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <rect class="p-box" x="570" y="130" width="460" height="780" opacity="0.95"/>
+  <text class="pillar-tag p-text" x="600" y="170">PILLAR 02 · ALPHA REFERENCE</text>
+  <text class="pillar-t p-text" x="600" y="200">OHS Player Toolkit</text>
+  <text class="card-d" x="600" y="226">End-to-end reference system composition</text>
+
+  <!-- Card 1: Client App -->
+  <rect class="paper-box" x="594" y="250" width="412" height="120"/>
+  <text class="card-t p-text" x="616" y="284">Frontline Client Application</text>
+  <text class="card-d" x="616" y="310">Multiplatform frontline app for community workers</text>
+  <text class="card-d" x="616" y="330">Offline patient lists, household registry, care tasks</text>
+  <text class="card-pkg p-text" x="616" y="354">Compose Multiplatform · Android / iOS / Web</text>
+
+  <!-- Card 2: Web Portal -->
+  <rect class="paper-box" x="594" y="390" width="412" height="120"/>
+  <text class="card-t p-text" x="616" y="424">Web Admin Portal</text>
+  <text class="card-d" x="616" y="450">Programme management for health supervisors</text>
+  <text class="card-d" x="616" y="470">Users, roles, organisations, locations, assignments</text>
+  <text class="card-pkg p-text" x="616" y="494">React · Keycloak OpenID Connect</text>
+
+  <!-- Card 3: Gateway & Backend -->
+  <rect class="paper-box" x="594" y="530" width="412" height="120"/>
+  <text class="card-t p-text" x="616" y="564">Reference Gateway Host</text>
+  <text class="card-d" x="616" y="590">Centralized auth verification and access checker</text>
+  <text class="card-d" x="616" y="610">Routes to upstream standard un-forked HAPI FHIR</text>
+  <text class="card-pkg p-text" x="616" y="634">Spring Boot · Info Gateway Plugin</text>
+
+  <!-- Card 4: Analytics & Infrastructure -->
+  <rect class="paper-box" x="594" y="670" width="412" height="210"/>
+  <text class="card-t p-text" x="616" y="704">Analytics &amp; Infrastructure</text>
+  <text class="card-d" x="616" y="730">• SQL-on-FHIR ViewDefinitions for flat tables</text>
+  <text class="card-d" x="616" y="752">• PostgreSQL analytical reporting database</text>
+  <text class="card-d" x="616" y="774">• Apache Superset indicator dashboards</text>
+  <text class="card-d" x="616" y="796">• Docker Compose turnkey local environment</text>
+  <text class="card-d" x="616" y="818">• Declarative Configuration IG (Zero-code UI)</text>
+  <text class="card-pkg p-text" x="616" y="854">Turnkey Docker Compose Reference Stack</text>
+
+
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <!-- PILLAR 03: AI COMMONS (Right Column) -->
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <rect class="ai-box" x="1080" y="130" width="460" height="780" opacity="0.95"/>
+  <text class="pillar-tag ai-text" x="1110" y="170">PILLAR 03 · EVALS &amp; TOOLING</text>
+  <text class="pillar-t ai-text" x="1110" y="200">AI Commons</text>
+  <text class="card-d" x="1110" y="226">FHIR data tooling and clinical AI evaluation</text>
+
+  <!-- Card 1: Structured FHIR AI Tooling -->
+  <rect class="paper-box" x="1104" y="250" width="412" height="150"/>
+  <text class="card-t ai-text" x="1126" y="284">FHIR Data Model AI Tooling</text>
+  <text class="card-d" x="1126" y="310">Tools to leverage AI and LLMs to interact with,</text>
+  <text class="card-d" x="1126" y="330">translate, query, and extract structured FHIR models</text>
+  <text class="card-d" x="1126" y="350">Accurate mapping from clinical text to resources</text>
+  <text class="card-pkg ai-text" x="1126" y="380">FHIR Resource Prompting &amp; Synthesis</text>
+
+  <!-- Card 2: Benchmarking & Evals -->
+  <rect class="paper-box" x="1104" y="420" width="412" height="170"/>
+  <text class="card-t ai-text" x="1126" y="454">Benchmarks &amp; Clinical Evals</text>
+  <text class="card-d" x="1126" y="480">Evaluation frameworks for builders to measure:</text>
+  <text class="card-d" x="1126" y="502">• Clinical protocol compliance and accuracy</text>
+  <text class="card-d" x="1126" y="524">• SDC questionnaire generation validity</text>
+  <text class="card-d" x="1126" y="546">• Hallucination detection on health datasets</text>
+  <text class="card-pkg ai-text" x="1126" y="572">Standardized Benchmark Test Suites</text>
+
+  <!-- Card 3: Safety & Governance -->
+  <rect class="paper-box" x="1104" y="610" width="412" height="270"/>
+  <text class="card-t ai-text" x="1126" y="644">Sovereign &amp; Safe Execution</text>
+  <text class="card-d" x="1126" y="670">Governance frameworks ensuring safe deployment:</text>
+  <text class="card-d" x="1126" y="694">• On-premise and sovereign model execution</text>
+  <text class="card-d" x="1126" y="716">• Zero unauthorized PHI data leakage</text>
+  <text class="card-d" x="1126" y="738">• Automated de-identification pipelines</text>
+  <text class="card-d" x="1126" y="760">• WHO clinical safety guidance compliance</text>
+  <text class="card-d" x="1126" y="782">• Audit trail logging for AI suggestions</text>
+  <text class="card-pkg ai-text" x="1126" y="854">Privacy-Preserving Clinical Intelligence</text>
+
+</svg>
