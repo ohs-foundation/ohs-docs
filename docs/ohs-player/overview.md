@@ -30,7 +30,7 @@ Every part of OHS Player is runnable open source software designed to be evaluat
 
 ## Scope and boundaries
 
-- **Demonstration environment** provides a fully functional, runnable stack locally for evaluation and developer testing with sample workflows including patient registration, encounters, and indicator tracking.
+- **Demonstration environment** provides a fully functional, runnable local stack for evaluation and developer testing with sample workflows including patient registration, encounters, and indicator tracking. Player is a reference implementation, not an out-of-the-box, turnkey production product.
 - **Production hardening** is managed by implementing organisations, including cloud infrastructure provisioning, high availability clustering, identity federation, security compliance, formal penetration testing, and disaster recovery.
 - **Flexible clinical domain** provides general healthcare patterns adaptable to any clinical specialty through configuration rather than hardcoded assumptions.
 

@@ -152,8 +152,13 @@ const sidebars = {
       label: "Tutorials & Codelabs",
       collapsible: true,
       collapsed: false,
+      link: { type: "doc", id: "tutorials-and-codelabs/overview" },
       items: [
-        "resources/tutorials-and-codelabs",
+        "tutorials-and-codelabs/multiplatform-client",
+        "tutorials-and-codelabs/sdc-questionnaires",
+        "tutorials-and-codelabs/sql-on-fhir-analytics",
+        "tutorials-and-codelabs/gateway-access-rules",
+        "tutorials-and-codelabs/zero-code-screens",
       ],
     },
     {

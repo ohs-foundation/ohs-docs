@@ -14,7 +14,7 @@ repository: ohs-player
 
 The fastest way to get started with Open Health Stack is to spin up the OHS Player reference implementation. It provides a clear, sequential path from bringing up local infrastructure to running multiplatform client applications and streaming analytics dashboards.
 
-Alternatively, if you are looking for component-specific examples, individual SDK integrations, or form authoring guides, explore [Tutorials and codelabs](/resources/tutorials-and-codelabs/).
+Alternatively, if you are looking for component-specific examples, individual SDK integrations, or form authoring guides, explore [Tutorials and codelabs](/tutorials-and-codelabs/).
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────┐
@@ -113,5 +113,5 @@ Follow the [Reference Analytics run guide](/components/reference-analytics/run/)
 ## Next steps
 
 - If you want to customize forms, registers, or indicators without writing code, follow [Configure a screen from FHIR data](/configure/screen-from-fhir-data/).
-- If you want to explore hands-on developer tracks, check out [Tutorials and codelabs](/resources/tutorials-and-codelabs/).
+- If you want to explore hands-on developer tracks, check out [Tutorials and codelabs](/tutorials-and-codelabs/).
 - If you need custom backend endpoints or unique UI widgets, read [Decide when code is necessary](/extend/decide/).

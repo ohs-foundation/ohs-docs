@@ -45,4 +45,4 @@ Centralized identity, role tokens, and single sign-on across mobile clients, web
 ## Where to go next
 
 - Ready to deploy the local stack? Follow the [Get started quickstart](/get-started/).
-- Looking for hands-on code examples? Explore [Tutorials and codelabs](/resources/tutorials-and-codelabs/).
+- Looking for hands-on code examples? Explore [Tutorials and codelabs](/tutorials-and-codelabs/).

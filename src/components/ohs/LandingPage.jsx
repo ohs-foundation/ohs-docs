@@ -125,7 +125,7 @@ function Footer() {
         <div className="ohs-footer-links">
           <Link to="/why-ohs/">About Open Health Stack</Link>
           <Link to="/get-started/">Learn & Get Started</Link>
-          <Link to="/resources/tutorials-and-codelabs/">Tutorials & Codelabs</Link>
+          <Link to="/tutorials-and-codelabs/">Tutorials & Codelabs</Link>
           <Link to="/overview/solutions-and-pathways/">Stories & Solutions</Link>
           <Link to="/resources/">Community</Link>
           <a href="https://github.com/ohs-foundation" target="_blank" rel="noopener noreferrer">

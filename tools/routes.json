@@ -237,8 +237,33 @@
       "searchIndexed": true
     },
     {
-      "id": "tutorials-and-codelabs",
-      "path": "/ohs-docs/resources/tutorials-and-codelabs/",
+      "id": "tutorials-and-codelabs-overview",
+      "path": "/ohs-docs/tutorials-and-codelabs/",
+      "searchIndexed": true
+    },
+    {
+      "id": "tutorials-and-codelabs-multiplatform-client",
+      "path": "/ohs-docs/tutorials-and-codelabs/multiplatform-client/",
+      "searchIndexed": true
+    },
+    {
+      "id": "tutorials-and-codelabs-sdc-questionnaires",
+      "path": "/ohs-docs/tutorials-and-codelabs/sdc-questionnaires/",
+      "searchIndexed": true
+    },
+    {
+      "id": "tutorials-and-codelabs-sql-on-fhir-analytics",
+      "path": "/ohs-docs/tutorials-and-codelabs/sql-on-fhir-analytics/",
+      "searchIndexed": true
+    },
+    {
+      "id": "tutorials-and-codelabs-gateway-access-rules",
+      "path": "/ohs-docs/tutorials-and-codelabs/gateway-access-rules/",
+      "searchIndexed": true
+    },
+    {
+      "id": "tutorials-and-codelabs-zero-code-screens",
+      "path": "/ohs-docs/tutorials-and-codelabs/zero-code-screens/",
       "searchIndexed": true
     },
     {
