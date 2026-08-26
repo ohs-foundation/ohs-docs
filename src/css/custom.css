@@ -816,17 +816,17 @@ a { color: inherit; }
   padding: 3px 7px;
   border-radius: 5px;
   color: var(--ohs-ink-soft);
-  font-size: 0.78rem;
+  font-size: 0.83rem;
   font-weight: 500;
   text-decoration: none;
-  line-height: 1.25;
+  line-height: 1.28;
   transition: background-color 0.12s ease, color 0.12s ease;
 }
 .ohs-sidebar-navigation .menu__link:hover { color: var(--ohs-purple-deep); background: var(--ohs-purple-wash); }
 .ohs-sidebar-navigation .menu__link--active { color: var(--ohs-purple-deep); background: var(--ohs-purple-wash); font-weight: 700; }
 .ohs-sidebar-navigation .menu__link--sublist {
   font-weight: 650;
-  font-size: 0.77rem;
+  font-size: 0.83rem;
   padding: 3.5px 7px;
 }
 .ohs-sidebar-navigation .menu__caret {
@@ -835,7 +835,7 @@ a { color: inherit; }
 }
 .ohs-sidebar-navigation .menu__caret:before {
   background: var(--ifm-menu-link-sublist-icon) 50% / 1.4rem 1.4rem;
-  transform: scale(0.65);
+  transform: scale(0.7);
 }
 .ohs-sidebar-navigation .menu__list .menu__list {
   margin-left: 6px;
@@ -846,7 +846,7 @@ a { color: inherit; }
 }
 .ohs-sidebar-navigation .menu__list .menu__list .menu__link {
   padding: 2.5px 6px;
-  font-size: 0.75rem;
+  font-size: 0.8rem;
 }
 .ohs-sidebar-navigation .menu__list .menu__list .menu__list {
   margin-left: 4px;
@@ -856,7 +856,7 @@ a { color: inherit; }
 }
 .ohs-sidebar-navigation .menu__list .menu__list .menu__list .menu__link {
   padding: 2px 5px;
-  font-size: 0.72rem;
+  font-size: 0.78rem;
 }
 .ohs-sidebar-help { margin: 24px 14px 0 0; padding: 12px; border: 1px solid var(--ohs-line); border-radius: 10px; background: var(--ohs-bg); }
 .ohs-sidebar-help strong { font-size: 0.75rem; }
