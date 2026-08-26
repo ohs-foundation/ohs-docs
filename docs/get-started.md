@@ -43,7 +43,7 @@ The order matters. Each stage depends on the one before it, because every client
 
 **4. Run the Client App.** [Run the Client App](/components/client-app/run/) builds the application for your target and points it at the same environment. Sign in as one of the health workers you created, capture data, and sync.
 
-**5. Add analytics.** [Set up analytics](/components/reference-analytics/run/) starts the pipeline and the dashboard with an additional profile on the same stack from step 1. It ships pointed at a synthetic dataset so dashboards are populated immediately, and can be pointed at the data you captured in the previous steps instead.
+**5. Add analytics.** [Set up analytics](/components/reference-analytics/run/) starts the pipeline and the dashboard with an additional profile on the same stack from step 1. It reads from the same FHIR server, so the dashboards report on the data you captured in the previous steps.
 
 ## How the pieces find each other
 
