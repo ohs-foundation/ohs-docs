@@ -262,7 +262,7 @@ export default function GuideShell({ children }) {
     setSidebarOpen(false);
     window.setTimeout(() => menuButton.current?.focus(), 0);
   }
-  const focus = frontMatter.guide_focus ?? "OHS Player";
+  const focus = frontMatter.guide_focus;
   const repository = repositoryFor(frontMatter.repository);
   return (
     <div className="ohs-guide-page" id="top">
@@ -298,16 +298,20 @@ export default function GuideShell({ children }) {
             </div>
             <h1>{metadata.title}</h1>
             <p>{metadata.description}</p>
-            <div className="ohs-page-meta">
-              <span>
-                <b>FOCUS</b> {focus}
-              </span>
-              {frontMatter.release_tag && (
-                <span>
-                  <b>STATUS</b> {frontMatter.release_tag}
-                </span>
-              )}
-            </div>
+            {(focus || frontMatter.release_tag) && (
+              <div className="ohs-page-meta">
+                {focus && (
+                  <span>
+                    <b>FOCUS</b> {focus}
+                  </span>
+                )}
+                {frontMatter.release_tag && (
+                  <span>
+                    <b>STATUS</b> {frontMatter.release_tag}
+                  </span>
+                )}
+              </div>
+            )}
           </header>
           {children}
         </main>

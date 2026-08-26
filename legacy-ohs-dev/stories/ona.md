@@ -71,9 +71,3 @@ After rebuilding OpenSRP on top of Open Health Stack, Ona reduced prototype deve
 In 2023, OpenSRP is being rolled out to over 5,000 healthcare workers at district and national-level deployments in Indonesia, Liberia, and other countries. Ona continues to actively contribute to the Open Health Stack on Github and is particularly excited to work together on the Android FHIR SDK's support for Implementation Guides.
 
 [![](../images/ona-logo-black.svg)](https://ona.io/home/)
-
-Except as otherwise noted, the content of this page is licensed under the [Creative Commons Attribution 4.0 License](https://creativecommons.org/licenses/by/4.0/), and code samples are licensed under the [Apache 2.0 License](https://www.apache.org/licenses/LICENSE-2.0). For details, see the [Google Developers Site Policies](https://developers.google.com/site-policies). Java is a registered trademark of Oracle and/or its affiliates.
-
-Last updated 2024-11-28 UTC.
-
-[[["Easy to understand","easyToUnderstand","thumb-up"],["Solved my problem","solvedMyProblem","thumb-up"],["Other","otherUp","thumb-up"]],[["Missing the information I need","missingTheInformationINeed","thumb-down"],["Too complicated / too many steps","tooComplicatedTooManySteps","thumb-down"],["Out of date","outOfDate","thumb-down"],["Samples / code issue","samplesCodeIssue","thumb-down"],["Other","otherDown","thumb-down"]],["Last updated 2024-11-28 UTC."],[],[]]

@@ -27,9 +27,3 @@ components:
   Data Pipes periodically transform the data to Parquet files that you can
   query to perform analytics.
   [Go to the FHIR app examples repository](https://github.com/ohs-foundation/fhir-app-examples)
-
-Except as otherwise noted, the content of this page is licensed under the [Creative Commons Attribution 4.0 License](https://creativecommons.org/licenses/by/4.0/), and code samples are licensed under the [Apache 2.0 License](https://www.apache.org/licenses/LICENSE-2.0). For details, see the [Google Developers Site Policies](https://developers.google.com/site-policies). Java is a registered trademark of Oracle and/or its affiliates.
-
-Last updated 2026-05-15 UTC.
-
-[[["Easy to understand","easyToUnderstand","thumb-up"],["Solved my problem","solvedMyProblem","thumb-up"],["Other","otherUp","thumb-up"]],[["Missing the information I need","missingTheInformationINeed","thumb-down"],["Too complicated / too many steps","tooComplicatedTooManySteps","thumb-down"],["Out of date","outOfDate","thumb-down"],["Samples / code issue","samplesCodeIssue","thumb-down"],["Other","otherDown","thumb-down"]],["Last updated 2026-05-15 UTC."],[],["The Structured Data Capture Catalog app demonstrates supported components and layouts. The FHIR Engine Demo app showcases core capabilities, syncing with a public FHIR server. The OHS-based FHIR app example features an Android app using the FHIR SDK for patient registration, local data storage, and syncing with a FHIR server via the FHIR Info Gateway for access control. FHIR Data Pipes transform data to Parquet files for analytics. Instructions for building and running these applications are provided.\n"]]

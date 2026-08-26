@@ -38,9 +38,3 @@ translations. Want to help? [Get in touch!](mailto:hello@ohs.community)
 
 [Tell us about your workshop](https://forms.gle/ecY2KZe2ReCHDWcN8) and our team
 will help you access the right training materials.
-
-Except as otherwise noted, the content of this page is licensed under the [Creative Commons Attribution 4.0 License](https://creativecommons.org/licenses/by/4.0/), and code samples are licensed under the [Apache 2.0 License](https://www.apache.org/licenses/LICENSE-2.0). For details, see the [Google Developers Site Policies](https://developers.google.com/site-policies). Java is a registered trademark of Oracle and/or its affiliates.
-
-Last updated 2026-05-15 UTC.
-
-[[["Easy to understand","easyToUnderstand","thumb-up"],["Solved my problem","solvedMyProblem","thumb-up"],["Other","otherUp","thumb-up"]],[["Missing the information I need","missingTheInformationINeed","thumb-down"],["Too complicated / too many steps","tooComplicatedTooManySteps","thumb-down"],["Out of date","outOfDate","thumb-down"],["Samples / code issue","samplesCodeIssue","thumb-down"],["Other","otherDown","thumb-down"]],["Last updated 2026-05-15 UTC."],[],["Host workshops or bootcamps on Open Health Stack (OHS) using provided resources. Access ready-to-use slides, tutorials, codelabs, and example plans, adaptable to various formats (webinars, talks, build sessions) and durations (single or multi-day). Content supports workshops focused on single or multiple components. Support is available to help plan and run events. Materials are available for Android FHIR SDK and FHIR Data Pipes. English content is currently provided, with translations in progress. Share your planned workshop to gain access to training materials.\n"]]

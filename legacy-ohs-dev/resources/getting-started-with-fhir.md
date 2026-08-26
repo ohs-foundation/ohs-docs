@@ -51,9 +51,3 @@ resources that can help you get up to speed quickly.
 - [What is HL7 FHIR?](https://www.healthit.gov/sites/default/files/page/2021-04/What%20Is%20FHIR%20Fact%20Sheet.pdf)
 - [Digital Square on FHIR Webinar Series](https://digitalsquare.org/resourcesrepository/digital-square-on-fhir-4c78p)
 - [Our FHIR SDK for Android Developers](https://medium.com/androiddevelopers/our-fhir-sdk-for-android-developers-9f8455e0b42f)
-
-Except as otherwise noted, the content of this page is licensed under the [Creative Commons Attribution 4.0 License](https://creativecommons.org/licenses/by/4.0/), and code samples are licensed under the [Apache 2.0 License](https://www.apache.org/licenses/LICENSE-2.0). For details, see the [Google Developers Site Policies](https://developers.google.com/site-policies). Java is a registered trademark of Oracle and/or its affiliates.
-
-Last updated 2024-07-23 UTC.
-
-[[["Easy to understand","easyToUnderstand","thumb-up"],["Solved my problem","solvedMyProblem","thumb-up"],["Other","otherUp","thumb-up"]],[["Missing the information I need","missingTheInformationINeed","thumb-down"],["Too complicated / too many steps","tooComplicatedTooManySteps","thumb-down"],["Out of date","outOfDate","thumb-down"],["Samples / code issue","samplesCodeIssue","thumb-down"],["Other","otherDown","thumb-down"]],["Last updated 2024-07-23 UTC."],[],["FHIR (Fast Healthcare Interoperability Resources) is a healthcare interoperability standard designed to make healthcare development more accessible via API-driven approaches. Key features include a common data model using FHIR Resources, an open and free-to-use specification, reliance on web standards like REST and JSON, and support for content reusability. This promotes data consistency and guideline dissemination. Resources for learning more include the FHIR specification, webinars, and an Android developer SDK.\n"]]
