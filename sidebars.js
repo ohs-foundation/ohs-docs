@@ -106,16 +106,8 @@ const sidebars = {
           label: "Android FHIR SDK ↗",
           href: "https://github.com/google/android-fhir",
         },
-        {
-          type: "link",
-          label: "Info Gateway ↗",
-          href: "https://github.com/ohs-foundation/fhir-gateway",
-        },
-        {
-          type: "link",
-          label: "FHIR Data Pipes ↗",
-          href: "https://github.com/ohs-foundation/fhir-data-pipes",
-        },
+        "fhir-foundations/info-gateway/overview",
+        "fhir-foundations/fhir-data-pipes/overview",
         "fhir-foundations/platform-support",
         "fhir-foundations/versions",
       ],

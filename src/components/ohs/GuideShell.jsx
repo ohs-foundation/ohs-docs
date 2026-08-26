@@ -84,7 +84,7 @@ function SectionNav({ className }) {
   const inPlayer = pathname.includes("/ohs-player/") || pathname.includes("/concepts/") || (pathname.includes("/components/") && pathname.includes("/overview"));
   const inLearn = pathname.includes("/learn/") || inFHIR || inPlayer;
   const inBuild = pathname.includes("/get-started/") || pathname.includes("/prerequisites/") || (pathname.includes("/components/") && pathname.includes("/run")) || pathname.includes("/reference-infrastructure/") || pathname.includes("/configure/") || pathname.includes("/extend/") || pathname.includes("/tutorials-and-codelabs/");
-  const inSolutions = pathname.includes("/solutions-and-pathways/");
+  const inSolutions = pathname.includes("/solutions-and-pathways/") || pathname.includes("/architecture-samples/");
   const inCommunity = pathname.includes("/resources/") && !pathname.includes("/tutorials-and-codelabs/");
 
   return (
@@ -143,7 +143,7 @@ function GuideSidebar({ open, onClose }) {
   const inPlayer = pathname.includes("/ohs-player/") || pathname.includes("/concepts/") || (pathname.includes("/components/") && pathname.includes("/overview"));
   const inLearn = pathname.includes("/learn/") || inFHIR || inPlayer;
   const inBuild = pathname.includes("/get-started/") || pathname.includes("/prerequisites/") || (pathname.includes("/components/") && pathname.includes("/run")) || pathname.includes("/reference-infrastructure/") || pathname.includes("/configure/") || pathname.includes("/extend/") || pathname.includes("/tutorials-and-codelabs/");
-  const inSolutions = pathname.includes("/solutions-and-pathways/");
+  const inSolutions = pathname.includes("/solutions-and-pathways/") || pathname.includes("/architecture-samples/");
   const inCommunity = pathname.includes("/resources/") && !pathname.includes("/tutorials-and-codelabs/");
 
   const sectionTitle = inAbout

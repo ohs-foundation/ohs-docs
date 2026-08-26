@@ -54,8 +54,8 @@ Back-end SDKs handle routing, access control, and large-scale analytical pipelin
 
 | Back-end service | Repository | Role |
 | --- | --- | --- |
-| [Info Gateway](https://github.com/ohs-foundation/fhir-gateway) | `fhir-gateway` | Authentication proxy, granular access control, and endpoint customization |
-| [FHIR Data Pipes](https://github.com/ohs-foundation/fhir-data-pipes) | `fhir-data-pipes` | Batch and streaming pipelines for data extraction and SQL-on-FHIR analytics |
+| [Info Gateway](/fhir-foundations/info-gateway/) | `fhir-gateway` | Authentication proxy, granular access control, and endpoint customization |
+| [FHIR Data Pipes](/fhir-foundations/fhir-data-pipes/) | `fhir-data-pipes` | Batch and streaming pipelines for data extraction and SQL-on-FHIR analytics |
 
 ## How the projects fit together
 
@@ -79,7 +79,7 @@ The client SDKs operate independently. A typical offline-first data-collection a
 - Use [Kotlin FHIR](/fhir-foundations/kotlin-fhir/) to read, validate, or serialize FHIR resources.
 - Add [Kotlin FHIRPath](/fhir-foundations/kotlin-fhirpath/) to evaluate clinical logic and search parameters.
 
-**Managing analytics or access gateways?** Connect [Info Gateway](https://github.com/ohs-foundation/fhir-gateway) and [FHIR Data Pipes](https://github.com/ohs-foundation/fhir-data-pipes).
+**Managing analytics or access gateways?** Connect [Info Gateway](/fhir-foundations/info-gateway/) and [FHIR Data Pipes](/fhir-foundations/fhir-data-pipes/).
 
 ## FHIR version coverage
 

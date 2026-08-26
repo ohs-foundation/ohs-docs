@@ -242,6 +242,16 @@
       "searchIndexed": true
     },
     {
+      "id": "info-gateway-overview",
+      "path": "/ohs-docs/fhir-foundations/info-gateway/",
+      "searchIndexed": true
+    },
+    {
+      "id": "fhir-data-pipes-overview",
+      "path": "/ohs-docs/fhir-foundations/fhir-data-pipes/",
+      "searchIndexed": true
+    },
+    {
       "id": "tutorials-and-codelabs-overview",
       "path": "/ohs-docs/tutorials-and-codelabs/",
       "searchIndexed": true
