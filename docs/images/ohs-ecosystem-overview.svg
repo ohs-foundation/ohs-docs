@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 620" width="1400" height="620" role="img" aria-labelledby="ohsEcoTitle ohsEcoDesc">
   <title id="ohsEcoTitle">Open Health Stack Three Pillars</title>
-  <desc id="ohsEcoDesc">Open Health Stack organizes its capabilities across three pillars: FHIR Foundations providing core libraries and SDKs, OHS Player providing reference applications and pipelines, and AI Commons for artificial intelligence evaluation and tooling in an exploring phase.</desc>
+  <desc id="ohsEcoDesc">Open Health Stack organizes its capabilities across three pillars: FHIR Foundations providing core libraries and client SDKs, OHS Player providing a reference toolkit, and AI Commons for artificial intelligence evaluation and tooling in an incubating phase.</desc>
 
   <style>
     :root, svg {
@@ -43,7 +43,7 @@
     .badge-t   { font: 600 12px "IBM Plex Mono", ui-monospace, monospace; text-transform: uppercase; }
     .item-t    { font: 600 15px "Hanken Grotesk", "Google Sans", Inter, system-ui, sans-serif; fill: var(--ink); }
     .item-d    { font: 400 14px "Hanken Grotesk", "Google Sans", Inter, system-ui, sans-serif; fill: var(--ink-soft); }
-    .base-t    { font: 600 15px "IBM Plex Mono", ui-monospace, monospace; fill: var(--ink-soft); text-anchor: middle; letter-spacing: .04em; }
+    .base-t    { font: 600 14px "IBM Plex Mono", ui-monospace, monospace; fill: var(--ink-soft); text-anchor: middle; letter-spacing: .02em; }
     
     .f-box     { fill: var(--paper); stroke: var(--found); stroke-width: 2; rx: 16; }
     .p-box     { fill: var(--paper); stroke: var(--player); stroke-width: 2; rx: 16; }
@@ -68,37 +68,37 @@
   <g>
     <rect class="f-box" x="60" y="40" width="390" height="470"/>
     <path d="M 60 56 A 16 16 0 0 1 76 40 L 434 40 A 16 16 0 0 1 450 56 L 450 116 L 60 116 Z" class="f-head"/>
-    <text class="pillar-tag f-text" x="86" y="72">PILLAR 01</text>
+    <text class="pillar-tag f-text" x="86" y="72">PILLAR 01 · LIBRARIES &amp; SDKS</text>
     <text class="pillar-t f-text" x="86" y="102">FHIR Foundations</text>
 
     <!-- Bullet items -->
     <circle cx="88" cy="154" r="4" fill="var(--found)"/>
-    <text class="item-t" x="104" y="159">Kotlin FHIR &amp; FHIRPath</text>
-    <text class="item-d" x="104" y="179">Data models and logic evaluation</text>
+    <text class="item-t" x="104" y="159">Core FHIR Libraries</text>
+    <text class="item-d" x="104" y="179">Kotlin FHIR data models &amp; FHIRPath logic</text>
 
     <circle cx="88" cy="224" r="4" fill="var(--found)"/>
-    <text class="item-t" x="104" y="229">Kotlin FHIR Engine</text>
-    <text class="item-d" x="104" y="249">Encrypted SQLite on-device sync</text>
+    <text class="item-t" x="104" y="229">Kotlin Multiplatform FHIR SDK</text>
+    <text class="item-d" x="104" y="249">Engine persistence, sync, and SDC forms</text>
 
     <circle cx="88" cy="294" r="4" fill="var(--found)"/>
-    <text class="item-t" x="104" y="299">Kotlin FHIR Data Capture</text>
-    <text class="item-d" x="104" y="319">Compose Multiplatform SDC forms</text>
+    <text class="item-t" x="104" y="299">Android FHIR SDK</text>
+    <text class="item-d" x="104" y="319">Native Jetpack libraries for Android</text>
 
     <circle cx="88" cy="364" r="4" fill="var(--found)"/>
-    <text class="item-t" x="104" y="369">Info Gateway &amp; FHIR Data Pipes</text>
-    <text class="item-d" x="104" y="389">Auth reverse proxy and data pipelines</text>
+    <text class="item-t" x="104" y="369">Back-End Services</text>
+    <text class="item-d" x="104" y="389">Info Gateway &amp; FHIR Data Pipes</text>
 
     <rect x="84" y="432" width="342" height="52" rx="8" fill="var(--found-fill)"/>
     <text class="badge-t f-text" x="102" y="463">Multiplatform: Android · iOS · Desktop · Web</text>
   </g>
 
   <!-- ═══════════════════════════════════════════════════════════════ -->
-  <!-- PILLAR 02: OHS PLAYER -->
+  <!-- PILLAR 02: OHS PLAYER REFERENCE TOOLKIT -->
   <!-- ═══════════════════════════════════════════════════════════════ -->
   <g>
     <rect class="p-box" x="505" y="40" width="390" height="470"/>
     <path d="M 505 56 A 16 16 0 0 1 521 40 L 879 40 A 16 16 0 0 1 895 56 L 895 116 L 505 116 Z" class="p-head"/>
-    <text class="pillar-tag p-text" x="531" y="72">PILLAR 02 · REFERENCE PLATFORM</text>
+    <text class="pillar-tag p-text" x="531" y="72">PILLAR 02 · REFERENCE TOOLKIT</text>
     <text class="pillar-t p-text" x="531" y="102">OHS Player</text>
 
     <!-- Bullet items -->
@@ -123,13 +123,13 @@
   </g>
 
   <!-- ═══════════════════════════════════════════════════════════════ -->
-  <!-- PILLAR 03: AI COMMONS (Exploring) -->
+  <!-- PILLAR 03: AI COMMONS (Incubating) -->
   <!-- ═══════════════════════════════════════════════════════════════ -->
   <g>
     <rect class="ai-box" x="950" y="40" width="390" height="470"/>
     <path d="M 950 56 A 16 16 0 0 1 966 40 L 1324 40 A 16 16 0 0 1 1340 56 L 1340 116 L 950 116 Z" class="ai-head"/>
-    <text class="pillar-tag ai-text" x="976" y="72">PILLAR 03 · EXPLORING</text>
-    <text class="pillar-t ai-text" x="976" y="102">AI Commons (Exploring)</text>
+    <text class="pillar-tag ai-text" x="976" y="72">PILLAR 03 · INCUBATING</text>
+    <text class="pillar-t ai-text" x="976" y="102">AI Commons (Incubating)</text>
 
     <!-- Bullet items -->
     <circle cx="978" cy="154" r="4" fill="var(--ai)"/>
@@ -149,12 +149,12 @@
     <text class="item-d" x="994" y="389">On-premise execution with zero PHI leaks</text>
 
     <rect x="974" y="432" width="342" height="52" rx="8" fill="var(--ai-fill)"/>
-    <text class="badge-t ai-text" x="992" y="463">Status: In Exploration and Incubation</text>
+    <text class="badge-t ai-text" x="992" y="463">Status: In Active Incubation</text>
   </g>
 
   <!-- ═══════════════════════════════════════════════════════════════ -->
   <!-- SHARED FOUNDATION BASELINE -->
   <!-- ═══════════════════════════════════════════════════════════════ -->
   <rect class="base-box" x="60" y="536" width="1280" height="54"/>
-  <text class="base-t" x="700" y="569">Standards-Native HL7 FHIR (R4, R4B, R5, R6 ready) · Apache 2.0 Open Source</text>
+  <text class="base-t" x="700" y="569">Built on open standards (HL7 FHIR, SQL-on-FHIR, Skills, MCP) and Apache 2.0 open licensing</text>
 </svg>

@@ -19,7 +19,7 @@ Open Health Stack provides an open source foundation of standards-native buildin
 
 ## Ecosystem architecture and the three pillars
 
-![Open Health Stack three pillars architecture diagram showing FHIR Foundations with core libraries and SDKs, OHS Player reference composition, and AI Commons evaluation tooling in exploration](../images/ohs-ecosystem-overview.svg)
+![Open Health Stack three pillars architecture diagram showing FHIR Foundations with core libraries and SDKs, OHS Player reference toolkit, and AI Commons evaluation tooling in incubation](../images/ohs-ecosystem-overview.svg)
 
 Open Health Stack organizes its building blocks into three complementary pillars.
 
@@ -27,16 +27,14 @@ Open Health Stack organizes its building blocks into three complementary pillars
 
 FHIR Foundations delivers unbundled Kotlin Multiplatform libraries and client SDKs that any health application can import independently.
 
-- **Kotlin FHIR (`fhir-model`)** provides type-safe FHIR data classes, JSON serialization, and spec-compliant resource models across Android, iOS, desktop, and web for FHIR R4, R4B, and R5, with an architecture ready for future releases including FHIR R6.
-- **Kotlin FHIRPath (`fhir-path`)** provides a deterministic expression evaluation engine that evaluates clinical logic against Kotlin FHIR classes.
-- **Kotlin FHIR Engine (`fhir-engine`)** provides on-device SQLite-based offline storage, typed search parameters, and bidirectional synchronization against standard FHIR servers.
-- **Kotlin FHIR Data Capture (`fhir-data-capture`)** renders complex Structured Data Capture (SDC) forms, calculates clinical expressions in real time, and extracts completed forms into standard FHIR resource bundles.
+- **Core FHIR libraries** include Kotlin FHIR (`fhir-model`) for type-safe data models and JSON serialization across Android, iOS, desktop, and web for FHIR R4, R4B, and R5, with an architecture ready for future releases including FHIR R6, alongside Kotlin FHIRPath (`fhir-path`) for deterministic clinical logic evaluation.
+- **Kotlin Multiplatform FHIR SDK** provides on-device SQLite storage, background synchronization, and Structured Data Capture (SDC) form rendering with Jetpack Compose Multiplatform.
 - **Android FHIR SDK** provides native Android libraries for offline FHIR storage, synchronization, and form rendering on Google Android devices.
-- **Info Gateway (`fhir-gateway`) and FHIR Data Pipes** provide reverse proxy authentication, granular access rules, and batch analytical streaming pipelines behind backend infrastructure.
+- **Back-end services** include Info Gateway (`fhir-gateway`) and FHIR Data Pipes for reverse proxy authentication, granular access rules, and batch analytical streaming pipelines.
 
-### Pillar 2 for OHS Player reference platform
+### Pillar 2 for OHS Player reference toolkit
 
-OHS Player is an end-to-end reference toolkit demonstrating how the unbundled building blocks assemble into a working digital health platform.
+OHS Player is an end-to-end reference toolkit demonstrating how the unbundled building blocks assemble into a working digital health application stack.
 
 - **Frontline Client App** is a Kotlin Multiplatform application for community health workers and nurses, running on Android, iOS, desktop, and web from one unified source tree.
 - **Web Admin Portal** is a browser administration console for managing users, roles, organisations, care teams, and health facility locations.
@@ -44,9 +42,9 @@ OHS Player is an end-to-end reference toolkit demonstrating how the unbundled bu
 - **Reference Analytics Pipeline** streams transactional FHIR data into relational data warehouses using standard SQL-on-FHIR view definitions, powering live Apache Superset dashboards.
 - **Declarative Configuration IG** defines screen layouts, clinical forms, and indicator tables in standard FHIR resources, allowing health authorities to adapt workflows without recompiling mobile binaries.
 
-### Pillar 3 for AI Commons (Exploring)
+### Pillar 3 for AI Commons (Incubating)
 
-AI Commons is an exploration and incubation track focusing on the intersection of artificial intelligence and structured healthcare standards.
+AI Commons is an active incubation track focusing on the intersection of artificial intelligence and structured healthcare standards.
 
 - **FHIR data model prompt engineering tools** allow developers to use modern language models to query, translate, and extract structured FHIR resources and questionnaires accurately.
 - **Benchmarking and clinical evaluation suites** enable builders and health ministries to test artificial intelligence accuracy, clinical protocol compliance, and hallucination rates against standard clinical validation datasets.
@@ -56,11 +54,27 @@ AI Commons is an exploration and incubation track focusing on the intersection o
 
 | Capability area | What Open Health Stack provides | Key components |
 | --- | --- | --- |
-| Mobile and client applications | Offline-first data entry, patient registry, task lists, and multiplatform form rendering | Kotlin FHIR Engine, Data Capture, Compose Multiplatform |
+| Mobile and client applications | Offline-first data entry, patient registry, task lists, and multiplatform form rendering | Kotlin Multiplatform FHIR SDK, Android FHIR SDK |
 | Backend and gateway security | Centralized authentication, OAuth2 token validation, and patient-level access control | Info Gateway, Keycloak, Spring Boot |
 | Analytics and reporting | Streaming pipelines that transform hierarchical FHIR resources into relational database tables | FHIR Data Pipes, SQL-on-FHIR ViewDefinitions, Apache Superset |
 | Declarative configuration | Zero-code screen customization and form updates driven directly by standard FHIR resources | Player Configuration IG, Structured Data Capture |
 | Clinical AI and evaluation | Benchmarking test suites and prompt tools to evaluate clinical accuracy and safety | AI Commons validation tools, FHIR prompt templates |
+
+## What Open Health Stack does not cover
+
+Open Health Stack focuses specifically on client SDKs, multiplatform offline persistence, gateway security, analytical extraction, and reference application assembly. Rather than building duplicative tools, Open Health Stack integrates seamlessly with established solutions across the broader FHIR and Global Goods ecosystem.
+
+### FHIR authoring tools
+
+Open Health Stack consumes standard FHIR resources but does not build specialized form authoring environments. Teams can author forms, questionnaires, and implementation guides using existing authoring software such as Aidbox Form Builder, LHC-Forms, FHIR Shorthand, and Trifolia-on-FHIR.
+
+### FHIR data transformation and workflow automation
+
+Open Health Stack provides SQL-on-FHIR extraction pipelines via FHIR Data Pipes. Broader enterprise workflow automation, message transformation, and protocol bridging can be handled by dedicated integration platforms and Digital Public Goods such as OpenFn, Apache Camel, and Mirth Connect.
+
+### FHIR servers and clinical repositories
+
+Open Health Stack is completely server-agnostic. It does not include a proprietary FHIR database. It operates out of the box with standard open source FHIR servers such as HAPI FHIR, Medplum, Aidbox, and IBM FHIR Server, as well as managed cloud healthcare APIs from Google Cloud, Amazon Web Services, and Microsoft Azure.
 
 ## Core business advantages
 
@@ -96,8 +110,8 @@ Open Health Stack is intentionally designed to be complementary to existing digi
 ```
 
 - **Out of the box FHIR interoperability** enables any system exposing standard FHIR endpoints to exchange resources with Open Health Stack components without custom adapters.
-- **DHIS2 national reporting** connects through automated SQL-on-FHIR pipelines. FHIR Data Pipes transforms encounter resources into flat analytical tables, while third-party integration platforms and Digital Public Goods like OpenFn automate the scheduling, mapping, and monthly payload submission directly into DHIS2 data value sets.
+- **DHIS2 national reporting** connects through automated SQL-on-FHIR pipelines. FHIR Data Pipes transforms encounter resources into flat analytical tables, while third-party integration platforms and Digital Public Goods like OpenFn automate scheduling, mapping, and monthly payload submission directly into DHIS2 data value sets.
 - **OpenMRS and legacy EHRs** connect seamlessly through standard FHIR module endpoints and Info Gateway access rules without altering core hospital database structures.
 - **National Master Patient Indexes** integrate directly with gateway identity routing to ensure patient identifier continuity across health facilities.
 
-Community implementation examples and recipes demonstrating OpenFn and DHIS2 pipelines will be highlighted across developer resources and community working groups.
+Community implementation recipes and integration examples are shared across developer resources and community working groups.
