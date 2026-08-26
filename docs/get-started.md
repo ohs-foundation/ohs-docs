@@ -1,62 +1,104 @@
 ---
-title: Get started
-description: Bring up a reference environment, administer it, run the Client App against it, and add reporting.
+id: get-started
+title: Build and Quickstart
+description: A guided step-by-step path to deploy reference infrastructure, administer care teams, run frontline clients, and stream analytics.
 slug: /get-started/
+sidebar_label: Quickstart
 sidebar_position: 20
 guide_type: Get started
-guide_status: partial
-guide_focus: The order to take the Player components in
+guide_status: ready
 repository: ohs-player
 ---
 
-## What you will have at the end
+## The end-to-end builder journey
 
-One shared environment, with every Player component running against it.
+Open Health Stack provides a clear, sequential path from bringing up local infrastructure to running multiplatform client applications and streaming analytics dashboards.
 
-A programme structure you created (organisations, locations, care teams, and health workers), administered through the Web Portal. A health worker signed in on the Client App, capturing data and syncing it through the gateway to the FHIR server. And a dashboard reading that same data through the analytics pipeline.
+```
+┌─────────────────────────────────────────────────────────────────────────┐
+│                          THE BUILDER JOURNEY                            │
+├─────────────┬─────────────┬─────────────┬─────────────┬─────────────────┤
+│ STEP 1      │ STEP 2      │ STEP 3      │ STEP 4      │ STEP 5          │
+│ Deploy      │ Load        │ Administer  │ Run Client  │ Stream          │
+│ Reference   │ Gateway     │ Web Admin   │ Application │ Analytics       │
+│ Infra       │ Extensions  │ Portal      │ (KMP)       │ & Dashboards    │
+└─────────────┴─────────────┴─────────────┴─────────────┴─────────────────┘
+```
 
-That is the whole reference, the round trip from a health worker in a village to an indicator on a chart.
+## System requirements
 
-## Before you start
+Before starting, ensure the required developer tools are installed.
 
-Each guide states its own versions, but you need all of the following somewhere on the path, so it is worth having them ready.
+| Tool | Minimum version | Purpose |
+| --- | --- | --- |
+| Docker Engine & Compose | Docker 24+, Compose v2 | Running the containerized service topology |
+| JDK | JDK 21+ | Building gateway extension JARs and Kotlin applications |
+| Node.js & pnpm | Node 18+, pnpm 8+ | Running the Web Admin Portal |
+| Git & Bash | Standard tools | Repository cloning and environment script execution |
 
-| For | You need |
-| --- | --- |
-| The environment and the analytics stack | Docker Engine with Compose v2 |
-| The environment scripts | Bash, GNU gettext for `envsubst`, and OpenSSL. On Windows use WSL |
-| Building the Reference Backend and the Client App | JDK 21 |
-| The Web Portal | Node and pnpm |
-| Android and iOS builds | Android Studio, and Xcode on macOS |
+## The 5-step build path
 
-Nothing conceptual is required first. [What to know first](/prerequisites/) is background that makes the rest of the site easier, not a gate.
+### Step 1 · Bring up the reference infrastructure
 
-## The sequence
+Start the foundational containerized services including PostgreSQL, Keycloak for identity, an un-forked HAPI FHIR server, and the Info Gateway entry point.
 
-The order matters. Each stage depends on the one before it, because every client reaches FHIR through the gateway rather than directly.
+```sh
+git clone https://github.com/ohs-foundation/ohs-player-reference-infrastructure.git
+cd ohs-player-reference-infrastructure
+./dev.sh up
+```
 
-**1. Bring up the reference environment.** [Set up the environment](/components/reference-infrastructure/) starts PostgreSQL, Keycloak, HAPI FHIR, and the FHIR Gateway together, and tells you how to confirm they are healthy. This is the shared environment everything else points at.
+Follow the [Reference Infrastructure deployment guide](/components/reference-infrastructure/) to verify service health checks across ports 8081, 8082, and 8083.
 
-**2. Load the Reference Backend into the gateway.** [Set up the backend](/components/reference-backend/run/) builds the plugin and loads it into the gateway host. Both the Web Portal and the Client App consume the endpoints it adds, so this is part of preparing the environment rather than an optional extra.
+### Step 2 · Build and load gateway backend extensions
 
-**3. Administer the programme in the Web Portal.** [Run the Web Portal](/components/web-portal/run/) against the environment from step 1, then create the organisations, locations, care teams, and users your scenario needs. What you set up here determines what each health worker's device receives.
+Build the custom Spring Boot extension module providing administrative APIs and role-based access rules, then load it into the Gateway host.
 
-**4. Run the Client App.** [Run the Client App](/components/client-app/run/) builds the application for your target and points it at the same environment. Sign in as one of the health workers you created, capture data, and sync.
+```sh
+git clone https://github.com/ohs-foundation/ohs-player-reference-backend.git
+cd ohs-player-reference-backend
+mvn clean package
+```
 
-**5. Add analytics.** [Set up analytics](/components/reference-analytics/run/) starts the pipeline and the dashboard with an additional profile on the same stack from step 1. It ships pointed at a synthetic dataset so dashboards are populated immediately, and can be pointed at the data you captured in the previous steps instead.
+Follow the [Reference Backend run guide](/components/reference-backend/run/) to configure and launch the gateway with your extension JAR.
 
-## How the pieces find each other
+### Step 3 · Launch the Web Admin Portal
 
-Every client needs the same three things, and knowing that makes the configuration in each guide easier to follow.
+Start the browser administration console to configure healthcare facilities, practitioner roles, organisations, and care teams.
 
-- **The FHIR base URL**, reached through the gateway, never the FHIR server directly
-- **The gateway URL**, which also serves the Reference Backend endpoints
-- **The identity issuer**, meaning the Keycloak realm, plus a client for the application signing in
+```sh
+git clone https://github.com/ohs-foundation/ohs-player-reference-web-portal.git
+cd ohs-player-reference-web-portal
+pnpm install && pnpm dev
+```
 
-The environment from step 1 supplies all three. Each guide states which setting carries which value for that component.
+Follow the [Web Admin Portal run guide](/components/web-portal/run/) to log in via Keycloak and set up initial health worker credentials.
 
-## Where to go next
+### Step 4 · Run the frontline client application
 
-Once the reference runs, [Configure a screen from FHIR data](/configure/screen-from-fhir-data/) is the first step from *running* to *yours*.
+Launch the Kotlin Multiplatform frontline mobile and desktop application.
 
-[Decide when code is necessary](/extend/decide/) helps work out whether a change belongs in configuration, a renderer, or the application itself.
+```sh
+git clone https://github.com/ohs-foundation/player-reference.git
+cd player-reference
+./gradlew :composeApp:run
+```
+
+Follow the [Client App run guide](/components/client-app/run/) to sign in with health worker credentials, capture patient encounters using Structured Data Capture forms, and synchronize records offline and online.
+
+### Step 5 · Stream analytics into live dashboards
+
+Deploy SQL-on-FHIR pipelines via FHIR Data Pipes to flatten transactional FHIR records into relational tables and view populated Apache Superset dashboards.
+
+```sh
+cd ohs-player-reference-infrastructure
+./dev.sh up --pipes
+```
+
+Follow the [Reference Analytics run guide](/components/reference-analytics/run/) to view indicator queries and clinical dashboards.
+
+## Next steps
+
+- If you want to customize forms, registers, or indicators without writing code, follow [Configure a screen from FHIR data](/configure/screen-from-fhir-data/).
+- If you want to explore hands-on developer tracks, check out [Tutorials and codelabs](/resources/tutorials-and-codelabs/).
+- If you need custom backend endpoints or unique UI widgets, read [Decide when code is necessary](/extend/decide/).
