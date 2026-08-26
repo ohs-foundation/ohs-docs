@@ -98,14 +98,14 @@ function PillarsSection() {
         <div className="ohs-pillar-card is-disabled">
           <div className="ohs-pillar-header">
             <span className="ohs-pillar-tag">PILLAR 03</span>
-            <span className="ohs-coming-soon-badge">Evals & Tooling</span>
+            <span className="ohs-coming-soon-badge">Exploring</span>
           </div>
-          <h3>AI Commons</h3>
+          <h3>AI Commons (Exploring)</h3>
           <p>
             Structured FHIR prompt engineering tools, standardized clinical benchmarking,
             and safety evaluation frameworks for builders and health authorities.
           </p>
-          <Link className="ohs-pillar-cta" to="/why-ohs/#pillar-3-for-ai-commons">
+          <Link className="ohs-pillar-cta" to="/why-ohs/#pillar-3-for-ai-commons-exploring">
             Learn about AI Commons <span>→</span>
           </Link>
         </div>

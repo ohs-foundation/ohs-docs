@@ -19,7 +19,7 @@ Open Health Stack provides an open source foundation of standards-native buildin
 
 ## Ecosystem architecture and the three pillars
 
-![Open Health Stack ecosystem and capabilities diagram showing three pillars including FHIR Foundations with core libraries and SDKs, OHS Player reference composition, and AI Commons evaluation tooling](../images/ohs-ecosystem-overview.svg)
+![Open Health Stack three pillars architecture diagram showing FHIR Foundations with core libraries and SDKs, OHS Player reference composition, and AI Commons evaluation tooling in exploration](../images/ohs-ecosystem-overview.svg)
 
 Open Health Stack organizes its building blocks into three complementary pillars.
 
@@ -44,9 +44,9 @@ OHS Player is an end-to-end reference toolkit demonstrating how the unbundled bu
 - **Reference Analytics Pipeline** streams transactional FHIR data into relational data warehouses using standard SQL-on-FHIR view definitions, powering live Apache Superset dashboards.
 - **Declarative Configuration IG** defines screen layouts, clinical forms, and indicator tables in standard FHIR resources, allowing health authorities to adapt workflows without recompiling mobile binaries.
 
-### Pillar 3 for AI Commons
+### Pillar 3 for AI Commons (Exploring)
 
-AI Commons focuses on the intersection of artificial intelligence and structured healthcare standards.
+AI Commons is an exploration and incubation track focusing on the intersection of artificial intelligence and structured healthcare standards.
 
 - **FHIR data model prompt engineering tools** allow developers to use modern language models to query, translate, and extract structured FHIR resources and questionnaires accurately.
 - **Benchmarking and clinical evaluation suites** enable builders and health ministries to test artificial intelligence accuracy, clinical protocol compliance, and hallucination rates against standard clinical validation datasets.
@@ -80,10 +80,24 @@ When national clinical guidelines or indicators change, health informaticians up
 
 Frontline workers in rural clinics and remote communities can register patients, record encounters, calculate clinical scores, and validate complex forms completely offline. Background synchronization reconciles records securely through the FHIR Gateway whenever connectivity is restored.
 
-## Coexistence with national health systems
+## Coexistence with national health infrastructure
 
-Open Health Stack connects directly with existing national digital health software.
+Open Health Stack is intentionally designed to be complementary to existing digital health investments rather than requiring costly system replacement. Where standard FHIR APIs are available, interoperability works out of the box.
 
-- **DHIS2 national reporting** is supported through automated SQL-on-FHIR pipelines that aggregate patient-level clinical records into standard indicator payloads.
-- **OpenMRS and legacy EHRs** connect through standard FHIR REST endpoints and Info Gateway access rules without altering core hospital databases.
+```
+┌─────────────────────────────────────────────────────────────────────────┐
+│                      COMPLEMENTARY INTEGRATION PATTERNS                 │
+├───────────────────────────────────┬─────────────────────────────────────┤
+│ Standard FHIR APIs                │ Out-of-the-box native data exchange │
+│ DHIS2 Aggregate Reporting         │ FHIR Data Pipes + OpenFn workflow   │
+│ OpenMRS & Hospital EHRs           │ Info Gateway routing and access rules│
+│ National Master Patient Index     │ Gateway identity verification       │
+└───────────────────────────────────┴─────────────────────────────────────┘
+```
+
+- **Out of the box FHIR interoperability** enables any system exposing standard FHIR endpoints to exchange resources with Open Health Stack components without custom adapters.
+- **DHIS2 national reporting** connects through automated SQL-on-FHIR pipelines. FHIR Data Pipes transforms encounter resources into flat analytical tables, while third-party integration platforms and Digital Public Goods like OpenFn automate the scheduling, mapping, and monthly payload submission directly into DHIS2 data value sets.
+- **OpenMRS and legacy EHRs** connect seamlessly through standard FHIR module endpoints and Info Gateway access rules without altering core hospital database structures.
 - **National Master Patient Indexes** integrate directly with gateway identity routing to ensure patient identifier continuity across health facilities.
+
+Community implementation examples and recipes demonstrating OpenFn and DHIS2 pipelines will be highlighted across developer resources and community working groups.

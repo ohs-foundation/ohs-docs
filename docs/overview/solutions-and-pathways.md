@@ -68,11 +68,12 @@ This pathway enables teams to deploy artificial intelligence safely, with full a
 
 ## Pathway E for coexistence with national health infrastructure
 
-Open Health Stack integrates seamlessly into existing digital health ecosystems without requiring replacement of legacy investments.
+Open Health Stack is designed to be complementary to existing digital health investments. Where standard FHIR APIs are available, interoperability works out of the box without requiring replacement of national software.
 
 | Existing national component | How Open Health Stack integrates |
 | --- | --- |
-| DHIS2 national reporting | Automated SQL-on-FHIR pipelines aggregate clinical encounters into monthly DHIS2 indicator payloads |
+| Standard FHIR health systems | Direct resource synchronization and REST querying out of the box |
+| DHIS2 national aggregate reporting | FHIR Data Pipes flattens encounters into indicator tables, and workflow tools like OpenFn submit monthly payloads |
 | OpenMRS or hospital EHRs | Info Gateway routes client synchronization requests directly to standard FHIR module endpoints |
 | National Master Patient Index | Gateway authentication plugins verify and map patient identifiers across regional health registries |
 | Keycloak or enterprise IAM | Unified OpenID Connect and OAuth2 single sign-on across mobile apps and web portals |

@@ -64,9 +64,9 @@ OHS Player is an end-to-end reference composition demonstrating how the unbundle
 
 [Explore complete OHS Player concepts →](/concepts/what-ohs-player-is/)
 
-## Pillar 3 for AI Commons
+## Pillar 3 for AI Commons (Exploring)
 
-AI Commons addresses the critical intersection of clinical artificial intelligence and structured health data standards.
+AI Commons is an exploration and incubation track addressing the critical intersection of clinical artificial intelligence and structured health data standards.
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────┐
