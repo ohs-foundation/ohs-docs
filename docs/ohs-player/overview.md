@@ -66,8 +66,7 @@ For guidance on when to configure versus when to write code, see [Deciding how t
 
 ## Where to go next
 
-- [The architecture](/ohs-player/architecture/) details how the frontline client, web portal, gateway, and analytics connect.
-- [How Player uses OHS components](/ohs-player/how-player-uses-ohs-components/) outlines the foundational libraries underlying the reference toolkit.
+- [The architecture](/ohs-player/architecture/) outlines how the reference toolkit connects and the foundational libraries underlying it.
 - [The configuration model](/ohs-player/configuration-model/) details how standard FHIR resources drive client user interfaces.
 - [Solutions and pathways](/overview/solutions-and-pathways/) explores different adoption models across the Open Health Stack.
 - [Current capabilities and maturity](/ohs-player/what-you-can-do-today/) summarizes what is runnable today and active development roadmap items.

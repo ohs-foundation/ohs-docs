@@ -148,7 +148,6 @@ const sidebars = {
       link: { type: "doc", id: "ohs-player/overview" },
       items: [
         "ohs-player/architecture",
-        "ohs-player/how-player-uses-ohs-components",
         {
           type: "category",
           label: "Component Overviews",

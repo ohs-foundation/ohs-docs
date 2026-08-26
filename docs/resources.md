@@ -79,4 +79,4 @@ The [submission pack](https://github.com/ohs-foundation/ohs-docs/tree/main/contr
 
 Open Health Stack components exist independently of any single reference application.
 
-The [OHS Foundation projects page](https://ohs.foundation/projects) is the official catalogue for all projects and the source for their maturity ratings. See [How Player uses OHS components](/ohs-player/how-player-uses-ohs-components/) for an explanation of how the reference stack connects them.
+The [OHS Foundation projects page](https://ohs.foundation/projects) is the official catalogue for all projects and the source for their maturity ratings. See [The architecture](/ohs-player/architecture/) for an explanation of how the reference stack connects them.

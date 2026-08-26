@@ -49,4 +49,4 @@ Reference Infrastructure is not in that list. It is deployment material rather t
 
 [The architecture](/ohs-player/architecture/) shows how these connect and why every request routes through the gateway.
 
-[How Player uses OHS components](/ohs-player/how-player-uses-ohs-components/) draws the line between what Player owns and what the wider Open Health Stack owns.
+[The architecture](/ohs-player/architecture/) draws the line between what Player owns and what the wider Open Health Stack owns.

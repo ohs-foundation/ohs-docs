@@ -32,8 +32,7 @@ Unbundled Kotlin Multiplatform core libraries, on-device storage, and UI renderi
 An end-to-end reference toolkit showing how foundational building blocks assemble into a working digital health application stack.
 
 - **What OHS Player is** explains the philosophy of reference composition and modular assembly. Explore the [OHS Player overview](/ohs-player/).
-- **The architecture** illustrates how clients, web portals, gateway security, FHIR servers, and analytical pipelines connect. Explore [The architecture](/ohs-player/architecture/).
-- **How Player uses OHS components** explains how the reference toolkit consumes foundational libraries and un-forked FHIR servers. Explore [Component relationships](/ohs-player/how-player-uses-ohs-components/).
+- **The architecture and building blocks** illustrates how clients, web portals, gateway security, FHIR servers, and analytical pipelines connect, and how the toolkit consumes foundational libraries. Explore [The architecture](/ohs-player/architecture/).
 - **The components** details the individual reference components. Explore the [Components directory](/components/).
 - **The configuration model** explains how standard FHIR resources drive screen layouts and workflows without custom code. Explore the [Configuration model](/ohs-player/configuration-model/).
 - **What you can do today** outlines current reference capabilities and maturity. Explore [Current capabilities](/ohs-player/what-you-can-do-today/).
