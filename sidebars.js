@@ -132,8 +132,16 @@ const sidebars = {
             "fhir-foundations/fhir-data-pipes/overview",
           ],
         },
-        "fhir-foundations/platform-support",
-        "fhir-foundations/versions",
+        {
+          type: "category",
+          label: "Reference",
+          collapsible: true,
+          collapsed: false,
+          items: [
+            "fhir-foundations/platform-support",
+            "fhir-foundations/versions",
+          ],
+        },
       ],
     },
     {
@@ -191,6 +199,9 @@ const sidebars = {
         "tutorials-and-codelabs/multiplatform-client",
         "tutorials-and-codelabs/sdc-questionnaires",
         "tutorials-and-codelabs/sql-on-fhir-analytics",
+        "tutorials-and-codelabs/info-gateway-getting-started",
+        "tutorials-and-codelabs/info-gateway-docker",
+        "tutorials-and-codelabs/info-gateway-access-checker",
         "tutorials-and-codelabs/gateway-access-rules",
         "tutorials-and-codelabs/zero-code-screens",
       ],

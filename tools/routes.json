@@ -272,6 +272,21 @@
       "searchIndexed": true
     },
     {
+      "id": "tutorials-and-codelabs-info-gateway-getting-started",
+      "path": "/ohs-docs/tutorials-and-codelabs/info-gateway-getting-started/",
+      "searchIndexed": true
+    },
+    {
+      "id": "tutorials-and-codelabs-info-gateway-docker",
+      "path": "/ohs-docs/tutorials-and-codelabs/info-gateway-docker/",
+      "searchIndexed": true
+    },
+    {
+      "id": "tutorials-and-codelabs-info-gateway-access-checker",
+      "path": "/ohs-docs/tutorials-and-codelabs/info-gateway-access-checker/",
+      "searchIndexed": true
+    },
+    {
       "id": "tutorials-and-codelabs-gateway-access-rules",
       "path": "/ohs-docs/tutorials-and-codelabs/gateway-access-rules/",
       "searchIndexed": true
