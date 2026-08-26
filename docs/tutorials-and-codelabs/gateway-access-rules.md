@@ -22,23 +22,44 @@ In this codelab, you will extend the Info Gateway with a custom Kotlin Spring Bo
 
 ## Step 1 · Implement a custom AccessChecker
 
-Create a Kotlin class implementing the `AccessChecker` interface to inspect incoming JWT tokens and filter FHIR queries by location.
+Create a Kotlin class implementing the `AccessChecker` and `AccessCheckerFactory` SPI interfaces to inspect incoming JWT tokens and filter FHIR queries by location.
 
 ```kotlin
-package dev.ohs.gateway.plugin
+package com.google.fhir.gateway.plugin
 
-import dev.ohs.gateway.security.AccessChecker
-import dev.ohs.gateway.security.RequestContext
-import org.springframework.stereotype.Component
+import com.auth0.jwt.interfaces.DecodedJWT
+import com.google.fhir.gateway.interfaces.AccessChecker
+import com.google.fhir.gateway.interfaces.AccessCheckerFactory
+import com.google.fhir.gateway.interfaces.AccessDecision
+import com.google.fhir.gateway.interfaces.NoOpAccessDecision
+import com.google.fhir.gateway.interfaces.PatientFinder
+import com.google.fhir.gateway.interfaces.RequestDetailsReader
+import javax.inject.Named
 
-@Component
-class FacilityAccessChecker : AccessChecker {
-  override fun canAccess(context: RequestContext): Boolean {
-    val userFacility = context.userClaims["facility_id"] as? String
-    val requestedLocation = context.requestParams["location"]
-    
-    if (context.hasRole("NATIONAL_ADMIN")) return true
-    return userFacility == requestedLocation
+class FacilityAccessChecker(
+  private val facilityId: String?,
+) : AccessChecker {
+
+  override fun checkAccess(requestDetails: RequestDetailsReader): AccessDecision {
+    // Evaluate request location against user facility claim
+    val requestedLocation = requestDetails.requestParameters["location"]?.firstOrNull()
+    if (facilityId == null || requestedLocation == null || facilityId == requestedLocation) {
+      return NoOpAccessDecision.accessGranted()
+    }
+    return NoOpAccessDecision.accessDenied()
+  }
+
+  @Named("facility-checker")
+  class Factory : AccessCheckerFactory {
+    override fun create(
+      jwt: DecodedJWT,
+      httpFhirClient: com.google.fhir.gateway.HttpFhirClient,
+      fhirContext: ca.uhn.fhir.context.FhirContext,
+      patientFinder: PatientFinder,
+    ): AccessChecker {
+      val facility = jwt.getClaim("facility_id")?.asString()
+      return FacilityAccessChecker(facility)
+    }
   }
 }
 ```

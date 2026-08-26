@@ -73,15 +73,27 @@ Embed dynamic calculate and enableWhen expressions to enforce clinical constrain
 Render the questionnaire dynamically with Jetpack Compose Multiplatform.
 
 ```kotlin
-import dev.ohs.fhir.datacapture.QuestionnaireView
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.rememberCoroutineScope
+import dev.ohs.fhir.datacapture.Questionnaire
+import dev.ohs.fhir.model.r4.QuestionnaireResponse
+import kotlinx.coroutines.launch
 
 @Composable
-fun ClinicalIntakeScreen(questionnaire: Questionnaire) {
-  QuestionnaireView(
-    questionnaire = questionnaire,
-    onSubmit = { questionnaireResponse ->
-      handleFormSubmission(questionnaireResponse)
-    }
+fun ClinicalIntakeScreen(
+  questionnaireJson: String,
+  handleFormSubmission: (QuestionnaireResponse) -> Unit,
+) {
+  val scope = rememberCoroutineScope()
+
+  Questionnaire(
+    questionnaireJson = questionnaireJson,
+    onSubmit = { getResponse ->
+      scope.launch {
+        val response = getResponse()
+        handleFormSubmission(response)
+      }
+    },
   )
 }
 ```
@@ -91,12 +103,18 @@ fun ClinicalIntakeScreen(questionnaire: Questionnaire) {
 Use template-based extraction to generate structured FHIR `Observation` records from the completed `QuestionnaireResponse`.
 
 ```kotlin
-import dev.ohs.fhir.datacapture.mapping.ResourceMapper
+import dev.ohs.fhir.datacapture.mapping.TemplateExtractionEngine
+import dev.ohs.fhir.model.r4.Bundle
 
-val observations = ResourceMapper.extract(
-  questionnaire = questionnaire,
-  questionnaireResponse = response
-)
+// Extract structured resources using embedded Questionnaire templates
+val canExtract = TemplateExtractionEngine.canExtract(questionnaire)
+
+if (canExtract) {
+  val transactionBundle: Bundle = TemplateExtractionEngine.extract(
+    questionnaire = questionnaire,
+    questionnaireResponse = response,
+  )
+}
 ```
 
 ## Where to go next

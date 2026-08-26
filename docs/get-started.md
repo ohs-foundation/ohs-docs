@@ -83,7 +83,7 @@ Launch the Kotlin Multiplatform frontline mobile and desktop application.
 ```sh
 git clone https://github.com/ohs-foundation/player-reference.git
 cd player-reference
-./gradlew :composeApp:run
+./gradlew :ohs-player-reference-app:run
 ```
 
 Follow the [Client App run guide](/components/client-app/run/) to sign in with health worker credentials, capture patient encounters using Structured Data Capture forms, and synchronize records offline and online.

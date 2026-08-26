@@ -29,7 +29,7 @@ Open Health Stack provides unbundled open source building blocks that can be imp
 | --- | --- | --- |
 | `kotlin-fhir` | Type-safe FHIR data models and JSON serialization | Client App |
 | `kotlin-fhirpath` | FHIRPath expression evaluation engine | Client App |
-| `kotlin-fhir-engine` | On-device encrypted SQLite persistence and sync | Client App |
+| `kotlin-fhir-engine` | On-device SQLite persistence and sync | Client App |
 | `kotlin-fhir-data-capture` | Structured Data Capture (SDC) questionnaire rendering | Client App |
 | Info Gateway | Authentication proxy and custom extension framework | Reference Backend |
 | FHIR Data Pipes | SQL-on-FHIR extraction pipelines for analytics | Reference Analytics |
@@ -54,7 +54,7 @@ Neither client application connects directly to the underlying FHIR server. All 
 
 ## How data flows
 
-1. **Frontline data entry** occurs on mobile devices using Kotlin FHIR Engine for encrypted on-device SQLite storage and offline operation.
+1. **Frontline data entry** occurs on mobile devices using Kotlin FHIR Engine for on-device SQLite storage and offline operation.
 2. **Synchronization** transmits FHIR resource bundles through the gateway to the central FHIR server upon network connectivity.
 3. **Administrative management** in the Web Admin Portal stores organisation, facility, and practitioner records directly as FHIR resources.
 4. **Analytical transformation** reads transactional FHIR resources and applies SQL-on-FHIR view definitions via FHIR Data Pipes, writing flattened relational tables into PostgreSQL.

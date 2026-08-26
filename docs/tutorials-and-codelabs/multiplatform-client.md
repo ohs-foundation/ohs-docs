@@ -14,7 +14,7 @@ repository: kotlin-fhir-engine
 
 In this hands-on codelab, you will create an offline-capable healthcare application using Kotlin Multiplatform targeting Android, JVM Desktop, and iOS.
 
-You will learn how to configure Gradle version catalogs, initialize encrypted SQLite storage with `kotlin-fhir-engine`, persist patient records locally, and synchronize changes with a remote FHIR server.
+You will learn how to configure Gradle version catalogs, initialize local SQLite storage with `kotlin-fhir-engine`, persist patient records locally, and synchronize changes with a remote FHIR server.
 
 ## Prerequisites
 
@@ -30,9 +30,9 @@ Add the Open Health Stack dependencies to your shared `build.gradle.kts` file.
 kotlin {
   sourceSets {
     commonMain.dependencies {
-      implementation("dev.ohs.fhir:fhir-model:0.1.0")
-      implementation("dev.ohs.fhir:fhir-path:0.1.0")
-      implementation("dev.ohs.fhir:fhir-engine:0.1.0")
+      implementation("dev.ohs.fhir:fhir-engine:2.0.0-alpha02")
+      implementation("dev.ohs.fhir:fhir-model-r4:1.0.0-beta05")
+      implementation("dev.ohs.fhir:fhir-path-r4:1.0.0-beta05")
     }
   }
 }
@@ -44,9 +44,18 @@ Create and configure a local SQLite database driver wrapped by `FhirEngine`.
 
 ```kotlin
 import dev.ohs.fhir.engine.FhirEngine
+import dev.ohs.fhir.engine.FhirEngineConfiguration
 import dev.ohs.fhir.engine.FhirEngineProvider
+import dev.ohs.fhir.engine.ServerConfiguration
 
-val fhirEngine: FhirEngine = FhirEngineProvider.getInstance(context)
+FhirEngineProvider.init(
+  FhirEngineConfiguration(
+    serverConfiguration = ServerConfiguration(baseUrl = "http://localhost:8083/fhir/"),
+  ),
+  platformContext, // Android passes applicationContext, other platforms pass Unit
+)
+
+val fhirEngine: FhirEngine = FhirEngineProvider.getInstance(platformContext)
 ```
 
 ## Step 3 · Create and persist a patient record
@@ -54,44 +63,52 @@ val fhirEngine: FhirEngine = FhirEngineProvider.getInstance(context)
 Create a type-safe `Patient` resource using the Kotlin FHIR model and write it to local storage.
 
 ```kotlin
-import dev.ohs.fhir.model.r4.Patient
+import dev.ohs.fhir.model.r4.FhirString
 import dev.ohs.fhir.model.r4.HumanName
+import dev.ohs.fhir.model.r4.Patient
 
 val patient = Patient(
   id = "pat-101",
   name = listOf(
     HumanName(
-      family = "Smith",
-      given = listOf("Jane")
+      family = FhirString("Smith"),
+      given = listOf(FhirString("Jane")),
     )
-  )
+  ),
 )
 
+// Create is a suspend function that persists to SQLite
 fhirEngine.create(patient)
 ```
 
 ## Step 4 · Query local records offline
 
-Execute strongly-typed search queries against the local encrypted SQLite database without network access.
+Execute strongly-typed search queries against the local SQLite database without network access.
 
 ```kotlin
-val patients = fhirEngine.search<Patient> {
-  filter(Patient.FAMILY, { value = of("Smith") })
+import dev.ohs.fhir.engine.search.StringClientParam
+import dev.ohs.fhir.engine.search.search
+import dev.ohs.fhir.model.r4.Patient
+
+val results = fhirEngine.search<Patient> {
+  filter(StringClientParam("family"), { value = "Smith" })
 }
+
+val patients = results.map { it.resource }
 ```
 
 ## Step 5 · Synchronize with a central FHIR server
 
-Configure the background sync task to exchange new and updated FHIR bundles through the Info Gateway.
+Execute a synchronization cycle to exchange local modifications with the remote server.
 
 ```kotlin
-import dev.ohs.fhir.engine.sync.SyncJob
+import dev.ohs.fhir.engine.sync.FhirSyncTask
+import dev.ohs.fhir.engine.sync.runSync
 
-val syncJob = SyncJob(fhirEngine)
-val result = syncJob.poll(
-  serverUrl = "http://localhost:8083/fhir",
-  authToken = sessionToken
-)
+// Execute a sync cycle against the configured server
+val status = mySyncTask.runSync("patient-sync") { progress ->
+  println("Sync progress " + progress)
+}
 ```
 
 ## Where to go next
