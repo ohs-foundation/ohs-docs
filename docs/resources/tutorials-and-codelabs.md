@@ -99,4 +99,4 @@ Learn how to adapt frontline health worker user interfaces without recompiling m
 
 ### Prerequisites and starting point
 
-Start with the [Screen configuration guide](/configure/screen-from-fhir-data/) and the [Configuration model concept](/concepts/configuration-model/).
+Start with the [Screen configuration guide](/configure/screen-from-fhir-data/) and [the Configuration model](/ohs-player/configuration-model/).

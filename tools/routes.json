@@ -33,32 +33,32 @@
     },
     {
       "id": "what-ohs-player-is",
-      "path": "/ohs-docs/concepts/what-ohs-player-is/",
+      "path": "/ohs-docs/ohs-player/",
       "searchIndexed": true
     },
     {
       "id": "architecture",
-      "path": "/ohs-docs/concepts/architecture/",
+      "path": "/ohs-docs/ohs-player/architecture/",
       "searchIndexed": true
     },
     {
       "id": "component-relationships",
-      "path": "/ohs-docs/concepts/how-player-uses-ohs-components/",
+      "path": "/ohs-docs/ohs-player/how-player-uses-ohs-components/",
       "searchIndexed": true
     },
     {
       "id": "what-you-can-do-today",
-      "path": "/ohs-docs/concepts/what-you-can-do-today/",
+      "path": "/ohs-docs/ohs-player/what-you-can-do-today/",
       "searchIndexed": true
     },
     {
       "id": "configuration-ig",
-      "path": "/ohs-docs/concepts/configuration-ig/",
+      "path": "/ohs-docs/ohs-player/configuration-ig/",
       "searchIndexed": true
     },
     {
       "id": "configuration-model",
-      "path": "/ohs-docs/concepts/configuration-model/",
+      "path": "/ohs-docs/ohs-player/configuration-model/",
       "searchIndexed": true
     },
     {

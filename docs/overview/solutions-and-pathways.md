@@ -86,4 +86,4 @@ Open Health Stack is designed to be complementary to existing digital health inv
 | Launch a complete community health solution | Pathway B (OHS Player) | [Get started with Player](/get-started/) |
 | Generate aggregate reports from FHIR databases | Pathway C (Analytics Hub) | [Reference Analytics](/components/reference-analytics/) |
 | Validate clinical artificial intelligence safety | Pathway D (AI Commons) | [AI Commons overview](/resources/) |
-| Connect mobile workers to an existing national EHR | Pathway E (Coexistence) | [The architecture](/concepts/architecture/) |
+| Connect mobile workers to an existing national EHR | Pathway E (Coexistence) | [The architecture](/ohs-player/architecture/) |

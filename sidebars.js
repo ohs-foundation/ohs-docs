@@ -24,7 +24,7 @@ const sidebars = {
       type: "category",
       label: "Pillar 01 · FHIR Foundations",
       collapsible: true,
-      collapsed: false,
+      collapsed: true,
       link: { type: "doc", id: "fhir-foundations/overview" },
       items: [
         {
@@ -104,13 +104,13 @@ const sidebars = {
     },
     {
       type: "category",
-      label: "Pillar 02 · OHS Player Reference",
+      label: "Pillar 02 · OHS Player Reference Toolkit",
       collapsible: true,
-      collapsed: false,
-      link: { type: "doc", id: "concepts/what-ohs-player-is" },
+      collapsed: true,
+      link: { type: "doc", id: "ohs-player/overview" },
       items: [
-        "concepts/architecture",
-        "concepts/how-player-uses-ohs-components",
+        "ohs-player/architecture",
+        "ohs-player/how-player-uses-ohs-components",
         {
           type: "category",
           label: "Component Overviews",
@@ -119,14 +119,14 @@ const sidebars = {
           link: { type: "doc", id: "components/overview" },
           items: [
             "components/client-app/overview",
-            "concepts/configuration-ig",
             "components/reference-backend/overview",
             "components/web-portal/overview",
             "components/reference-analytics/overview",
           ],
         },
-        "concepts/configuration-model",
-        "concepts/what-you-can-do-today",
+        "ohs-player/configuration-model",
+        "ohs-player/configuration-ig",
+        "ohs-player/what-you-can-do-today",
       ],
     },
     {
@@ -140,7 +140,8 @@ const sidebars = {
     {
       type: "category",
       label: "Quickstart & Setup",
-      collapsible: false,
+      collapsible: true,
+      collapsed: false,
       items: [
         "get-started",
         "prerequisites",
@@ -149,7 +150,8 @@ const sidebars = {
     {
       type: "category",
       label: "Tutorials & Codelabs",
-      collapsible: false,
+      collapsible: true,
+      collapsed: false,
       items: [
         "resources/tutorials-and-codelabs",
       ],
@@ -157,7 +159,8 @@ const sidebars = {
     {
       type: "category",
       label: "Blueprints & Reference Deployments",
-      collapsible: false,
+      collapsible: true,
+      collapsed: true,
       items: [
         "components/reference-infrastructure/overview",
         "components/reference-backend/run",
@@ -169,7 +172,8 @@ const sidebars = {
     {
       type: "category",
       label: "Configuration & Extension Recipes",
-      collapsible: false,
+      collapsible: true,
+      collapsed: true,
       items: [
         "configure/screen-from-fhir-data",
         "extend/decide",

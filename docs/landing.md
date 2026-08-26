@@ -32,6 +32,6 @@ secondary_action:
 | Evaluate adoption pathways and integration patterns | Compare unbundled SDK adoption with full reference toolkit adaptation | [Solutions and pathways](/overview/solutions-and-pathways/) |
 | Build mobile or multiplatform client applications | Integrate Kotlin FHIR, on-device SQLite storage, and questionnaire capture | [FHIR Foundations](/fhir-foundations/) |
 | Launch the reference environment locally | Spin up HAPI FHIR, Keycloak, Gateway, and Analytics with Docker Compose | [Get started with Player](/get-started/) |
-| Explore architecture and data flow | Review end-to-end gateway routing, access control, and SQL-on-FHIR analytics | [The architecture](/concepts/architecture/) |
+| Explore architecture and data flow | Review end-to-end gateway routing, access control, and SQL-on-FHIR analytics | [The architecture](/ohs-player/architecture/) |
 | Access tutorials and codelabs | Follow step-by-step developer guides and code recipes | [Tutorials and codelabs](/resources/tutorials-and-codelabs/) |
 | Join the community or contribute | Find source repositories, working groups, and contribution guidelines | [Resources and community](/resources/) |

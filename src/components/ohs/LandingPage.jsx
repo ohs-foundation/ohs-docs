@@ -83,13 +83,13 @@ function PillarsSection() {
             <span className="ohs-release-badge ohs-release-alpha">Alpha Release</span>
           </div>
           <h3>
-            <Link to="/concepts/what-ohs-player-is/">OHS Player</Link>
+            <Link to="/ohs-player/">OHS Player</Link>
           </h3>
           <p>
             A full-stack reference toolkit showing how foundational components assemble
             into an offline-first frontline client, web admin portal, gateway, and analytics.
           </p>
-          <Link className="ohs-pillar-cta" to="/concepts/what-ohs-player-is/">
+          <Link className="ohs-pillar-cta" to="/ohs-player/">
             Understand OHS Player <span>→</span>
           </Link>
         </div>

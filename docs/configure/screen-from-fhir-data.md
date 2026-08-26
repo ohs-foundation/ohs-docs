@@ -15,7 +15,7 @@ Which FHIR fields a screen reads, how they are composed into view state, and whi
 
 What you cannot change this way is how the view state is drawn. That needs a renderer, which is code. See [decide when code is necessary](/extend/decide/).
 
-Read [the configuration model](/concepts/configuration-model/) first if the pieces below are unfamiliar.
+Read [the configuration model](/ohs-player/configuration-model/) first if the pieces below are unfamiliar.
 
 ## Where the configuration lives
 

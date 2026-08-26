@@ -81,7 +81,7 @@ function SectionNav({ className }) {
   const isHome = pathname === "/" || pathname === "/ohs-docs/" || pathname === "/ohs-docs";
   const inAbout = pathname.includes("/why-ohs/") || pathname.includes("/governance-and-standards/");
   const inFHIR = pathname.includes("/fhir-foundations/");
-  const inPlayer = pathname.includes("/concepts/") || (pathname.includes("/components/") && pathname.includes("/overview"));
+  const inPlayer = pathname.includes("/ohs-player/") || pathname.includes("/concepts/") || (pathname.includes("/components/") && pathname.includes("/overview"));
   const inLearn = pathname.includes("/learn/") || inFHIR || inPlayer;
   const inBuild = pathname.includes("/get-started/") || pathname.includes("/prerequisites/") || (pathname.includes("/components/") && pathname.includes("/run")) || pathname.includes("/reference-infrastructure/") || pathname.includes("/configure/") || pathname.includes("/extend/") || pathname.includes("/tutorials-and-codelabs/");
   const inSolutions = pathname.includes("/solutions-and-pathways/");
@@ -140,7 +140,7 @@ function GuideSidebar({ open, onClose }) {
   const { pathname } = useLocation();
   const inAbout = pathname.includes("/why-ohs/") || pathname.includes("/governance-and-standards/");
   const inFHIR = pathname.includes("/fhir-foundations/");
-  const inPlayer = pathname.includes("/concepts/") || (pathname.includes("/components/") && pathname.includes("/overview"));
+  const inPlayer = pathname.includes("/ohs-player/") || pathname.includes("/concepts/") || (pathname.includes("/components/") && pathname.includes("/overview"));
   const inLearn = pathname.includes("/learn/") || inFHIR || inPlayer;
   const inBuild = pathname.includes("/get-started/") || pathname.includes("/prerequisites/") || (pathname.includes("/components/") && pathname.includes("/run")) || pathname.includes("/reference-infrastructure/") || pathname.includes("/configure/") || pathname.includes("/extend/") || pathname.includes("/tutorials-and-codelabs/");
   const inSolutions = pathname.includes("/solutions-and-pathways/");
@@ -181,7 +181,7 @@ function GuideSidebar({ open, onClose }) {
         </div>
         <SectionNav className="ohs-sidebar-sections" />
         <div className="ohs-sidebar-section-header">
-          <span className="ohs-sidebar-section-label">{sectionTitle}</span>
+          <span className="ohs-sidebar-section-tag">{sectionTitle}</span>
         </div>
         <nav
           aria-label="Documentation sections"
@@ -262,7 +262,6 @@ export default function GuideShell({ children }) {
     setSidebarOpen(false);
     window.setTimeout(() => menuButton.current?.focus(), 0);
   }
-  const focus = frontMatter.guide_focus;
   const repository = repositoryFor(frontMatter.repository);
   return (
     <div className="ohs-guide-page" id="top">
@@ -298,18 +297,11 @@ export default function GuideShell({ children }) {
             </div>
             <h1>{metadata.title}</h1>
             <p>{metadata.description}</p>
-            {(focus || frontMatter.release_tag) && (
+            {frontMatter.release_tag && (
               <div className="ohs-page-meta">
-                {focus && (
-                  <span>
-                    <b>FOCUS</b> {focus}
-                  </span>
-                )}
-                {frontMatter.release_tag && (
-                  <span>
-                    <b>STATUS</b> {frontMatter.release_tag}
-                  </span>
-                )}
+                <span>
+                  <b>STATUS</b> {frontMatter.release_tag}
+                </span>
               </div>
             )}
           </header>

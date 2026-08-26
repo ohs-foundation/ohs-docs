@@ -31,14 +31,14 @@ Unbundled Kotlin Multiplatform core libraries, on-device storage, and UI renderi
 
 An end-to-end reference toolkit showing how foundational building blocks assemble into a working digital health application stack.
 
-- **What OHS Player is** explains the philosophy of reference composition and modular assembly. Explore the [OHS Player overview](/concepts/what-ohs-player-is/).
-- **The architecture** illustrates how clients, web portals, gateway security, FHIR servers, and analytical pipelines connect. Explore [The architecture](/concepts/architecture/).
-- **How Player uses OHS components** explains how the reference toolkit consumes foundational libraries and un-forked FHIR servers. Explore [Component relationships](/concepts/how-player-uses-ohs-components/).
+- **What OHS Player is** explains the philosophy of reference composition and modular assembly. Explore the [OHS Player overview](/ohs-player/).
+- **The architecture** illustrates how clients, web portals, gateway security, FHIR servers, and analytical pipelines connect. Explore [The architecture](/ohs-player/architecture/).
+- **How Player uses OHS components** explains how the reference toolkit consumes foundational libraries and un-forked FHIR servers. Explore [Component relationships](/ohs-player/how-player-uses-ohs-components/).
 - **The components** details the individual reference components. Explore the [Components directory](/components/).
-- **The configuration model** explains how standard FHIR resources drive screen layouts and workflows without custom code. Explore the [Configuration model](/concepts/configuration-model/).
-- **What you can do today** outlines current reference capabilities and maturity. Explore [Current capabilities](/concepts/what-you-can-do-today/).
+- **The configuration model** explains how standard FHIR resources drive screen layouts and workflows without custom code. Explore the [Configuration model](/ohs-player/configuration-model/).
+- **What you can do today** outlines current reference capabilities and maturity. Explore [Current capabilities](/ohs-player/what-you-can-do-today/).
 
-[Explore complete OHS Player concepts →](/concepts/what-ohs-player-is/)
+[Explore complete OHS Player reference toolkit →](/ohs-player/)
 
 ## Pillar 3 for AI Commons (Incubating)
 

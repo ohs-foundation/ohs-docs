@@ -38,7 +38,7 @@ Storing FHIR data has no Player component beside it on purpose. The FHIR server 
 | Component | What it is |
 | --- | --- |
 | [Client App](/components/client-app/) | The application frontline health workers use, on four platforms |
-| [Configuration IG](/concepts/configuration-ig/) | The FHIR contract that drives what the app renders |
+| [Configuration IG](/ohs-player/configuration-ig/) | The FHIR contract that drives what the app renders |
 | [Backend](/components/reference-backend/) | The gateway, its Player extensions, identity, and the FHIR server |
 | [Web Portal](/components/web-portal/) | Browser administration for programme structure and users |
 | [Analytics](/components/reference-analytics/) | The reporting pipeline and dashboard |
@@ -47,6 +47,6 @@ Reference Infrastructure is not in that list. It is deployment material rather t
 
 ## Where to go next
 
-[The architecture](/concepts/architecture/) shows how these connect and why every request routes through the gateway.
+[The architecture](/ohs-player/architecture/) shows how these connect and why every request routes through the gateway.
 
-[How Player uses OHS components](/concepts/how-player-uses-ohs-components/) draws the line between what Player owns and what the wider Open Health Stack owns.
+[How Player uses OHS components](/ohs-player/how-player-uses-ohs-components/) draws the line between what Player owns and what the wider Open Health Stack owns.
