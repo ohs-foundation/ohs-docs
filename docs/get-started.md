@@ -12,20 +12,9 @@ repository: ohs-player
 
 ## The end-to-end builder journey
 
-The fastest way to get started with Open Health Stack is to spin up the OHS Player reference implementation. It provides a clear, sequential path from bringing up local infrastructure to running multiplatform client applications and streaming analytics dashboards.
+The fastest way to get started building with FHIR is to spin up the OHS Player reference implementation. It provides a clear, sequential path from bringing up local infrastructure to running multiplatform client applications and streaming analytics dashboards.
 
 Alternatively, if you are looking for component-specific examples, individual SDK integrations, or form authoring guides, explore [Tutorials and codelabs](/tutorials-and-codelabs/).
-
-```
-┌─────────────────────────────────────────────────────────────────────────┐
-│                          THE BUILDER JOURNEY                            │
-├─────────────┬─────────────┬─────────────┬─────────────┬─────────────────┤
-│ STEP 1      │ STEP 2      │ STEP 3      │ STEP 4      │ STEP 5          │
-│ Deploy      │ Load        │ Administer  │ Run Client  │ Stream          │
-│ Reference   │ Gateway     │ Web Admin   │ Application │ Analytics       │
-│ Infra       │ Extensions  │ Portal      │ (KMP)       │ & Dashboards    │
-└─────────────┴─────────────┴─────────────┴─────────────┴─────────────────┘
-```
 
 ## What you will achieve
 
