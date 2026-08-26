@@ -777,8 +777,8 @@ a { color: inherit; }
   min-height: 100vh;
   margin: auto;
   padding-top: var(--ohs-header-h);
-  grid-template-columns: 244px minmax(0, 760px) 190px;
-  column-gap: clamp(32px, 5vw, 74px);
+  grid-template-columns: 244px minmax(0, 760px) 210px;
+  column-gap: clamp(28px, 4vw, 64px);
 }
 .ohs-guide-sidebar {
   position: sticky;
@@ -937,13 +937,13 @@ a { color: inherit; }
 .ohs-guide-article .theme-admonition { margin: 24px 0; border-radius: 10px; box-shadow: none; }
 .ohs-guide-article .theme-admonition p:last-child { margin-bottom: 0; }
 .ohs-guide-toc { position: sticky; top: calc(var(--ohs-header-h) + 38px); align-self: start; padding-top: 76px; }
-.ohs-guide-toc h2 { margin: 0 0 13px; color: var(--ohs-ink-faint); font-family: "IBM Plex Mono", monospace; font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; }
-.ohs-guide-toc-links, .ohs-mobile-toc-nav { display: grid; gap: 7px; }
-.ohs-guide-toc-links a, .ohs-mobile-toc-nav a { color: var(--ohs-ink-faint); font-size: 0.76rem; line-height: 1.35; text-decoration: none; }
+.ohs-guide-toc h2 { margin: 0 0 14px; color: var(--ohs-ink-faint); font-family: "IBM Plex Mono", monospace; font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 700; }
+.ohs-guide-toc-links, .ohs-mobile-toc-nav { display: grid; gap: 8px; }
+.ohs-guide-toc-links a, .ohs-mobile-toc-nav a { color: var(--ohs-ink-faint); font-size: 0.83rem; line-height: 1.38; text-decoration: none; transition: color 0.12s ease; }
 .ohs-guide-toc-links a:hover, .ohs-guide-toc-links a.active, .ohs-mobile-toc-nav a.active { color: var(--ohs-purple-deep); font-weight: 700; }
-.ohs-toc-divider { height: 1px; margin: 25px 0 15px; background: var(--ohs-line); }
-.ohs-guide-toc > span { color: var(--ohs-ink-faint); font-family: "IBM Plex Mono", monospace; font-size: 0.59rem; letter-spacing: 0.1em; }
-.ohs-source-link { display: block; margin-top: 8px; color: var(--ohs-purple-deep); font-size: 0.77rem; font-weight: 700; line-height: 1.35; text-decoration: none; }
+.ohs-toc-divider { height: 1px; margin: 24px 0 16px; background: var(--ohs-line); }
+.ohs-guide-toc > span { color: var(--ohs-ink-faint); font-family: "IBM Plex Mono", monospace; font-size: 0.64rem; letter-spacing: 0.1em; font-weight: 700; }
+.ohs-source-link { display: block; margin-top: 8px; color: var(--ohs-purple-deep); font-size: 0.83rem; font-weight: 700; line-height: 1.38; text-decoration: none; }
 .ohs-mobile-toc { display: none; }
 .ohs-guide-backdrop { display: none; }
 
