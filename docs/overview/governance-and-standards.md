@@ -13,19 +13,7 @@ guide_status: ready
 
 Open Health Stack is built to uphold international digital health recommendations and open standards. By aligning directly with established global frameworks, the stack ensures that digital health investments remain interoperable, transparent, and sustainable over decades.
 
-```
-┌─────────────────────────────────────────────────────────────────────────┐
-│                       STANDARDS ALIGNMENT                               │
-├───────────────────────────────────┬─────────────────────────────────────┤
-│ WHO SMART Guidelines              │ Digital Public Goods                │
-│ Native support for L2, L3, and L4 │ Open source, privacy-preserving     │
-│ Clinical adaptation kits          │ Transparent governance              │
-├───────────────────────────────────┼─────────────────────────────────────┤
-│ HL7 FHIR Foundation               │ Open Licensing                      │
-│ Un-forked R4, R4B, R5, R6 ready   │ Apache 2.0 open source licenses     │
-│ Standard data exchange schemas    │ Zero recurring licensing fees       │
-└───────────────────────────────────┴─────────────────────────────────────┘
-```
+![Four standards alignments. WHO SMART Guidelines, native support for Level 2, Level 3, and Level 4 clinical adaptation kits. Digital Public Goods, open source and privacy-preserving with transparent governance. HL7 FHIR Foundation, un-forked R4, R4B, R5, and R6 ready with standard data exchange schemas. Open Licensing, Apache 2.0 open source licenses with zero recurring licensing fees.](../images/standards-overview.svg)
 
 ## Alignment with WHO SMART Guidelines
 
