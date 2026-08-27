@@ -1,0 +1,175 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1700 980" width="1700" height="980" role="img" aria-labelledby="hyTitle hyDesc">
+  <title id="hyTitle">Hybrid and non-FHIR coexistence architecture</title>
+  <desc id="hyDesc">Two coexistence patterns. In the first, non-FHIR data collectors are harmonized into FHIR resources using tools like OpenFn or custom pipelines, then processed by FHIR Data Pipes into aggregate dashboards. In the second, a FHIR-native mobile app syncs to a FHIR server, and an integration adapter routes transactions into legacy hospital systems and national registries.</desc>
+
+  <style>
+    :root, svg {
+      --found:      #2D86C4;
+      --found-fill: #E3F1FA;
+      --store:      #5F6368;
+      --store-fill: #F1F3F4;
+      --ink:        #1A1A2E;
+      --muted:      #6B7280;
+      --line:       #9AA0A6;
+      --paper:      #FFFFFF;
+      --bg:         #FFFFFF;
+      --hair:       #DADCE0;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root, svg {
+        --found:      #6FB6E8;
+        --found-fill: #16293A;
+        --store:      #9AA0A6;
+        --store-fill: #24262B;
+        --ink:        #E8EAED;
+        --muted:      #9AA0A6;
+        --line:       #6B7280;
+        --paper:      #1B1C1F;
+        --bg:         #131417;
+        --hair:       #3C4043;
+      }
+    }
+    .bg      { fill: var(--bg); }
+    .band    { font: 600 17px "Hanken Grotesk", "Google Sans", Inter, system-ui, sans-serif; fill: var(--muted); letter-spacing: .05em; }
+    .lbl-f   { font: 600 21px "Hanken Grotesk", "Google Sans", Inter, system-ui, sans-serif; text-anchor: middle; fill: var(--found); }
+    .lbl-s   { font: 600 21px "Hanken Grotesk", "Google Sans", Inter, system-ui, sans-serif; text-anchor: middle; fill: var(--ink); }
+    .sub     { font: 400 16px "Hanken Grotesk", "Google Sans", Inter, system-ui, sans-serif; text-anchor: middle; fill: var(--muted); }
+    .leg     { font: 400 19px "Hanken Grotesk", "Google Sans", Inter, system-ui, sans-serif; fill: var(--ink); }
+    .flow    { fill: none; stroke: var(--line); stroke-width: 2.6; }
+    .ghost-f { fill: var(--found-fill); stroke: var(--found); stroke-width: 2.2; opacity: .55; }
+    .paper-f { fill: var(--paper); stroke: var(--found); stroke-width: 2.4; }
+    .p-fill  { fill: var(--found-fill); stroke: var(--found); stroke-width: 2.4; }
+    .s-fill  { fill: var(--store-fill); stroke: var(--store); stroke-width: 2.4; }
+    .cyl     { fill: var(--store); }
+    .cyl-t   { fill: #7E848A; }
+    .hair    { stroke: var(--hair); stroke-width: 1.6; }
+  </style>
+
+  <defs>
+    <marker id="hyAh" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0.6 L 10 5 L 0 9.4 z" fill="var(--line)"/>
+    </marker>
+  </defs>
+
+  <rect class="bg" x="0" y="0" width="1700" height="980"/>
+
+  <!-- PATTERN 1 band -->
+  <rect x="40" y="60" width="1620" height="380" rx="20" fill="none" stroke="var(--line)" stroke-width="2.2" stroke-dasharray="9 8" opacity=".75"/>
+  <text class="band" x="70" y="100">PATTERN 1 &#183; NON-FHIR DATA TO FHIR ANALYTICS</text>
+
+  <!-- Non-FHIR collectors -->
+  <text class="lbl-s" x="150" y="330">Non-FHIR collectors</text>
+  <text class="sub" x="150" y="354">legacy data collection tools</text>
+  <g transform="translate(100,185)">
+    <rect class="s-fill" width="100" height="90" rx="10"/>
+    <rect x="14" y="18" width="72" height="8" rx="4" fill="var(--store)" opacity=".4"/>
+    <rect x="14" y="36" width="56" height="7" rx="3.5" fill="var(--store)" opacity=".22"/>
+    <rect x="14" y="52" width="64" height="7" rx="3.5" fill="var(--store)" opacity=".22"/>
+    <rect x="14" y="68" width="40" height="7" rx="3.5" fill="var(--store)" opacity=".22"/>
+  </g>
+
+  <!-- Harmonization -->
+  <text class="lbl-f" x="520" y="330">Harmonization</text>
+  <text class="sub" x="520" y="354">OpenFn or custom pipelines</text>
+  <g transform="translate(480,190)">
+    <path d="M20 30 a20 20 0 0 1 34 -10" fill="none" stroke="var(--found)" stroke-width="2.4" stroke-linecap="round"/>
+    <path d="M58 14 l6 10 l-12 2 Z" fill="var(--found)"/>
+    <path d="M60 50 a20 20 0 0 1 -34 10" fill="none" stroke="var(--found)" stroke-width="2.4" stroke-linecap="round"/>
+    <path d="M22 66 l-6 -10 l12 -2 Z" fill="var(--found)"/>
+  </g>
+
+  <!-- FHIR Data Pipes -->
+  <text class="lbl-f" x="950" y="330">FHIR Data Pipes</text>
+  <text class="sub" x="950" y="354">SQL-on-FHIR ViewDefinitions</text>
+  <g transform="translate(376,-31)">
+    <rect class="ghost-f" x="464" y="222" width="76" height="98" rx="7"/>
+    <rect class="paper-f" x="452" y="212" width="76" height="98" rx="7"/>
+    <path d="M 476 268 c -10 -9 -6 -21 1 -27 c .7 5.6 4.2 7.7 7 9.1 c 2.8 -5.6 1.4 -11.2 -1.4 -15.4 c 9.8 3.5 16.8 14 15.4 23.8 c -.7 7 -6.3 11.9 -11.9 12.6 c -4.2 .7 -8.4 -.7 -10.5 -3.5 z"
+          fill="var(--found)" opacity=".85"/>
+    <rect x="464" y="286" width="52" height="6" rx="3" fill="var(--found)" opacity=".25"/>
+    <path d="M 540 266 h 32" class="flow" marker-end="url(#hyAh)"/>
+    <rect x="590" y="212" width="106" height="92" rx="7" fill="var(--found-fill)" stroke="var(--found)" stroke-width="2.4"/>
+    <path d="M 590 236 h 106 M 590 260 h 106 M 590 284 h 106 M 626 212 v 92 M 662 212 v 92"
+          stroke="var(--found)" stroke-width="1.8" opacity=".45" fill="none"/>
+    <rect x="590" y="212" width="106" height="24" rx="7" fill="var(--found)" opacity=".22"/>
+  </g>
+
+  <!-- Aggregate dashboards -->
+  <text class="lbl-f" x="1400" y="330">Aggregate dashboards</text>
+  <text class="sub" x="1400" y="354">standard SQL-on-FHIR reporting</text>
+  <g transform="translate(1318,169)">
+    <rect class="ghost-f" x="16" y="12" width="164" height="122" rx="9"/>
+    <rect class="p-fill" x="0" y="0" width="164" height="122" rx="9"/>
+    <path d="M 0 24 h 164" stroke="var(--found)" stroke-width="1.6" opacity=".45"/>
+    <rect x="20" y="78" width="20" height="28" rx="3" fill="var(--found)" opacity=".35"/>
+    <rect x="48" y="60" width="20" height="46" rx="3" fill="var(--found)" opacity=".55"/>
+    <rect x="76" y="70" width="20" height="36" rx="3" fill="var(--found)" opacity=".35"/>
+    <rect x="104" y="46" width="20" height="60" rx="3" fill="var(--found)" opacity=".75"/>
+    <path d="M 20 58 L 48 46 L 76 52 L 104 34 L 136 40"
+          fill="none" stroke="var(--found)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="136" cy="40" r="4" fill="var(--found)"/>
+  </g>
+
+  <path class="flow" d="M 200 230 L 478 230" marker-end="url(#hyAh)"/>
+  <path class="flow" d="M 560 230 L 826 230" marker-end="url(#hyAh)"/>
+  <path class="flow" d="M 1072 230 L 1316 230" marker-end="url(#hyAh)"/>
+
+  <!-- PATTERN 2 band -->
+  <rect x="40" y="480" width="1620" height="380" rx="20" fill="none" stroke="var(--line)" stroke-width="2.2" stroke-dasharray="9 8" opacity=".75"/>
+  <text class="band" x="70" y="520">PATTERN 2 &#183; FHIR APP TO NON-FHIR BACKENDS</text>
+
+  <!-- FHIR-native mobile app -->
+  <text class="lbl-f" x="150" y="810">FHIR-native mobile app</text>
+  <text class="sub" x="150" y="834">offline care delivery</text>
+  <g transform="translate(120,667)">
+    <rect class="p-fill" x="0" y="0" width="60" height="106" rx="11"/>
+    <rect x="16" y="14" width="28" height="6" rx="3" fill="var(--found)" opacity=".45"/>
+    <rect x="12" y="30" width="36" height="5" rx="2.5" fill="var(--found)" opacity=".22"/>
+    <rect x="12" y="43" width="30" height="5" rx="2.5" fill="var(--found)" opacity=".22"/>
+    <rect x="12" y="56" width="24" height="5" rx="2.5" fill="var(--found)" opacity=".22"/>
+  </g>
+
+  <!-- FHIR server -->
+  <text class="lbl-s" x="520" y="810">FHIR server</text>
+  <text class="sub" x="520" y="834">central store</text>
+  <g transform="translate(462,672)">
+    <ellipse cx="58" cy="0" rx="58" ry="17" class="cyl-t"/>
+    <path d="M 0 0 v 24 a 58 17 0 0 0 116 0 v -24 z" class="cyl"/>
+    <ellipse cx="58" cy="40" rx="58" ry="17" class="cyl-t"/>
+    <path d="M 0 40 v 24 a 58 17 0 0 0 116 0 v -24 z" class="cyl"/>
+    <ellipse cx="58" cy="80" rx="58" ry="17" class="cyl-t"/>
+    <path d="M 0 80 v 24 a 58 17 0 0 0 116 0 v -24 z" class="cyl"/>
+  </g>
+
+  <!-- Integration adapter -->
+  <text class="lbl-f" x="950" y="810">Integration adapter</text>
+  <text class="sub" x="950" y="834">routes transactions</text>
+  <g transform="translate(910,680)">
+    <rect x="24" y="10" width="10" height="24" rx="3" fill="var(--found)"/>
+    <rect x="46" y="10" width="10" height="24" rx="3" fill="var(--found)"/>
+    <path d="M16 34 h48 v14 a24 24 0 0 1 -48 0 z" fill="none" stroke="var(--found)" stroke-width="2.4"/>
+    <rect x="34" y="62" width="12" height="16" rx="3" fill="var(--found)"/>
+  </g>
+
+  <!-- Legacy systems and registries -->
+  <text class="lbl-s" x="1400" y="810">Legacy systems and registries</text>
+  <text class="sub" x="1400" y="834">hospital EHRs, national registries</text>
+  <g transform="translate(1330,675)">
+    <rect class="s-fill" width="140" height="90" rx="10"/>
+    <rect x="14" y="18" width="112" height="8" rx="4" fill="var(--store)" opacity=".4"/>
+    <rect x="14" y="36" width="90" height="7" rx="3.5" fill="var(--store)" opacity=".22"/>
+    <rect x="14" y="52" width="100" height="7" rx="3.5" fill="var(--store)" opacity=".22"/>
+    <rect x="14" y="68" width="60" height="7" rx="3.5" fill="var(--store)" opacity=".22"/>
+  </g>
+
+  <path class="flow" d="M 180 720 L 460 720" marker-end="url(#hyAh)"/>
+  <path class="flow" d="M 578 720 L 908 720" marker-end="url(#hyAh)"/>
+  <path class="flow" d="M 990 720 L 1328 720" marker-end="url(#hyAh)"/>
+
+  <!-- legend -->
+  <path d="M 460 900 h 780" class="hair"/>
+  <circle cx="496" cy="932" r="11" fill="var(--found)"/>
+  <text class="leg" x="518" y="939">OHS foundational components</text>
+  <circle cx="900" cy="932" r="11" fill="var(--store)"/>
+  <text class="leg" x="922" y="939">Non-FHIR or third-party systems</text>
+</svg>

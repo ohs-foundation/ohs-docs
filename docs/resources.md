@@ -1,42 +1,82 @@
 ---
 title: Resources and contributing
-description: Where the source lives, where to ask questions, and where each part of Player is maintained.
+description: Source repositories, community discussions, and contribution guidelines across the Open Health Stack ecosystem.
 slug: /resources/
-sidebar_position: 90
-guide_type: Concept
-guide_status: partial
-guide_focus: Source repositories and community
+sidebar_position: 10
+guide_type: Reference
+guide_status: ready
+guide_focus: Source repositories, community channels, and contribution guidelines
 repository: ohs-player
 ---
 
-## Repositories
+## Repositories across the stack
 
-Each component is maintained in its own repository, which owns its build commands, API detail, releases, and issues. This site explains how the pieces relate. The repositories are authoritative for everything specific to one of them.
+Each Open Health Stack component is maintained in its own dedicated repository. The repositories own their build commands, test suites, API details, releases, and issue trackers.
 
-| Repository | Owns |
+### FHIR Foundations repositories
+
+The core libraries and client SDKs provide the multiplatform foundation for working with FHIR data.
+
+| Repository | Role |
+| --- | --- |
+| [kotlin-fhir](https://github.com/ohs-foundation/kotlin-fhir) | Kotlin Multiplatform FHIR data model and serialization |
+| [kotlin-fhirpath](https://github.com/ohs-foundation/kotlin-fhirpath) | FHIRPath expression engine for Kotlin |
+| [kotlin-fhir-engine](https://github.com/ohs-foundation/kotlin-fhir-engine) | On-device persistence, search, and server synchronization |
+| [kotlin-fhir-data-capture](https://github.com/ohs-foundation/kotlin-fhir-data-capture) | Questionnaire rendering and data capture |
+
+### OHS Player reference toolkit
+
+The reference implementation demonstrates how to assemble the building blocks into working digital health applications.
+
+| Repository | Role |
 | --- | --- |
 | [ohs-player](https://github.com/ohs-foundation/ohs-player) | The toolkit definition and entry point |
-| [player-reference](https://github.com/ohs-foundation/player-reference) | The Kotlin Multiplatform Client App |
-| [ohs-player-reference-web-portal](https://github.com/ohs-foundation/ohs-player-reference-web-portal) | The administration portal |
+| [player-reference](https://github.com/ohs-foundation/player-reference) | Frontline health worker multiplatform client app |
+| [ohs-player-reference-web-portal](https://github.com/ohs-foundation/ohs-player-reference-web-portal) | Administration portal for workforce and configuration |
 | [ohs-player-reference-backend](https://github.com/ohs-foundation/ohs-player-reference-backend) | Gateway endpoints and access checkers |
-| [ohs-player-reference-infrastructure](https://github.com/ohs-foundation/ohs-player-reference-infrastructure) | Shared environment deployment material |
-| [ohs-player-reference-analytics](https://github.com/ohs-foundation/ohs-player-reference-analytics) | ViewDefinitions, indicators, and dashboards |
-| [player-client](https://github.com/ohs-foundation/player-client) | The configurable UI library |
-| [player-reference-ig](https://github.com/ohs-foundation/player-reference-ig) | The configuration implementation guide |
+| [ohs-player-reference-infrastructure](https://github.com/ohs-foundation/ohs-player-reference-infrastructure) | Shared environment deployment scripts |
+| [player-client](https://github.com/ohs-foundation/player-client) | Configurable multiplatform UI library |
+| [player-reference-ig](https://github.com/ohs-foundation/player-reference-ig) | Declarative UI configuration implementation guide |
 
-## Getting help
+### Documentation and templates
 
-- [OHS Foundation discussions](https://github.com/orgs/ohs-foundation/discussions) for questions about Player as a whole
-- The issue tracker of the owning repository for a problem with one component
+| Repository | Role |
+| --- | --- |
+| [ohs-docs](https://github.com/ohs-foundation/ohs-docs) | Documentation site source, guides, and templates |
 
-Raising a component problem in its own repository reaches the people who can fix it, and keeps the answer next to the code.
+## Getting help and community
 
-## Contributing
+The Open Health Stack community collaborates across public channels and issue trackers.
 
-Contributions go to the repository that owns the material, following that repository's own guidance.
+- [OHS Foundation discussions](https://github.com/orgs/ohs-foundation/discussions) for architecture discussions, questions about the ecosystem, and community support
+- The issue tracker of the owning repository for bugs or feature requests specific to that component
 
-For documentation, write the page in the repository the material belongs to and tell the documentation maintainers it is ready. The [submission pack](https://github.com/ohs-foundation/ohs-docs/tree/main/contributing/submission-pack) has a template for each kind of page and the details worth including.
+Opening an issue directly in the owning repository connects you with the maintainers of that component and keeps the resolution close to the code.
+
+## Contributing code
+
+Code contributions follow the workflow of the repository that owns the material.
+
+1. Review the contribution guidelines in the target repository before starting work.
+2. Open an issue or join a discussion thread to discuss proposed changes with the maintainers.
+3. Submit changes via pull request with tests verifying the new behavior.
+
+## Contributing documentation
+
+Clear documentation is essential for developers evaluating and implementing Open Health Stack.
+
+Documentation for individual components lives alongside the code in the respective repository, while cross-stack guides and foundational materials are published here.
+
+The [submission pack](https://github.com/ohs-foundation/ohs-docs/tree/main/contributing/submission-pack) contains templates for each kind of document.
+
+- Component overviews explaining capabilities and architecture
+- Setup guides walking through local execution
+- Core concepts explaining system design
+- Technical references documenting APIs and parameters
+- Configuration recipes showing practical patterns
 
 ## The wider ecosystem
 
-Player assembles components that exist independently of it. The [OHS Foundation projects page](https://ohs.foundation/projects) is the catalogue for those components and the source for their maturity. This site covers only how Player uses them. See [How Player uses OHS components](/concepts/how-player-uses-ohs-components/).
+Open Health Stack components exist independently of any single reference application.
+
+The [OHS Foundation projects page](https://ohs.foundation/projects) is the official catalogue for all projects and the source for their maturity ratings. See [The architecture](/ohs-player/architecture/) for an explanation of how the reference stack connects them.

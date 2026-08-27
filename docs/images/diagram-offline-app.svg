@@ -1,0 +1,101 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 640" width="1400" height="640" role="img" aria-labelledby="oaTitle oaDesc">
+  <title id="oaTitle">Offline FHIR mobile application architecture</title>
+  <desc id="oaDesc">The mobile app contains the Structured Data Capture library for rendering forms, the FHIR Engine for local SQLite storage and search, and the Workflow library for on-device CQL clinical decision support. The FHIR Engine synchronizes with a standard FHIR server over REST once connectivity is available.</desc>
+
+  <style>
+    :root, svg {
+      --found:      #2D86C4;
+      --found-fill: #E3F1FA;
+      --store:      #5F6368;
+      --ink:        #1A1A2E;
+      --muted:      #6B7280;
+      --line:       #9AA0A6;
+      --bg:         #FFFFFF;
+      --hair:       #DADCE0;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root, svg {
+        --found:      #6FB6E8;
+        --found-fill: #16293A;
+        --store:      #9AA0A6;
+        --ink:        #E8EAED;
+        --muted:      #9AA0A6;
+        --line:       #6B7280;
+        --bg:         #131417;
+        --hair:       #3C4043;
+      }
+    }
+    .bg    { fill: var(--bg); }
+    .lbl   { font: 600 23px "Hanken Grotesk", "Google Sans", Inter, system-ui, sans-serif; text-anchor: middle; fill: var(--found); }
+    .lbl-s { font: 600 23px "Hanken Grotesk", "Google Sans", Inter, system-ui, sans-serif; text-anchor: middle; fill: var(--ink); }
+    .sub   { font: 400 17px "Hanken Grotesk", "Google Sans", Inter, system-ui, sans-serif; text-anchor: middle; fill: var(--muted); }
+    .cht   { font: 600 19px "Hanken Grotesk", "Google Sans", Inter, system-ui, sans-serif; fill: var(--found); }
+    .chs   { font: 400 15px "Hanken Grotesk", "Google Sans", Inter, system-ui, sans-serif; fill: var(--muted); }
+    .leg   { font: 400 19px "Hanken Grotesk", "Google Sans", Inter, system-ui, sans-serif; fill: var(--ink); }
+    .flow  { fill: none; stroke: var(--line); stroke-width: 2.6; }
+    .f-fill{ fill: var(--found-fill); stroke: var(--found); stroke-width: 2.4; }
+    .cyl   { fill: var(--store); }
+    .cyl-t { fill: #7E848A; }
+    .hair  { stroke: var(--hair); stroke-width: 1.6; }
+  </style>
+
+  <defs>
+    <marker id="oaAh" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0.6 L 10 5 L 0 9.4 z" fill="var(--line)"/>
+    </marker>
+  </defs>
+
+  <rect class="bg" x="0" y="0" width="1400" height="640"/>
+
+  <!-- container -->
+  <rect x="140" y="120" width="420" height="410" rx="20" fill="none" stroke="var(--line)" stroke-width="2.2" stroke-dasharray="9 8" opacity=".75"/>
+
+  <text class="lbl" x="350" y="64">Mobile app</text>
+  <text class="sub" x="350" y="90">Android &#183; iOS &#183; Desktop &#183; Web</text>
+
+  <text class="lbl-s" x="1080" y="64">FHIR server</text>
+  <text class="sub" x="1080" y="90">any standard implementation</text>
+
+  <!-- chips -->
+  <g>
+    <rect class="f-fill" x="170" y="170" width="360" height="90" rx="12"/>
+    <text class="cht" x="192" y="208">Structured Data Capture</text>
+    <text class="chs" x="192" y="234">renders and validates FHIR Questionnaires</text>
+  </g>
+  <g>
+    <rect class="f-fill" x="170" y="290" width="360" height="90" rx="12"/>
+    <text class="cht" x="192" y="328">FHIR Engine</text>
+    <text class="chs" x="192" y="354">local SQLite storage and typed search</text>
+  </g>
+  <g>
+    <rect class="f-fill" x="170" y="410" width="360" height="90" rx="12"/>
+    <text class="cht" x="192" y="448">Workflow</text>
+    <text class="chs" x="192" y="474">on-device CQL clinical decision support</text>
+  </g>
+
+  <!-- cylinder -->
+  <g transform="translate(1022,300)">
+    <ellipse cx="58" cy="0" rx="58" ry="17" class="cyl-t"/>
+    <path d="M 0 0 v 24 a 58 17 0 0 0 116 0 v -24 z" class="cyl"/>
+    <ellipse cx="58" cy="40" rx="58" ry="17" class="cyl-t"/>
+    <path d="M 0 40 v 24 a 58 17 0 0 0 116 0 v -24 z" class="cyl"/>
+    <ellipse cx="58" cy="80" rx="58" ry="17" class="cyl-t"/>
+    <path d="M 0 80 v 24 a 58 17 0 0 0 116 0 v -24 z" class="cyl"/>
+  </g>
+
+  <!-- flow -->
+  <path class="flow" d="M 530 336 L 1018 344" marker-end="url(#oaAh)" marker-start="url(#oaAh)"/>
+  <text class="sub" x="774" y="316">REST sync</text>
+
+  <!-- legend -->
+  <path d="M 300 560 h 800" class="hair"/>
+  <circle cx="336" cy="596" r="11" fill="var(--found)"/>
+  <text class="leg" x="358" y="603">OHS foundational components</text>
+  <g transform="translate(700,584)">
+    <ellipse cx="11" cy="4" rx="11" ry="3.6" class="cyl-t"/>
+    <path d="M 0 4 v 6 a 11 3.6 0 0 0 22 0 v -6 z" class="cyl"/>
+    <ellipse cx="11" cy="14" rx="11" ry="3.6" class="cyl-t"/>
+    <path d="M 0 14 v 6 a 11 3.6 0 0 0 22 0 v -6 z" class="cyl"/>
+  </g>
+  <text class="leg" x="736" y="603">Standards-based server, not OHS-specific</text>
+</svg>

@@ -20,26 +20,23 @@ function LandingHeader() {
   return (
     <header className="ohs-site-header">
       <div className="ohs-nav-shell">
-        <Brand foundation />
+        <Brand />
         <nav
           id="primary-navigation"
           className={menuOpen ? "ohs-main-nav is-open" : "ohs-main-nav"}
           aria-label="Primary navigation"
         >
-          <Link to="/">Overview</Link>
-          <Link to="/concepts/what-ohs-player-is/">Understand</Link>
-          <Link to="/get-started/">Run it</Link>
-          <Link to="/configure/screen-from-fhir-data/">Configure</Link>
-          <Link to="/extend/decide/">Extend</Link>
-          <Link to="/fhir-foundations/">FHIR Foundations</Link>
+          <Link to="/" aria-current="page">Home</Link>
+          <Link to="/why-ohs/">About</Link>
+          <Link to="/learn/">Learn</Link>
+          <Link to="/get-started/">Build</Link>
+          <Link to="/overview/solutions-and-pathways/">Pathways</Link>
+          <Link to="/resources/">Community</Link>
         </nav>
         <div className="ohs-nav-actions">
           <div className="ohs-header-search">
             <SearchBar />
           </div>
-          <a className="ohs-foundation-link" href="https://ohs.foundation/">
-            Foundation site <span aria-hidden="true">↗</span>
-          </a>
           <button
             ref={menuButton}
             className="ohs-menu-button"
@@ -58,21 +55,88 @@ function LandingHeader() {
   );
 }
 
+function PillarsSection() {
+  return (
+    <section className="ohs-pillars-section" aria-label="Open Health Stack Pillars">
+      <div className="ohs-pillars-intro">
+        <h2>Modular tools for digital health</h2>
+        <p>
+          <a href="https://ohs.foundation/">Open Health Stack</a> is a collection of open-source tools and shared libraries for standards-native healthcare software. Rather than offering a rigid monolithic system, the ecosystem allows digital health innovators, ministries of health, and engineering teams to adopt individual libraries or evaluate a complete reference toolkit.
+        </p>
+      </div>
+      <div className="ohs-pillars-grid">
+        {/* Pillar 01: FHIR Foundations */}
+        <div className="ohs-pillar-card">
+          <div className="ohs-pillar-header">
+            <span className="ohs-pillar-tag">PILLAR 01</span>
+          </div>
+          <h3>
+            <Link to="/fhir-foundations/">FHIR Foundations</Link>
+          </h3>
+          <p>
+            Unbundled Kotlin Multiplatform core libraries, on-device SQLite storage,
+            typed search parameters, and structured questionnaire rendering.
+          </p>
+          <Link className="ohs-pillar-cta" to="/fhir-foundations/">
+            Explore FHIR Foundations <span>→</span>
+          </Link>
+        </div>
+
+        {/* Pillar 02: OHS Player */}
+        <div className="ohs-pillar-card">
+          <div className="ohs-pillar-header">
+            <span className="ohs-pillar-tag">PILLAR 02</span>
+            <span className="ohs-release-badge ohs-release-alpha">Alpha Release</span>
+          </div>
+          <h3>
+            <Link to="/ohs-player/">OHS Player</Link>
+          </h3>
+          <p>
+            A full-stack reference toolkit showing how foundational components assemble
+            into an offline-first frontline client, web admin portal, gateway, and analytics.
+          </p>
+          <Link className="ohs-pillar-cta" to="/ohs-player/">
+            Understand OHS Player <span>→</span>
+          </Link>
+        </div>
+
+        {/* Pillar 03: AI Commons */}
+        <div className="ohs-pillar-card is-disabled">
+          <div className="ohs-pillar-header">
+            <span className="ohs-pillar-tag">PILLAR 03</span>
+            <span className="ohs-coming-soon-badge">Incubating</span>
+          </div>
+          <h3>AI Commons (Incubating)</h3>
+          <p>
+            Structured FHIR prompt engineering tools, standardized clinical benchmarking,
+            and safety evaluation frameworks for builders and health authorities.
+          </p>
+          <Link className="ohs-pillar-cta" to="/why-ohs/#pillar-3-for-ai-commons-incubating">
+            Learn about AI Commons <span>→</span>
+          </Link>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function Footer() {
   return (
     <footer className="ohs-footer">
       <div className="ohs-footer-inner">
         <div>
-          <Brand foundation />
-          <p>Documentation for evaluating and adapting the OHS Player reference toolkit.</p>
+          <Brand />
+          <p>Documentation for Open Health Stack components, libraries, and reference toolkits.</p>
         </div>
         <div className="ohs-footer-links">
-          <Link to="/concepts/what-ohs-player-is/">Understand</Link>
-          <Link to="/get-started/">Get started</Link>
-          <Link to="/fhir-foundations/">FHIR Foundations</Link>
-          <Link to="/resources/">Resources and contributing</Link>
-          <a href="https://github.com/ohs-foundation/ohs-player">OHS Player source</a>
-          <a href="https://ohs.foundation/projects">OHS components</a>
+          <Link to="/why-ohs/">About Open Health Stack</Link>
+          <Link to="/get-started/">Learn & Get Started</Link>
+          <Link to="/tutorials-and-codelabs/">Tutorials & Codelabs</Link>
+          <Link to="/overview/solutions-and-pathways/">Pathways</Link>
+          <Link to="/resources/">Community</Link>
+          <a href="https://github.com/ohs-foundation" target="_blank" rel="noopener noreferrer">
+            GitHub Repositories ↗
+          </a>
         </div>
       </div>
     </footer>
@@ -93,15 +157,38 @@ export default function LandingPage({ children }) {
       <main>
         <section className="ohs-landing-hero">
           <div>
-            {frontMatter.eyebrow && <span className="ohs-eyebrow">{frontMatter.eyebrow}</span>}
+            <div className="ohs-hero-eyebrow-row">
+              {frontMatter.eyebrow && <span className="ohs-eyebrow">{frontMatter.eyebrow}</span>}
+              <span className="ohs-beta-badge">Beta</span>
+            </div>
             <h1>{metadata.title}</h1>
             <p>{metadata.description}</p>
             <div className="ohs-hero-actions">
-              {primary && <Link className="ohs-button" to={primary.to}>{primary.label}</Link>}
-              {secondary && <a className="ohs-button ohs-button-secondary" href={secondary.href}>{secondary.label} ↗</a>}
+              {primary && (
+                primary.to ? (
+                  <Link className="ohs-button" to={primary.to}>{primary.label}</Link>
+                ) : (
+                  <a className="ohs-button" href={primary.href}>{primary.label}</a>
+                )
+              )}
+              {secondary && (
+                secondary.to ? (
+                  <Link className="ohs-button ohs-button-secondary" to={secondary.to}>{secondary.label}</Link>
+                ) : (
+                  <a className="ohs-button ohs-button-secondary" href={secondary.href}>{secondary.label} ↗</a>
+                )
+              )}
+            </div>
+            <div className="ohs-hero-tags">
+              <span className="ohs-hero-tag">Building blocks for global digital health</span>
+              <span className="ohs-hero-tag">Apache 2.0 Licensed</span>
+              <Link className="ohs-hero-tag ohs-hero-tag-link" to="/resources/">
+                Contribute <span>→</span>
+              </Link>
             </div>
           </div>
         </section>
+        <PillarsSection />
         <article className="ohs-landing-content">{children}</article>
       </main>
       <Footer />

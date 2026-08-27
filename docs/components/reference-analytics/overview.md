@@ -37,11 +37,11 @@ Two properties of this arrangement matter more than the mechanics.
 
 ## The same idea as the Client App
 
-`ViewDefinition` is the SQL-on-FHIR artifact the [configuration model](/concepts/configuration-model/) already uses to project FHIR into what a screen shows. Analytics applies the same declarative projection to produce reporting tables instead.
+`ViewDefinition` is the SQL-on-FHIR artifact the [configuration model](/ohs-player/configuration-model/) uses to project FHIR into what a screen shows. Analytics applies the same declarative projection to produce reporting tables instead.
 
 One idea, two destinations. A team that has understood how a register is configured has already understood how a reporting table is defined.
 
-The reference set covers the resource types the community health scenario produces. Those are patients, practitioners and their roles, organisations, locations, households, related people, encounters, conditions, observations, care plans, tasks, immunizations, medication requests, procedures, and diagnostic reports.
+The reference set covers standard clinical resource types including patients, practitioners, roles, organisations, locations, households, encounters, conditions, observations, care plans, tasks, immunizations, medication requests, procedures, and diagnostic reports.
 
 ## Which FHIR server it reads
 

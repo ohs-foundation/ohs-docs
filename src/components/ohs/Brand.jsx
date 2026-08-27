@@ -2,15 +2,14 @@ import React from "react";
 import Link from "@docusaurus/Link";
 
 export default function Brand({
-  to = "/",
+  to = "https://ohs.foundation",
   compact = false,
-  foundation = false,
 }) {
   return (
     <Link
       className="ohs-brand"
       to={to}
-      aria-label="Open Health Stack Documentation"
+      aria-label="Open Health Stack"
     >
       <span className="ohs-brand-mark" aria-hidden="true">
         <i />
@@ -21,7 +20,7 @@ export default function Brand({
       {!compact && (
         <span className="ohs-brand-name">
           <strong>Open Health Stack</strong>
-          <small>{foundation ? "Software Foundation" : "Documentation"}</small>
+          <small>Software Foundation</small>
         </span>
       )}
     </Link>

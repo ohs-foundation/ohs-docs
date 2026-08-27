@@ -7,6 +7,26 @@
       "searchIndexed": true
     },
     {
+      "id": "why-ohs",
+      "path": "/ohs-docs/why-ohs/",
+      "searchIndexed": true
+    },
+    {
+      "id": "solutions-and-pathways",
+      "path": "/ohs-docs/overview/solutions-and-pathways/",
+      "searchIndexed": true
+    },
+    {
+      "id": "architecture-samples",
+      "path": "/ohs-docs/overview/architecture-samples/",
+      "searchIndexed": true
+    },
+    {
+      "id": "governance-and-standards",
+      "path": "/ohs-docs/overview/governance-and-standards/",
+      "searchIndexed": true
+    },
+    {
       "id": "get-started",
       "path": "/ohs-docs/get-started/",
       "searchIndexed": true
@@ -18,32 +38,27 @@
     },
     {
       "id": "what-ohs-player-is",
-      "path": "/ohs-docs/concepts/what-ohs-player-is/",
+      "path": "/ohs-docs/ohs-player/",
       "searchIndexed": true
     },
     {
       "id": "architecture",
-      "path": "/ohs-docs/concepts/architecture/",
-      "searchIndexed": true
-    },
-    {
-      "id": "component-relationships",
-      "path": "/ohs-docs/concepts/how-player-uses-ohs-components/",
+      "path": "/ohs-docs/ohs-player/architecture/",
       "searchIndexed": true
     },
     {
       "id": "what-you-can-do-today",
-      "path": "/ohs-docs/concepts/what-you-can-do-today/",
+      "path": "/ohs-docs/ohs-player/what-you-can-do-today/",
       "searchIndexed": true
     },
     {
       "id": "configuration-ig",
-      "path": "/ohs-docs/concepts/configuration-ig/",
+      "path": "/ohs-docs/ohs-player/configuration-ig/",
       "searchIndexed": true
     },
     {
       "id": "configuration-model",
-      "path": "/ohs-docs/concepts/configuration-model/",
+      "path": "/ohs-docs/ohs-player/configuration-model/",
       "searchIndexed": true
     },
     {
@@ -219,6 +234,96 @@
     {
       "id": "kotlin-fhir-data-capture-customize",
       "path": "/ohs-docs/fhir-foundations/kotlin-fhir-data-capture/customize-and-extend/",
+      "searchIndexed": true
+    },
+    {
+      "id": "android-fhir-overview",
+      "path": "/ohs-docs/fhir-foundations/android-fhir/",
+      "searchIndexed": true
+    },
+    {
+      "id": "info-gateway-overview",
+      "path": "/ohs-docs/fhir-foundations/info-gateway/",
+      "searchIndexed": true
+    },
+    {
+      "id": "fhir-data-pipes-overview",
+      "path": "/ohs-docs/fhir-foundations/fhir-data-pipes/",
+      "searchIndexed": true
+    },
+    {
+      "id": "tutorials-and-codelabs-overview",
+      "path": "/ohs-docs/tutorials-and-codelabs/",
+      "searchIndexed": true
+    },
+    {
+      "id": "tutorials-and-codelabs-multiplatform-client",
+      "path": "/ohs-docs/tutorials-and-codelabs/multiplatform-client/",
+      "searchIndexed": true
+    },
+    {
+      "id": "tutorials-and-codelabs-sdc-questionnaires",
+      "path": "/ohs-docs/tutorials-and-codelabs/sdc-questionnaires/",
+      "searchIndexed": true
+    },
+    {
+      "id": "tutorials-and-codelabs-sql-on-fhir-analytics",
+      "path": "/ohs-docs/tutorials-and-codelabs/sql-on-fhir-analytics/",
+      "searchIndexed": true
+    },
+    {
+      "id": "tutorials-and-codelabs-info-gateway-getting-started",
+      "path": "/ohs-docs/tutorials-and-codelabs/info-gateway-getting-started/",
+      "searchIndexed": true
+    },
+    {
+      "id": "tutorials-and-codelabs-info-gateway-docker",
+      "path": "/ohs-docs/tutorials-and-codelabs/info-gateway-docker/",
+      "searchIndexed": true
+    },
+    {
+      "id": "tutorials-and-codelabs-info-gateway-access-checker",
+      "path": "/ohs-docs/tutorials-and-codelabs/info-gateway-access-checker/",
+      "searchIndexed": true
+    },
+    {
+      "id": "tutorials-and-codelabs-data-pipes-test-servers",
+      "path": "/ohs-docs/tutorials-and-codelabs/data-pipes-test-servers/",
+      "searchIndexed": true
+    },
+    {
+      "id": "tutorials-and-codelabs-data-pipes-single-machine",
+      "path": "/ohs-docs/tutorials-and-codelabs/data-pipes-single-machine/",
+      "searchIndexed": true
+    },
+    {
+      "id": "tutorials-and-codelabs-data-pipes-try-controller",
+      "path": "/ohs-docs/tutorials-and-codelabs/data-pipes-try-controller/",
+      "searchIndexed": true
+    },
+    {
+      "id": "tutorials-and-codelabs-data-pipes-superset",
+      "path": "/ohs-docs/tutorials-and-codelabs/data-pipes-superset/",
+      "searchIndexed": true
+    },
+    {
+      "id": "tutorials-and-codelabs-data-pipes-gcp-fhirstore",
+      "path": "/ohs-docs/tutorials-and-codelabs/data-pipes-gcp-fhirstore/",
+      "searchIndexed": true
+    },
+    {
+      "id": "tutorials-and-codelabs-gateway-access-rules",
+      "path": "/ohs-docs/tutorials-and-codelabs/gateway-access-rules/",
+      "searchIndexed": true
+    },
+    {
+      "id": "tutorials-and-codelabs-zero-code-screens",
+      "path": "/ohs-docs/tutorials-and-codelabs/zero-code-screens/",
+      "searchIndexed": true
+    },
+    {
+      "id": "learn-overview",
+      "path": "/ohs-docs/learn/",
       "searchIndexed": true
     }
   ]

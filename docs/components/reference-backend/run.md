@@ -45,7 +45,7 @@ The repository identifies the output as `target/ohs-player-backend-extensions-1.
 
 ```sh
 java -Dloader.path="PATH_TO_PLUGIN/ohs-player-backend-extensions-1.0-SNAPSHOT.jar" \
-  -jar PATH_TO_FHIR_GATEWAY/exec/target/fhir-gateway-exec.jar --server.port=8081
+  -jar PATH_TO_FHIR_GATEWAY/exec/target/fhir-gateway-exec.jar --server.port=8083
 ```
 
 Replace `PATH_TO_PLUGIN` with the absolute path to the JAR produced in the previous step. Replace `PATH_TO_FHIR_GATEWAY` with the absolute path to the FHIR Gateway repository where its host JAR was built.

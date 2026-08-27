@@ -78,22 +78,58 @@ function PageToc({ entries, activeId, mobile = false }) {
  */
 function SectionNav({ className }) {
   const { pathname } = useLocation();
-  const inFoundation = pathname.includes("/fhir-foundations/");
+  const isHome = pathname === "/" || pathname === "/ohs-docs/" || pathname === "/ohs-docs";
+  const inAbout = pathname.includes("/why-ohs/") || pathname.includes("/governance-and-standards/");
+  const inFHIR = pathname.includes("/fhir-foundations/");
+  const inPlayer = pathname.includes("/ohs-player/") || pathname.includes("/concepts/") || (pathname.includes("/components/") && pathname.includes("/overview"));
+  const inLearn = pathname.includes("/learn/") || inFHIR || inPlayer;
+  const inBuild = pathname.includes("/get-started/") || pathname.includes("/prerequisites/") || (pathname.includes("/components/") && pathname.includes("/run")) || pathname.includes("/reference-infrastructure/") || pathname.includes("/configure/") || pathname.includes("/extend/") || pathname.includes("/tutorials-and-codelabs/");
+  const inSolutions = pathname.includes("/solutions-and-pathways/") || pathname.includes("/architecture-samples/");
+  const inCommunity = pathname.includes("/resources/") && !pathname.includes("/tutorials-and-codelabs/");
+
   return (
     <nav className={className} aria-label="Documentation sections">
       <Link
-        to="/concepts/what-ohs-player-is/"
-        className={inFoundation ? undefined : "active"}
-        aria-current={inFoundation ? undefined : "true"}
+        to="/"
+        className={isHome ? "active" : undefined}
+        aria-current={isHome ? "true" : undefined}
       >
-        Player
+        Home
       </Link>
       <Link
-        to="/fhir-foundations/"
-        className={inFoundation ? "active" : undefined}
-        aria-current={inFoundation ? "true" : undefined}
+        to="/why-ohs/"
+        className={inAbout ? "active" : undefined}
+        aria-current={inAbout ? "true" : undefined}
       >
-        FHIR Foundations
+        About
+      </Link>
+      <Link
+        to="/learn/"
+        className={inLearn ? "active" : undefined}
+        aria-current={inLearn ? "true" : undefined}
+      >
+        Learn
+      </Link>
+      <Link
+        to="/get-started/"
+        className={inBuild ? "active" : undefined}
+        aria-current={inBuild ? "true" : undefined}
+      >
+        Build
+      </Link>
+      <Link
+        to="/overview/solutions-and-pathways/"
+        className={inSolutions ? "active" : undefined}
+        aria-current={inSolutions ? "true" : undefined}
+      >
+        Pathways
+      </Link>
+      <Link
+        to="/resources/"
+        className={inCommunity ? "active" : undefined}
+        aria-current={inCommunity ? "true" : undefined}
+      >
+        Community
       </Link>
     </nav>
   );
@@ -102,6 +138,26 @@ function SectionNav({ className }) {
 function GuideSidebar({ open, onClose }) {
   const sidebar = useDocsSidebar();
   const { pathname } = useLocation();
+  const inAbout = pathname.includes("/why-ohs/") || pathname.includes("/governance-and-standards/");
+  const inFHIR = pathname.includes("/fhir-foundations/");
+  const inPlayer = pathname.includes("/ohs-player/") || pathname.includes("/concepts/") || (pathname.includes("/components/") && pathname.includes("/overview"));
+  const inLearn = pathname.includes("/learn/") || inFHIR || inPlayer;
+  const inBuild = pathname.includes("/get-started/") || pathname.includes("/prerequisites/") || (pathname.includes("/components/") && pathname.includes("/run")) || pathname.includes("/reference-infrastructure/") || pathname.includes("/configure/") || pathname.includes("/extend/") || pathname.includes("/tutorials-and-codelabs/");
+  const inSolutions = pathname.includes("/solutions-and-pathways/") || pathname.includes("/architecture-samples/");
+  const inCommunity = pathname.includes("/resources/") && !pathname.includes("/tutorials-and-codelabs/");
+
+  const sectionTitle = inAbout
+    ? "ABOUT OPEN HEALTH STACK"
+    : inLearn
+    ? "LEARN · THE 3 PILLARS"
+    : inBuild
+    ? "BUILD · BLUEPRINTS & CODE"
+    : inSolutions
+    ? "PATHWAYS"
+    : inCommunity
+    ? "COMMUNITY & ECOSYSTEM"
+    : "OPEN HEALTH STACK";
+
   return (
     <>
       <button
@@ -124,6 +180,9 @@ function GuideSidebar({ open, onClose }) {
           </button>
         </div>
         <SectionNav className="ohs-sidebar-sections" />
+        <div className="ohs-sidebar-section-header">
+          <span className="ohs-sidebar-section-tag">{sectionTitle}</span>
+        </div>
         <nav
           aria-label="Documentation sections"
           className="ohs-sidebar-navigation"
@@ -175,7 +234,6 @@ function GuideHeader({ menuRef, onOpen, sidebarOpen }) {
             <SearchBar />
           </div>
           <a href="https://github.com/ohs-foundation">GitHub ↗</a>
-          <a href="https://ohs.foundation/">Foundation ↗</a>
         </div>
       </div>
     </header>
@@ -204,7 +262,6 @@ export default function GuideShell({ children }) {
     setSidebarOpen(false);
     window.setTimeout(() => menuButton.current?.focus(), 0);
   }
-  const focus = frontMatter.guide_focus ?? "OHS Player";
   const repository = repositoryFor(frontMatter.repository);
   return (
     <div className="ohs-guide-page" id="top">
@@ -228,16 +285,25 @@ export default function GuideShell({ children }) {
             <PageToc mobile entries={tocEntries} activeId={activeHeading} />
           </details>
           <header className="ohs-guide-heading">
-            <span className="ohs-page-type">
-              {frontMatter.guide_type ?? "GUIDE"}
-            </span>
+            <div className="ohs-heading-tags">
+              <span className="ohs-page-type">
+                {frontMatter.guide_type ?? "GUIDE"}
+              </span>
+              {frontMatter.release_tag && (
+                <span className="ohs-release-badge ohs-release-alpha">
+                  {frontMatter.release_tag}
+                </span>
+              )}
+            </div>
             <h1>{metadata.title}</h1>
             <p>{metadata.description}</p>
-            <div className="ohs-page-meta">
-              <span>
-                <b>FOCUS</b> {focus}
-              </span>
-            </div>
+            {frontMatter.release_tag && (
+              <div className="ohs-page-meta">
+                <span>
+                  <b>STATUS</b> {frontMatter.release_tag}
+                </span>
+              </div>
+            )}
           </header>
           {children}
         </main>

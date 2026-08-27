@@ -11,7 +11,7 @@ repository: web-portal
 
 ## About the Web Portal
 
-The Web Portal is a configurable, extensible web application for healthcare organizations to manage workforce hierarchies, user accounts, access controls, and configuration. It is step 2 of the [get started sequence](/get-started/). Use it after the shared Player environment is available and before running the Client App, so the environment has the users and administration data it needs.
+The Web Portal is a configurable, extensible web application for healthcare organizations to manage workforce hierarchies, user accounts, access controls, and configuration. It is step 3 of the [get started sequence](/get-started/). Use it after the shared Player environment and backend extensions are available and before running the Client App, so the environment has the users and administration data it needs.
 
 ## Before you begin
 

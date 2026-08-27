@@ -9,6 +9,7 @@ const config = {
   organizationName: "ohs-foundation",
   projectName: "ohs-docs",
   onBrokenLinks: "throw",
+  onBrokenAnchors: "ignore",
   markdown: { hooks: { onBrokenMarkdownLinks: "throw" } },
   i18n: { defaultLocale: "en", locales: ["en"] },
   presets: [
@@ -65,37 +66,25 @@ const config = {
   ],
   themeConfig: {
     navbar: {
-      title: "OHS Player",
-      logo: { alt: "", src: "assets/favicon.svg" },
+      title: "Open Health Stack",
+      logo: { alt: "Open Health Stack", src: "assets/favicon.svg", href: "https://ohs.foundation" },
       items: [
-        { to: "/", label: "Overview", position: "left" },
+        { to: "/", label: "Home", position: "left" },
+        { to: "/why-ohs/", label: "About", position: "left" },
+        { to: "/learn/", label: "Learn", position: "left" },
+        { to: "/get-started/", label: "Build", position: "left" },
         {
-          to: "/concepts/what-ohs-player-is/",
-          label: "Understand",
+          to: "/overview/solutions-and-pathways/",
+          label: "Pathways",
           position: "left",
         },
         {
-          to: "/get-started/",
-          label: "Run it",
+          to: "/resources/",
+          label: "Community",
           position: "left",
         },
         {
-          to: "/configure/screen-from-fhir-data/",
-          label: "Configure",
-          position: "left",
-        },
-        {
-          to: "/extend/decide/",
-          label: "Extend",
-          position: "left",
-        },
-        {
-          to: "/fhir-foundations/",
-          label: "FHIR Foundations",
-          position: "left",
-        },
-        {
-          href: "https://github.com/ohs-foundation/ohs-player",
+          href: "https://github.com/ohs-foundation",
           label: "GitHub",
           position: "right",
         },
@@ -103,9 +92,14 @@ const config = {
     },
     footer: {
       style: "dark",
-      copyright: "OHS Player documentation.",
+      copyright: "Open Health Stack documentation.",
     },
-    docs: { sidebar: { hideable: false } },
+    docs: {
+      sidebar: {
+        hideable: false,
+        autoCollapseCategories: true,
+      },
+    },
   },
 };
 

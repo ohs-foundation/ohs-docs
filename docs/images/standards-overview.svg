@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 600" width="1400" height="600" role="img" aria-labelledby="stTitle stDesc">
+  <title id="stTitle">Standards alignment</title>
+  <desc id="stDesc">Four standards alignments. WHO SMART Guidelines, native support for Level 2, Level 3, and Level 4 clinical adaptation kits. Digital Public Goods, open source and privacy-preserving with transparent governance. HL7 FHIR Foundation, un-forked R4, R4B, R5, and R6 ready with standard data exchange schemas. Open Licensing, Apache 2.0 open source licenses with zero recurring licensing fees.</desc>
+
+  <style>
+    :root, svg {
+      --found:      #2D86C4;
+      --found-fill: #E3F1FA;
+      --ink:        #1A1A2E;
+      --muted:      #6B7280;
+      --bg:         #FFFFFF;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root, svg {
+        --found:      #6FB6E8;
+        --found-fill: #16293A;
+        --ink:        #E8EAED;
+        --muted:      #9AA0A6;
+        --bg:         #131417;
+      }
+    }
+    .bg     { fill: var(--bg); }
+    .card   { fill: var(--found-fill); stroke: var(--found); stroke-width: 2.4; }
+    .badge  { fill: var(--found); }
+    .title  { font: 700 34px "Hanken Grotesk", "Google Sans", Inter, system-ui, sans-serif; fill: var(--ink); }
+    .desc   { font: 400 23px "Hanken Grotesk", "Google Sans", Inter, system-ui, sans-serif; fill: var(--muted); }
+    .glyph  { fill: none; stroke: #FFFFFF; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+  </style>
+
+  <rect class="bg" x="0" y="0" width="1400" height="600"/>
+
+  <!-- WHO SMART Guidelines -->
+  <g transform="translate(40,24)">
+    <rect class="card" width="640" height="256" rx="18"/>
+    <circle class="badge" cx="60" cy="60" r="28"/>
+    <g transform="translate(60,60)">
+      <rect x="-13" y="-13" width="26" height="6" rx="3" fill="#FFFFFF" opacity=".45"/>
+      <rect x="-13" y="-3" width="26" height="6" rx="3" fill="#FFFFFF" opacity=".7"/>
+      <rect x="-13" y="7" width="26" height="6" rx="3" fill="#FFFFFF"/>
+    </g>
+    <text class="title" x="108" y="76">WHO SMART Guidelines</text>
+    <text class="desc" x="32" y="140">Native support for L2, L3, and L4</text>
+    <text class="desc" x="32" y="168">clinical adaptation kits</text>
+  </g>
+
+  <!-- Digital Public Goods -->
+  <g transform="translate(720,24)">
+    <rect class="card" width="640" height="256" rx="18"/>
+    <circle class="badge" cx="60" cy="60" r="28"/>
+    <g transform="translate(60,60)" class="glyph">
+      <circle r="14"/>
+      <ellipse rx="6" ry="14"/>
+      <path d="M-14 0 H14"/>
+    </g>
+    <text class="title" x="108" y="76">Digital Public Goods</text>
+    <text class="desc" x="32" y="140">Open source, privacy-preserving</text>
+    <text class="desc" x="32" y="168">transparent governance</text>
+  </g>
+
+  <!-- HL7 FHIR Foundation -->
+  <g transform="translate(40,312)">
+    <rect class="card" width="640" height="256" rx="18"/>
+    <circle class="badge" cx="60" cy="60" r="28"/>
+    <path transform="translate(60,60)" d="M -10 8 c -8 -7 -5 -17 1 -22 c .4 3.2 2.4 4.4 4 5.2 c 1.6 -3.2 .8 -6.4 -.8 -8.8 c 5.6 2 9.6 8 8.8 13.6 c -.4 4 -3.6 6.8 -6.8 7.2 c -2.4 .4 -4.8 -.4 -6 -2 z"
+          fill="#FFFFFF"/>
+    <text class="title" x="108" y="76">HL7 FHIR Foundation</text>
+    <text class="desc" x="32" y="140">Un-forked R4, R4B, R5, R6 ready</text>
+    <text class="desc" x="32" y="168">standard data exchange schemas</text>
+  </g>
+
+  <!-- Open Licensing -->
+  <g transform="translate(720,312)">
+    <rect class="card" width="640" height="256" rx="18"/>
+    <circle class="badge" cx="60" cy="60" r="28"/>
+    <g transform="translate(60,60)" class="glyph">
+      <rect x="-10" y="-2" width="20" height="16" rx="3"/>
+      <path d="M-6 -2 v-6 a6 6 0 0 1 12 0"/>
+      <circle cx="0" cy="6" r="2" fill="#FFFFFF" stroke="none"/>
+    </g>
+    <text class="title" x="108" y="76">Open Licensing</text>
+    <text class="desc" x="32" y="140">Apache 2.0 open source licenses</text>
+    <text class="desc" x="32" y="168">zero recurring licensing fees</text>
+  </g>
+</svg>

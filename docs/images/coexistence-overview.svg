@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 440" width="1400" height="440" role="img" aria-labelledby="coTitle coDesc">
+  <title id="coTitle">Complementary integration patterns</title>
+  <desc id="coDesc">Four coexistence patterns. Standard FHIR APIs get direct interoperability out of the box. DHIS2 aggregate reporting is reached through FHIR Data Pipes with OpenFn workflows. OpenMRS and hospital EHRs are enabled through a FHIR Facade layer. National Master Patient Index integrates through gateway identity verification.</desc>
+
+  <style>
+    :root, svg {
+      --found:      #2D86C4;
+      --found-fill: #E3F1FA;
+      --ink:        #1A1A2E;
+      --muted:      #6B7280;
+      --bg:         #FFFFFF;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root, svg {
+        --found:      #6FB6E8;
+        --found-fill: #16293A;
+        --ink:        #E8EAED;
+        --muted:      #9AA0A6;
+        --bg:         #131417;
+      }
+    }
+    .bg     { fill: var(--bg); }
+    .card   { fill: var(--found-fill); stroke: var(--found); stroke-width: 2.4; }
+    .badge  { fill: var(--found); }
+    .title  { font: 700 28px "Hanken Grotesk", "Google Sans", Inter, system-ui, sans-serif; fill: var(--ink); }
+    .desc   { font: 400 20px "Hanken Grotesk", "Google Sans", Inter, system-ui, sans-serif; fill: var(--muted); }
+    .glyph  { fill: none; stroke: #FFFFFF; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+  </style>
+
+  <rect class="bg" x="0" y="0" width="1400" height="440"/>
+
+  <!-- Standard FHIR APIs -->
+  <g transform="translate(40,24)">
+    <rect class="card" width="640" height="180" rx="18"/>
+    <circle class="badge" cx="60" cy="60" r="28"/>
+    <g transform="translate(60,60)" class="glyph">
+      <circle r="14" fill="none"/>
+      <path d="M-6 0 l4 4 l8 -9"/>
+    </g>
+    <text class="title" x="108" y="70">Standard FHIR APIs</text>
+    <text class="desc" x="32" y="130">Direct interoperability out of the box</text>
+  </g>
+
+  <!-- DHIS2 Aggregate Reporting -->
+  <g transform="translate(720,24)">
+    <rect class="card" width="640" height="180" rx="18"/>
+    <circle class="badge" cx="60" cy="60" r="28"/>
+    <g transform="translate(60,60)">
+      <rect x="-14" y="0" width="6" height="14" fill="#FFFFFF" opacity=".9"/>
+      <rect x="-4" y="-8" width="6" height="22" fill="#FFFFFF" opacity=".9"/>
+      <rect x="6" y="-4" width="6" height="18" fill="#FFFFFF" opacity=".9"/>
+    </g>
+    <text class="title" x="108" y="70">DHIS2 Aggregate Reporting</text>
+    <text class="desc" x="32" y="130">FHIR Data Pipes with OpenFn workflows</text>
+  </g>
+
+  <!-- OpenMRS and Hospital EHRs -->
+  <g transform="translate(40,236)">
+    <rect class="card" width="640" height="180" rx="18"/>
+    <circle class="badge" cx="60" cy="60" r="28"/>
+    <g transform="translate(60,60)" class="glyph">
+      <rect x="-13" y="-11" width="26" height="22" rx="3"/>
+      <path d="M-8 -3 h16 M-8 4 h10"/>
+    </g>
+    <text class="title" x="108" y="70">OpenMRS and Hospital EHRs</text>
+    <text class="desc" x="32" y="130">Enabled through a FHIR Facade layer</text>
+  </g>
+
+  <!-- National Master Patient Index -->
+  <g transform="translate(720,236)">
+    <rect class="card" width="640" height="180" rx="18"/>
+    <circle class="badge" cx="60" cy="60" r="28"/>
+    <g transform="translate(60,60)" class="glyph">
+      <path d="M0 -15 L13 -8 V6 C13 13 7 18 0 21 C-7 18 -13 13 -13 6 V-8 Z"/>
+      <circle cx="0" cy="4" r="3.2" fill="#FFFFFF" stroke="none"/>
+      <path d="M0 7 v5" stroke-width="3"/>
+    </g>
+    <text class="title" x="108" y="70">National Master Patient Index</text>
+    <text class="desc" x="32" y="130">Gateway identity verification</text>
+  </g>
+</svg>

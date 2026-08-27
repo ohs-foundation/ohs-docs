@@ -13,7 +13,7 @@ repository: client-app
 
 The Client App is the Kotlin Multiplatform and Compose Multiplatform end-user reference application for Android, iOS, JVM desktop, JavaScript browser, and Wasm browser. It demonstrates how the reusable Player Client library renders healthcare UI from declarative FHIR configuration. FHIR search results become typed view state, then registered renderers display that state.
 
-This guide is step 3 of the [get started sequence](/get-started/) for a usable integrated workflow. First prepare the shared Player environment and use the [Web Portal](/components/web-portal/run/) to administer it, then evaluate the Client App in that prepared environment.
+This guide is step 4 of the [get started sequence](/get-started/) for a usable integrated workflow. First prepare the shared Player environment, load the backend extensions, and use the [Web Portal](/components/web-portal/run/) to administer it, then evaluate the Client App in that prepared environment.
 
 ## Before you begin
 
