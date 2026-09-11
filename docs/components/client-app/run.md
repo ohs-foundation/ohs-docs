@@ -39,17 +39,15 @@ Run the JVM desktop target for the first local Client App check.
 
 The desktop application opens and renders the reference healthcare screens from its configured FHIR view state. Continue with the remaining targets when the desktop run meets the needs of the implementation.
 
-## Connect to the shared Player environment
+## What the application does today
 
-The application signs in against the identity service in your environment and syncs FHIR data through the gateway, so it needs three things from the earlier stages.
+The reference application runs entirely on the device. It initialises its FHIR store with local storage, renders screens from the configuration bundled with it, and captures data through Structured Data Capture forms into that local store.
 
-- the **gateway base URL**, from [set up the environment](/components/reference-infrastructure/)
-- the **identity issuer** (the realm the environment publishes) and a client for the application
-- a **health worker account** created in [the Web Portal](/components/web-portal/run/), to sign in as
+It does not yet point at a FHIR server. There is no server configuration, no sign-in, and no synchronisation in the reference application, so what you capture stays on the device you captured it on.
 
-Point the application at those values and sign in. Data captured on the device is held locally and synced through the gateway to the FHIR server, which is what makes the round trip observable. Register a household on the app, then find the same resources through the Portal's FHIR browser.
+Synchronisation exists in the `kotlin-fhir-engine` library beneath it, and the application now integrates that engine. Wiring the application to an environment, with sign-in against identity and sync through the gateway, is the next step in the client workstream.
 
-The [player-reference repository](https://github.com/ohs-foundation/player-reference) states which setting carries each value for the target you are building.
+That means this guide stops at a running application rather than a connected one. [Set up the environment](/components/reference-infrastructure/) and [run the Web Portal](/components/web-portal/run/) give you the server side of the reference, and the two meet once the application carries its server configuration.
 
 ## Run another target
 
