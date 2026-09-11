@@ -76,7 +76,7 @@ Changing the Android scheme or host also means editing the matching intent filte
 
 The client must be **public with PKCE required**. There is deliberately no client secret, so do not add one.
 
-The reference environment's realm import does not yet include a client for this application, so create one in the Keycloak console with the redirects above before signing in.
+The reference environment registers a public client for this application with those redirects already set, so a local environment needs no Keycloak changes. Pointing the application at an identity server you run yourself means creating the equivalent client there.
 
 ### Sign in and sync
 
