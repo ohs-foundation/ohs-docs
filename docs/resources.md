@@ -3,7 +3,7 @@ title: Resources and contributing
 description: Source repositories, community discussions, and contribution guidelines across the Open Health Stack ecosystem.
 slug: /resources/
 sidebar_position: 10
-guide_type: Reference
+guide_type: Technical reference
 guide_status: ready
 guide_focus: Source repositories, community channels, and contribution guidelines
 repository: ohs-player

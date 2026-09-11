@@ -20,3 +20,7 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# Python bytecode from the tools scripts
+__pycache__/
+*.pyc

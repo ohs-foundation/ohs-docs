@@ -5,7 +5,7 @@ description: Understand the three pillars of Open Health Stack including FHIR Fo
 slug: /learn/
 sidebar_label: Learn Overview
 sidebar_position: 1
-guide_type: hub
+guide_type: Hub
 guide_status: ready
 ---
 

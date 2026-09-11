@@ -47,6 +47,17 @@ const config = {
           { from: "/docs/fhir-data-pipes", to: "/" },
           { from: "/docs/fhir-gateway", to: "/" },
           { from: "/docs/kotlin-fhir", to: "/" },
+
+          // The Player concept pages moved under /ohs-player/ when the site was
+          // reorganised around the Foundation's pillars. These paths were
+          // published, so they keep resolving.
+          { from: "/concepts/what-ohs-player-is", to: "/ohs-player/" },
+          { from: "/concepts/architecture", to: "/ohs-player/architecture/" },
+          { from: "/concepts/configuration-ig", to: "/ohs-player/configuration-ig/" },
+          { from: "/concepts/configuration-model", to: "/ohs-player/configuration-model/" },
+          { from: "/concepts/what-you-can-do-today", to: "/ohs-player/what-you-can-do-today/" },
+          // Merged into the architecture page rather than moved.
+          { from: "/concepts/how-player-uses-ohs-components", to: "/ohs-player/architecture/" },
         ],
       },
     ],

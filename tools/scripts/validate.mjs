@@ -35,6 +35,15 @@ const bannedInBody = [
 ];
 const allowedStatus = new Set(['ready', 'partial', 'pending']);
 
+// guide_type is rendered as the eyebrow above the page title, so an ad-hoc
+// value is visible to readers. Keep the vocabulary closed; extend this list
+// deliberately when a genuinely new kind of page appears.
+const allowedType = new Set([
+  'Get started', 'Hub', 'Concept', 'Pillar overview', 'Component overview',
+  'Setup guide', 'Usage guide', 'Configuration guide', 'Extension guide',
+  'Tutorial', 'Codelab', 'Technical reference',
+]);
+
 // A shell comment inside a fenced block looks exactly like a heading, and an
 // example of image syntax looks exactly like an image. Strip code first.
 function withoutCode(markdown) {
@@ -57,6 +66,8 @@ for (const file of files) {
   }
   const status = frontmatter.match(/^guide_status:\s*(\S+)/m)?.[1];
   if (status && !allowedStatus.has(status)) throw new Error(`${name} uses guide_status "${status}"; expected ready, partial, or pending.`);
+  const type = frontmatter.match(/^guide_type:\s*(.+)$/m)?.[1]?.trim();
+  if (type && !allowedType.has(type)) throw new Error(`${name} uses guide_type "${type}", which is not in the allowed set. Use an existing value or add the new one to validate.mjs and AUTHORING.md.`);
   const lowerBody = body.toLowerCase();
   for (const phrase of bannedInBody) {
     if (lowerBody.includes(phrase)) throw new Error(`${name} tells readers that documentation is outstanding ("${phrase}"). Describe what the component is for and link to its source instead.`);

@@ -5,7 +5,7 @@ description: Adoption models and integration patterns for health ministries, dig
 slug: /overview/solutions-and-pathways/
 sidebar_label: Adoption pathways
 sidebar_position: 10
-guide_type: conceptual
+guide_type: Concept
 guide_status: ready
 ---
 

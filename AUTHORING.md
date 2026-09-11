@@ -61,9 +61,13 @@ The shared shell renders the title, description, source link, focus, sidebar, an
 
 ### `guide_type`
 
-The page's purpose, shown as the eyebrow above the title. Use one of `Get started`, `Pillar overview`, `Component overview`, `Setup guide`, `Usage guide`, `Configuration guide`, `Extension guide`, `Concept`, `Technical reference`.
+The page's purpose, shown as the eyebrow above the title. Use one of `Get started`, `Hub`, `Concept`, `Pillar overview`, `Component overview`, `Setup guide`, `Usage guide`, `Configuration guide`, `Extension guide`, `Tutorial`, `Codelab`, `Technical reference`. `npm run validate` rejects anything else, because the value is rendered and an ad-hoc one is visible to readers.
 
 `Pillar overview` introduces an Open Health Stack pillar as a whole (the term comes from the Foundation's projects page). `Usage guide` is for library documentation: using a published API in the reader's own code, as opposed to a `Setup guide`'s run-and-operate procedure.
+
+`Hub` is a section index that routes onward rather than teaching. `Tutorial` walks through one task end to end, and `Codelab` is a longer guided build with checkpoints.
+
+To add a value, change the allowed set in `tools/scripts/validate.mjs` and this list in the same change.
 
 It names a kind of page, never a state. `Setup pending` is not a page type.
 
