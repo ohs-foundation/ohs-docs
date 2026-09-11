@@ -21,7 +21,7 @@ OHS Player is an open source reference toolkit under active development. This pa
 | Reference Backend | Custom gateway endpoints for users, groups, roles, location hierarchies, practitioner details, and bulk CSV ingestion |
 | Web Admin Portal | OpenID Connect sign-in, user and role management, facility hierarchy configuration, and FHIR resource browsing |
 | Client Application | Cross-platform builds on Android, iOS, desktop, and web rendering screens dynamically from FHIR configurations |
-| Offline Persistence | On-device SQLite storage through the multiplatform FHIR engine, with the reference application holding captured data locally |
+| Sync and Offline Persistence | On-device SQLite storage through the multiplatform FHIR engine, with sign-in over OAuth 2.0 with PKCE and FHIR sync through the Info Gateway |
 | Form Data Capture | Rendering Structured Data Capture (SDC) questionnaires with real-time FHIRPath evaluation and template-based extraction |
 | Streaming Analytics | Continuous extraction of transactional FHIR records into PostgreSQL via SQL-on-FHIR pipelines with Superset dashboards |
 
@@ -29,7 +29,7 @@ OHS Player is an open source reference toolkit under active development. This pa
 
 - **Complex clinical workflow** including automated `$apply` operations for PlanDefinitions and CarePlan generation is transitioning from the original Android FHIR SDK into the multiplatform libraries.
 - **StructureMap extraction** for advanced FHIR mapping alongside existing template-based extraction.
-- **Client synchronisation** connecting the reference application to an environment, covering sign-in against identity and sync through the gateway with location and care team scoping. Synchronisation exists in the multiplatform engine library and is being wired into the application.
+- **Scoped synchronisation** filtering what a device receives by location, care team, and organisation, enforced by the gateway access checkers, alongside benchmarking and performance work on sync itself.
 - **Enhanced portal management** for visual questionnaire validation and direct audit event inspection.
 
 ## Evaluation criteria

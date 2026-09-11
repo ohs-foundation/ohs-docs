@@ -22,7 +22,7 @@ By completing this quickstart, you will have a running local healthcare system w
 
 - **A live backend infrastructure** with PostgreSQL, Keycloak identity, an un-forked HAPI FHIR server, and Info Gateway.
 - **An administrative organisation structure** with health facilities, practitioner roles, and care teams managed through the Web Admin Portal.
-- **A multiplatform frontline client** capturing clinical encounters offline on mobile or desktop, storing them on the device.
+- **A multiplatform frontline client** capturing clinical encounters offline on mobile or desktop and syncing them through the gateway.
 - **A streaming analytical pipeline** transforming FHIR resources into relational schemas powering live Apache Superset dashboards.
 
 [Watch the 5-minute video demonstration ↗](https://ohs.foundation)
@@ -77,7 +77,7 @@ cd player-reference
 ./gradlew :ohs-player-reference-app:run
 ```
 
-Follow [run the Client App](/components/client-app/run/) to build it for your target and capture an encounter through a Structured Data Capture form. The reference application stores what you capture locally rather than sending it to the environment.
+Follow [run the Client App](/components/client-app/run/) to point it at the environment, sign in as the health worker you created, capture an encounter through a Structured Data Capture form, and sync it back.
 
 ### Step 4 · Add analytics
 

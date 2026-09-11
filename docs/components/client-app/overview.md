@@ -17,7 +17,7 @@ It is the component most of the Open Health Stack converges on, and the one an i
 
 ## What it offers
 
-**Offline-first data capture.** The app holds FHIR resources in an on-device database and works without connectivity, because community health work happens where connectivity does not reach. Captured data stays on the device today, because the reference application does not yet carry server configuration.
+**Offline-first data capture.** The app holds FHIR resources in an on-device database and works without connectivity, because community health work happens where connectivity does not reach. It signs in over OAuth 2.0 with PKCE and syncs through the gateway when a connection is available.
 
 **Forms driven by FHIR.** Data capture is FHIR Structured Data Capture. A `Questionnaire` describes the form, its validation, and its expressions, and the answers are extracted back into FHIR resources.
 

@@ -39,15 +39,50 @@ Run the JVM desktop target for the first local Client App check.
 
 The desktop application opens and renders the reference healthcare screens from its configured FHIR view state. Continue with the remaining targets when the desktop run meets the needs of the implementation.
 
-## What the application does today
+## Connect to the environment
 
-The reference application runs entirely on the device. It initialises its FHIR store with local storage, renders screens from the configuration bundled with it, and captures data through Structured Data Capture forms into that local store.
+The application signs in over OAuth 2.0 Authorization Code with PKCE against a public client, then syncs FHIR through the gateway carrying the session's bearer token.
 
-It does not yet point at a FHIR server. There is no server configuration, no sign-in, and no synchronisation in the reference application, so what you capture stays on the device you captured it on.
+Server and identity settings come from a `local.properties` file, which is git-ignored so each developer points at their own environment.
 
-Synchronisation exists in the `kotlin-fhir-engine` library beneath it, and the application now integrates that engine. Wiring the application to an environment, with sign-in against identity and sync through the gateway, is the next step in the client workstream.
+```sh
+cp local.properties.sample local.properties
+```
 
-That means this guide stops at a running application rather than a connected one. [Set up the environment](/components/reference-infrastructure/) and [run the Web Portal](/components/web-portal/run/) give you the server side of the reference, and the two meet once the application carries its server configuration.
+Set the four values that matter for a local environment.
+
+| Key | Value for the reference environment |
+| --- | --- |
+| `OAUTH_ISSUER` | The identity realm, which for the reference environment is `ohs-player` |
+| `OAUTH_CLIENT_ID` | The public client registered for this application |
+| `OAUTH_SCOPES` | Leave the default, which includes `offline_access` for a refresh token |
+| `FHIR_BASE_URL` | The gateway's FHIR base URL, so requests pass the access checks |
+
+Point `FHIR_BASE_URL` at the gateway rather than the FHIR server directly. Sync carries the signed-in session's token, and the gateway is what validates it.
+
+A Gradle task bakes these into generated configuration before Kotlin compilation, so **a change here needs a rebuild rather than a restart**. Every key has a working default, which means an absent file still builds and simply points the application at a provider that does not exist.
+
+### Register the redirect URIs
+
+Each platform uses its own redirect, and all of them must be registered on the client in the identity provider.
+
+| Target | Redirect |
+| --- | --- |
+| Android and iOS | A custom-scheme deep link, built from `OAUTH_REDIRECT_SCHEME` and `OAUTH_REDIRECT_HOST` |
+| Desktop | A loopback address on `OAUTH_DESKTOP_REDIRECT_PORT`, served for the duration of the flow |
+| Web | The full page URL in `OAUTH_WEB_REDIRECT_URL`, which must be a path the server actually serves |
+
+Changing the Android scheme or host also means editing the matching intent filter in `AndroidManifest.xml`, which hardcodes the pair.
+
+The client must be **public with PKCE required**. There is deliberately no client secret, so do not add one.
+
+The reference environment's realm import does not yet include a client for this application, so create one in the Keycloak console with the redirects above before signing in.
+
+### Sign in and sync
+
+Sign in as a health worker created in [the Web Portal](/components/web-portal/run/). Capture data, then find the same resources through the Portal's FHIR browser to confirm the round trip.
+
+Filtering what a device receives by location, care team, and organisation is enforced by the gateway access checkers and is still in progress, so a signed-in user currently syncs the data the access rules allow rather than a scoped subset.
 
 ## Run another target
 
