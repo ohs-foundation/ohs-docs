@@ -27,21 +27,17 @@ PIPELINE_JAVA_OPTS=-Xms512m -Xmx4g
 
 ## Choose what the pipeline reads
 
-The profile brings up a second, isolated FHIR server holding synthetic data, and the pipeline reads from that by default.
-
-```sh
-PIPELINE_FHIR_SOURCE=http://hapi-synth:8080/fhir
-```
-
-That default is deliberate. It gives you populated dashboards immediately, without waiting for enough real activity to make a chart meaningful.
-
-To report on the data you captured through the Web Portal and the Client App instead, point the pipeline at the transactional FHIR server and restart it.
+The pipeline reads from the transactional FHIR server the environment already runs, so it reports on the same records the Web Portal and the Client App write.
 
 ```sh
 PIPELINE_FHIR_SOURCE=http://hapi-fhir:8080/fhir
 ```
 
-Services address each other by service name on the container network, which is why these are not `localhost` URLs.
+Services address each other by service name on the container network, which is why this is not a `localhost` URL.
+
+What the dashboards show therefore depends on what the environment holds. A stack set up from scratch has the sample organisation, location hierarchy and practitioners loaded by the first run, so the charts are not empty, but they only become interesting once you have captured data through the Portal and the Client App.
+
+The pipeline reads anonymously and goes straight to the FHIR server rather than through the gateway. `HAPI_CONFIG=application-auth.yaml` rejects untokened requests, so the pipeline needs the open configuration.
 
 ## Start the analytics services
 

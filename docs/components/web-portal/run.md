@@ -1,6 +1,6 @@
 ---
 title: Run the Web Portal
-description: Start the OHS Player web reference portal with its local development services.
+description: Sign in to the administration portal and prepare the environment for the Client App.
 slug: /components/web-portal/run/
 sidebar_position: 20
 guide_type: Setup guide
@@ -11,81 +11,100 @@ repository: web-portal
 
 ## About the Web Portal
 
-The Web Portal is a configurable, extensible web application for healthcare organizations to manage workforce hierarchies, user accounts, access controls, and configuration. It is step 3 of the [get started sequence](/get-started/). Use it after the shared Player environment and backend extensions are available and before running the Client App, so the environment has the users and administration data it needs.
+The Web Portal is the administration interface for the reference environment. It manages workforce hierarchies, user accounts, access control, organisations, locations, and care teams.
+
+It is not a separate stack. [Setting up the environment](/components/reference-infrastructure/) builds the Portal from source and runs it alongside the other services, so by the time you reach this guide it is already available.
 
 ## Before you begin
 
-You need Node 20 or later, pnpm 9 or later, and Docker.
+A running environment from [set up the environment](/components/reference-infrastructure/), with the Portal answering on its port. Nothing else needs installing.
 
-## Install the portal
+## Open the Portal and sign in
+
+The Portal is served at `http://localhost:8084`.
+
+Sign in with one of the sample accounts the environment creates.
+
+| User | Password | Reaches |
+| --- | --- | --- |
+| `admin-user` | `Admin@123` | Every screen |
+| `practitioner-user` | `Practitioner@123` | The practitioner view |
+
+`./dev.sh up` prints these at the end of every run, along with the Keycloak console credentials, which are generated for each install. They are sample credentials, so change them for anything beyond local development.
+
+The Keycloak administrator account is for the Keycloak console itself. It is not a Portal account and cannot sign in to the realm.
+
+## Why the Portal can administer anything at all
+
+The Portal has no backend of its own. Everything it does is a call to the gateway, and the gateway carries the Reference Backend extensions.
+
+Requests to `/fhir` reach the FHIR server through the gateway, so ordinary FHIR resources are read and written under the gateway's access rules. Requests to `/api` reach the Reference Backend endpoints, which is what makes user management possible, because creating a user has to create a Keycloak account and a FHIR Practitioner together.
+
+Both paths are same-origin, proxied by the Portal's own web server to the gateway. That is why the Portal works without any cross-origin configuration.
+
+## What the environment already contains
+
+The first run loads sample data, so the Portal is not empty when you open it. You get one organisation, a facility, a location chain, a care team, and a set of practitioners including the two accounts above.
+
+Reload it at any time with `./dev.sh seed`, or start clean with `./dev.sh reset`.
+
+## Prepare the environment for the Client App
+
+Sign in as `admin-user`, then set up the structure a health worker needs.
+
+1. **Review or create the organisation** the workforce belongs to.
+2. **Build the location hierarchy** the programme is arranged around. The Client App scopes a health worker's data by their assigned location.
+3. **Create care teams** and assign practitioners to them.
+4. **Create the health worker account** the Client App signs in as, and give it the roles it needs.
+
+Each of these is a FHIR resource written through the gateway, so what you create here is what the Client App reads.
+
+Continue to the Client App once an administrator can sign in and the workforce structure exists.
+
+## Working on the Portal itself
+
+To change Portal source rather than use it, run the development server against the same environment.
 
 ```sh
 git clone https://github.com/ohs-foundation/ohs-player-reference-web-portal.git
 cd ohs-player-reference-web-portal
 pnpm install
-```
-
-## Start the local services
-
-```sh
-docker compose up -d
-```
-
-Docker Compose starts these services and a containerised Portal preview.
-
-- **HAPI FHIR** stores the FHIR resources used by the Portal at `http://localhost:8080/fhir`. The local Portal defaults to this service.
-- **Keycloak** provides the `ohs` realm and OpenID Connect sign-in for Portal users at `http://localhost:8090`.
-- **OHS Info Gateway** proxies FHIR requests at `http://localhost:8180/fhir`. The default image is an nginx development proxy. Set `OHS_GATEWAY_IMAGE` to use a published gateway image.
-- **OHS Player Web** builds and serves the containerised Portal using the configured FHIR and OIDC URLs at `http://localhost:3000`.
-
-Wait for HAPI FHIR at `http://localhost:8080/fhir/metadata` and Keycloak at `http://localhost:8090`. Keycloak imports the `ohs` realm from `infra/keycloak/ohs-realm.json`.
-
-## Choose how to run the Portal
-
-Use the containerised preview at `http://localhost:3000` when you only need the Portal supplied by Docker Compose.
-
-Use the local development server when you are working on Portal source code.
-
-```sh
 cp .env.example .env
 pnpm dev
 ```
 
-The development Portal is available at `http://localhost:5173`. Its default configuration sends FHIR requests through its Vite development proxy to HAPI FHIR and sends custom API requests to the gateway. Example realm users are defined in `infra/keycloak/ohs-realm.json`.
+The repository pins its package manager through the `packageManager` field in `package.json`, so install that version rather than a newer one.
 
-## Add optional demo data
+Point the copied `.env` at the running environment. The development server needs the FHIR base URL, the gateway for `/api`, the identity issuer, and the client id, which are the same four values every component in the environment uses.
 
-Load the repository's demonstration FHIR data when you need records to explore in the Portal.
+Two constraints are worth knowing before you start.
 
-```sh
-FHIR_BASE_URL=http://localhost:8080/fhir pnpm seed
-```
+The development server uses a fixed port rather than incrementing, because the identity client accepts redirects only from that address. If the port is busy the server stops instead of moving to the next one.
 
-## Prepare the environment for the Client App
-
-Sign in as an administrator, then complete the preparation needed for the reference workflow.
-
-- Confirm that the intended realm users can sign in and have the required roles.
-- Create or review the organization and location hierarchy used by the workforce.
-- Create or review care-team and user assignments where the workflow needs them.
-- Load the demonstration FHIR data when the reference workflow needs records to display.
-
-Continue to the Client App after an administrator can sign in and the users, workforce structure, and FHIR data needed for the evaluation are in place.
+The identity client in the environment allows redirects to the Portal's own address only. Running the development server on a different port means adding its address to the client's redirect URIs and web origins in the Keycloak console, or pointing `OHS_PLAYER_APP_HOST` at it and re-rendering.
 
 ## Expected result
 
-Confirm HAPI FHIR at `http://localhost:8080/fhir/metadata`, Keycloak at `http://localhost:8090`, and the selected Portal mode at `http://localhost:3000` or `http://localhost:5173`. Sign in with a realm user from `infra/keycloak/ohs-realm.json`.
+The Portal loads at `http://localhost:8084`, signing in as `admin-user` lands on the dashboard with the full navigation, and the organisation and locations from the sample data are visible.
 
 ## Troubleshooting
 
-### Keycloak rejects a portal user
+### Keycloak rejects the sign-in
 
-Use a user from the imported `ohs` realm, such as `admin-user` / `admin` or `manager-user` / `manager`. The Keycloak bootstrap administrator is for the administration console, not Portal sign-in.
+Use a realm account such as `admin-user` or `practitioner-user`. The Keycloak administrator from the environment file is for the administration console, not for the Portal.
 
-### Realm users are missing
+### A screen is missing from the navigation
 
-Follow the [repository quickstart recovery procedure](https://github.com/ohs-foundation/ohs-player-reference-web-portal/blob/main/docs/QUICKSTART.md#troubleshooting) for the persisted Keycloak data, then run `docker compose up -d` so Keycloak can import `infra/keycloak/ohs-realm.json` into a fresh store.
+Either its feature flag is off or the account lacks the role for it. Unauthorised navigation is hidden rather than disabled, so both look the same. [Who can reach what](/configure/web-portal-access/) lists the roles and [configure the Web Portal](/configure/web-portal-configuration/) lists the flags.
+
+### The Locations screen shows a no-access panel
+
+That screen calls the gateway's location hierarchy endpoint, which is gated by the `location-hierarchy.view` role rather than by a general locations permission. The sample administrator holds it. An account created outside the realm import usually does not, and the panel appears even though the navigation link is visible.
+
+### Creating a user fails
+
+Creating a user posts to `/api/users`, which the Reference Backend serves from inside the gateway. Check that the gateway is running and that the account holds `users.edit` or `users.manage`.
 
 ## Next step
 
-[Run the Client App](/components/client-app/run/) after the shared Player environment and Portal administration are ready.
+[Run the Client App](/components/client-app/run/) against the environment you just prepared.

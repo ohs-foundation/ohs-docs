@@ -5,7 +5,7 @@ description: Open Health Stack alignment with WHO SMART Guidelines, Digital Publ
 slug: /overview/governance-and-standards/
 sidebar_label: Governance and standards
 sidebar_position: 15
-guide_type: conceptual
+guide_type: Concept
 guide_status: ready
 ---
 

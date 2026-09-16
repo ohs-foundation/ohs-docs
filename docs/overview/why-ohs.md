@@ -5,7 +5,7 @@ description: Open-source tools, shared Kotlin libraries, and standards-native bu
 slug: /why-ohs/
 sidebar_label: Why Open Health Stack
 sidebar_position: 5
-guide_type: conceptual
+guide_type: Concept
 guide_status: ready
 ---
 

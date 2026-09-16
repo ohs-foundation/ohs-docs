@@ -39,17 +39,50 @@ Run the JVM desktop target for the first local Client App check.
 
 The desktop application opens and renders the reference healthcare screens from its configured FHIR view state. Continue with the remaining targets when the desktop run meets the needs of the implementation.
 
-## Connect to the shared Player environment
+## Connect to the environment
 
-The application signs in against the identity service in your environment and syncs FHIR data through the gateway, so it needs three things from the earlier stages.
+The application signs in over OAuth 2.0 Authorization Code with PKCE against a public client, then syncs FHIR through the gateway carrying the session's bearer token.
 
-- the **gateway base URL**, from [set up the environment](/components/reference-infrastructure/)
-- the **identity issuer** (the realm the environment publishes) and a client for the application
-- a **health worker account** created in [the Web Portal](/components/web-portal/run/), to sign in as
+Server and identity settings come from a `local.properties` file, which is git-ignored so each developer points at their own environment.
 
-Point the application at those values and sign in. Data captured on the device is held locally and synced through the gateway to the FHIR server, which is what makes the round trip observable. Register a household on the app, then find the same resources through the Portal's FHIR browser.
+```sh
+cp local.properties.sample local.properties
+```
 
-The [player-reference repository](https://github.com/ohs-foundation/player-reference) states which setting carries each value for the target you are building.
+Set the four values that matter for a local environment.
+
+| Key | Value for the reference environment |
+| --- | --- |
+| `OAUTH_ISSUER` | The identity realm, which for the reference environment is `ohs-player` |
+| `OAUTH_CLIENT_ID` | The public client registered for this application |
+| `OAUTH_SCOPES` | Leave the default, which includes `offline_access` for a refresh token |
+| `FHIR_BASE_URL` | The gateway's FHIR base URL, so requests pass the access checks |
+
+Point `FHIR_BASE_URL` at the gateway rather than the FHIR server directly. Sync carries the signed-in session's token, and the gateway is what validates it.
+
+A Gradle task bakes these into generated configuration before Kotlin compilation, so **a change here needs a rebuild rather than a restart**. Every key has a working default, which means an absent file still builds and simply points the application at a provider that does not exist.
+
+### Register the redirect URIs
+
+Each platform uses its own redirect, and all of them must be registered on the client in the identity provider.
+
+| Target | Redirect |
+| --- | --- |
+| Android and iOS | A custom-scheme deep link, built from `OAUTH_REDIRECT_SCHEME` and `OAUTH_REDIRECT_HOST` |
+| Desktop | A loopback address on `OAUTH_DESKTOP_REDIRECT_PORT`, served for the duration of the flow |
+| Web | The full page URL in `OAUTH_WEB_REDIRECT_URL`, which must be a path the server actually serves |
+
+Changing the Android scheme or host also means editing the matching intent filter in `AndroidManifest.xml`, which hardcodes the pair.
+
+The client must be **public with PKCE required**. There is deliberately no client secret, so do not add one.
+
+The reference environment registers a public client for this application with those redirects already set, so a local environment needs no Keycloak changes. Pointing the application at an identity server you run yourself means creating the equivalent client there.
+
+### Sign in and sync
+
+Sign in as a health worker created in [the Web Portal](/components/web-portal/run/). Capture data, then find the same resources through the Portal's FHIR browser to confirm the round trip.
+
+Filtering what a device receives by location, care team, and organisation is enforced by the gateway access checkers and is still in progress, so a signed-in user currently syncs the data the access rules allow rather than a scoped subset.
 
 ## Run another target
 
