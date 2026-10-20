@@ -49,13 +49,20 @@ This tracker catalogues outstanding documentation tasks, content enhancements, v
   - Provide inline runnable Java/Kotlin template implementations of `AccessCheckerFactory` and custom Spring Boot gateway controllers.
 - [ ] **SDC Form Customization (`docs/fhir-foundations/kotlin-fhir-data-capture/customize-and-extend.md`)**
   - Track upstream completion of `choiceColumn` rendering and cross-platform date/time formatting.
-- [ ] **AI Commons Dedicated Hub**
-  - Expand Pillar 03 documentation with concrete specifications on clinical prompt evaluations and benchmarking suites once incubation milestones advance.
+- [x] **AI Commons Transition from Incubating to Launching**
+  - Updated Pillar 03 status to "Launching" across `LandingPage.jsx`, `sidebars.js`, `docs/overview/why-ohs.md`, `docs/learn/overview.md`, `docs/overview/solutions-and-pathways.md`, and diagram assets.
+  - Documented the **AI Evals Lifecycle Working Group** (Phase 1 Model Selection, Phase 2 Staging, Phase 3 Monitoring/CQI) with call to action for the October 26 kick-off session.
+- [ ] **AI Commons Post-Kickoff Documentation Update (Scheduled for Week of October 27, 2026)**
+  - Tracked in GitHub Issue #26.
+  - Update guides with kick-off call outcomes, meeting recording, shared notes, and repository links.
+  - Document bi-weekly collaborative schedule and Working Group Charter.
 
 ---
 
 ## 4. Open GitHub Issue Alignment
 
+- **Issue #26**: Update AI Commons documentation and working group resources following kick-off call. *(Scheduled post-kickoff)*
+- **Issue #25**: Add Video Walkthroughs section and link OHS Player Demo video. *(Completed locally)*
 - **Issue #16**: Fix Get help, AI Commons and video links, and contribution/licence statements. *(Partially addressed by link fixes and video additions)*
 - **Issue #13**: Fix the Run the Client App steps from first build to sign-in and sync. *(Module rename addressed)*
 - **Issue #23**: Fix configuration pages and Zero-Code tutorial to match `player-reference-ig`.

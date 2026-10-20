@@ -169,8 +169,8 @@ const sidebars = {
     },
     {
       type: "link",
-      label: "Pillar 03 · AI Commons (Incubating)",
-      href: "/why-ohs/#pillar-3-for-ai-commons-incubating",
+      label: "Pillar 03 · AI Commons (Launching)",
+      href: "/why-ohs/#pillar-3-for-ai-commons-launching",
     },
   ],
 

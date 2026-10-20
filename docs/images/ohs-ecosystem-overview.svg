@@ -123,13 +123,13 @@
   </g>
 
   <!-- ═══════════════════════════════════════════════════════════════ -->
-  <!-- PILLAR 03: AI COMMONS (Incubating) -->
+  <!-- PILLAR 03: AI COMMONS (Launching) -->
   <!-- ═══════════════════════════════════════════════════════════════ -->
   <g>
     <rect class="ai-box" x="950" y="40" width="390" height="470"/>
     <path d="M 950 56 A 16 16 0 0 1 966 40 L 1324 40 A 16 16 0 0 1 1340 56 L 1340 116 L 950 116 Z" class="ai-head"/>
-    <text class="pillar-tag ai-text" x="976" y="72">PILLAR 03 · INCUBATING</text>
-    <text class="pillar-t ai-text" x="976" y="102">AI Commons (Incubating)</text>
+    <text class="pillar-tag ai-text" x="976" y="72">PILLAR 03 · LAUNCHING</text>
+    <text class="pillar-t ai-text" x="976" y="102">AI Commons (Launching)</text>
 
     <!-- Bullet items -->
     <circle cx="978" cy="154" r="4" fill="var(--ai)"/>

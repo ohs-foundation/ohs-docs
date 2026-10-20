@@ -90,7 +90,7 @@
       <circle cx="-2" cy="6" r="1.6" fill="#FFFFFF" stroke="none"/>
       <circle cx="3" cy="10" r="1.4" fill="#FFFFFF" stroke="none"/>
     </g>
-    <text class="kicker-ai" x="108" y="52">PATHWAY D &#183; INCUBATING</text>
+    <text class="kicker-ai" x="108" y="52">PATHWAY D &#183; LAUNCHING</text>
     <text class="title" x="108" y="92">AI Development on FHIR</text>
     <text class="desc" x="32" y="158">Tooling for benchmarking and</text>
     <text class="desc" x="32" y="188">evals on FHIR-based models</text>
