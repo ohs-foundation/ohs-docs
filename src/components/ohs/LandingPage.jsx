@@ -108,8 +108,9 @@ function PillarsSection() {
           </div>
           <h3>AI Commons (Launching)</h3>
           <p>
-            AI Evals Lifecycle Working Group kicking off to build end-to-end evaluation
-            tooling, model selection baselines, and post-deployment monitoring for Global Health AI.
+            Advancing safe, effective AI for global health use cases through the
+            AI Evals Lifecycle Working Group, building evaluation tooling,
+            model selection baselines, and post-deployment monitoring.
           </p>
           <Link className="ohs-pillar-cta" to="/why-ohs/#pillar-3-for-ai-commons-launching">
             Get involved with AI Commons <span>→</span>

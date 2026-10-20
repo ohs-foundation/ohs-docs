@@ -51,7 +51,7 @@ This tracker catalogues outstanding documentation tasks, content enhancements, v
   - Track upstream completion of `choiceColumn` rendering and cross-platform date/time formatting.
 - [x] **AI Commons Transition from Incubating to Launching**
   - Updated Pillar 03 status to "Launching" across `LandingPage.jsx`, `sidebars.js`, `docs/overview/why-ohs.md`, `docs/learn/overview.md`, `docs/overview/solutions-and-pathways.md`, and diagram assets.
-  - Documented the **AI Evals Lifecycle Working Group** (Phase 1 Model Selection, Phase 2 Staging, Phase 3 Monitoring/CQI) with call to action for the October 26 kick-off session.
+  - Framed mission as advancing safe, effective AI for global health use cases. Documented the **AI Evals Lifecycle Working Group** (Phase 1 Model Selection, Phase 2 Staging, Phase 3 Monitoring/CQI) with call to action for the October 26 kick-off session.
 - [ ] **AI Commons Post-Kickoff Documentation Update (Scheduled for Week of October 27, 2026)**
   - Tracked in GitHub Issue #26.
   - Update guides with kick-off call outcomes, meeting recording, shared notes, and repository links.

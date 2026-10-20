@@ -42,7 +42,7 @@ An end-to-end reference toolkit showing how foundational building blocks assembl
 
 ### Pillar 3 for AI Commons (Launching)
 
-An active innovation track focused on artificial intelligence safety, evaluation infrastructure, and structured healthcare standards.
+Advancing safe, effective artificial intelligence for global health use cases.
 
 The **AI Evals Lifecycle Working Group** is kicking off under the Open Health Stack Software Foundation to stress test the evaluation lifecycle and help operationalize end-to-end evaluation infrastructure for Global Health AI. Standing on the shoulders of early pioneers in this space, the working group aims to understand challenges and opportunities, identify ecosystem gaps, and co-develop tooling that makes effective evaluations accessible for everyone.
 

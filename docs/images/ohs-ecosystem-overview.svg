@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 620" width="1400" height="620" role="img" aria-labelledby="ohsEcoTitle ohsEcoDesc">
   <title id="ohsEcoTitle">Open Health Stack Three Pillars</title>
-  <desc id="ohsEcoDesc">Open Health Stack organizes its capabilities across three pillars: FHIR Foundations providing core libraries and client SDKs, OHS Player providing a reference toolkit, and AI Commons for artificial intelligence evaluation and tooling in an incubating phase.</desc>
+  <desc id="ohsEcoDesc">Open Health Stack organizes its capabilities across three pillars: FHIR Foundations providing core libraries and client SDKs, OHS Player providing a reference toolkit, and AI Commons for advancing safe, effective artificial intelligence for global health use cases in a launching phase.</desc>
 
   <style>
     :root, svg {
@@ -133,23 +133,23 @@
 
     <!-- Bullet items -->
     <circle cx="978" cy="154" r="4" fill="var(--ai)"/>
-    <text class="item-t" x="994" y="159">FHIR Data Model AI Tooling</text>
-    <text class="item-d" x="994" y="179">Prompt engineering for clinical resources</text>
+    <text class="item-t" x="994" y="159">Model Selection &amp; Baselines</text>
+    <text class="item-d" x="994" y="179">Base clinical reasoning and safety benchmarks</text>
 
     <circle cx="978" cy="224" r="4" fill="var(--ai)"/>
-    <text class="item-t" x="994" y="229">Benchmarking &amp; Evals</text>
-    <text class="item-d" x="994" y="249">Clinical accuracy and protocol safety</text>
+    <text class="item-t" x="994" y="229">Application Staging</text>
+    <text class="item-d" x="994" y="249">Adapters, prompt harnesses, and schema mapping</text>
 
     <circle cx="978" cy="294" r="4" fill="var(--ai)"/>
-    <text class="item-t" x="994" y="299">Hallucination Detection</text>
-    <text class="item-d" x="994" y="319">Validation against reference health datasets</text>
+    <text class="item-t" x="994" y="299">Post-Deployment Monitoring</text>
+    <text class="item-d" x="994" y="319">Lightweight telemetry and continuous quality improvement</text>
 
     <circle cx="978" cy="364" r="4" fill="var(--ai)"/>
-    <text class="item-t" x="994" y="369">Privacy-Preserving Execution</text>
-    <text class="item-d" x="994" y="389">On-premise execution with zero PHI leaks</text>
+    <text class="item-t" x="994" y="369">Global Health Eval Playbooks</text>
+    <text class="item-d" x="994" y="389">Capacity-building and evaluation standards</text>
 
     <rect x="974" y="432" width="342" height="52" rx="8" fill="var(--ai-fill)"/>
-    <text class="badge-t ai-text" x="992" y="463">Status: In Active Incubation</text>
+    <text class="badge-t ai-text" x="992" y="463">Status: Launching Working Group</text>
   </g>
 
   <!-- ═══════════════════════════════════════════════════════════════ -->
