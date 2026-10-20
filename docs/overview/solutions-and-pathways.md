@@ -73,6 +73,6 @@ Open Health Stack is designed to be complementary to existing digital health inv
 | Add offline FHIR storage to an existing mobile app | Pathway A (Client SDKs) | [Kotlin FHIR Engine](/fhir-foundations/kotlin-fhir-engine/) |
 | Launch a complete community health solution | Pathway B (OHS Player) | [Get started with Player](/get-started/) |
 | Generate aggregate reports from FHIR databases | Pathway C (Analytics Hub) | [Reference Analytics](/components/reference-analytics/) |
-| Validate clinical artificial intelligence safety | Pathway D (AI Commons) | [AI Commons overview](/resources/) |
+| Validate clinical artificial intelligence safety | Pathway D (AI Commons) | [AI Commons briefing](/why-ohs/#pillar-3-for-ai-commons-incubating) |
 | Connect mobile workers to an existing national EHR | Pathway E (Coexistence) | [The architecture](/ohs-player/architecture/) |
 | Explore reference solution architectures | Solution Architecture Samples | [Architecture samples and use cases](/overview/architecture-samples/) |

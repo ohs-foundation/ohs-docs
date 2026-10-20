@@ -74,7 +74,7 @@ Build and launch the Kotlin Multiplatform application, then sign in as the healt
 ```sh
 git clone https://github.com/ohs-foundation/player-reference.git
 cd player-reference
-./gradlew :ohs-player-reference-app:run
+./gradlew :reference-app:run
 ```
 
 Follow [run the Client App](/components/client-app/run/) to point it at the environment, sign in as the health worker you created, capture an encounter through a Structured Data Capture form, and sync it back.
