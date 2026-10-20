@@ -49,6 +49,13 @@ Each module focuses on a concrete technical capability, complete with prerequisi
 | --- | --- | --- | --- |
 | Zero-Code Screen Configuration | Tutorial | Dynamic patient registers and profile screens configured in FHIR | [Start tutorial](/tutorials-and-codelabs/zero-code-screens/) |
 
+## Video walkthroughs
+
+| Video resource | Focus | Expected duration | Link |
+| --- | --- | --- | --- |
+| OHS Player V1.0.0 Alpha Demo | End-to-end frontline client, web admin portal, and analytics | 10 minutes | [Watch demonstration ↗](https://youtu.be/GMqFtlKE5kQ?si=z0I0JHLg6EyxIwst) |
+| How to Get Started with Open Health Stack | Introductory architectural walkthrough of foundational components | 8 minutes | [Watch on YouTube ↗](https://www.youtube.com/watch?v=aPRvy7-hlgU) |
+
 ## Suggested progression by role
 
 - **Mobile and frontend developers** can begin with the [Offline-First Multiplatform Client Codelab](/tutorials-and-codelabs/multiplatform-client/) and proceed to [Clinical Questionnaire Authoring](/tutorials-and-codelabs/sdc-questionnaires/).

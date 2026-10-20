@@ -25,7 +25,7 @@ By completing this quickstart, you will have a running local healthcare system w
 - **A multiplatform frontline client** capturing clinical encounters offline on mobile or desktop and syncing them through the gateway.
 - **A streaming analytical pipeline** transforming FHIR resources into relational schemas powering live Apache Superset dashboards.
 
-[Watch the 5-minute video demonstration ↗](https://ohs.foundation)
+[Watch the 10-minute video demonstration ↗](https://youtu.be/GMqFtlKE5kQ?si=z0I0JHLg6EyxIwst)
 
 ## System requirements
 
