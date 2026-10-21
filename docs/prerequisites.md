@@ -38,7 +38,7 @@ Centralized identity, role tokens, and single sign-on across mobile clients, web
 | --- | --- | --- |
 | Docker Engine & Compose | Docker 24+, Compose v2 | Running the reference infrastructure topology |
 | JDK | JDK 21+ | Building backend gateway extensions and Kotlin Multiplatform apps |
-| Node.js & pnpm | Node 18+, pnpm 8+ | Running and extending the Web Admin Portal |
+| Node.js & pnpm | As set in the [Portal quickstart](https://github.com/ohs-foundation/ohs-player-reference-web-portal/blob/main/docs/QUICKSTART.md) | Working on the Web Portal source |
 | Android Studio | Latest stable | Developing and debugging Android frontline client targets |
 | Xcode | Latest stable (macOS only) | Building and testing iOS frontline client targets |
 
