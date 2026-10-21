@@ -16,7 +16,7 @@ Data-driven healthcare relies on quickly generating trusted, actionable insights
 
 FHIR Data Pipes provides horizontally scalable ETL pipelines that transform hierarchical FHIR resources into tabular, queryable formats using the SQL-on-FHIR standard.
 
-![Architecture diagram of FHIR Data Pipes showing batch and streaming extraction from FHIR servers, Apache Beam pipeline transformations, Parquet storage, ViewDefinition processing, and SQL analytics engines.](../../images/diagram-analytics.svg)
+![Diagram of the FHIR analytics pipeline. FHIR Data Pipes uses SQL-on-FHIR ViewDefinitions to flatten transactional resources from a FHIR server into tables in an analytical warehouse. Apache Superset dashboards and SQL clients query the warehouse.](../../images/diagram-analytics.svg)
 
 ## Core capabilities
 
