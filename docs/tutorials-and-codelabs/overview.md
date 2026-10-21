@@ -36,7 +36,7 @@ Each module focuses on a concrete technical capability, complete with prerequisi
 
 | Learning module | Type | What you build | Link |
 | --- | --- | --- | --- |
-| Streaming Analytics with SQL-on-FHIR | Tutorial | Relational database views and Apache Superset dashboards | [Start tutorial](/tutorials-and-codelabs/sql-on-fhir-analytics/) |
+| Analytics with SQL-on-FHIR | Tutorial | Relational database views and Apache Superset dashboards | [Start tutorial](/tutorials-and-codelabs/sql-on-fhir-analytics/) |
 | Analytics Test Servers Setup | Tutorial | Local HAPI FHIR and OpenMRS test containers preloaded with synthetic data | [Start tutorial](/tutorials-and-codelabs/data-pipes-test-servers/) |
 | Single Machine Analytics Deployment | Tutorial | Pipeline controller, Apache Spark SQL, and PostgreSQL flattened views | [Start tutorial](/tutorials-and-codelabs/data-pipes-single-machine/) |
 | Pipelines Controller with HAPI FHIR | Tutorial | Spring Boot batch transformation management and Parquet file generation | [Start tutorial](/tutorials-and-codelabs/data-pipes-try-controller/) |
@@ -60,4 +60,4 @@ Each module focuses on a concrete technical capability, complete with prerequisi
 
 - **Mobile and frontend developers** can begin with the [Offline-First Multiplatform Client Codelab](/tutorials-and-codelabs/multiplatform-client/) and proceed to [Clinical Questionnaire Authoring](/tutorials-and-codelabs/sdc-questionnaires/).
 - **Backend and DevOps engineers** can explore [Info Gateway Getting Started](/tutorials-and-codelabs/info-gateway-getting-started/), [Run Info Gateway in Docker](/tutorials-and-codelabs/info-gateway-docker/), [Create an Access Checker Plugin](/tutorials-and-codelabs/info-gateway-access-checker/), or try the [Gateway Security Codelab](/tutorials-and-codelabs/gateway-access-rules/).
-- **Health informaticians and data analysts** can progress through [Streaming Analytics with SQL-on-FHIR](/tutorials-and-codelabs/sql-on-fhir-analytics/), [Analytics Test Servers Setup](/tutorials-and-codelabs/data-pipes-test-servers/), [Single Machine Analytics Deployment](/tutorials-and-codelabs/data-pipes-single-machine/), and [Parquet Visualization in Superset](/tutorials-and-codelabs/data-pipes-superset/).
+- **Health informaticians and data analysts** can progress through [Analytics with SQL-on-FHIR](/tutorials-and-codelabs/sql-on-fhir-analytics/), [Analytics Test Servers Setup](/tutorials-and-codelabs/data-pipes-test-servers/), [Single Machine Analytics Deployment](/tutorials-and-codelabs/data-pipes-single-machine/), and [Parquet Visualization in Superset](/tutorials-and-codelabs/data-pipes-superset/).

@@ -115,7 +115,7 @@
     <text class="item-d" x="549" y="319">Authentication and access rules</text>
 
     <circle cx="533" cy="364" r="4" fill="var(--player)"/>
-    <text class="item-t" x="549" y="369">Streaming Analytics &amp; Superset</text>
+    <text class="item-t" x="549" y="369">Reference Analytics &amp; Superset</text>
     <text class="item-d" x="549" y="389">SQL-on-FHIR indicator dashboards</text>
 
     <rect x="529" y="432" width="342" height="52" rx="8" fill="var(--player-fill)"/>

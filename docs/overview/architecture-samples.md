@@ -39,7 +39,7 @@ Deploying Info Gateway as a reverse proxy in front of health data endpoints prov
 
 Heavily nested JSON structures in FHIR resources can make direct analytical queries challenging. Deploying FHIR Data Pipes transforms hierarchical FHIR data into tabular SQL-on-FHIR structures.
 
-- **Batch and streaming extraction** pulling resources from transactional FHIR stores without impacting clinical operations
+- **Scheduled batch extraction** pulling resources from transactional FHIR stores without impacting clinical operations
 - **Relational transformations** converting nested resources into standardized SQL-on-FHIR tables in PostgreSQL, BigQuery, or ClickHouse
 - **Aggregate indicators and dashboards** powering epidemiological tracking, national reporting, and programme management in tools like Apache Superset
 
@@ -54,7 +54,7 @@ Combining all foundational components provides a complete foundation for health 
 - **Interoperable persistence** with standard FHIR servers preserving longitudinal patient records
 - **Automated analytics** via FHIR Data Pipes generating programme indicators and population health insights
 
-![Architecture diagram of an end-to-end digital health solution. Frontline mobile apps sync with Info Gateway, which mediates requests to the central FHIR Server. FHIR Data Pipes streams data from the FHIR Server into an analytical data warehouse powering indicator dashboards.](../images/diagram-endtoend.svg)
+![Architecture diagram of an end-to-end digital health solution. Frontline mobile apps sync with Info Gateway, which mediates requests to the central FHIR Server. FHIR Data Pipes extracts data from the FHIR Server on a schedule into an analytical data warehouse powering indicator dashboards.](../images/diagram-endtoend.svg)
 
 ## Sample 5 for hybrid architectures and non-FHIR coexistence
 

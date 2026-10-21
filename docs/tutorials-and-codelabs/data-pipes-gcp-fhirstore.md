@@ -91,4 +91,4 @@ Changes piped into this FHIR store will automatically synchronize to BigQuery an
 ## Where to go next
 
 - Learn how to run batch pipelines in [Try Pipelines Controller with HAPI FHIR](/tutorials-and-codelabs/data-pipes-try-controller/).
-- Explore SQL-on-FHIR schemas in [Streaming Analytics with SQL-on-FHIR](/tutorials-and-codelabs/sql-on-fhir-analytics/).
+- Explore SQL-on-FHIR schemas in [Analytics with SQL-on-FHIR](/tutorials-and-codelabs/sql-on-fhir-analytics/).
