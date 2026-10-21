@@ -200,7 +200,7 @@ function GuideSidebar({ open, onClose }) {
         <div className="ohs-sidebar-help">
           <strong>Need the source material?</strong>
           <p>Each guide links to its owning repository.</p>
-          <a href="https://ohs.foundation/community">
+          <a href="https://ohs.foundation/community#join">
             Get help ↗
           </a>
         </div>
