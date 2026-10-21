@@ -39,15 +39,19 @@ An end-to-end reference toolkit showing how foundational building blocks assembl
 
 [Explore complete OHS Player reference toolkit →](/ohs-player/)
 
-## Pillar 3 for AI Commons (Incubating)
+## Pillar 3 for AI Commons (Launching)
 
-An incubation track focused on artificial intelligence safety and structured healthcare standards. Its planned work covers three areas.
+Advancing safe, effective artificial intelligence for global health use cases.
 
-- **Evaluations and benchmarks** aim to provide open tools and shared datasets for measuring the safety, quality, and effectiveness of AI in health care.
-- **Health MCPs** aim to let AI systems work safely with standards-based health data through Model Context Protocol tools.
-- **Verifiable AI** is a partnership being formed with the WHO and ecosystem partners, to support the safe development and use of AI in health.
+The **AI Evals Lifecycle Working Group** is kicking off under the Open Health Stack Software Foundation to operationalize an end-to-end evaluation infrastructure for Global Health AI across three key phases.
 
-The Foundation's [projects page](https://ohs.foundation/projects) shows how far each area has progressed.
+- **Phase 1 (Pre-Development Model Selection)** establishes clinical reasoning and safety baselines to guide model selection.
+- **Phase 2 (Pre-Deployment Application Staging)** co-develops open adapters and staging harnesses to test prompts, retrieval pipelines, and FHIR schema mappings.
+- **Phase 3 (Post-Deployment Monitoring and CQI)** implements lightweight telemetry and continuous quality improvement, looping real-world field risks back into pre-deployment rubrics.
+
+Community working sessions and bi-weekly collaborative calls produce open evaluation tooling, an AI for Global Health Eval Playbook, and a shared evaluation synthesis white paper.
+
+To join the working group and attend the kick-off on Monday, October 26, 2026, [sign up for working group updates](https://ohs.foundation/get-involved) or review the [AI Commons briefing and working group schedule](/why-ohs/#pillar-3-for-ai-commons-launching).
 
 ## What Open Health Stack leaves to the broader ecosystem
 

@@ -40,15 +40,27 @@ An end-to-end reference toolkit showing how foundational building blocks assembl
 - **Reference Analytics** streams clinical data into relational databases via SQL-on-FHIR view definitions for live Apache Superset dashboards.
 - **Declarative Configuration IG** defines screens, forms, and indicator tables in standard FHIR resources so workflows update without recompiling apps.
 
-### Pillar 3 for AI Commons (Incubating)
+### Pillar 3 for AI Commons (Launching)
 
-An incubation track focused on artificial intelligence safety and structured healthcare standards. Its planned work covers three areas.
+Advancing safe, effective artificial intelligence for global health use cases.
 
-- **Evaluations and benchmarks** aim to provide open tools and shared datasets for measuring the safety, quality, and effectiveness of AI in health care.
-- **Health MCPs** aim to let AI systems work safely with standards-based health data through Model Context Protocol tools.
-- **Verifiable AI** is a partnership being formed with the WHO and ecosystem partners, to support the safe development and use of AI in health.
+The **AI Evals Lifecycle Working Group** is kicking off under the Open Health Stack Software Foundation to stress test the evaluation lifecycle and help operationalize end-to-end evaluation infrastructure for Global Health AI. Standing on the shoulders of early pioneers in this space, the working group aims to understand challenges and opportunities, identify ecosystem gaps, and co-develop tooling that makes effective evaluations accessible for everyone.
 
-The Foundation's [projects page](https://ohs.foundation/projects) shows how far each area has progressed.
+The working group focuses on three core lifecycle phases.
+
+- **Phase 1 (Pre-Development Model Selection)** establishes base clinical reasoning and safety baselines to inform model selection.
+- **Phase 2 (Pre-Deployment Application Staging)** co-develops open adapters and staging harnesses to test prompts, retrieval pipelines, and EHR or FHIR schema mappings.
+- **Phase 3 (Post-Deployment Monitoring and CQI)** implements lightweight telemetry and continuous quality improvement, looping real-world field risks back into pre-deployment rubrics.
+
+Planned deliverables include a canonical synthesis white paper, open-source evaluation tooling and adapters under OHS-SF, an AI for Global Health Eval Playbook, and a prioritized roadmap for the Governing Board to help unlock and direct funding.
+
+#### Get involved with the AI Evals Lifecycle Working Group
+
+The official kick-off session takes place on **Monday, October 26, 2026** at 10.00 AM ET (2.00 PM GMT, 5.00 PM EAT, 7.30 PM IST, 10.00 PM SGT).
+
+- [Sign up for the shared calendar invitation](https://calendar.google.com/calendar/render?action=TEMPLATE&text=AI%20Evals%20Lifecycle%20Working%20Group%20kick-off&dates=20261026T140000Z/20261026T150000Z&details=Join%3A%20https%3A//meet.google.com/ofa-wbeb-hku&location=https%3A//meet.google.com/ofa-wbeb-hku)
+- [Join the Google Meet kick-off call](https://meet.google.com/ofa-wbeb-hku)
+- [Sign up to participate and receive working group announcements](https://ohs.foundation/get-involved)
 
 ## Core advantages
 

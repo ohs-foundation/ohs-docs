@@ -22,7 +22,7 @@ Read [the configuration model](/ohs-player/configuration-model/) first if the pi
 Configuration ships with the reference application as FHIR `Binary` resources, under this path.
 
 ```
-ohs-player-reference-app/src/commonMain/composeResources/files/
+reference-app/src/commonMain/composeResources/files/
 ```
 
 Three directories divide it by role.
@@ -35,7 +35,7 @@ Three directories divide it by role.
 
 ## Change what a screen shows
 
-**1. Project the fields.** Add or update a `ViewDefinition` in `states/`, for example [`Binary-PatientSummary.json`](https://github.com/ohs-foundation/player-reference/blob/main/ohs-player-reference-app/src/commonMain/composeResources/files/states/Binary-PatientSummary.json).
+**1. Project the fields.** Add or update a `ViewDefinition` in `states/`, for example [`Binary-PatientSummary.json`](https://github.com/ohs-foundation/player-reference/blob/main/reference-app/src/commonMain/composeResources/files/states/Binary-PatientSummary.json).
 
 Each field is a column with a name, a FHIRPath expression that fills it, and a type. Here is one column, excerpted.
 
@@ -47,7 +47,7 @@ Each field is a column with a name, a FHIRPath expression that fills it, and a t
 }
 ```
 
-**2. Name the view state.** Add or update its `ViewJoinMap` in `states/`, which binds the named state to its pivot view. These are short enough to read whole. This is [`Binary-PatientSummaryState.json`](https://github.com/ohs-foundation/player-reference/blob/main/ohs-player-reference-app/src/commonMain/composeResources/files/states/Binary-PatientSummaryState.json) in full.
+**2. Name the view state.** Add or update its `ViewJoinMap` in `states/`, which binds the named state to its pivot view. These are short enough to read whole. This is [`Binary-PatientSummaryState.json`](https://github.com/ohs-foundation/player-reference/blob/main/reference-app/src/commonMain/composeResources/files/states/Binary-PatientSummaryState.json) in full.
 
 ```json
 {
@@ -59,12 +59,12 @@ Each field is a column with a name, a FHIRPath expression that fills it, and a t
 }
 ```
 
-**3. Set renderer options.** Add or update a `ViewConfig` in `configs/`, such as [`Binary-PatientCardConfig.json`](https://github.com/ohs-foundation/player-reference/blob/main/ohs-player-reference-app/src/commonMain/composeResources/files/configs/Binary-PatientCardConfig.json).
+**3. Set renderer options.** Add or update a `ViewConfig` in `configs/`, such as [`Binary-PatientCardConfig.json`](https://github.com/ohs-foundation/player-reference/blob/main/reference-app/src/commonMain/composeResources/files/configs/Binary-PatientCardConfig.json).
 
 **4. Build.** The `ig-codegen` Gradle plugin runs as part of compilation and generates the matching Kotlin state and configuration types. There is no separate generation step to remember.
 
 ```sh
-./gradlew :ohs-player-reference-app:run
+./gradlew :reference-app:run
 ```
 
 ## How the application picks it up
@@ -77,7 +77,7 @@ You do not wire any of that per screen. Adding a field means updating the `ViewD
 
 Introducing a genuinely new kind of presentation (not new fields, but a new way of drawing them) crosses into code.
 
-1. Add a view type to [`viewtypes/CodeSystem-ViewTypes.json`](https://github.com/ohs-foundation/player-reference/blob/main/ohs-player-reference-app/src/commonMain/composeResources/files/viewtypes/CodeSystem-ViewTypes.json).
+1. Add a view type to [`viewtypes/CodeSystem-ViewTypes.json`](https://github.com/ohs-foundation/player-reference/blob/main/reference-app/src/commonMain/composeResources/files/viewtypes/CodeSystem-ViewTypes.json).
 2. Build, so `ig-codegen` generates the matching `ViewTypeCS` entry.
 3. Implement a `ComponentRenderer`, register it in the `ViewRegistry` under that view type, and render the state with `ListScaffold` or `DetailScaffold`.
 

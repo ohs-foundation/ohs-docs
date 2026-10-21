@@ -42,11 +42,11 @@ const config = {
           { from: "/docs", to: "/" },
           { from: "/docs/ohs-player", to: "/" },
           { from: "/docs/contributing", to: "/resources/" },
-          { from: "/docs/android-fhir-sdk", to: "/" },
+          { from: "/docs/android-fhir-sdk", to: "/fhir-foundations/android-fhir/" },
           { from: "/docs/fhir-app-examples", to: "/" },
-          { from: "/docs/fhir-data-pipes", to: "/" },
-          { from: "/docs/fhir-gateway", to: "/" },
-          { from: "/docs/kotlin-fhir", to: "/" },
+          { from: "/docs/fhir-data-pipes", to: "/fhir-foundations/fhir-data-pipes/" },
+          { from: "/docs/fhir-gateway", to: "/fhir-foundations/info-gateway/" },
+          { from: "/docs/kotlin-fhir", to: "/fhir-foundations/kotlin-fhir/" },
 
           // The Player concept pages moved under /ohs-player/ when the site was
           // reorganised around the Foundation's pillars. These paths were

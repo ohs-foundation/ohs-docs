@@ -25,6 +25,8 @@ By completing this quickstart, you will have a running local healthcare system w
 - **A multiplatform frontline client** capturing clinical encounters offline on mobile or desktop and syncing them through the gateway.
 - **A streaming analytical pipeline** transforming FHIR resources into relational schemas powering live Apache Superset dashboards.
 
+[Watch the 10-minute video demonstration ↗](https://youtu.be/GMqFtlKE5kQ?si=z0I0JHLg6EyxIwst)
+
 ## System requirements
 
 The environment builds the gateway and the Portal inside containers, so you do not need a JDK or Node to run it. Those are needed only for the Client App and for working on the Portal source.
@@ -72,7 +74,7 @@ Build and launch the Kotlin Multiplatform application, then sign in as the healt
 ```sh
 git clone https://github.com/ohs-foundation/player-reference.git
 cd player-reference
-./gradlew :ohs-player-reference-app:run
+./gradlew :reference-app:run
 ```
 
 Follow [run the Client App](/components/client-app/run/) to point it at the environment, sign in as the health worker you created, capture an encounter through a Structured Data Capture form, and sync it back.

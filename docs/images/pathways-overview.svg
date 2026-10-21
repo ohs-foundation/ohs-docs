@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 600" width="1400" height="600" role="img" aria-labelledby="pwTitle pwDesc">
   <title id="pwTitle">OHS adoption pathways</title>
-  <desc id="pwDesc">Four adoption pathways. Pathway A, unbundled SDKs, client and backend libraries added to existing applications. Pathway B, reference platform, a full end-to-end multiplatform stack for a rapid baseline. Pathway C, analytics hub, SQL-on-FHIR pipelines powering aggregate dashboards. Pathway D, AI development on FHIR, currently incubating, tooling for benchmarking and evals on FHIR-based models.</desc>
+  <desc id="pwDesc">Four adoption pathways. Pathway A, unbundled SDKs, client and backend libraries added to existing applications. Pathway B, reference platform, a full end-to-end multiplatform stack for a rapid baseline. Pathway C, analytics hub, SQL-on-FHIR pipelines powering aggregate dashboards. Pathway D, advancing safe, effective AI for global health use cases, launching evaluation tooling and frameworks.</desc>
 
   <style>
     :root, svg {
@@ -90,9 +90,9 @@
       <circle cx="-2" cy="6" r="1.6" fill="#FFFFFF" stroke="none"/>
       <circle cx="3" cy="10" r="1.4" fill="#FFFFFF" stroke="none"/>
     </g>
-    <text class="kicker-ai" x="108" y="52">PATHWAY D &#183; INCUBATING</text>
-    <text class="title" x="108" y="92">AI Development on FHIR</text>
-    <text class="desc" x="32" y="158">Tooling for benchmarking and</text>
-    <text class="desc" x="32" y="188">evals on FHIR-based models</text>
+    <text class="kicker-ai" x="108" y="52">PATHWAY D &#183; LAUNCHING</text>
+    <text class="title" x="108" y="92">Safe AI for Global Health</text>
+    <text class="desc" x="32" y="158">Advancing safe, effective AI</text>
+    <text class="desc" x="32" y="188">for global health use cases</text>
   </g>
 </svg>

@@ -13,7 +13,7 @@ repository: client-app
 
 The Client App is the Kotlin Multiplatform and Compose Multiplatform end-user reference application for Android, iOS, JVM desktop, JavaScript browser, and Wasm browser. It demonstrates how the reusable Player Client library renders healthcare UI from declarative FHIR configuration. FHIR search results become typed view state, then registered renderers display that state.
 
-This guide is step 4 of the [get started sequence](/get-started/) for a usable integrated workflow. First prepare the shared Player environment, load the backend extensions, and use the [Web Portal](/components/web-portal/run/) to administer it, then evaluate the Client App in that prepared environment.
+This guide is step 3 of the [get started sequence](/get-started/) for a usable integrated workflow. First prepare the shared Player environment, load the backend extensions, and use the [Web Portal](/components/web-portal/run/) to administer it, then evaluate the Client App in that prepared environment.
 
 ## Before you begin
 
@@ -34,7 +34,7 @@ cd player-reference
 Run the JVM desktop target for the first local Client App check.
 
 ```sh
-./gradlew :ohs-player-reference-app:run
+./gradlew :reference-app:run
 ```
 
 The desktop application opens and renders the reference healthcare screens from its configured FHIR view state. Continue with the remaining targets when the desktop run meets the needs of the implementation.
@@ -88,16 +88,16 @@ Filtering what a device receives by location, care team, and organisation is enf
 
 | Target | Repository command or action |
 | --- | --- |
-| Android | `./gradlew :ohs-player-reference-app:assembleDebug` builds the debug APK. Install and run it with an Android development environment. |
-| Web (Wasm) | `./gradlew :ohs-player-reference-app:wasmJsBrowserDevelopmentRun` |
-| Web (JS) | `./gradlew :ohs-player-reference-app:jsBrowserDevelopmentRun` |
+| Android | `./gradlew :reference-app:assembleDebug` builds the debug APK. Install and run it with an Android development environment. |
+| Web (Wasm) | `./gradlew :reference-app:wasmJsBrowserDevelopmentRun` |
+| Web (JS) | `./gradlew :reference-app:jsBrowserDevelopmentRun` |
 | iOS | Open `iosApp/` in Xcode and run it. |
 
 ## Change what a screen shows
 
 The reference client renders typed view state rather than mapping FHIR resources in a screen, so changing a screen usually means changing configuration and rebuilding, not editing application code.
 
-Configuration ships with the application as FHIR resources under `ohs-player-reference-app/src/commonMain/composeResources/files/`, divided into `states/`, `configs/`, and `viewtypes/`. The `ig-codegen` Gradle plugin turns them into Kotlin types during compilation, so a rebuild is the only step after an edit.
+Configuration ships with the application as FHIR resources under `reference-app/src/commonMain/composeResources/files/`, divided into `states/`, `configs/`, and `viewtypes/`. The `ig-codegen` Gradle plugin turns them into Kotlin types during compilation, so a rebuild is the only step after an edit.
 
 [Configure a screen from FHIR data](/configure/screen-from-fhir-data/) walks through a change with worked examples, and [decide when code is necessary](/extend/decide/) covers when a change needs a renderer instead.
 
@@ -111,11 +111,11 @@ Build a local package when the application needs to be distributed beyond develo
 
 | Output | Command |
 | --- | --- |
-| macOS installer | `./gradlew :ohs-player-reference-app:packageDmg` |
-| Windows installer | `./gradlew :ohs-player-reference-app:packageMsi` |
-| Linux package | `./gradlew :ohs-player-reference-app:packageDeb` |
-| Portable application | `./gradlew :ohs-player-reference-app:createDistributable` |
-| Web bundle | `./gradlew :ohs-player-reference-app:wasmJsBrowserDistribution` |
+| macOS installer | `./gradlew :reference-app:packageDmg` |
+| Windows installer | `./gradlew :reference-app:packageMsi` |
+| Linux package | `./gradlew :reference-app:packageDeb` |
+| Portable application | `./gradlew :reference-app:createDistributable` |
+| Web bundle | `./gradlew :reference-app:wasmJsBrowserDistribution` |
 
 Use the [Client App deployment documentation](https://github.com/ohs-foundation/player-reference#deployment) for release-pipeline and signing detail.
 

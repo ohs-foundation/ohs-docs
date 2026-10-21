@@ -101,18 +101,19 @@ function PillarsSection() {
         </div>
 
         {/* Pillar 03: AI Commons */}
-        <div className="ohs-pillar-card is-disabled">
+        <div className="ohs-pillar-card">
           <div className="ohs-pillar-header">
             <span className="ohs-pillar-tag">PILLAR 03</span>
-            <span className="ohs-coming-soon-badge">Incubating</span>
+            <span className="ohs-coming-soon-badge">Launching</span>
           </div>
-          <h3>AI Commons (Incubating)</h3>
+          <h3>AI Commons (Launching)</h3>
           <p>
-            Structured FHIR prompt engineering tools, standardized clinical benchmarking,
-            and safety evaluation frameworks for builders and health authorities.
+            Advancing safe, effective AI for global health use cases through the
+            AI Evals Lifecycle Working Group, building evaluation tooling,
+            model selection baselines, and post-deployment monitoring.
           </p>
-          <Link className="ohs-pillar-cta" to="/why-ohs/#pillar-3-for-ai-commons-incubating">
-            Learn about AI Commons <span>→</span>
+          <Link className="ohs-pillar-cta" to="/why-ohs/#pillar-3-for-ai-commons-launching">
+            Get involved with AI Commons <span>→</span>
           </Link>
         </div>
       </div>

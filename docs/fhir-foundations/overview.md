@@ -42,7 +42,7 @@ The Kotlin Multiplatform SDKs publish under the Maven group `dev.ohs.fhir` and r
 | --- | --- | --- |
 | [Kotlin FHIR Engine](/fhir-foundations/kotlin-fhir-engine/) | `fhir-engine` | On-device storage, typed search, and synchronization with a FHIR server |
 | [Kotlin FHIR Data Capture](/fhir-foundations/kotlin-fhir-data-capture/) | `fhir-data-capture` | Structured Data Capture (SDC) questionnaire rendering, validation, and extraction |
-| [Kotlin FHIR Workflow](https://github.com/ohs-foundation) | `fhir-workflow` | Workflow execution and care plan management |
+| [Kotlin FHIR Workflow](https://github.com/ohs-foundation/kotlin-fhir-workflow) | `fhir-workflow` | Workflow execution and care plan management |
 
 ### Android FHIR SDK
 

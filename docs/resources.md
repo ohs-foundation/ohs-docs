@@ -48,7 +48,7 @@ The reference implementation demonstrates how to assemble the building blocks in
 
 The Open Health Stack community collaborates across public channels and issue trackers.
 
-- [OHS Foundation community](https://ohs.foundation/community) for questions about the ecosystem and community support, through Discord and the monthly community calls
+- [OHS Discord community](https://discord.gg/sfgUU7AHZT) and [community channels](https://ohs.foundation/community#channels) for architecture discussions, questions about the ecosystem, and community support
 - The issue tracker of the owning repository for bugs or feature requests specific to that component
 
 Opening an issue directly in the owning repository connects you with the maintainers of that component and keeps the resolution close to the code.
