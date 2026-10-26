@@ -24,9 +24,9 @@ Docker Engine with Compose v2.29 or newer, plus a shell environment the setup sc
 | Debian, Ubuntu, WSL | `sudo apt install gettext-base` |
 | Fedora, RHEL | `sudo dnf install gettext` |
 | Alpine | `apk add gettext` |
-| macOS | `brew install gettext && brew link --force gettext` |
+| macOS | `brew install gettext` |
 
-The link step on macOS is not optional. Homebrew keeps `gettext` keg-only, so the package installs but `envsubst` stays off your `PATH` until the link is forced. macOS also ships Bash 3.2, which is too old, so `brew install bash` replaces it.
+Homebrew links `gettext` during installation. If the `envsubst --version` check below reports command not found, run `brew link --force gettext`. macOS also ships Bash 3.2, which is too old, so `brew install bash` replaces it.
 
 Compose must be recent because two of the images are built from source and the script skips pulling those.
 
