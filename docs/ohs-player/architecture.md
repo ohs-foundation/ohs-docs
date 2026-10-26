@@ -11,13 +11,13 @@ repository: ohs-player
 
 ## The end-to-end architecture
 
-![OHS Player end-to-end architecture diagram showing Client App and Web Admin Portal reaching HAPI FHIR through Info Gateway with Keycloak authentication, FHIR Data Pipes streaming into PostgreSQL, and reference dashboards](../images/ohs-player-end-to-end-architecture.svg)
+![OHS Player end-to-end architecture diagram showing Client App and Web Admin Portal reaching HAPI FHIR through Info Gateway with Keycloak authentication, FHIR Data Pipes writing to PostgreSQL on a schedule, and reference dashboards](../images/ohs-player-end-to-end-architecture.svg)
 
 The diagram illustrates three primary layers within the reference environment.
 
 - **Client layer** includes the multiplatform Frontline Client Application and the browser Web Admin Portal.
 - **Backend services** include Info Gateway with custom extension plugins, Keycloak for identity, and an un-forked HAPI FHIR server.
-- **Analytics layer** includes FHIR Data Pipes and PostgreSQL powering live Apache Superset dashboards.
+- **Analytics layer** includes FHIR Data Pipes and PostgreSQL powering Apache Superset dashboards, refreshed on a schedule.
 
 ## Foundational building blocks
 

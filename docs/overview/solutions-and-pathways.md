@@ -42,7 +42,7 @@ Implementing teams fork the reference repositories, customize screen layouts via
 
 Health systems often possess substantial transactional FHIR data but lack accessible analytical reporting for programme managers and epidemiologists.
 
-In this pathway, organisations deploy FHIR Data Pipes alongside existing FHIR servers. The pipeline streams transactional FHIR resources into analytical PostgreSQL, BigQuery, or ClickHouse data warehouses using standard SQL-on-FHIR view definitions. Programme directors can query tabular health indicators and visualize trends in Apache Superset without impacting operational clinic servers.
+In this pathway, organisations deploy FHIR Data Pipes alongside existing FHIR servers. The pipeline extracts transactional FHIR resources on a schedule into analytical PostgreSQL, BigQuery, or ClickHouse data warehouses using standard SQL-on-FHIR view definitions. Programme directors can query tabular health indicators and visualize trends in Apache Superset without impacting operational clinic servers.
 
 ## Pathway D for advancing safe, effective AI for global health
 

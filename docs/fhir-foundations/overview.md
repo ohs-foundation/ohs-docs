@@ -55,7 +55,7 @@ Back-end SDKs handle routing, access control, and large-scale analytical pipelin
 | Back-end service | Repository | Role |
 | --- | --- | --- |
 | [Info Gateway](/fhir-foundations/info-gateway/) | `fhir-gateway` | Authentication proxy, granular access control, and endpoint customization |
-| [FHIR Data Pipes](/fhir-foundations/fhir-data-pipes/) | `fhir-data-pipes` | Batch and streaming pipelines for data extraction and SQL-on-FHIR analytics |
+| [FHIR Data Pipes](/fhir-foundations/fhir-data-pipes/) | `fhir-data-pipes` | Scheduled batch pipelines for data extraction and SQL-on-FHIR analytics |
 
 ## How the projects fit together
 

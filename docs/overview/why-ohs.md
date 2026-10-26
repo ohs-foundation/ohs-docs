@@ -37,7 +37,7 @@ An end-to-end reference toolkit showing how foundational building blocks assembl
 - **Frontline Client App** runs on Android, iOS, desktop, and web from a single shared Kotlin Multiplatform codebase.
 - **Web Admin Portal** manages users, roles, organisations, and health facility hierarchies.
 - **Reference Gateway** validates tokens, enforces access rules, and routes requests to un-forked FHIR stores.
-- **Reference Analytics** streams clinical data into relational databases via SQL-on-FHIR view definitions for live Apache Superset dashboards.
+- **Reference Analytics** extracts clinical data into relational databases on a schedule, via SQL-on-FHIR view definitions, for Apache Superset dashboards.
 - **Declarative Configuration IG** defines screens, forms, and indicator tables in standard FHIR resources so workflows update without recompiling apps.
 
 ### Pillar 3 for AI Commons (Launching)
