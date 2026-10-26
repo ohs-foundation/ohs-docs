@@ -17,7 +17,7 @@ OHS Player is an open source reference toolkit under active development. This pa
 
 | Component area | Current capabilities |
 | --- | --- |
-| Reference Infrastructure | Turnkey Docker Compose topology spinning up PostgreSQL, Keycloak, HAPI FHIR, and Info Gateway with health checks |
+| Reference Infrastructure | One Docker Compose file starts PostgreSQL, Keycloak, HAPI FHIR, and the Info Gateway. |
 | Reference Backend | Custom gateway endpoints for users, groups, roles, location hierarchies, practitioner details, and bulk CSV ingestion |
 | Web Admin Portal | OpenID Connect sign-in, user and role management, facility hierarchy configuration, and FHIR resource browsing |
 | Client Application | Cross-platform builds on Android, iOS, desktop, and web rendering screens dynamically from FHIR configurations |

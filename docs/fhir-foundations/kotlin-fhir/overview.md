@@ -39,7 +39,7 @@ Depend on the single FHIR version you use. The umbrella exists for tools that ge
 - **Not a validator.** Constraints, profiles, and binding strengths from StructureDefinitions are not represented in the generated code. Bindings only influence which enums exist.
 - **Not a client or a database.** There is no networking and no persistence. That is [Kotlin FHIR Engine](/fhir-foundations/kotlin-fhir-engine/)'s job.
 - **JSON only.** XML and Turtle are out of scope. Other `kotlinx.serialization` formats may work mechanically, but only JSON is extensively tested.
-- **Selective generation.** Logical models, profiles, CapabilityStatements, CodeSystems, ConceptMaps, NamingSystems, OperationDefinitions, and ValueSets-as-resources are not generated. The abstract FHIR patterns (`Event`, `Request`, `Definition`) are not modeled as interfaces, because conforming resources may rename elements in ways Kotlin inheritance cannot express.
+- **Selective generation.** Logical models and profiles are not generated. Classes for conformance resources, such as `ValueSet` and `CodeSystem`, are generated. The ValueSets, CodeSystems, and other conformance resources in the spec packages are not included in the library as resources. The abstract FHIR patterns (`Event`, `Request`, `Definition`) are not modeled as interfaces, because conforming resources may rename elements in ways Kotlin inheritance cannot express.
 - **Not every search parameter is extractable.** Parameters whose FHIRPath patterns the generator does not support throw `NotImplementedError`. See [Extract search parameters](/fhir-foundations/kotlin-fhir/search-parameters/).
 
 ## Next step
