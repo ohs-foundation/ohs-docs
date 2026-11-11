@@ -199,6 +199,7 @@ const sidebars = {
           collapsed: false,
           items: [
             "tutorials-and-codelabs/multiplatform-client",
+            "tutorials-and-codelabs/data-capture",
             "tutorials-and-codelabs/sdc-questionnaires",
           ],
         },

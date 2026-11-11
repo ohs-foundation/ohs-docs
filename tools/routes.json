@@ -282,6 +282,11 @@
       "searchIndexed": true
     },
     {
+      "id": "tutorials-and-codelabs-data-capture",
+      "path": "/ohs-docs/tutorials-and-codelabs/data-capture/",
+      "searchIndexed": true
+    },
+    {
       "id": "tutorials-and-codelabs-sdc-questionnaires",
       "path": "/ohs-docs/tutorials-and-codelabs/sdc-questionnaires/",
       "searchIndexed": true
