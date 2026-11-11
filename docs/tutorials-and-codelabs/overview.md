@@ -21,6 +21,7 @@ Each module focuses on a concrete technical capability, complete with prerequisi
 | Learning module | Type | What you build | Link |
 | --- | --- | --- | --- |
 | Offline-First Multiplatform Client | Codelab | An offline-capable Kotlin Multiplatform mobile and desktop app | [Start codelab](/tutorials-and-codelabs/multiplatform-client/) |
+| Capture and Process Health Data | Codelab | A Kotlin Multiplatform app that renders a FHIR Questionnaire and extracts a Patient resource | [Start codelab](/tutorials-and-codelabs/data-capture/) |
 | Clinical Questionnaire Authoring | Tutorial | SDC questionnaires with FHIRPath validation and data extraction | [Start tutorial](/tutorials-and-codelabs/sdc-questionnaires/) |
 
 ## Info Gateway
