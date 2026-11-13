@@ -177,6 +177,11 @@
       "searchIndexed": true
     },
     {
+      "id": "kotlin-fhir-how-the-model-maps-fhir",
+      "path": "/ohs-docs/fhir-foundations/kotlin-fhir/how-the-model-maps-fhir/",
+      "searchIndexed": true
+    },
+    {
       "id": "kotlin-fhir-working-with-resources",
       "path": "/ohs-docs/fhir-foundations/kotlin-fhir/working-with-resources/",
       "searchIndexed": true
@@ -187,6 +192,11 @@
       "searchIndexed": true
     },
     {
+      "id": "kotlin-fhir-server-responses",
+      "path": "/ohs-docs/fhir-foundations/kotlin-fhir/server-responses/",
+      "searchIndexed": true
+    },
+    {
       "id": "kotlin-fhir-serialization",
       "path": "/ohs-docs/fhir-foundations/kotlin-fhir/serialization/",
       "searchIndexed": true
@@ -194,6 +204,11 @@
     {
       "id": "kotlin-fhir-search-parameters",
       "path": "/ohs-docs/fhir-foundations/kotlin-fhir/search-parameters/",
+      "searchIndexed": true
+    },
+    {
+      "id": "kotlin-fhir-troubleshooting",
+      "path": "/ohs-docs/fhir-foundations/kotlin-fhir/troubleshooting/",
       "searchIndexed": true
     },
     {

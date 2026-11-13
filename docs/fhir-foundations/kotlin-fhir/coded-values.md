@@ -1,8 +1,8 @@
 ---
-title: Coded values and enums
-description: How FHIR ValueSet bindings become Kotlin enums, and how binding strength decides whether an element accepts codes outside the value set.
+title: Work with coded values
+description: Set and read FHIR coded elements with the generated enums, Enumeration, and ExtensibleEnumeration.
 slug: /fhir-foundations/kotlin-fhir/coded-values/
-sidebar_position: 40
+sidebar_position: 50
 guide_type: Usage guide
 guide_status: ready
 guide_focus: Reading and writing coded elements with type safety
@@ -11,31 +11,23 @@ repository: kotlin-fhir
 
 ## Goal and scope
 
-Many FHIR elements hold a code from a ValueSet, such as `Patient.gender`. This page explains which elements Kotlin FHIR types with enums, which Kotlin type each element gets, and how codes are turned into enum names. Examples use R4.
+This page shows how to set and read elements that hold a code, such as `Patient.gender`. Examples use R4.
 
-## Which elements use enums
+Only elements of the FHIR type `code` use enums. Elements of type `CodeableConcept` or `Coding`, such as `Observation.code`, keep those types. The element's binding strength decides which Kotlin type it has.
 
-Only elements of the FHIR type `code` use enums. Elements of type `CodeableConcept` or `Coding` keep those types, whatever ValueSet they are bound to.
+| Binding strength | Kotlin type | Example |
+| --- | --- | --- |
+| `required` | `Enumeration<T>` | `Patient.gender` is `Enumeration<AdministrativeGender>` |
+| `extensible` or `preferred` | `ExtensibleEnumeration<T>` | `Expression.language` is `ExtensibleEnumeration<ExpressionLanguage>` |
+| `example` | `Code` | |
 
-For example, `Patient.gender` is a `code`, so it uses the `AdministrativeGender` enum. `Observation.code` is a `CodeableConcept`, so it stays a `CodeableConcept`. Clinical codes such as LOINC and SNOMED CT are usually in `CodeableConcept` elements, so you work with them as `CodeableConcept` values, not enums.
+[How the model maps FHIR](/fhir-foundations/kotlin-fhir/how-the-model-maps-fhir/#coded-values-use-enums-when-the-type-is-code) explains these rules.
 
-## The Kotlin type depends on the binding strength
+## Find the enum for a code
 
-A FHIR binding has a [strength](https://hl7.org/fhir/R5/terminologies.html#strength) that says how strictly the element must use codes from its ValueSet. For a `code` element, the strength decides the Kotlin type.
+All enums are in the `terminologies` package of their FHIR version, for example `dev.ohs.fhir.model.r4.terminologies.AdministrativeGender`. Each constant has a `code`, `system`, and `display`.
 
-| Binding strength | Kotlin type | Example | Codes not in the ValueSet |
-| --- | --- | --- | --- |
-| `required` | `Enumeration<T>` | `Patient.gender` is `Enumeration<AdministrativeGender>` | Decoding fails |
-| `extensible` or `preferred` | `ExtensibleEnumeration<T>` | `Expression.language` is `ExtensibleEnumeration<ExpressionLanguage>` | Kept as `ExtensibleEnumeration.Custom` |
-| `example`, or the ValueSet has no expansion | `Code` | | Accepted |
-
-`Enumeration` and `ExtensibleEnumeration` also hold the element's `id` and extensions, like every primitive.
-
-## The generated enums
-
-An enum is generated for each ValueSet that a `code` element is bound to. All enums are in the `terminologies` package of their FHIR version, for example `dev.ohs.fhir.model.r4.terminologies.AdministrativeGender`.
-
-Each enum constant has a `code`, `system`, and `display`. To get a constant from a code, use `fromCode()`. It throws `IllegalArgumentException` if the code is not in the ValueSet.
+To get a constant from a code, use `fromCode()`. It throws `IllegalArgumentException` if the code is not in the ValueSet.
 
 ```kotlin
 import dev.ohs.fhir.model.r4.terminologies.AdministrativeGender
@@ -46,9 +38,11 @@ female.system  // "http://hl7.org/fhir/administrative-gender"
 female.display // "Female"
 ```
 
-## Required bindings
+Constant names are made from the codes, so they are not always obvious. For example, `text/fhirpath` becomes `Text_Fhirpath` and `>=` becomes `GreaterThanOrEqualTo`. Use `fromCode()` when you know the code, or see the [enum naming rules](https://github.com/ohs-foundation/kotlin-fhir/blob/main/docs/enum-generation.md#enum-naming-rules) in the repository.
 
-An element with a `required` binding is an `Enumeration<T>`. Wrap the enum constant to set it, and read `value` to get it.
+## Set and read a required code
+
+Wrap the enum constant in `Enumeration` to set it, and read `value` to get it.
 
 ```kotlin
 import dev.ohs.fhir.model.r4.Enumeration
@@ -62,14 +56,14 @@ val gender: AdministrativeGender? = patient.gender?.value
 
 If JSON contains a code that is not in the ValueSet, decoding throws `IllegalArgumentException`. See [Handle decoding failures](/fhir-foundations/kotlin-fhir/serialization/#handle-decoding-failures).
 
-## Extensible and preferred bindings
+## Set and read an extensible code
 
-An element with an `extensible` or `preferred` binding is an `ExtensibleEnumeration<T>`. It is one of two classes.
+An `ExtensibleEnumeration<T>` is one of two classes.
 
 - `Predefined` holds an enum constant, for a code in the ValueSet.
 - `Custom` holds the code as a string, for a code not in the ValueSet.
 
-Both have a `code` property with the code as a string.
+Both have a `code` property with the code as a string. Use `ExtensibleEnumeration.of()` to create either one.
 
 ```kotlin
 import dev.ohs.fhir.model.r4.ExtensibleEnumeration
@@ -87,48 +81,10 @@ fun describe(language: ExtensibleEnumeration<ExpressionLanguage>): String =
 
 When decoding JSON, a code in the ValueSet becomes `Predefined` and any other code becomes `Custom`.
 
-### A required binding that accepts other codes
+## Exceptions to the rules
 
-`ImplementationGuide.license` has a `required` binding to the SPDX license ValueSet, but it is generated as `ExtensibleEnumeration<T>`. The specification allows new SPDX license identifiers for this element, and SPDX has added identifiers since the ValueSet was published. This applies to R4, R4B, and R5.
-
-## ValueSets without enums
-
-No enum is generated for these ValueSets, in R4, R4B, or R5.
-
-| ValueSet | Reason |
-| --- | --- |
-| `http://hl7.org/fhir/ValueSet/mimetypes` | It has no fixed list of codes |
-| `http://hl7.org/fhir/ValueSet/all-languages` | It has no fixed list of codes |
-| `http://hl7.org/fhir/ValueSet/use-context` | It has more than 3800 codes, too many to compile |
-
-## How codes become enum names
-
-Enum constants are created from the codes in the ValueSet expansions published with the FHIR specification. A code is often not a valid Kotlin name, so it is changed by these steps, in order.
-
-| Step | Rule | Code | Result |
-| --- | --- | --- | --- |
-| 1 | If the code is a URL, keep only the part after the last dot | `http://hl7.org/fhirpath/System.DateTime` | `DateTime` |
-| 2 | Replace a comparison or arithmetic symbol with a word, from the table below | `>=` | `GreaterThanOrEqualTo` |
-| 3 | Replace every other character that is not a letter or digit with an underscore | `4.0.1` | `4_0_1` |
-| 4 | If the result starts with a digit, add an underscore at the start | `4_0_1` | `_4_0_1` |
-| 5 | Capitalize the first letter of each part between underscores | `entered_in_error` | `Entered_In_Error` |
-
-| Symbol | Word |
-| --- | --- |
-| `>=` | `GreaterThanOrEqualTo` |
-| `>` | `GreaterThan` |
-| `<=` | `LessThanOrEqualTo` |
-| `<` | `LessThan` |
-| `!=` or `<>` | `NotEqualTo` |
-| `=` | `EqualTo` |
-| `*` | `Multiply` |
-| `+` | `Plus` |
-| `-` | `Minus` |
-| `/` | `Divide` |
-| `%` | `Percent` |
-
-For example, `text/fhirpath` becomes `Text_Fhirpath`, and `application/x-fhir-query` becomes `Application_X_Fhir_Query`. If you are not sure of a name, use `fromCode()` with the code, or check the enum in your IDE.
+A few ValueSets do not follow the table above. For example, `ImplementationGuide.license` has a `required` binding but accepts new SPDX license codes, and the `mimetypes` and `all-languages` ValueSets have no enum because they have no fixed list of codes. The repository lists every exception in [Excluded ValueSets](https://github.com/ohs-foundation/kotlin-fhir/blob/main/docs/enum-generation.md#excluded-valuesets) and [Required bindings generated as extensible](https://github.com/ohs-foundation/kotlin-fhir/blob/main/docs/enum-generation.md#required-bindings-generated-as-extensible).
 
 ## Next step
 
-[Serialize and deserialize](/fhir-foundations/kotlin-fhir/serialization/) covers reading and writing FHIR JSON.
+[Read Bundles and server responses](/fhir-foundations/kotlin-fhir/server-responses/) shows how to handle the JSON a FHIR server returns.

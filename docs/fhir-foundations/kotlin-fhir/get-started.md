@@ -62,7 +62,7 @@ In a Maven project, use the JVM artifact, which has the `-jvm` suffix. Maven can
 </dependency>
 ```
 
-Use version 1.0.0 only when you use Kotlin FHIR on its own. Kotlin FHIRPath, Kotlin FHIR Engine, and Kotlin FHIR Data Capture are currently built against 1.0.0-rc03. If your app uses any of them, use 1.0.0-rc03. See [Pairing the libraries](/fhir-foundations/versions/#pairing-the-libraries).
+These versions are for using Kotlin FHIR on its own. Kotlin FHIRPath, Kotlin FHIR Engine, and Kotlin FHIR Data Capture are built against an earlier Kotlin FHIR version. If your app uses any of them, use the version listed in [Pairing the libraries](/fhir-foundations/versions/#pairing-the-libraries).
 
 Use `fhir-model` instead of `fhir-model-r4` only if you need R4, R4B, and R5 together.
 
@@ -112,4 +112,4 @@ When you decode as `Resource`, the library reads the `resourceType` property and
 
 ## Next step
 
-[Work with resources](/fhir-foundations/kotlin-fhir/working-with-resources/) covers changing resources, dates, decimals, and choice elements.
+[How the model maps FHIR](/fhir-foundations/kotlin-fhir/how-the-model-maps-fhir/) explains the ideas the rest of this documentation relies on. To go straight to tasks, see [Create and change resources](/fhir-foundations/kotlin-fhir/working-with-resources/).

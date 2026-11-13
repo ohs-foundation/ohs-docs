@@ -1,8 +1,8 @@
 ---
-title: Serialize and deserialize
-description: Reading and writing FHIR JSON with kotlinx.serialization, and which Json configuration options apply.
+title: Read and write FHIR JSON
+description: Encode and decode FHIR JSON with kotlinx.serialization, handle decoding errors, limit untrusted input, and choose Json options.
 slug: /fhir-foundations/kotlin-fhir/serialization/
-sidebar_position: 50
+sidebar_position: 70
 guide_type: Usage guide
 guide_status: ready
 guide_focus: Spec-compliant FHIR JSON in and out of the generated model
@@ -67,23 +67,11 @@ The library does not limit how deeply JSON is nested or how large a decimal is. 
 
 If you decode JSON from a source you do not control, check its size, nesting depth, and number lengths before decoding.
 
-## What the serializers handle
+## Expect normalized output
 
-FHIR JSON has rules that plain Kotlin serialization does not follow. The generated serializers handle them.
+When you decode JSON and encode it again, the output can differ from the original text. For example, properties are reordered and a `+00:00` offset becomes `Z`. The data has the same meaning. Do not compare FHIR JSON as text. Decode both sides and compare the resources with `==`.
 
-- **Extensions on primitive values.** FHIR writes a primitive's value under its name, and its `id` and extensions under the same name with an underscore, such as `"birthDate"` and `"_birthDate"`. The serializers combine the two into one Kotlin property and split them again when encoding.
-- **Choice elements.** FHIR writes the type into the property name, such as `deceasedBoolean` or `deceasedDateTime`. The serializers read whichever name is present and create the matching Kotlin class.
-- **Resource types.** Every resource in FHIR JSON has a `resourceType` property. It is written whether you encode a `Patient` or a `Resource`, and it is read to choose the class when decoding, including resources inside `contained` and Bundles.
-
-### Encoded JSON can differ from the original
-
-FHIR allows the same data to be written in slightly different ways. When you decode a resource and encode it again, the output always uses one form.
-
-- Properties are written in the model's order.
-- Extra trailing zeros in times and date-times are removed.
-- A UTC offset of `+00:00` is written as `Z`.
-
-The data means the same, but the text may not match the original exactly. Decimals are not changed, because `FhirDecimal` keeps their original text.
+[How the model maps FHIR](/fhir-foundations/kotlin-fhir/how-the-model-maps-fhir/#serializers-follow-fhir-json-rules) explains what the serializers change and why.
 
 ## Json options
 

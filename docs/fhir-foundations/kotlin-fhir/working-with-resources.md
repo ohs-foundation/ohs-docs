@@ -1,21 +1,52 @@
 ---
-title: Work with resources
-description: Creating, modifying, and reading FHIR resources in Kotlin, using builders, primitives, choice types, and coded values.
+title: Create and change resources
+description: Build FHIR resources in Kotlin, change them with copy and builders, and set primitives, dates, decimals, and choice elements.
 slug: /fhir-foundations/kotlin-fhir/working-with-resources/
-sidebar_position: 30
+sidebar_position: 40
 guide_type: Usage guide
 guide_status: ready
-guide_focus: Fluent, type-safe manipulation of FHIR data
+guide_focus: Building and modifying FHIR data in Kotlin
 repository: kotlin-fhir
 ---
 
 ## Goal and scope
 
-This page covers how to change resources, use primitive values, dates, and decimals, and read choice elements. Examples use R4. R4B and R5 work the same way.
+This page shows how to create resources, change them, and set values of each kind. Examples use R4. For why the model works this way, see [How the model maps FHIR](/fhir-foundations/kotlin-fhir/how-the-model-maps-fhir/).
+
+## Create a resource
+
+Pass the elements you need to the constructor. Optional elements have default values.
+
+```kotlin
+import dev.ohs.fhir.model.r4.Date
+import dev.ohs.fhir.model.r4.FhirDate
+import dev.ohs.fhir.model.r4.HumanName
+import dev.ohs.fhir.model.r4.Patient
+import dev.ohs.fhir.model.r4.String as FhirString
+
+val patient = Patient(
+  id = "patient-01",
+  name = listOf(HumanName(given = listOf(FhirString(value = "John")))),
+  birthDate = Date(value = FhirDate.fromString("2000-01-01")),
+)
+```
+
+FHIR primitive types such as `String` and `Boolean` have the same names as Kotlin types. Import them with an alias, such as `FhirString`, to avoid a clash.
+
+If the constructor calls become deeply nested, use a builder instead.
+
+```kotlin
+val patient = Patient.Builder().apply {
+  id = "patient-01"
+  name.add(HumanName.Builder().apply { given.add(FhirString.Builder().apply { value = "John" }) })
+}.build()
+```
 
 ## Change a resource
 
-Resources cannot be changed in place. To change one, create a new copy. For a few top-level elements, use `copy()`.
+Resources cannot be changed in place. Each change creates a new resource.
+
+To replace top-level elements, use `copy()`.
 
 ```kotlin
 val updated = patient.copy(
@@ -24,46 +55,29 @@ val updated = patient.copy(
 )
 ```
 
-To add to a list or change a nested element, use a builder. `toBuilder()` returns a builder for the resource. Change the builder, then call `build()` to get a new resource.
+To add to a list or change a nested element, use `toBuilder()`, change the builder, and call `build()`.
 
 ```kotlin
-import dev.ohs.fhir.model.r4.String as FhirString
-
 val updated = patient.toBuilder().apply {
-  name.add(
-    HumanName.Builder().apply {
-      given.add(FhirString.Builder().apply { value = "Jane" })
-    }
-  )
+  name.add(HumanName.Builder().apply { given.add(FhirString.Builder().apply { value = "Jane" }) })
 }.build()
 ```
 
-You can also create a resource with a builder, such as `Patient.Builder().apply { ... }.build()`. This can be easier to read than deeply nested constructors.
+## Change the id of any resource
 
-## Primitive values
+If you only have a `Resource`, for example after decoding a Bundle, `copy()` is not available. Use `toBuilder()`, which works on every resource.
 
-A FHIR primitive can have an `id` and extensions as well as a value. For this reason, each primitive is a class named after its FHIR type. For example, `string` is `dev.ohs.fhir.model.r4.String` and `boolean` is `dev.ohs.fhir.model.r4.Boolean`. These names clash with Kotlin's own types, so import them with an alias, such as `import dev.ohs.fhir.model.r4.String as FhirString`.
+```kotlin
+import dev.ohs.fhir.model.r4.Resource
 
-The value itself is in the `value` property. Its Kotlin type depends on the FHIRPath type the specification uses for that value.
+val renamed: Resource = resource.toBuilder().apply { id = "local-123" }.build()
+```
 
-| FHIRPath type | Kotlin type of `value` |
-| --- | --- |
-| `System.Boolean` | `kotlin.Boolean` |
-| `System.String` | `kotlin.String` |
-| `System.Integer` | `kotlin.Int` |
-| `System.Long` | `kotlin.Long` |
-| `System.Decimal` | `FhirDecimal` |
-| `System.Date` | `FhirDate` |
-| `System.DateTime` | `FhirDateTime` |
-| `System.Time` | `kotlinx.datetime.LocalTime` |
+The result is still the same resource type. A `Patient` stays a `Patient`.
 
-There is one exception. The specification gives `positiveInt` and `unsignedInt` the type `System.String`, but the model uses `kotlin.Int` for them.
+## Set and read decimals
 
-`FhirDecimal`, `FhirDate`, and `FhirDateTime` are types from the library, because Kotlin's standard types cannot represent FHIR decimals and partial dates.
-
-### Decimals
-
-`FhirDecimal` stores a decimal with its exact digits. A value that is parsed or decoded keeps its original text, including trailing zeros, and is encoded back the same way. The result of arithmetic is a new value and does not keep trailing zeros.
+Create a `FhirDecimal` from text to keep the exact digits.
 
 ```kotlin
 import dev.ohs.fhir.model.r4.FhirDecimal
@@ -77,11 +91,11 @@ total.toString()      // "11.5"
 dose.asBigDecimal()   // the underlying BigDecimal from the bignum library
 ```
 
-You can also use `-`, `*`, and `/`.
+You can also use `-`, `*`, and `/`. The result of arithmetic does not keep trailing zeros.
 
-### Partial dates and date-times
+## Set and read dates
 
-In FHIR, a date can be a year only, or a year and month only. `FhirDate` has one class for each precision, `Year`, `YearMonth`, and `Date`. `FhirDateTime` has the same three, plus `DateTime` for a full date and time with a UTC offset.
+Create a date with the precision you need, or parse it from text.
 
 ```kotlin
 import dev.ohs.fhir.model.r4.FhirDate
@@ -91,7 +105,6 @@ import kotlinx.datetime.LocalDateTime
 import kotlinx.datetime.UtcOffset
 import kotlinx.datetime.YearMonth
 
-// Create a value with a specific precision
 val year = FhirDate.Year(1985)
 val month = FhirDate.YearMonth(YearMonth(1985, 3))
 val day = FhirDate.Date(LocalDate(1985, 3, 15))
@@ -100,12 +113,12 @@ val dateTime = FhirDateTime.DateTime(
   utcOffset = UtcOffset(hours = 1),
 )
 
-// Parse text. The precision comes from the text.
+// The precision comes from the text
 val parsedMonth = FhirDate.fromString("1985-03")              // FhirDate.YearMonth
 val parsedDateTime = FhirDateTime.fromString("1985-03-15T13:00:00+01:00")
 ```
 
-Use `when` to handle each precision. The compiler reports an error if you leave one out.
+To read a date, handle each precision with `when`. The compiler reports an error if you leave one out.
 
 ```kotlin
 fun describe(date: FhirDateTime): String = when (date) {
@@ -116,9 +129,9 @@ fun describe(date: FhirDateTime): String = when (date) {
 }
 ```
 
-## Choice elements
+## Set and read choice elements
 
-A choice element can hold one of several types. For example, `Patient.deceased[x]` holds either a `boolean` or a `dateTime`. The model generates a sealed interface for it inside the resource class, with one class for each allowed type. The compiler only accepts those types.
+To set a choice element, create the class for the type you want.
 
 ```kotlin
 import dev.ohs.fhir.model.r4.Boolean as FhirBoolean
@@ -126,7 +139,7 @@ import dev.ohs.fhir.model.r4.Boolean as FhirBoolean
 val deceased: Patient.Deceased = Patient.Deceased.Boolean(FhirBoolean(value = false))
 ```
 
-To read a choice element, use `when`. Each branch gives you the value with its specific type.
+To read it, use `when`. Each branch gives you the value with its specific type.
 
 ```kotlin
 when (val multipleBirth = patient.multipleBirth) {
@@ -136,24 +149,12 @@ when (val multipleBirth = patient.multipleBirth) {
 }
 ```
 
-If you only need one type, use its `as` function, such as `patient.multipleBirth?.asInteger()`. It returns `null` when the element holds a different type. Every choice interface also implements `FhirChoice`, whose `value` property returns the value as `Any`.
+If you only need one type, use its `as` function, such as `patient.multipleBirth?.asInteger()`. It returns `null` when the element holds a different type.
 
-## Coded elements
+## Set and read coded values
 
-Elements of the FHIR type `code`, such as `Patient.gender`, use generated enums. [Coded values and enums](/fhir-foundations/kotlin-fhir/coded-values/) explains how.
-
-## Class hierarchy
-
-The classes follow FHIR's inheritance. `Patient` extends `DomainResource`, which extends `Resource`. A function that accepts `Resource` therefore accepts any resource.
-
-A BackboneElement is a nested class inside its resource. For example, `Patient.contact` is `Patient.Contact`.
-
-The FHIR patterns `Event`, `Request`, and `Definition` are not interfaces. Resources that follow a pattern can name their elements differently. For example, `Observation` uses `effective[x]` for the time, and `Procedure` uses `performed[x]`. A Kotlin interface cannot describe that.
-
-## Documentation in the IDE
-
-Each class and property has the FHIR specification's definition as KDoc, so your IDE shows it when you hover over the code.
+Elements of the FHIR type `code`, such as `Patient.gender`, use enums. See [Work with coded values](/fhir-foundations/kotlin-fhir/coded-values/).
 
 ## Next step
 
-[Coded values and enums](/fhir-foundations/kotlin-fhir/coded-values/) covers coded elements and the generated enums.
+[Work with coded values](/fhir-foundations/kotlin-fhir/coded-values/) shows how to set and read codes.
