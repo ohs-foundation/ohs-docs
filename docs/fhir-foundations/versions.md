@@ -16,28 +16,35 @@ All artifacts publish to Maven Central under the group `dev.ohs.fhir`. The table
 
 | Repository | Artifact | Version |
 | --- | --- | --- |
-| Kotlin FHIR | `fhir-model` (and `-r4`, `-r4b`, `-r5`) | 1.0.0-rc02 |
-| Kotlin FHIRPath | `fhir-path` (and `-core`, `-r4`, `-r4b`, `-r5`) | 1.0.0-beta05 |
-| Kotlin FHIR Engine | `fhir-engine` | 2.0.0-alpha02 |
-| Kotlin FHIR Data Capture | `fhir-data-capture` | 2.0.0-alpha02 |
+| Kotlin FHIR | `fhir-model` (and `-r4`, `-r4b`, `-r5`) | 1.0.0 |
+| Kotlin FHIRPath | `fhir-path` (and `-core`, `-r4`, `-r4b`, `-r5`) | 1.0.0-beta06 |
+| Kotlin FHIR Engine | `fhir-engine` | 2.0.0-alpha05 |
+| Kotlin FHIR Data Capture | `fhir-data-capture` | 2.0.0-alpha05 |
 
 Each repository's Maven Central badges are the canonical source for the latest release.
 
 ## Maturity
 
-None of the four has reached a stable 1.x or 2.x release. Expect API changes between versions, and pin exact versions rather than ranges. Two facts sharpen that caveat.
+Kotlin FHIR 1.0.0 is a stable release. Kotlin FHIRPath, Kotlin FHIR Engine, and Kotlin FHIR Data Capture are pre-release, so their APIs can change between versions. Pin exact versions, not version ranges.
 
-- Kotlin FHIR and Kotlin FHIRPath expose `kotlinx-datetime` and the `bignum` arbitrary-precision library in their public API (for example `FhirDecimal` and FHIRPath `Decimal` values are backed by `BigDecimal` from `bignum`). Both of those dependencies are themselves pre-1.0, so their types in your code are subject to the same churn.
-- Kotlin FHIR Engine builds on pre-release versions of Room for Kotlin Multiplatform and related storage libraries.
+Two dependencies can still cause changes in your code.
+
+- Kotlin FHIR and Kotlin FHIRPath use types from `kotlinx-datetime` and `bignum` in their public API. For example, `FhirDecimal` is built on `BigDecimal` from `bignum`. Neither library has reached 1.0, so their types can change, even when you use the stable Kotlin FHIR.
+- Kotlin FHIR Engine uses pre-release versions of Room for Kotlin Multiplatform and related storage libraries.
 
 ## Pairing the libraries
 
-The higher layers pin the lower layers they were built against. When you combine them, align with what the higher layer declares rather than mixing freely.
+Each library is built against a specific version of the libraries below it.
 
-- Kotlin FHIR Engine 2.0.0-alpha02 builds against `fhir-model-r4` and `fhir-path-r4` 1.0.0-beta05. The engine's API signatures use the model's types directly, so your app should depend on the same model version.
-- Kotlin FHIR Data Capture 2.0.0-alpha02 builds against `fhir-model` 1.0.0-beta05 and `fhir-path` 1.0.0-beta03.
+| Library | Built against |
+| --- | --- |
+| Kotlin FHIRPath 1.0.0-beta06 | `fhir-model-r4` 1.0.0-rc03 |
+| Kotlin FHIR Engine 2.0.0-alpha05 | `fhir-model-r4` 1.0.0-rc03 and `fhir-path-r4` 1.0.0-beta06 |
+| Kotlin FHIR Data Capture 2.0.0-alpha05 | `fhir-model-r4` 1.0.0-rc03 and `fhir-path-r4` 1.0.0-beta06 |
 
-If Gradle resolves conflicting versions of `dev.ohs.fhir` artifacts in one build, prefer the version the highest layer in your dependency graph declares. Treat any binary incompatibility as a signal to upgrade the whole stack together, because the four are released in near-lockstep.
+None of them is built against Kotlin FHIR 1.0.0 yet. If your app uses any of them, use `fhir-model-r4` 1.0.0-rc03, the version they were built and tested with. If you add 1.0.0 to your build, Gradle uses 1.0.0 for every library, and that combination has not been tested.
+
+In general, use the versions that the highest library in your stack declares. If you see a binary incompatibility, upgrade all the libraries together.
 
 ## FHIR version axis
 

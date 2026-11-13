@@ -11,17 +11,18 @@ repository: kotlin-fhir
 
 ## What it is
 
-Kotlin FHIR is the base of the FHIR Foundations stack. It provides the HL7 FHIR data model, every resource and data type, generated as minimalistic and idiomatic Kotlin classes, together with `kotlinx.serialization` serializers that read and write spec-compliant FHIR JSON. It covers FHIR R4, R4B, and R5, each as its own artifact.
+Kotlin FHIR is the HL7 FHIR data model as Kotlin classes. It is the base of the FHIR Foundations stack. Every resource and data type is generated from the FHIR specification, and each class comes with a serializer that reads and writes FHIR JSON. FHIR R4, R4B, and R5 each have their own artifact.
 
-The library is deliberately lean. It carries no logging, no networking, no XML machinery, and no platform-specific dependencies, which is what lets it target everything from Android and iOS to Wasm and native Linux. Its only runtime dependencies are `kotlinx-serialization`, `kotlinx-datetime`, and an arbitrary-precision number library.
+The library has no logging, networking, XML, or platform-specific dependencies. This is why it runs on Android, iOS, JVM, JavaScript, Wasm, macOS, and Linux. Its only runtime dependencies are `kotlinx-serialization`, `kotlinx-datetime`, and the `bignum` arbitrary-precision number library.
 
 ## What you get
 
-- **Resource and data-type classes** for the full FHIR specification, generated from the official spec packages. Choice elements (`value[x]`) become sealed interfaces, so the compiler enforces which types an element accepts.
-- **Enums for coded fields** where the spec binds a required ValueSet, including a shared `terminologies` package for bindings used across many resources (such as `AdministrativeGender`).
-- **Hand-written primitive types** where Kotlin needs help matching FHIR semantics. `FhirDate` and `FhirDateTime` model FHIR's variable-precision dates, and `FhirDecimal` preserves arbitrary precision.
-- **Generated serializers** that handle FHIR JSON's quirks, such as primitive elements with extensions (the `_field` convention), polymorphic resource decoding via the `resourceType` discriminator, and choice-type expansion. You use a plain `kotlinx.serialization.Json` instance.
-- **Generated search-parameter extractors.** For each resource there is a `SearchParams` object whose parameters extract values as native Kotlin code, without needing a runtime FHIRPath engine. The FHIRPath expression string is still carried as metadata for callers that want to evaluate it externally. That seam is where [Kotlin FHIRPath](/fhir-foundations/kotlin-fhirpath/) plugs in.
+- **A class for every resource and data type.** Choice elements such as `value[x]` are sealed interfaces, so the compiler only accepts the types the specification allows.
+- **Enums for coded elements.** An element of the FHIR type `code` is typed with an enum generated from its ValueSet, such as `AdministrativeGender`. The binding strength decides whether other codes are allowed. Elements of type `CodeableConcept` or `Coding` keep those types. See [Work with coded values](/fhir-foundations/kotlin-fhir/coded-values/).
+- **Special types for dates and decimals.** `FhirDate` and `FhirDateTime` support partial dates such as a year only. `FhirDecimal` keeps the exact digits of a decimal.
+- **JSON serializers.** They handle the parts of FHIR JSON that plain Kotlin serialization cannot, such as extensions on primitive values (the `_field` properties), choice elements, and decoding a resource by its `resourceType`. You use a standard `kotlinx.serialization.Json` instance.
+- **Search parameter extraction.** For each resource, a `SearchParams` object extracts search values as plain Kotlin code, without a FHIRPath engine. Each parameter also keeps its FHIRPath expression, so you can evaluate it with [Kotlin FHIRPath](/fhir-foundations/kotlin-fhirpath/) when the generated code does not cover it.
+- **Tests against the official examples.** On every change, about 11,000 example resources from the HL7 example packages for R4, R4B, and R5 are decoded, encoded again, and compared with the original JSON.
 
 ## Artifacts
 
@@ -30,17 +31,33 @@ The library is deliberately lean. It carries no logging, no networking, no XML m
 | `fhir-model-r4` | FHIR R4 model, package `dev.ohs.fhir.model.r4` |
 | `fhir-model-r4b` | FHIR R4B model, package `dev.ohs.fhir.model.r4b` |
 | `fhir-model-r5` | FHIR R5 model, package `dev.ohs.fhir.model.r5` |
-| `fhir-model` | Umbrella artifact that includes all three |
+| `fhir-model` | All three versions in one artifact |
 
-Depend on the single FHIR version you use. The umbrella exists for tools that genuinely handle multiple versions.
+Depend only on the FHIR version you use. Use `fhir-model` only if your code handles more than one FHIR version.
 
 ## What it is not
 
-- **Not a validator.** Constraints, profiles, and binding strengths from StructureDefinitions are not represented in the generated code. Bindings only influence which enums exist.
-- **Not a client or a database.** There is no networking and no persistence. That is [Kotlin FHIR Engine](/fhir-foundations/kotlin-fhir-engine/)'s job.
-- **JSON only.** XML and Turtle are out of scope. Other `kotlinx.serialization` formats may work mechanically, but only JSON is extensively tested.
-- **Selective generation.** Logical models and profiles are not generated. Classes for conformance resources, such as `ValueSet` and `CodeSystem`, are generated. The ValueSets, CodeSystems, and other conformance resources in the spec packages are not included in the library as resources. The abstract FHIR patterns (`Event`, `Request`, `Definition`) are not modeled as interfaces, because conforming resources may rename elements in ways Kotlin inheritance cannot express.
-- **Not every search parameter is extractable.** Parameters whose FHIRPath patterns the generator does not support throw `NotImplementedError`. See [Extract search parameters](/fhir-foundations/kotlin-fhir/search-parameters/).
+- **Not a validator.** Profiles and constraints (invariants) are not checked. The only check is that a `code` element with a `required` binding holds a code from its ValueSet when decoded.
+- **Not a client or a database.** It has no networking or storage. [Kotlin FHIR Engine](/fhir-foundations/kotlin-fhir-engine/) provides those.
+- **JSON only.** XML and Turtle are not supported. Other `kotlinx.serialization` formats may work, but only JSON is tested.
+- **No profiles or logical models.** Only the base specification is generated. The library has classes such as `ValueSet` and `CodeSystem`, but it does not include the ValueSets and CodeSystems published with the specification. The FHIR patterns `Event`, `Request`, and `Definition` are not interfaces, because resources may rename their elements, which Kotlin inheritance cannot express.
+- **Not every search parameter is extractable.** Some FHIRPath expressions are not supported by the generator, and those parameters throw `NotImplementedError`. See [Extract search parameters](/fhir-foundations/kotlin-fhir/search-parameters/).
+
+## How this documentation is organized
+
+| If you want to | Read |
+| --- | --- |
+| Try the library for the first time | [Get started](/fhir-foundations/kotlin-fhir/get-started/) |
+| Understand how FHIR becomes Kotlin | [How the model maps FHIR](/fhir-foundations/kotlin-fhir/how-the-model-maps-fhir/) |
+| Build or change resources | [Create and change resources](/fhir-foundations/kotlin-fhir/working-with-resources/) |
+| Set or read codes | [Work with coded values](/fhir-foundations/kotlin-fhir/coded-values/) |
+| Handle data from a FHIR server | [Read Bundles and server responses](/fhir-foundations/kotlin-fhir/server-responses/) |
+| Encode and decode JSON | [Read and write FHIR JSON](/fhir-foundations/kotlin-fhir/serialization/) |
+| Build a search index | [Extract search parameters](/fhir-foundations/kotlin-fhir/search-parameters/) |
+| Fix an error | [Troubleshooting](/fhir-foundations/kotlin-fhir/troubleshooting/) |
+| Choose versions | [Versions and compatibility](/fhir-foundations/versions/) |
+
+The [repository documentation](https://github.com/ohs-foundation/kotlin-fhir/tree/main/docs) has the detailed lists that change with each release, such as enum naming rules and supported search expressions.
 
 ## Next step
 
