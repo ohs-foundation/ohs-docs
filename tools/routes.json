@@ -182,6 +182,11 @@
       "searchIndexed": true
     },
     {
+      "id": "kotlin-fhir-coded-values",
+      "path": "/ohs-docs/fhir-foundations/kotlin-fhir/coded-values/",
+      "searchIndexed": true
+    },
+    {
       "id": "kotlin-fhir-serialization",
       "path": "/ohs-docs/fhir-foundations/kotlin-fhir/serialization/",
       "searchIndexed": true

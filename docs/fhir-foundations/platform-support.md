@@ -31,7 +31,7 @@ The four repositories target different platform sets, so check this table before
 
 ### Kotlin FHIR
 
-The widest matrix in the pillar. It is a pure data-model library with no I/O, so it also ships native macOS and Linux targets. There are no Intel Mac, watchOS, tvOS, or Windows-native targets. The JVM artifact of the current release candidate targets Java 21, so JVM consumers need a matching runtime.
+The widest matrix in the pillar. It is a pure data-model library with no I/O, so it also ships native macOS and Linux targets. There are no Intel Mac, watchOS, tvOS, or Windows-native targets. The JVM artifact is compiled to Java 11 bytecode, so it runs on Java 11 or newer.
 
 ### Kotlin FHIRPath
 

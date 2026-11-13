@@ -60,6 +60,7 @@ const sidebars = {
               items: [
                 "fhir-foundations/kotlin-fhir/get-started",
                 "fhir-foundations/kotlin-fhir/working-with-resources",
+                "fhir-foundations/kotlin-fhir/coded-values",
                 "fhir-foundations/kotlin-fhir/serialization",
                 "fhir-foundations/kotlin-fhir/search-parameters",
               ],
