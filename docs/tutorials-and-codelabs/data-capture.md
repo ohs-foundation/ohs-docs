@@ -343,5 +343,4 @@ You have used Kotlin FHIR Data Capture to process FHIR questionnaires and respon
 - Run the codelab on Desktop, Web and iOS.
 - Customize how rendered questionnaires look and behave with `QuestionnaireConfig`, as described in [Control rendering behavior](/fhir-foundations/kotlin-fhir-data-capture/render-a-questionnaire/).
 - Read the [conformance statement](https://github.com/ohs-foundation/kotlin-fhir-data-capture/blob/main/docs/conformance.md) to see which Questionnaire and SDC features the library supports.
-- Author richer forms with FHIRPath validation in the [SDC Questionnaires tutorial](/tutorials-and-codelabs/sdc-questionnaires/).
 - Apply Kotlin FHIR Data Capture in your own app.

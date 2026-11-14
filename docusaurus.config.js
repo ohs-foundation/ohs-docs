@@ -58,6 +58,11 @@ const config = {
           { from: "/concepts/what-you-can-do-today", to: "/ohs-player/what-you-can-do-today/" },
           // Merged into the architecture page rather than moved.
           { from: "/concepts/how-player-uses-ohs-components", to: "/ohs-player/architecture/" },
+
+          // Replaced by the Kotlin FHIR Engine codelab, which has a starter project.
+          { from: "/tutorials-and-codelabs/multiplatform-client", to: "/tutorials-and-codelabs/engine/" },
+          // Replaced by the Kotlin FHIR Data Capture codelab.
+          { from: "/tutorials-and-codelabs/sdc-questionnaires", to: "/tutorials-and-codelabs/data-capture/" },
         ],
       },
     ],
