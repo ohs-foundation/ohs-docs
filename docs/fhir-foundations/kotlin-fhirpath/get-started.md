@@ -1,6 +1,6 @@
 ---
 title: Get started with Kotlin FHIRPath
-description: Add the engine to your project and evaluate FHIRPath expressions against FHIR resources.
+description: Add Kotlin FHIRPath to your project and evaluate a FHIRPath expression against a FHIR resource.
 slug: /fhir-foundations/kotlin-fhirpath/get-started/
 sidebar_position: 20
 guide_type: Get started
@@ -11,70 +11,60 @@ repository: kotlin-fhirpath
 
 ## Goal and scope
 
-Add Kotlin FHIRPath to a project and evaluate expressions against a resource. Examples use R4, and `forR4B()` and `forR5()` behave identically over their own models.
+This page adds Kotlin FHIRPath to a project and evaluates an expression against a Patient. Examples use R4. The R4B and R5 engines work the same way.
 
 ## Prerequisites
 
-- A Kotlin project on a supported [target platform](/fhir-foundations/platform-support/).
-- Resources represented with [Kotlin FHIR](/fhir-foundations/kotlin-fhir/), because the engine evaluates against those data classes. The dependency below brings the matching model transitively.
+- A Kotlin project on a supported [platform](/fhir-foundations/platform-support/). On the JVM, use Java 21 or newer.
+- Resources as [Kotlin FHIR](/fhir-foundations/kotlin-fhir/) objects. The dependency below includes the Kotlin FHIR model, so you do not add it separately.
 
 ## Add the dependency
 
+Add `mavenCentral()` to your repositories, then add the artifact for your FHIR version.
+
 ```kotlin
-kotlin {
-  sourceSets {
-    commonMain.dependencies {
-      implementation("dev.ohs.fhir:fhir-path-r4:1.0.0-beta05")
-    }
-  }
+// build.gradle.kts
+dependencies {
+  implementation("dev.ohs.fhir:fhir-path-r4:1.0.0-beta06")
 }
 ```
 
-For Android-only or JVM-only projects, the same coordinate goes in the ordinary `dependencies` block. Use the `fhir-path` aggregate only if you handle several FHIR versions in one codebase.
+In a Kotlin Multiplatform project, add it to `commonMain.dependencies` instead. In a Maven project, use the `fhir-path-r4-jvm` artifact.
+
+If your build also declares Kotlin FHIR, use the Kotlin FHIR version listed in [Pairing the libraries](/fhir-foundations/versions/#pairing-the-libraries).
 
 ## Evaluate an expression
 
 ```kotlin
 import dev.ohs.fhir.fhirpath.FhirPathEngine
 import dev.ohs.fhir.fhirpath.forR4
+import dev.ohs.fhir.model.r4.Patient
+import kotlinx.serialization.json.Json
+
+val patient = Json { ignoreUnknownKeys = true }.decodeFromString<Patient>(patientJson)
 
 val engine = FhirPathEngine.forR4()
-
 val givenNames = engine.evaluateExpression("name.given", patient)
-// e.g. ["Peter", "James", "Jim"]
+// [Peter, James, Jim]
 ```
 
-`evaluateExpression` takes the expression string, a base object (a resource or any element from the model), and an optional map of external variables.
+`evaluateExpression()` returns a collection. It can hold several values, one value, or none.
 
-```kotlin
-val results = engine.evaluateExpression(
-  "name.where(use = %nameUse).given",
-  patient,
-  variables = mapOf("nameUse" to "official"),
-)
-```
+## Turn on strict mode while you develop
 
-The result is a `Collection<Any>` of FHIRPath system values, meaning strings, booleans, big decimals, and the engine's own date, time, and quantity types. An empty collection is a normal outcome, not an error.
-
-## Strict mode
-
-By default the engine is lenient. Accessing a property that does not exist on the input yields an empty collection, as the spec's dynamic evaluation model prescribes. While developing and testing expressions, prefer strict mode, which throws an `IllegalStateException` on undefined property access.
+By default, a misspelled property gives an empty result. In strict mode, it throws an `IllegalStateException` that names the property.
 
 ```kotlin
 val strictEngine = FhirPathEngine.forR4(strictMode = true)
-val results = strictEngine.evaluateExpression("name.given", patient)
+
+strictEngine.evaluateExpression("name.given1", patient)
+// Throws IllegalStateException with "Property 'given1' does not exist on type 'HumanName'"
 ```
-
-Invalid expression syntax fails fast in both modes. The parser rejects the expression with an error rather than evaluating a partial parse.
-
-## Concurrency
-
-An engine instance holds per-evaluation state internally. Create engine instances cheaply where you need them rather than sharing one instance across concurrent evaluations.
 
 ## Checkpoint
 
-`engine.evaluateExpression("name.given", patient)` returns the given names of your patient as strings. An unexpected empty collection usually means a typo in a property name. Rerun the same expression on a strict engine to get an error instead.
+`engine.evaluateExpression("name.given", patient)` returns the given names of the patient. If it returns an empty collection, run the same expression on a strict engine to find the mistake.
 
 ## Next step
 
-[Evaluation semantics](/fhir-foundations/kotlin-fhirpath/evaluation-semantics/) covers how types, dates, and timezones behave.
+[How evaluation works](/fhir-foundations/kotlin-fhirpath/evaluation-semantics/) explains what the engine returns and why.
