@@ -200,7 +200,6 @@ const sidebars = {
           items: [
             "tutorials-and-codelabs/engine",
             "tutorials-and-codelabs/data-capture",
-            "tutorials-and-codelabs/sdc-questionnaires",
           ],
         },
         {

@@ -61,6 +61,8 @@ const config = {
 
           // Replaced by the Kotlin FHIR Engine codelab, which has a starter project.
           { from: "/tutorials-and-codelabs/multiplatform-client", to: "/tutorials-and-codelabs/engine/" },
+          // Replaced by the Kotlin FHIR Data Capture codelab.
+          { from: "/tutorials-and-codelabs/sdc-questionnaires", to: "/tutorials-and-codelabs/data-capture/" },
         ],
       },
     ],

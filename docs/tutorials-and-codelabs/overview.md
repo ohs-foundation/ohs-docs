@@ -22,7 +22,6 @@ Each module focuses on a concrete technical capability, complete with prerequisi
 | --- | --- | --- | --- |
 | Manage FHIR Resources | Codelab | A Kotlin Multiplatform app that syncs patients with a FHIR server, updates them locally, and searches them | [Start codelab](/tutorials-and-codelabs/engine/) |
 | Capture and Process Health Data | Codelab | A Kotlin Multiplatform app that renders a FHIR Questionnaire and extracts a Patient resource | [Start codelab](/tutorials-and-codelabs/data-capture/) |
-| Clinical Questionnaire Authoring | Tutorial | SDC questionnaires with FHIRPath validation and data extraction | [Start tutorial](/tutorials-and-codelabs/sdc-questionnaires/) |
 
 ## Info Gateway
 
@@ -59,6 +58,6 @@ Each module focuses on a concrete technical capability, complete with prerequisi
 
 ## Suggested progression by role
 
-- **Mobile and frontend developers** can begin with the [FHIR Engine Codelab](/tutorials-and-codelabs/engine/) and proceed to [Clinical Questionnaire Authoring](/tutorials-and-codelabs/sdc-questionnaires/).
+- **Mobile and frontend developers** can begin with the [FHIR Engine Codelab](/tutorials-and-codelabs/engine/) and proceed to the [Data Capture Codelab](/tutorials-and-codelabs/data-capture/).
 - **Backend and DevOps engineers** can explore [Info Gateway Getting Started](/tutorials-and-codelabs/info-gateway-getting-started/), [Run Info Gateway in Docker](/tutorials-and-codelabs/info-gateway-docker/), [Create an Access Checker Plugin](/tutorials-and-codelabs/info-gateway-access-checker/), or try the [Gateway Security Codelab](/tutorials-and-codelabs/gateway-access-rules/).
 - **Health informaticians and data analysts** can progress through [Streaming Analytics with SQL-on-FHIR](/tutorials-and-codelabs/sql-on-fhir-analytics/), [Analytics Test Servers Setup](/tutorials-and-codelabs/data-pipes-test-servers/), [Single Machine Analytics Deployment](/tutorials-and-codelabs/data-pipes-single-machine/), and [Parquet Visualization in Superset](/tutorials-and-codelabs/data-pipes-superset/).

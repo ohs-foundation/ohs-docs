@@ -287,11 +287,6 @@
       "searchIndexed": true
     },
     {
-      "id": "tutorials-and-codelabs-sdc-questionnaires",
-      "path": "/ohs-docs/tutorials-and-codelabs/sdc-questionnaires/",
-      "searchIndexed": true
-    },
-    {
       "id": "tutorials-and-codelabs-sql-on-fhir-analytics",
       "path": "/ohs-docs/tutorials-and-codelabs/sql-on-fhir-analytics/",
       "searchIndexed": true
