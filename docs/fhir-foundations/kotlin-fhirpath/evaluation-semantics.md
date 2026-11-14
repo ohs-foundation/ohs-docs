@@ -1,6 +1,6 @@
 ---
-title: Evaluation semantics
-description: How the engine handles types, dates, timezones, and errors, which decides whether expressions mean what you think.
+title: How evaluation works
+description: What the engine returns, why results can be empty, and how it handles dates, time zones, and quantities.
 slug: /fhir-foundations/kotlin-fhirpath/evaluation-semantics/
 sidebar_position: 30
 guide_type: Concept
@@ -9,50 +9,101 @@ guide_focus: Predicting what an expression returns before running it
 repository: kotlin-fhirpath
 ---
 
-## Why this page exists
+## Goal and scope
 
-This page describes the behavior the engine commits to around types, empty collections, and dates, including two places where it is deliberately stricter than the spec permits.
+This page explains the rules the engine follows, so you can predict what an expression returns. It covers result types, empty results, dates and time zones, quantities, and errors. To run expressions, see [Evaluate expressions](/fhir-foundations/kotlin-fhirpath/evaluate-expressions/).
 
-## Result values and their types
+## Every result is a collection
 
-`evaluateExpression` returns `Collection<Any>` because FHIRPath is a collection language. Every expression produces a collection, possibly empty, possibly mixed. Values are FHIRPath *system* types, mapped to Kotlin as follows.
+FHIRPath works on collections. Every expression returns a collection, and `evaluateExpression()` returns it as `Collection<Any>`. A single value is a collection with one item. No value is an empty collection.
 
-| FHIRPath type | Kotlin representation |
+## Results use FHIRPath types
+
+Primitive values come back as FHIRPath types, not Kotlin FHIR types. For example, `name.given` returns Kotlin `String` values, not the FHIR `String` class.
+
+| FHIRPath type | Kotlin type |
 | --- | --- |
-| String | `kotlin.String` |
 | Boolean | `kotlin.Boolean` |
+| String | `kotlin.String` |
 | Integer | `kotlin.Int` |
 | Long | `kotlin.Long` |
-| Decimal | `BigDecimal` (multiplatform, arbitrary precision) |
-| Date / DateTime / Time | `FhirPathDate` / `FhirPathDateTime` / `FhirPathTime` |
+| Decimal | `FhirPathDecimal` |
+| Date | `FhirPathDate` |
+| DateTime | `FhirPathDateTime` |
+| Time | `FhirPathTime` |
 | Quantity | `FhirPathQuantity` |
 
-FHIR values convert to FHIRPath values lazily, at the last possible moment. That matters because a FHIR primitive can carry `id` and extensions. Converting early would discard them and break expressions like `name.given.extension(...)`. The engine keeps the FHIR representation while navigating and converts at the end, so `Patient.name.given` and `Patient.name.given.select(substring(0))` both come back as FHIRPath strings.
+The `FhirPath` types are in the `dev.ohs.fhir.fhirpath.types` package. Results can also contain Kotlin FHIR objects, such as `HumanName`, when the expression returns an element that is not a primitive.
 
-## Empty is an answer
+The engine has its own date and time types because FHIRPath allows partial times, such as `@T10` with only an hour. Kotlin FHIR does not allow these.
 
-Per the spec, evaluation over missing data yields the empty collection `{}`, and most operators propagate emptiness rather than failing. An empty result therefore means "no value", not "error". If you want an undefined property access to be an error, create the engine with `strictMode = true`.
+## FHIR values are converted as late as possible
 
-## Dates, times, and timezones
+A FHIR primitive can have an `id` and extensions. FHIRPath types cannot. So the engine keeps FHIR values while it navigates, which lets expressions such as `name.given.extension` work. It converts values to FHIRPath types only when needed.
 
-Two deliberate decisions, both on the conservative side for clinical data.
+- For equality and comparison, such as `=` and `<`
+- For membership, such as `in` and `contains`
+- For set functions, such as `union`, `distinct`, `intersect`, `exclude`, `subsetOf`, and `supersetOf`
+- At the end of the evaluation, for every value in the result
 
-- **No default timezone is ever assumed.** Comparing a date-time that has a timezone offset with one that has none returns `{}` for `=` and the ordering operators, and the equivalence operator `~` returns `false`. The spec permits filling in a default zone, but the engine refuses because the data may come from a system whose timezone is unknown, making any guess unsafe. Two values that both lack an offset compare as if they shared one, so local timestamps remain comparable.
-- **Precision is respected.** FHIRPath dates can be a year, a year-month, or a full date, and comparisons that cannot be decided at the values' precisions return `{}`. This includes comparing partial date-times that carry timezone offsets. The `precision()`, `lowBoundary()`, and `highBoundary()` functions expose precision explicitly, and passing an invalid precision argument to them raises an error rather than returning empty.
+## An empty result is an answer
 
-## Quantities and UCUM
+When data is missing, most FHIRPath operators return an empty collection instead of failing. So an empty result means "no value", not "error".
 
-`Quantity` values validate their units against UCUM, and comparison and arithmetic convert between commensurable units, so `2.1 'kg'` and `2100 'g'` compare equal. Incommensurable units compare to `{}`.
+The engine also returns an empty collection when it cannot decide an answer. Division by zero, comparing quantities with incompatible units, and the date comparisons below all return empty.
 
-## Errors
+## Dates and times are compared at their precision
 
-- **Syntax errors fail fast.** The parser uses a bail-out strategy plus an end-of-input check, so a malformed expression raises immediately with the offending fragment. It never half-evaluates.
-- **Undefined property access behaves per mode.** Lenient mode yields an empty collection. Strict mode throws an `IllegalStateException`.
+A FHIRPath date can be a year, a year and month, or a full date. A date-time can stop at any part. If the values differ in a part that both have, that part decides the result. If they are equal in every part they share and one value has more parts, the comparison returns empty.
 
-## Engine state and concurrency
+| Expression | Result |
+| --- | --- |
+| `@2024 < @2024-06` | empty |
+| `@2024-01-01T10 < @2024-01-01T10:30` | empty |
+| `@2025 > @2024-06` | `true` |
 
-The engine reinitializes internal evaluator state on every `evaluateExpression` call. This is also what powers the `traces` property, which exposes the output of the FHIRPath `trace()` function after a call. Because that state is per-instance, do not share a single engine across concurrent evaluations. Construct one per thread of work.
+The `precision()` function returns the precision of a value as a number.
+
+| Type | Precision values |
+| --- | --- |
+| Date | 4 for year, 6 for month, 8 for day |
+| DateTime | 4, 6, 8, then 10 for hour, 12 for minute, 14 for second, and more than 14 for fractions of a second |
+| Time | 2 for hour, 4 for minute, 6 for second, and more than 6 for fractions of a second |
+
+For fractions of a second, each extra number adds one decimal place. For example, a DateTime precision of 17 is milliseconds. For equality and comparison, seconds and fractions of a second count as one precision, so `@T10:00:00 = @T10:00:00.0` is `true`. The `lowBoundary()` and `highBoundary()` functions take the same values. Any other value returns an empty result.
+
+## The engine never guesses a time zone
+
+The specification lets an engine assume a time zone for date-times that have none. This engine does not, because the data could come from a system with an unknown time zone, and a wrong guess is unsafe for clinical data.
+
+| Expression | Result |
+| --- | --- |
+| `@2025-01-01T00:00:00.0+00:00 = @2025-01-01T00:00:00.0` | empty |
+| `@2025-01-01T00:00:00.0+00:00 ~ @2025-01-01T00:00:00.0` | `false` |
+| `@2025-01-01T00:00:00.0 = @2025-01-01T00:00:00.0` | `true` |
+| `@2025-01-01T00+05:30 = @2025-01-01T00+05:45` | empty |
+
+- **One value has an offset and the other has none.** Equality and comparison return empty. Equivalence, `~`, returns `false`.
+- **Neither value has an offset.** They are compared as if they had the same offset, so local times can still be compared.
+- **Partial date-times with offsets.** Comparing them returns empty. For example, two hour-precision times with the offsets `+05:30` and `+05:45` cannot be compared hour by hour.
+
+## Quantities convert between units
+
+`Quantity` values check their units against UCUM. Comparison and arithmetic convert between compatible units.
+
+| Expression | Result |
+| --- | --- |
+| `2.1 'kg' = 2100 'g'` | `true` |
+| `2.1 'kg' > 1 'm'` | empty, because mass and length cannot be compared |
+
+## Errors depend on the mode
+
+- **Syntax errors** always throw. The engine never evaluates part of an expression.
+- **A property that the type does not define** returns empty by default. In strict mode, it throws an `IllegalStateException`. A defined element with no value returns empty in both modes.
+- **Some invalid operations** throw in both modes, such as calling a function that is not implemented or adding a string to a number.
+
+[Troubleshooting](/fhir-foundations/kotlin-fhirpath/troubleshooting/) lists the error messages.
 
 ## Next step
 
-[Conformance](/fhir-foundations/kotlin-fhirpath/conformance/) lists exactly which spec features are implemented, partial, or absent.
+[Evaluate expressions](/fhir-foundations/kotlin-fhirpath/evaluate-expressions/) shows how to run expressions and read their results.

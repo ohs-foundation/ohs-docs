@@ -35,7 +35,7 @@ The widest matrix in the pillar. It is a pure data-model library with no I/O, so
 
 ### Kotlin FHIRPath
 
-Adds a parser and evaluator on top of the model and covers the app-facing targets. Those are Android, JVM, both iOS ARM targets, JS, and both Wasm variants. The official FHIR test-suite conformance tests execute on JVM and Android, and the other targets run the unit-test suite.
+Adds a parser and evaluator on top of the model and covers the app-facing targets. Those are Android, JVM, both iOS ARM targets, JS, and both Wasm variants. The official FHIR test-suite conformance tests execute on JVM and Android, and the other targets run the unit-test suite. The JVM artifacts of 1.0.0-beta06 are compiled to Java 21 bytecode, so they need Java 21 or newer.
 
 ### Kotlin FHIR Engine
 

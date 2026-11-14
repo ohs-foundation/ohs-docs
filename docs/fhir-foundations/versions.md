@@ -17,7 +17,7 @@ All artifacts publish to Maven Central under the group `dev.ohs.fhir`. The table
 | Repository | Artifact | Version |
 | --- | --- | --- |
 | Kotlin FHIR | `fhir-model` (and `-r4`, `-r4b`, `-r5`) | 1.0.0-rc02 |
-| Kotlin FHIRPath | `fhir-path` (and `-core`, `-r4`, `-r4b`, `-r5`) | 1.0.0-beta05 |
+| Kotlin FHIRPath | `fhir-path` (and `-core`, `-r4`, `-r4b`, `-r5`) | 1.0.0-beta06 |
 | Kotlin FHIR Engine | `fhir-engine` | 2.0.0-alpha02 |
 | Kotlin FHIR Data Capture | `fhir-data-capture` | 2.0.0-alpha02 |
 
@@ -34,6 +34,7 @@ None of the four has reached a stable 1.x or 2.x release. Expect API changes bet
 
 The higher layers pin the lower layers they were built against. When you combine them, align with what the higher layer declares rather than mixing freely.
 
+- Kotlin FHIRPath 1.0.0-beta06 builds against `fhir-model-r4` 1.0.0-rc03. It brings that version with it, so you do not need to declare Kotlin FHIR yourself.
 - Kotlin FHIR Engine 2.0.0-alpha02 builds against `fhir-model-r4` and `fhir-path-r4` 1.0.0-beta05. The engine's API signatures use the model's types directly, so your app should depend on the same model version.
 - Kotlin FHIR Data Capture 2.0.0-alpha02 builds against `fhir-model` 1.0.0-beta05 and `fhir-path` 1.0.0-beta03.
 
