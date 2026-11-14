@@ -198,7 +198,7 @@ const sidebars = {
           collapsible: true,
           collapsed: false,
           items: [
-            "tutorials-and-codelabs/multiplatform-client",
+            "tutorials-and-codelabs/engine",
             "tutorials-and-codelabs/data-capture",
             "tutorials-and-codelabs/sdc-questionnaires",
           ],

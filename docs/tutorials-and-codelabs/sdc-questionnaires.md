@@ -18,7 +18,7 @@ You will learn how to build nested form items, apply dynamic calculations with F
 
 ## Prerequisites
 
-- Completed the [Multiplatform Client Codelab](/tutorials-and-codelabs/multiplatform-client/) or have an existing Kotlin Multiplatform project
+- Completed the [FHIR Engine Codelab](/tutorials-and-codelabs/engine/) or have an existing Kotlin Multiplatform project
 - `kotlin-fhir-data-capture` imported in your project
 
 ## Step 1 · Define a Questionnaire resource
