@@ -65,7 +65,13 @@ The compiler rejects types the spec does not allow for the element, and a `when`
 
 ## Coded fields
 
-Where the spec binds an element to a required ValueSet, the model generates an enum. Bindings shared across resources live in the `terminologies` subpackage (for example `AdministrativeGender`), and bindings used by a single element are nested in the owning class. Three ValueSets are deliberately not generated as enums because they are unbounded or too large to compile (`mimetypes`, `all-languages`, and the usage-context set). Those fields stay as plain coded types.
+The model generates an enum for each ValueSet that an element binds to. All of them live in the `terminologies` subpackage, such as `dev.ohs.fhir.model.r4.terminologies.AdministrativeGender`. How the element is typed depends on the binding strength.
+
+- **Required** bindings are typed `Enumeration<T>`, so `Patient.gender` is `Enumeration<AdministrativeGender>`. Decoding rejects codes outside the ValueSet.
+- **Extensible** and **preferred** bindings are typed `ExtensibleEnumeration<T>`. A value is either `Predefined`, holding an enum constant, or `Custom`, holding a code outside the ValueSet.
+- **Example** bindings stay as the open `Code` type.
+
+Three ValueSets are deliberately not generated as enums because they are unbounded or too large to compile. They are `mimetypes`, `all-languages`, and `use-context`.
 
 ## Documentation in the IDE
 

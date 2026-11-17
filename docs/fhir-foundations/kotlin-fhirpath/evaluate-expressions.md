@@ -112,7 +112,7 @@ for (value in engine.evaluateExpression(expression, resource)) {
     is FhirPathDecimal -> println("Decimal ${value.asBigDecimal()}")
     is FhirPathDate -> println("Date ${value.year} ${value.month} ${value.day}")
     is FhirPathQuantity -> println("Quantity ${value.value} ${value.unit}")
-    else -> println("Element $value")
+    else -> println("Other $value")
   }
 }
 ```

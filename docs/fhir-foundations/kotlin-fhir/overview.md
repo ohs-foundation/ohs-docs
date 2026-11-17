@@ -18,7 +18,7 @@ The library is deliberately lean. It carries no logging, no networking, no XML m
 ## What you get
 
 - **Resource and data-type classes** for the full FHIR specification, generated from the official spec packages. Choice elements (`value[x]`) become sealed interfaces, so the compiler enforces which types an element accepts.
-- **Enums for coded fields** where the spec binds a required ValueSet, including a shared `terminologies` package for bindings used across many resources (such as `AdministrativeGender`).
+- **Enums for coded fields** in the `terminologies` package, such as `AdministrativeGender`. Required bindings accept only the enum's codes, and extensible or preferred bindings also accept other codes.
 - **Hand-written primitive types** where Kotlin needs help matching FHIR semantics. `FhirDate` and `FhirDateTime` model FHIR's variable-precision dates, and `FhirDecimal` preserves arbitrary precision.
 - **Generated serializers** that handle FHIR JSON's quirks, such as primitive elements with extensions (the `_field` convention), polymorphic resource decoding via the `resourceType` discriminator, and choice-type expansion. You use a plain `kotlinx.serialization.Json` instance.
 - **Generated search-parameter extractors.** For each resource there is a `SearchParams` object whose parameters extract values as native Kotlin code, without needing a runtime FHIRPath engine. The FHIRPath expression string is still carried as metadata for callers that want to evaluate it externally. That seam is where [Kotlin FHIRPath](/fhir-foundations/kotlin-fhirpath/) plugs in.
