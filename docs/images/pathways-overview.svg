@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 600" width="1400" height="600" role="img" aria-labelledby="pwTitle pwDesc">
   <title id="pwTitle">OHS adoption pathways</title>
-  <desc id="pwDesc">Four adoption pathways. Pathway A, unbundled SDKs, client and backend libraries added to existing applications. Pathway B, reference platform, a full end-to-end multiplatform stack for a rapid baseline. Pathway C, analytics hub, SQL-on-FHIR pipelines powering aggregate dashboards. Pathway D, advancing safe, effective AI for global health use cases, launching evaluation tooling and frameworks.</desc>
+  <desc id="pwDesc">Four adoption pathways. Pathway A, unbundled SDKs, client and backend libraries added to existing applications. Pathway B, reference platform, a full end-to-end multiplatform stack for a rapid baseline. Pathway C, analytics hub, SQL-on-FHIR pipelines powering aggregate dashboards. Pathway D, advancing safe, effective AI for global health use cases with active benchmarking, evaluation, and Agent Skills initiatives.</desc>
 
   <style>
     :root, svg {
@@ -25,7 +25,7 @@
     }
     .bg      { fill: var(--bg); }
     .card    { fill: var(--found-fill); stroke: var(--found); stroke-width: 2.4; }
-    .card-ai { fill: var(--ai-fill); stroke: var(--ai); stroke-width: 2.4; stroke-dasharray: 8 7; }
+    .card-ai { fill: var(--ai-fill); stroke: var(--ai); stroke-width: 2.4; }
     .badge   { fill: var(--found); }
     .badge-ai{ fill: var(--ai); }
     .kicker  { font: 600 22px "Hanken Grotesk", "Google Sans", Inter, system-ui, sans-serif; fill: var(--found); letter-spacing: .05em; }
@@ -90,7 +90,7 @@
       <circle cx="-2" cy="6" r="1.6" fill="#FFFFFF" stroke="none"/>
       <circle cx="3" cy="10" r="1.4" fill="#FFFFFF" stroke="none"/>
     </g>
-    <text class="kicker-ai" x="108" y="52">PATHWAY D &#183; LAUNCHING</text>
+    <text class="kicker-ai" x="108" y="52">PATHWAY D &#183; ACTIVE</text>
     <text class="title" x="108" y="92">Safe AI for Global Health</text>
     <text class="desc" x="32" y="158">Advancing safe, effective AI</text>
     <text class="desc" x="32" y="188">for global health use cases</text>

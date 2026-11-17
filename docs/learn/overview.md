@@ -13,7 +13,7 @@ guide_status: ready
 
 Open Health Stack is a collection of open-source tools and libraries organized into three complementary pillars. Each pillar provides standards-based building blocks designed to work together or independently.
 
-![Open Health Stack three pillars architecture diagram showing FHIR Foundations with core libraries and SDKs, OHS Player reference toolkit, and AI Commons evaluation tooling in incubation](../images/ohs-ecosystem-overview.svg)
+![Open Health Stack three pillars architecture diagram showing FHIR Foundations with core libraries and SDKs, OHS Player reference toolkit, and active AI Commons benchmarking, evaluation, and skills initiatives](../images/ohs-ecosystem-overview.svg)
 
 ## Pillar 1 for FHIR Foundations
 
@@ -39,19 +39,15 @@ An end-to-end reference toolkit showing how foundational building blocks assembl
 
 [Explore complete OHS Player reference toolkit →](/ohs-player/)
 
-## Pillar 3 for AI Commons (Launching)
+## Pillar 3 for AI Commons (Active)
 
-Advancing safe, effective artificial intelligence for global health use cases.
+Advancing safe, effective, and verifiable artificial intelligence for global health use cases through shared benchmarking infrastructure, lifecycle evaluation, and open developer skills.
 
-The **AI Evals Lifecycle Working Group** is kicking off under the Open Health Stack Software Foundation to operationalize an end-to-end evaluation infrastructure for Global Health AI across three key phases.
+- **Benchmarking (gHBench)** is an initiative funded by Google.org to develop shared infrastructure for global health benchmarking use cases, led by PATH and MLCommons in collaboration with the AI Evals Working Group and CHAI on behalf of the AI Commons for Global Health community (status funded and forming).
+- **Evals (AI Evals Working Group)** operationalizes end-to-end evaluation infrastructure with the AI Commons for Global Health collective across pre-development model selection baselines, pre-deployment application staging harnesses for prompts and FHIR schema mappings, post-deployment field monitoring for continuous quality improvement, and shared evaluation playbooks.
+- **Skills development** builds open [Agent Skills](https://github.com/ohs-foundation/labs-ohs-agent/tree/main/skills) (`SKILL.md`) for Open Health Stack libraries to streamline standards-compliant app development with AI coding agents. See the recent OHS Labs post on how [The FHIR Tax Is Shrinking](https://ohs.foundation/blog/fhir-standards-tax.html).
 
-- **Phase 1 (Pre-Development Model Selection)** establishes clinical reasoning and safety baselines to guide model selection.
-- **Phase 2 (Pre-Deployment Application Staging)** co-develops open adapters and staging harnesses to test prompts, retrieval pipelines, and FHIR schema mappings.
-- **Phase 3 (Post-Deployment Monitoring and CQI)** implements lightweight telemetry and continuous quality improvement, looping real-world field risks back into pre-deployment rubrics.
-
-Community working sessions and bi-weekly collaborative calls produce open evaluation tooling, an AI for Global Health Eval Playbook, and a shared evaluation synthesis white paper.
-
-To join the working group and attend the kick-off on Monday, October 26, 2026, [sign up for working group updates](https://ohs.foundation/get-involved) or review the [AI Commons briefing and working group schedule](/why-ohs/#pillar-3-for-ai-commons-launching).
+[Explore AI Commons initiatives and get involved →](/why-ohs/#pillar-3-for-ai-commons-active)
 
 ## What Open Health Stack leaves to the broader ecosystem
 
