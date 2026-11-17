@@ -45,7 +45,7 @@ A line such as `line 1:12 no viable alternative at input '<EOF>'` can also appea
 
 **Cause.** The expression is not valid FHIRPath. For example, `name.given +` is incomplete, and `name.given )` has extra text at the end. The second kind of error throws `IndexOutOfBoundsException` in this version, instead of a message that names the extra text.
 
-**Fix.** Correct the expression. If expressions come from users or configuration, catch `RuntimeException` around `evaluateExpression()`, because syntax errors and evaluation errors use different exception types. Test fixed expressions in your unit tests, so syntax errors show up before release.
+**Fix.** Correct the expression. If expressions come from users or configuration, catch `RuntimeException` around the `evaluateExpression()` call alone, because syntax errors and evaluation errors use different exception types. Test fixed expressions in your unit tests, so syntax errors show up before release.
 
 ### `Function '...' is not implemented.`
 
