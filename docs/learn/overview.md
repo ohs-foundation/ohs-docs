@@ -47,7 +47,7 @@ Advancing safe, effective, and verifiable artificial intelligence for global hea
 - **Evals (AI Evals Working Group)** operationalizes end-to-end evaluation infrastructure with the AI Commons for Global Health collective across pre-development model selection baselines, pre-deployment application staging harnesses for prompts and FHIR schema mappings, post-deployment field monitoring for continuous quality improvement, and shared evaluation playbooks.
 - **Skills development** builds open [Agent Skills](https://github.com/ohs-foundation/labs-ohs-agent/tree/main/skills) (`SKILL.md`) for Open Health Stack libraries to streamline standards-compliant app development with AI coding agents. See the recent OHS Labs post on how [The FHIR Tax Is Shrinking](https://ohs.foundation/blog/fhir-standards-tax.html).
 
-[Explore AI Commons initiatives and get involved →](/why-ohs/#pillar-3-for-ai-commons-active)
+[Explore AI Commons initiatives](/why-ohs/#pillar-3-for-ai-commons-active) or [get involved with AI Commons working groups](https://ohs.foundation/get-involved).
 
 ## What Open Health Stack leaves to the broader ecosystem
 

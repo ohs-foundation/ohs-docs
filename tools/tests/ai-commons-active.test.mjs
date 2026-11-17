@@ -142,6 +142,7 @@ test("built HTML renders Active badge, anchor, and key AI Commons initiatives", 
       "AI Evals Working Group",
       "https://github.com/ohs-foundation/labs-ohs-agent/tree/main/skills",
       "https://ohs.foundation/blog/fhir-standards-tax.html",
+      "https://ohs.foundation/get-involved",
     ]) {
       assert.ok(
         html.includes(requiredText),

@@ -52,7 +52,7 @@ Advancing safe, effective, and verifiable artificial intelligence for global hea
 
 #### Get involved with AI Commons
 
-- [Register to join the AI Evals Working Group and receive updates](https://ohs.foundation/community.html#working-groups)
+- [Register to join the AI Evals Working Group and receive updates](https://ohs.foundation/get-involved)
 - [Join the OHS Discord community](https://discord.gg/sfgUU7AHZT)
 - [Explore the OHS Labs Agent Skills experiment on GitHub](https://github.com/ohs-foundation/labs-ohs-agent)
 
