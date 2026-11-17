@@ -37,6 +37,7 @@
   --ohs-cyan: oklch(0.58 0.105 222);
   --ohs-cyan-wash: oklch(0.955 0.022 222);
   --ohs-amber: oklch(0.7 0.115 75);
+  --ohs-green: oklch(0.6 0.11 155);
   --ohs-shadow: 0 10px 28px oklch(0.3 0.02 210 / 0.1);
   --ohs-header-h: 66px;
   --ohs-gutter: clamp(20px, 4vw, 54px);
@@ -534,6 +535,11 @@ a { color: inherit; }
   background: color-mix(in oklch, var(--ohs-cyan) 18%, transparent);
   color: oklch(0.38 0.1 222);
   border: 1px solid color-mix(in oklch, var(--ohs-cyan) 40%, transparent);
+}
+.ohs-release-active {
+  background: color-mix(in oklch, var(--ohs-green) 18%, transparent);
+  color: oklch(0.38 0.1 155);
+  border: 1px solid color-mix(in oklch, var(--ohs-green) 40%, transparent);
 }
 .ohs-hero-eyebrow-row {
   display: inline-flex;

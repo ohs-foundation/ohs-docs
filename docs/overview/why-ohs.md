@@ -19,7 +19,7 @@ Open Health Stack is a collection of open-source tools, shared libraries, and re
 
 ## The three pillars
 
-![Open Health Stack three pillars architecture diagram showing FHIR Foundations with core libraries and SDKs, OHS Player reference toolkit, and AI Commons evaluation tooling in incubation](../images/ohs-ecosystem-overview.svg)
+![Open Health Stack three pillars architecture diagram showing FHIR Foundations with core libraries and SDKs, OHS Player reference toolkit, and active AI Commons benchmarking, evaluation, and skills initiatives](../images/ohs-ecosystem-overview.svg)
 
 ### Pillar 1 for FHIR Foundations
 
@@ -40,27 +40,21 @@ An end-to-end reference toolkit showing how foundational building blocks assembl
 - **Reference Analytics** streams clinical data into relational databases via SQL-on-FHIR view definitions for live Apache Superset dashboards.
 - **Declarative Configuration IG** defines screens, forms, and indicator tables in standard FHIR resources so workflows update without recompiling apps.
 
-### Pillar 3 for AI Commons (Launching)
+### Pillar 3 for AI Commons (Active)
 
-Advancing safe, effective artificial intelligence for global health use cases.
+Advancing safe, effective, and verifiable artificial intelligence for global health use cases through shared benchmarking infrastructure, open lifecycle evaluation, and developer tooling under neutral Linux Foundation governance.
 
-The **AI Evals Lifecycle Working Group** is kicking off under the Open Health Stack Software Foundation to stress test the evaluation lifecycle and help operationalize end-to-end evaluation infrastructure for Global Health AI. Standing on the shoulders of early pioneers in this space, the working group aims to understand challenges and opportunities, identify ecosystem gaps, and co-develop tooling that makes effective evaluations accessible for everyone.
+#### Key initiatives
 
-The working group focuses on three core lifecycle phases.
+- **Benchmarking (gHBench)** is an initiative funded by Google.org to develop shared infrastructure for global health benchmarking use cases. It is led by PATH and MLCommons in collaboration with the AI Evals Working Group and CHAI on behalf of the AI Commons for Global Health community. Current status is funded and forming.
+- **Evals (AI Evals Working Group)** convenes builders, clinicians, researchers, and implementing partners with the AI Commons for Global Health collective to operationalize end-to-end evaluation infrastructure across the full health AI lifecycle. Active work spans pre-development model selection baselines, pre-deployment application staging harnesses for prompts and FHIR schema mappings, post-deployment field monitoring for continuous quality improvement, and shared evaluation playbooks.
+- **Skills development** is building out an open set of [Agent Skills](https://github.com/ohs-foundation/labs-ohs-agent/tree/main/skills) (`SKILL.md`) for Open Health Stack libraries so AI coding agents can build offline-capable, standards-compliant FHIR applications at minimal cost and complexity. Read the recent OHS Labs post [The FHIR Tax Is Shrinking](https://ohs.foundation/blog/fhir-standards-tax.html) for empirical benchmark results across Kotlin FHIR Models, Kotlin FHIR Engine, and Kotlin FHIR Data Capture.
 
-- **Phase 1 (Pre-Development Model Selection)** establishes base clinical reasoning and safety baselines to inform model selection.
-- **Phase 2 (Pre-Deployment Application Staging)** co-develops open adapters and staging harnesses to test prompts, retrieval pipelines, and EHR or FHIR schema mappings.
-- **Phase 3 (Post-Deployment Monitoring and CQI)** implements lightweight telemetry and continuous quality improvement, looping real-world field risks back into pre-deployment rubrics.
+#### Get involved with AI Commons
 
-Planned deliverables include a canonical synthesis white paper, open-source evaluation tooling and adapters under OHS-SF, an AI for Global Health Eval Playbook, and a prioritized roadmap for the Governing Board to help unlock and direct funding.
-
-#### Get involved with the AI Evals Lifecycle Working Group
-
-The official kick-off session takes place on **Monday, October 26, 2026** at 10.00 AM ET (2.00 PM GMT, 5.00 PM EAT, 7.30 PM IST, 10.00 PM SGT).
-
-- [Sign up for the shared calendar invitation](https://calendar.google.com/calendar/render?action=TEMPLATE&text=AI%20Evals%20Lifecycle%20Working%20Group%20kick-off&dates=20261026T140000Z/20261026T150000Z&details=Join%3A%20https%3A//meet.google.com/ofa-wbeb-hku&location=https%3A//meet.google.com/ofa-wbeb-hku)
-- [Join the Google Meet kick-off call](https://meet.google.com/ofa-wbeb-hku)
-- [Sign up to participate and receive working group announcements](https://ohs.foundation/get-involved)
+- [Register to join the AI Evals Working Group and receive updates](https://ohs.foundation/get-involved)
+- [Join the OHS Discord community](https://discord.gg/sfgUU7AHZT)
+- [Explore the OHS Labs Agent Skills experiment on GitHub](https://github.com/ohs-foundation/labs-ohs-agent)
 
 ## Core advantages
 

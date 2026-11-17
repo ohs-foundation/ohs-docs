@@ -13,7 +13,7 @@ guide_status: ready
 
 Open Health Stack is designed to accommodate different digital health contexts, from national ministry programmes to agile technology startups. Rather than imposing a single monolithic architecture, the ecosystem provides distinct pathways that allow teams to adopt specific components or deploy complete reference systems.
 
-![Four OHS adoption pathways. Pathway A, unbundled SDKs, client and backend libraries added to existing applications. Pathway B, reference platform, a full end-to-end multiplatform stack for a rapid baseline. Pathway C, analytics hub, SQL-on-FHIR pipelines powering aggregate dashboards. Pathway D, advancing safe, effective AI for global health use cases, launching evaluation tooling and frameworks.](../images/pathways-overview.svg)
+![Four OHS adoption pathways. Pathway A, unbundled SDKs, client and backend libraries added to existing applications. Pathway B, reference platform, a full end-to-end multiplatform stack for a rapid baseline. Pathway C, analytics hub, SQL-on-FHIR pipelines powering aggregate dashboards. Pathway D, advancing safe, effective AI for global health use cases with active benchmarking, lifecycle evaluation, and Agent Skills initiatives.](../images/pathways-overview.svg)
 
 ## Pathway A for unbundled SDK and client adoption
 
@@ -46,13 +46,13 @@ In this pathway, organisations deploy FHIR Data Pipes alongside existing FHIR se
 
 ## Pathway D for advancing safe, effective AI for global health
 
-Builders, health system innovators, and researchers can engage with AI Commons to advance safe, effective artificial intelligence for global health use cases.
+Builders, health system innovators, and researchers can engage with AI Commons to advance safe, effective, and verifiable artificial intelligence for global health use cases.
 
-- **AI Evals Lifecycle Working Group** operationalizing an open evaluation infrastructure across model selection, application staging, and post-deployment monitoring.
-- **Structured evaluation frameworks** to test clinical reasoning, safety baselines, and protocol adherence.
-- **Open adapters and staging harnesses** to validate prompts, retrieval pipelines, and EHR or FHIR schema mappings.
+- **Benchmarking (gHBench)** developing shared infrastructure for global health benchmarking use cases with funding from Google.org, led by PATH and MLCommons in collaboration with the AI Evals Working Group and CHAI on behalf of the AI Commons for Global Health community (funded and forming).
+- **Evals (AI Evals Working Group)** operationalizing open evaluation infrastructure and shared playbooks across model selection baselines, application staging harnesses, and post-deployment monitoring.
+- **Skills development** building open [Agent Skills](https://github.com/ohs-foundation/labs-ohs-agent/tree/main/skills) for Open Health Stack libraries, highlighted in the OHS Labs post [The FHIR Tax Is Shrinking](https://ohs.foundation/blog/fhir-standards-tax.html).
 
-Participating teams collaborate through fortnightly working sessions to test lifecycle frameworks, publish shared playbooks, and build developer-ready evaluation tooling. Read the [AI Commons briefing and working group schedule](/why-ohs/#pillar-3-for-ai-commons-launching) to get involved.
+Participating teams collaborate through regular working sessions to test lifecycle frameworks, publish shared playbooks, and build developer-ready tooling. Read the [AI Commons overview and initiatives](/why-ohs/#pillar-3-for-ai-commons-active) to get involved.
 
 ## Pathway E for coexistence with national health infrastructure
 
@@ -73,6 +73,6 @@ Open Health Stack is designed to be complementary to existing digital health inv
 | Add offline FHIR storage to an existing mobile app | Pathway A (Client SDKs) | [Kotlin FHIR Engine](/fhir-foundations/kotlin-fhir-engine/) |
 | Launch a complete community health solution | Pathway B (OHS Player) | [Get started with Player](/get-started/) |
 | Generate aggregate reports from FHIR databases | Pathway C (Analytics Hub) | [Reference Analytics](/components/reference-analytics/) |
-| Advance safe, effective AI for global health | Pathway D (AI Commons) | [AI Commons briefing](/why-ohs/#pillar-3-for-ai-commons-launching) |
+| Advance safe, effective AI for global health | Pathway D (AI Commons) | [AI Commons initiatives](/why-ohs/#pillar-3-for-ai-commons-active) |
 | Connect mobile workers to an existing national EHR | Pathway E (Coexistence) | [The architecture](/ohs-player/architecture/) |
 | Explore reference solution architectures | Solution Architecture Samples | [Architecture samples and use cases](/overview/architecture-samples/) |
