@@ -77,7 +77,10 @@ const sidebars = {
               items: [
                 "fhir-foundations/kotlin-fhirpath/get-started",
                 "fhir-foundations/kotlin-fhirpath/evaluation-semantics",
+                "fhir-foundations/kotlin-fhirpath/evaluate-expressions",
+                "fhir-foundations/kotlin-fhirpath/debug-expressions",
                 "fhir-foundations/kotlin-fhirpath/conformance",
+                "fhir-foundations/kotlin-fhirpath/troubleshooting",
               ],
             },
           ],
@@ -173,8 +176,8 @@ const sidebars = {
     },
     {
       type: "link",
-      label: "Pillar 03 · AI Commons (Launching)",
-      href: "/why-ohs/#pillar-3-for-ai-commons-launching",
+      label: "Pillar 03 · AI Commons (Active)",
+      href: "/why-ohs/#pillar-3-for-ai-commons-active",
     },
   ],
 
@@ -202,9 +205,8 @@ const sidebars = {
           collapsible: true,
           collapsed: false,
           items: [
-            "tutorials-and-codelabs/multiplatform-client",
+            "tutorials-and-codelabs/engine",
             "tutorials-and-codelabs/data-capture",
-            "tutorials-and-codelabs/sdc-questionnaires",
           ],
         },
         {

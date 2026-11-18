@@ -1,51 +1,76 @@
 ---
 title: Conformance
-description: What the engine implements from the FHIRPath specification, what is partial, and what is absent.
+description: Which parts of the FHIRPath specification Kotlin FHIRPath 1.0.0-beta06 supports, which are partial, and which are missing.
 slug: /fhir-foundations/kotlin-fhirpath/conformance/
-sidebar_position: 40
+sidebar_position: 60
 guide_type: Technical reference
 guide_status: ready
 guide_focus: Checking whether the expressions you need are supported
 repository: kotlin-fhirpath
 ---
 
-## Scope and the canonical source
+## Goal and scope
 
-The engine implements the FHIRPath Specification v3.0.0 (STU3) and, for the FHIR-specific additions, the FHIRPath section of FHIR R5. Conformance is verified against the official FHIR test-case suite on JVM and Android.
+This page summarizes what version 1.0.0-beta06 supports. It covers the [FHIRPath specification v3.0.0](https://hl7.org/fhirpath/STU3/en/) and the [FHIRPath section of FHIR R5](https://hl7.org/fhir/R5/fhirpath.html). The engine for every FHIR version uses the R5 definitions.
 
-The repository maintains the authoritative per-feature conformance table, listing every function and operator with its status and linking implemented ones to their source, in [`docs/conformance.md`](https://github.com/ohs-foundation/kotlin-fhirpath/blob/main/docs/conformance.md). This page summarizes it. Check the repository document for a specific feature before relying on it.
+The repository has the full table for every function and operator, with notes and links to the code. Read the [conformance table for 1.0.0-beta06](https://github.com/ohs-foundation/kotlin-fhirpath/blob/v1.0.0-beta06/docs/conformance.md). The version on the `main` branch describes changes that are not released yet.
 
-## What is solidly covered
+## Supported
 
-The core language. That means path navigation, filtering and projection (`where`, `select`, `repeat`), existence (`exists`, `all`, `empty`, `count`), subsetting (`first`, `last`, `tail`, `skip`, `take`, indexing), combining, string manipulation, math, type operators (`is`, `as`, `ofType`), boolean logic, comparison and equivalence, date and time arithmetic, `aggregate`, environment variables, `trace`, and reflection over types. UCUM-based quantity comparison and conversion is implemented.
+- **Navigation and filtering.** Paths, `where()`, `select()`, `repeat()`, `ofType()`, and `sort()`
+- **Existence and subsetting.** `exists()`, `all()`, `empty()`, `count()`, `first()`, `last()`, `tail()`, `skip()`, `take()`, and indexing
+- **Strings, math, and conversion functions**
+- **Aggregates.** `aggregate()`, `sum()`, `min()`, `max()`, and `avg()`
+- **Dates and times.** Date arithmetic, `now()`, `today()`, `precision()`, `lowBoundary()`, `highBoundary()`, and component functions such as `yearOf()`
+- **Types.** `is`, `as`, and reflection
+- **Utility functions.** `trace()` and `iif()`
+- **FHIR additions.** `extension()`, `hasValue()`, and the variables `%resource`, `%context`, `%ucum`, `%sct`, and `%loinc`
+- **Quantities with UCUM units**
 
-## Notable gaps
+## Missing
 
-Features that require **external services** are absent by design, because the engine is purely in-memory.
+Functions that need another service are missing by design, because the engine runs only in memory.
 
-- `resolve()`, since following references needs a resource store
-- `memberOf`, `subsumes`, and `subsumedBy`, since terminology operations need a terminology server
-- The terminology and general server API bindings
+- `resolve()`, which needs a store of resources
+- `memberOf()`, `subsumes()`, and `subsumedBy()`, which need a terminology server
 
-Features from newer spec drafts and less-traveled corners that are **unimplemented** in the current release include the following.
+These features are not implemented in 1.0.0-beta06. Calling a missing function throws `IllegalStateException` with the message `Function 'name' is not implemented.`
 
-- `defineVariable`, `coalesce`, `repeatAll`
-- The aggregate shorthands `sum()`, `min()`, `max()`, and `avg()`. Use `aggregate()` instead.
-- Date and time component extractors (`yearOf`, `monthOf`, and siblings)
-- `toLong` and `convertsToLong`, `lastIndexOf`, instance and object creation syntax, `%rootResource`, `elementDefinition`, `slice`, `checkModifiers`, `conformsTo`, `htmlChecks`
+- `coalesce()`, `repeatAll()`, `defineVariable()`, and `pathname()`
+- `duration()` and `difference()`
+- `getValue()`, `conformsTo()`, `elementDefinition()`, `slice()`, `checkModifiers()`, and `htmlChecks()`
+- Creating objects in an expression, such as `Quantity('3', 'mg')`
+- The `%rootResource` variable. Using it throws `Unknown variable: %rootResource`.
 
-## Known divergences
+## Partly supported
 
-Places where behavior differs from a literal spec reading, tracked in the conformance document with upstream issue links.
+| Feature | Behavior in 1.0.0-beta06 |
+| --- | --- |
+| Indexing, such as `name[5]` | Throws `IndexOutOfBoundsException` when the index is too large, instead of returning empty |
+| `div` and `mod` | Throw `ArithmeticException` or return a wrong result for some inputs |
+| `+`, `-`, and `*` on integers | Overflow wraps around without an error |
+| `combine()` | Has no `preserveOrder` parameter |
+| `toInteger()`, `convertsToInteger()`, `toDecimal()`, and `convertsToDecimal()` | Do not accept `Long` values |
+| `toDecimal()` on a string | Can lose precision for numbers with many digits |
+| `toQuantity(unit)` on a number | Ignores the unit and uses `'1'` |
+| `ceiling()`, `floor()`, and `truncate()` | Do not accept quantities |
+| `<`, `<=`, `>`, and `>=` on quantities | Need the units to match after conversion |
+| `as` | Matches the exact type only, not subtypes |
+| `=` on resources | Compares the whole resource, not only the `id` |
 
-- The indexer `[n]` raises on out-of-bounds access instead of returning `{}`.
-- `combine` does not deduplicate.
-- Some numeric conversions omit edge-case handling. `Long` inputs are not handled, `toDecimal` can lose precision on large mantissas, and `toQuantity` with a unit argument ignores the requested unit on bare numbers, hardcoding the default unit instead.
-- Timezone comparisons are deliberately stricter than the spec permits, as described under [evaluation semantics](/fhir-foundations/kotlin-fhirpath/evaluation-semantics/).
-- Resource equality compares full object structure, including `id`.
+[Troubleshooting](/fhir-foundations/kotlin-fhirpath/troubleshooting/) has workarounds for the ones you are most likely to meet.
 
-A further set of divergences exists against the official test suite itself, where the engine's authors judged the test or the spec to be wrong. Each is documented, with links to the upstream discussions where they exist.
+## Intentional differences
 
-## What to do at a gap
+- **Time zones.** The engine never assumes a time zone. See [How evaluation works](/fhir-foundations/kotlin-fhirpath/evaluation-semantics/#the-engine-never-guesses-a-time-zone).
+- **Official test cases.** A few official FHIR test cases fail on purpose, where the test or the specification is believed to be wrong. The repository lists each one in [Test conformance](https://github.com/ohs-foundation/kotlin-fhirpath/blob/v1.0.0-beta06/docs/conformance.md#test-conformance), with links to the discussions.
 
-If an expression you need touches an unimplemented feature, first confirm its status in the repository's conformance table. Then the options in practice are to rewrite the expression within the supported surface, to evaluate the offending fragment in your own code against the model classes, or, for `resolve()`-style needs, to restructure so the referenced resource is fetched by your application first.
+## When a feature is missing
+
+- Rewrite the expression with supported functions. For example, use `iif(a.exists(), a, b)` instead of `coalesce(a, b)`.
+- Do the step in Kotlin. Evaluate the parts of the expression that work, then combine the results in your code.
+- For `resolve()`, load the referenced resource in your app, then evaluate the next expression on it.
+
+## Next step
+
+[Troubleshooting](/fhir-foundations/kotlin-fhirpath/troubleshooting/) lists error messages and their fixes.

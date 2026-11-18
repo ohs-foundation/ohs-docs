@@ -227,8 +227,23 @@
       "searchIndexed": true
     },
     {
+      "id": "kotlin-fhirpath-evaluate-expressions",
+      "path": "/ohs-docs/fhir-foundations/kotlin-fhirpath/evaluate-expressions/",
+      "searchIndexed": true
+    },
+    {
+      "id": "kotlin-fhirpath-debug-expressions",
+      "path": "/ohs-docs/fhir-foundations/kotlin-fhirpath/debug-expressions/",
+      "searchIndexed": true
+    },
+    {
       "id": "kotlin-fhirpath-conformance",
       "path": "/ohs-docs/fhir-foundations/kotlin-fhirpath/conformance/",
+      "searchIndexed": true
+    },
+    {
+      "id": "kotlin-fhirpath-troubleshooting",
+      "path": "/ohs-docs/fhir-foundations/kotlin-fhirpath/troubleshooting/",
       "searchIndexed": true
     },
     {
@@ -297,18 +312,13 @@
       "searchIndexed": true
     },
     {
-      "id": "tutorials-and-codelabs-multiplatform-client",
-      "path": "/ohs-docs/tutorials-and-codelabs/multiplatform-client/",
+      "id": "tutorials-and-codelabs-engine",
+      "path": "/ohs-docs/tutorials-and-codelabs/engine/",
       "searchIndexed": true
     },
     {
       "id": "tutorials-and-codelabs-data-capture",
       "path": "/ohs-docs/tutorials-and-codelabs/data-capture/",
-      "searchIndexed": true
-    },
-    {
-      "id": "tutorials-and-codelabs-sdc-questionnaires",
-      "path": "/ohs-docs/tutorials-and-codelabs/sdc-questionnaires/",
       "searchIndexed": true
     },
     {

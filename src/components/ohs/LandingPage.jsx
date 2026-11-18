@@ -104,16 +104,18 @@ function PillarsSection() {
         <div className="ohs-pillar-card">
           <div className="ohs-pillar-header">
             <span className="ohs-pillar-tag">PILLAR 03</span>
-            <span className="ohs-coming-soon-badge">Launching</span>
+            <span className="ohs-release-badge ohs-release-active">Active</span>
           </div>
-          <h3>AI Commons (Launching)</h3>
+          <h3>
+            <Link to="/why-ohs/#pillar-3-for-ai-commons-active">AI Commons</Link>
+          </h3>
           <p>
-            Advancing safe, effective AI for global health use cases through the
-            AI Evals Lifecycle Working Group, building evaluation tooling,
-            model selection baselines, and post-deployment monitoring.
+            Advancing safe, effective AI for global health through gHBench shared
+            benchmarking infrastructure, the AI Evals Working Group, and Agent
+            Skills for Open Health Stack libraries.
           </p>
-          <Link className="ohs-pillar-cta" to="/why-ohs/#pillar-3-for-ai-commons-launching">
-            Get involved with AI Commons <span>→</span>
+          <Link className="ohs-pillar-cta" to="/why-ohs/#pillar-3-for-ai-commons-active">
+            Explore AI Commons <span>→</span>
           </Link>
         </div>
       </div>

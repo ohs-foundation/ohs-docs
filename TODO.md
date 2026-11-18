@@ -52,10 +52,10 @@ This tracker catalogues outstanding documentation tasks, content enhancements, v
 - [x] **AI Commons Transition from Incubating to Launching**
   - Updated Pillar 03 status to "Launching" across `LandingPage.jsx`, `sidebars.js`, `docs/overview/why-ohs.md`, `docs/learn/overview.md`, `docs/overview/solutions-and-pathways.md`, and diagram assets.
   - Framed mission as advancing safe, effective AI for global health use cases. Documented the **AI Evals Lifecycle Working Group** (Phase 1 Model Selection, Phase 2 Staging, Phase 3 Monitoring/CQI) with call to action for the October 26 kick-off session.
-- [ ] **AI Commons Post-Kickoff Documentation Update (Scheduled for Week of October 27, 2026)**
+- [x] **AI Commons Post-Kickoff Documentation Update**
   - Tracked in GitHub Issue #26.
-  - Update guides with kick-off call outcomes, meeting recording, shared notes, and repository links.
-  - Document bi-weekly collaborative schedule and Working Group Charter.
+  - Transitioned Pillar 03 to `Active` across the landing page, `why-ohs.md`, `learn/overview.md`, `solutions-and-pathways.md`, `sidebars.js`, and SVG diagrams.
+  - Highlighted `gHBench` (funded by Google.org, led by PATH and MLCommons with the AI Evals Working Group and CHAI), the `AI Evals Working Group`, and Agent Skills development (`The FHIR Tax Is Shrinking`).
 
 ---
 
