@@ -207,8 +207,23 @@
       "searchIndexed": true
     },
     {
+      "id": "kotlin-fhirpath-evaluate-expressions",
+      "path": "/ohs-docs/fhir-foundations/kotlin-fhirpath/evaluate-expressions/",
+      "searchIndexed": true
+    },
+    {
+      "id": "kotlin-fhirpath-debug-expressions",
+      "path": "/ohs-docs/fhir-foundations/kotlin-fhirpath/debug-expressions/",
+      "searchIndexed": true
+    },
+    {
       "id": "kotlin-fhirpath-conformance",
       "path": "/ohs-docs/fhir-foundations/kotlin-fhirpath/conformance/",
+      "searchIndexed": true
+    },
+    {
+      "id": "kotlin-fhirpath-troubleshooting",
+      "path": "/ohs-docs/fhir-foundations/kotlin-fhirpath/troubleshooting/",
       "searchIndexed": true
     },
     {

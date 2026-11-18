@@ -73,7 +73,10 @@ const sidebars = {
               items: [
                 "fhir-foundations/kotlin-fhirpath/get-started",
                 "fhir-foundations/kotlin-fhirpath/evaluation-semantics",
+                "fhir-foundations/kotlin-fhirpath/evaluate-expressions",
+                "fhir-foundations/kotlin-fhirpath/debug-expressions",
                 "fhir-foundations/kotlin-fhirpath/conformance",
+                "fhir-foundations/kotlin-fhirpath/troubleshooting",
               ],
             },
           ],

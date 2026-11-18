@@ -49,7 +49,7 @@ Not every search parameter's FHIRPath pattern is supported by the code generator
 ## Coverage boundaries
 
 - The repository documents which FHIRPath patterns the generator supports and which parameters fall outside them. Consult it when a parameter you need is in `unsupported`. For those parameters, the `expression` metadata still carries the original FHIRPath string, so you can evaluate it with [Kotlin FHIRPath](/fhir-foundations/kotlin-fhirpath/) instead.
-- In the current release candidate, parameters whose expression is a union of several paths extract only the first branch. Verify extraction against your own data for parameters your application depends on.
+- When an expression is a union of several paths, extraction returns the values of every branch in order and removes duplicates. A branch that uses an unsupported pattern is skipped, so a few parameters extract only part of their union. The repository lists those parameters.
 
 ## Where this sits in the stack
 

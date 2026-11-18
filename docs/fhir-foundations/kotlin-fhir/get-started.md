@@ -16,7 +16,7 @@ Add Kotlin FHIR to a project, create a resource in code, and serialize it to FHI
 ## Prerequisites
 
 - A Kotlin project on a current Kotlin release. The serializers ship pre-generated in the library, so no compiler plugin is needed.
-- For JVM projects, a Java 21 runtime, because the current release candidate's JVM artifact targets Java 21.
+- For JVM projects, Java 11 or newer, because the JVM artifact of 1.0.0 is compiled to Java 11 bytecode.
 - Your target platform on the [support matrix](/fhir-foundations/platform-support/).
 
 ## Add the dependency
@@ -27,7 +27,7 @@ In a Kotlin Multiplatform project the dependency goes in `commonMain`.
 kotlin {
   sourceSets {
     commonMain.dependencies {
-      implementation("dev.ohs.fhir:fhir-model-r4:1.0.0-rc02")
+      implementation("dev.ohs.fhir:fhir-model-r4:1.0.0")
     }
   }
 }
@@ -37,7 +37,7 @@ In an Android-only or JVM-only project the same coordinate goes in the ordinary 
 
 ```kotlin
 dependencies {
-  implementation("dev.ohs.fhir:fhir-model-r4:1.0.0-rc02")
+  implementation("dev.ohs.fhir:fhir-model-r4:1.0.0")
 }
 ```
 
