@@ -51,9 +51,14 @@ Check `unsupported` for the parameters your app needs. They are not in `all`, so
 
 ## Get values for an unsupported parameter
 
-An unsupported parameter still has its full FHIRPath `expression`. Evaluate it with [Kotlin FHIRPath](/fhir-foundations/kotlin-fhirpath/) to get the values.
+Most unsupported parameters still have their full FHIRPath `expression`. Evaluate it with [Kotlin FHIRPath](/fhir-foundations/kotlin-fhirpath/) to get the values.
 
-Some parameters use a union of several paths, such as `Device.serialNumber | Device.identifier.where(type='SNO')`. If only some paths are supported, `extractFrom()` returns values from those paths and skips the rest, without an error. If your app needs the skipped paths, evaluate the full `expression` with Kotlin FHIRPath instead.
+Some unsupported parameters have no usable expression, so Kotlin FHIRPath cannot get their values either. If your app needs them, compute the values in your own code.
+
+- **An empty expression**, because the specification does not define one. For example, `age` on Patient.
+- **Only the resource name**, such as `Observation`. Composite parameters such as `code-value-quantity` look like this, because their values come from several other parameters.
+
+Some parameters use a union of several paths, such as `(Observation.value as string) | (Observation.value as CodeableConcept).text` for `value-string`. If only some paths are supported, `extractFrom()` returns values from those paths and skips the rest, without an error. If your app needs the skipped paths, evaluate the full `expression` with Kotlin FHIRPath instead.
 
 The repository lists which [expressions are supported](https://github.com/ohs-foundation/kotlin-fhir/blob/main/docs/search-parameter-patterns.md#supported-fhirpath-patterns), which [unions are only partly extracted](https://github.com/ohs-foundation/kotlin-fhir/blob/main/docs/search-parameter-patterns.md#partially-extracted-unions), and every [unsupported parameter](https://github.com/ohs-foundation/kotlin-fhir/blob/main/docs/search-parameter-patterns.md#unsupported-fhirpath-patterns) by name. These lists change as support grows.
 

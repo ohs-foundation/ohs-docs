@@ -42,16 +42,10 @@ Decoding throws one of two exceptions.
 `SerializationException` is a subclass of `IllegalArgumentException`. Catch `IllegalArgumentException` to handle both.
 
 ```kotlin
-import dev.ohs.fhir.model.r4.OperationOutcome
-import dev.ohs.fhir.model.r4.Patient
 import dev.ohs.fhir.model.r4.Resource
 
 try {
-  when (val resource = json.decodeFromString<Resource>(responseBody)) {
-    is OperationOutcome -> { /* the server returned an error */ }
-    is Patient -> { /* use the patient */ }
-    else -> { /* handle other resource types */ }
-  }
+  val resource = json.decodeFromString<Resource>(text)
 } catch (e: IllegalArgumentException) {
   // The JSON is not valid for this FHIR model.
   // This also catches SerializationException.
@@ -83,11 +77,12 @@ import kotlinx.serialization.json.Json
 val json = Json {
   prettyPrint = true       // indent the output
   ignoreUnknownKeys = true // skip properties the model does not have
-  isLenient = true         // accept relaxed syntax, such as unquoted strings
 }
 ```
 
 Without `ignoreUnknownKeys`, a single unknown property makes decoding fail.
+
+Do not turn on `isLenient` for data you do not control. It accepts JSON that is not valid, such as unquoted strings, so bad data decodes without an error.
 
 Some options do not work with the generated serializers.
 

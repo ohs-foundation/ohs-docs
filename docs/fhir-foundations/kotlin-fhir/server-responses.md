@@ -34,17 +34,14 @@ import dev.ohs.fhir.model.r4.OperationOutcome
 import dev.ohs.fhir.model.r4.Patient
 import dev.ohs.fhir.model.r4.Resource
 
-try {
-  when (val resource = json.decodeFromString<Resource>(responseBody)) {
-    is Patient -> { /* use the patient */ }
-    is OperationOutcome -> { /* read resource.issue to see what went wrong */ }
-    else -> { /* a resource type you did not expect */ }
-  }
-} catch (e: IllegalArgumentException) {
-  // The body is not valid FHIR JSON for this model.
-  // This also catches SerializationException.
+when (val resource = json.decodeFromString<Resource>(responseBody)) {
+  is Patient -> { /* use the patient */ }
+  is OperationOutcome -> { /* read resource.issue to see what went wrong */ }
+  else -> { /* a resource type you did not expect */ }
 }
 ```
+
+If the body is not valid FHIR JSON, decoding throws. See [Handle decoding failures](/fhir-foundations/kotlin-fhir/serialization/#handle-decoding-failures).
 
 ## Read the resources in a Bundle
 
@@ -85,11 +82,7 @@ The chain has two `value` steps at the end. The first gives the FHIR `String`, a
 
 ## Store a resource under your own id
 
-When you store resources from a server, you may need to give them a local id. Decoded resources are often typed as `Resource`, which has no `copy()`. Use `toBuilder()`, which works on every resource.
-
-```kotlin
-val stored: Resource = resource.toBuilder().apply { id = "local-123" }.build()
-```
+When you store resources from a server, you may need to give them a local id. Decoded resources are often typed as `Resource`, which has no `copy()`. Use `toBuilder()`, as shown in [Change the id of any resource](/fhir-foundations/kotlin-fhir/working-with-resources/#change-the-id-of-any-resource).
 
 ## When decoding fails
 

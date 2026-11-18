@@ -11,7 +11,7 @@ repository: kotlin-fhir
 
 ## Goal and scope
 
-Each entry below starts with what you see, then gives the cause and the fix. The error messages are from version 1.0.0 with FHIR R4.
+Each entry below starts with what you see, then gives the cause and the fix. The error messages were recorded with FHIR R4 and the Kotlin FHIR version listed in [Versions and compatibility](/fhir-foundations/versions/).
 
 ## Build and setup
 
@@ -133,12 +133,12 @@ Trailing zeros in seconds are gone, such as `09:00:00.000000Z` becoming `09:00:0
 ### `NotImplementedError` from `extractFrom()`
 
 ```text
-NotImplementedError: Search parameter 'age' has expression '' which is not yet supported.
+NotImplementedError: Search parameter 'deceased' has expression 'Patient.deceased.exists() and Patient.deceased != false' which is not yet supported.
 ```
 
 **Cause.** The parameter is in the `unsupported` list. The generator cannot turn its expression into Kotlin code.
 
-**Fix.** Iterate `all` instead of every parameter, or evaluate the parameter's `expression` with Kotlin FHIRPath. See [Extract search parameters](/fhir-foundations/kotlin-fhir/search-parameters/#get-values-for-an-unsupported-parameter).
+**Fix.** Iterate `all` instead of every parameter, or evaluate the parameter's `expression` with Kotlin FHIRPath. If the expression in the message is empty, Kotlin FHIRPath cannot help, so compute the value in your own code. See [Extract search parameters](/fhir-foundations/kotlin-fhir/search-parameters/#get-values-for-an-unsupported-parameter).
 
 ### A search parameter returns fewer values than expected
 

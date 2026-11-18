@@ -37,7 +37,7 @@ Depend only on the FHIR version you use. Use `fhir-model` only if your code hand
 
 ## What it is not
 
-- **Not a validator.** Profiles and constraints (invariants) are not checked. The only check is that a `code` element with a `required` binding holds a code from its ValueSet when decoded.
+- **Not a validator.** Profiles and constraints (invariants) are not checked. Decoding fails only when the JSON does not fit the model, such as a missing required element, an unknown property, or a code outside a `required` binding.
 - **Not a client or a database.** It has no networking or storage. [Kotlin FHIR Engine](/fhir-foundations/kotlin-fhir-engine/) provides those.
 - **JSON only.** XML and Turtle are not supported. Other `kotlinx.serialization` formats may work, but only JSON is tested.
 - **No profiles or logical models.** Only the base specification is generated. The library has classes such as `ValueSet` and `CodeSystem`, but it does not include the ValueSets and CodeSystems published with the specification. The FHIR patterns `Event`, `Request`, and `Definition` are not interfaces, because resources may rename their elements, which Kotlin inheritance cannot express.
