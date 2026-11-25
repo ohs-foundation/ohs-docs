@@ -76,7 +76,7 @@ To check that the test data is on the server, open `http://localhost:8080/fhir/P
 
 ![The HAPI FHIR server returning a search result Bundle with a total of 3 patients](../images/engine-codelab-server-patients.png)
 
-The test data is in the `data` folder. The patients are in `data/patients.json`. To reset the server to them, for example to run the update step again, run `docker compose down` and then `docker compose up -d`. The app keeps its own copy of the patients, so tap **Sync** in the app after a reset, before you tap **Update** again. The server keeps its data in memory, so it starts empty if it restarts, for example after `docker compose restart` or a restart of Docker. Run `docker compose up -d` again to load the test data. When you finish the codelab, stop the server with `docker compose down`.
+The test data is in the `data` folder. The patients are in `data/patients.json`. To reset the server to them, for example to run the update step again, run `docker compose down` and then `docker compose up -d`. The app keeps its own copy of the patients, so tap **Sync** in the app after a reset, before you tap **Update** again. The server keeps its data in memory, so a restart of Docker or of the server alone leaves it empty. Run `docker compose up -d` again to load the test data. `docker compose restart` reloads the test data too, but anything you uploaded is lost. When you finish the codelab, stop the server with `docker compose down`.
 
 ## Step 3 · Set up the project
 
@@ -669,7 +669,7 @@ fhirEngine.create(*tasks.toTypedArray())
 - The Tasks come with IDs from the PlanDefinition actions, which would be the same for every patient. Setting `id` to `null` lets the engine create a new ID for each Task. `basedOn` points into the CarePlan, which the app does not save, so the code removes it.
 - `fhirEngine.create()` saves the Tasks in the local database.
 
-Run the app and tap **Sync**, so that the PlanDefinition is on the device. Then register a child born less than 5 years ago, and an adult. The date field follows the date format of your device or browser, such as dd/mm/yyyy or mm/dd/yyyy. Each new patient shows its Tasks in the list. The child gets First visit and Child health check, and the adult gets only First visit.
+Run the app and tap **Sync**, so that the PlanDefinition is on the device. Then register a child born less than 5 years ago, and an adult. Type the date in the format shown in the field, for example dd/mm/yyyy. Each new patient shows its Tasks in the list. The child gets First visit and Child health check, and the adult gets only First visit.
 
 ![The patient list showing a child with two tasks and an adult with one task](../images/engine-codelab-registered.png)
 
