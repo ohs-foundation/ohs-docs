@@ -76,7 +76,7 @@ To check that the test data is on the server, open `http://localhost:8080/fhir/P
 
 ![The HAPI FHIR server returning a search result Bundle with a total of 3 patients](../images/engine-codelab-server-patients.png)
 
-The test data is in the `data` folder. The patients are in `data/patients.json`. To reset the server to them, for example to run the update step again, run `docker compose down` and then `docker compose up -d`. The app keeps its own copy of the patients, so tap **Sync** in the app after a reset, before you tap **Update** again. When you finish the codelab, stop the server with `docker compose down`.
+The test data is in the `data` folder. The patients are in `data/patients.json`. To reset the server to them, for example to run the update step again, run `docker compose down` and then `docker compose up -d`. The app keeps its own copy of the patients, so tap **Sync** in the app after a reset, before you tap **Update** again. The server keeps its data in memory, so it starts empty if it restarts, for example after `docker compose restart` or a restart of Docker. Run `docker compose up -d` again to load the test data. When you finish the codelab, stop the server with `docker compose down`.
 
 ## Step 3 · Set up the project
 
@@ -153,10 +153,10 @@ Because the app is built with Kotlin Multiplatform, you can run it on other plat
 | Platform | Command or action |
 | --- | --- |
 | Desktop (JVM) | `./gradlew :shared:run` |
-| Web (Wasm) | `./gradlew :shared:wasmJsBrowserDevelopmentRun`, then open `http://localhost:8081` |
+| Web (Wasm) | `./gradlew :shared:wasmJsBrowserDevelopmentRun`, which opens `http://localhost:8081` in your browser |
 | iOS | Open `iosApp/iosApp.xcodeproj` in Xcode, select a simulator, and click **Run** |
 
-The Web dev server does not rebuild when you change the code. To see a change, stop it with Ctrl+C and run the command again. If port 8081 is already in use on your computer, change the port in `shared/webpack.config.d/dev-server-port.js`.
+The Web dev server does not rebuild when you change the code. To see a change, stop it with Ctrl+C and run the command again. If another app already uses port 8081 on your computer, the browser may show that app instead. Change the port in `shared/webpack.config.d/dev-server-port.js`.
 
 On iOS, Xcode builds the `shared` framework with Gradle. To run on a real device, follow the [iOS app instructions](https://github.com/ohs-foundation/kotlin-fhir-engine/blob/main/codelabs/iosApp/README.md).
 
@@ -395,11 +395,12 @@ scope.launch {
   patientsFromWakefield.forEach { fhirEngine.update(it.withCity("Taunton")) }
   patientsFromTaunton.forEach { fhirEngine.update(it.withCity("Wakefield")) }
 
+  refreshPatients()
   triggerOneTimeSync()
 }
 ```
 
-After changing the data locally, the app triggers a one-time sync to upload the changes to the FHIR server.
+After changing the data locally, the app shows the change right away with `refreshPatients()`, even without a connection. Then it triggers a one-time sync to upload the changes to the FHIR server.
 
 The code you added to `PatientListViewModel` should now look like this.
 
@@ -442,6 +443,7 @@ fun triggerUpdate() {
     patientsFromWakefield.forEach { fhirEngine.update(it.withCity("Taunton")) }
     patientsFromTaunton.forEach { fhirEngine.update(it.withCity("Wakefield")) }
 
+    refreshPatients()
     triggerOneTimeSync()
   }
 }
@@ -500,7 +502,8 @@ Open `RegistrationScreen.kt`. Find the `// 8 Replace with code from the codelab 
 questionnaireJson?.let { questionnaireJson ->
   Questionnaire(
     questionnaireJson = questionnaireJson,
-    config = QuestionnaireConfig(showCancelButton = false),
+    config =
+      QuestionnaireConfig(showCancelButton = false, showSubmitAnywayWhenValidationFails = false),
     onSubmit = { getQuestionnaireResponse ->
       scope.launch {
         viewModel.registerPatient(questionnaireJson, getQuestionnaireResponse())
@@ -512,7 +515,7 @@ questionnaireJson?.let { questionnaireJson ->
 }
 ```
 
-The `Questionnaire` composable shows the form with a **Submit** button. When you tap **Submit**, `getQuestionnaireResponse()` checks the answers and returns them as a FHIR QuestionnaireResponse. If an answer is not valid, the library shows a dialog and the form stays open. Otherwise the app passes the response to `registerPatient()` in the view model and goes back to the patient list.
+The `Questionnaire` composable shows the form with a **Submit** button. When you tap **Submit**, `getQuestionnaireResponse()` checks the answers and returns them as a FHIR QuestionnaireResponse. The name and date of birth are required. If one is missing or not valid, the library lists it in a dialog and the form stays open. `showSubmitAnywayWhenValidationFails = false` removes the dialog's option to submit anyway. Otherwise the app passes the response to `registerPatient()` in the view model and goes back to the patient list.
 
 Run the app and tap **Register**. Fill in the form and tap **Submit**. The app goes back to the list, but the patient is not saved yet, because `registerPatient()` is still empty.
 
@@ -666,7 +669,7 @@ fhirEngine.create(*tasks.toTypedArray())
 - The Tasks come with IDs from the PlanDefinition actions, which would be the same for every patient. Setting `id` to `null` lets the engine create a new ID for each Task. `basedOn` points into the CarePlan, which the app does not save, so the code removes it.
 - `fhirEngine.create()` saves the Tasks in the local database.
 
-Run the app and tap **Sync**, so that the PlanDefinition is on the device. Then register a child born less than 5 years ago, and an adult. Each new patient shows its Tasks in the list. The child gets First visit and Child health check, and the adult gets only First visit.
+Run the app and tap **Sync**, so that the PlanDefinition is on the device. Then register a child born less than 5 years ago, and an adult. The date field follows the date format of your device or browser, such as dd/mm/yyyy or mm/dd/yyyy. Each new patient shows its Tasks in the list. The child gets First visit and Child health check, and the adult gets only First visit.
 
 ![The patient list showing a child with two tasks and an adult with one task](../images/engine-codelab-registered.png)
 
@@ -698,4 +701,4 @@ You have used the Kotlin FHIR Engine to manage FHIR resources in your app, toget
 - Download the Tasks too, by adding `Task` to the `urls` queue in `DownloadWorkManagerImpl`, so that Tasks created on another device show up.
 - Move a proposed Task through its lifecycle with `ActivityFlow` in the [Kotlin FHIR Workflow](https://github.com/ohs-foundation/kotlin-fhir-workflow) library.
 - Add periodic sync. The [engine app](https://github.com/ohs-foundation/kotlin-fhir-engine/tree/main/engine-app) has an example on every platform, and [Synchronization](/fhir-foundations/kotlin-fhir-engine/synchronization/) describes the sync API.
-- Explore the Search API. The [conformance statement](https://github.com/ohs-foundation/kotlin-fhir-engine/blob/main/docs/conformance.md) lists the supported search parameter types, modifiers and prefixes.
+- Explore the Search API. [Search the local store](/fhir-foundations/kotlin-fhir-engine/persist-and-search/) describes the search parameter types, modifiers and prefixes.
