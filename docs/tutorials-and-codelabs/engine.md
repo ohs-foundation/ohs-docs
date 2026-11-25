@@ -64,9 +64,10 @@ The starter project for this codelab is in `codelabs/`.
 
 [HAPI FHIR](https://hapifhir.io/hapi-fhir/) is a popular open source FHIR server. The app in this codelab connects to a local HAPI FHIR server.
 
-The `codelabs` folder includes a Docker Compose file that starts a HAPI FHIR server and loads three test patients into it, together with the PlanDefinition you use in step 10. Run the following command in the `codelabs` folder.
+The `codelabs` folder includes a Docker Compose file that starts a HAPI FHIR server and loads three test patients into it, together with the PlanDefinition you use in step 10. Go to the `codelabs` folder and start the server.
 
 ```shell
+cd codelabs
 docker compose up -d
 ```
 
@@ -98,7 +99,7 @@ The platform entry points are already written for you. Everything you write in t
 - `RegistrationScreen.kt`
 - `EngineWorkflowRepository.kt`
 
-Each place you change is marked with a numbered comment, such as `// 4 Replace with code from the codelab to initialize the FHIR Engine.` The number tells you which step of the codelab adds the code.
+Most places you change are marked with a numbered comment, such as `// 4 Replace with code from the codelab to initialize the FHIR Engine.` The number tells you which step of the codelab adds the code.
 
 ### Import the app into Android Studio
 
@@ -515,7 +516,7 @@ questionnaireJson?.let { questionnaireJson ->
 }
 ```
 
-The `Questionnaire` composable shows the form with a **Submit** button. When you tap **Submit**, `getQuestionnaireResponse()` checks the answers and returns them as a FHIR QuestionnaireResponse. The name and date of birth are required. If one is missing or not valid, the library lists it in a dialog and the form stays open. `showSubmitAnywayWhenValidationFails = false` removes the dialog's option to submit anyway. Otherwise the app passes the response to `registerPatient()` in the view model and goes back to the patient list.
+The `Questionnaire` composable shows the form with a **Submit** button. When you tap **Submit**, `getQuestionnaireResponse()` checks the answers and returns them as a FHIR QuestionnaireResponse. The first name, family name and date of birth are required. If one is missing or not valid, the library lists it in a dialog and the form stays open. `showSubmitAnywayWhenValidationFails = false` removes the dialog's option to submit anyway. Otherwise the app passes the response to `registerPatient()` in the view model and goes back to the patient list.
 
 Run the app and tap **Register**. Fill in the form and tap **Submit**. The app goes back to the list, but the patient is not saved yet, because `registerPatient()` is still empty.
 
