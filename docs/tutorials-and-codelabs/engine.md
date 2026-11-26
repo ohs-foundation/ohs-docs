@@ -99,7 +99,7 @@ The platform entry points are already written for you. Everything you write in t
 - `RegistrationScreen.kt`
 - `EngineWorkflowRepository.kt`
 
-Most places you change are marked with a numbered comment, such as `// 4 Replace with code from the codelab to initialize the FHIR Engine.` The number tells you which step of the codelab adds the code.
+Each place you change is marked with a numbered comment, such as `// 4 Replace with code from the codelab to initialize the FHIR Engine.` The number tells you which step of the codelab adds the code.
 
 ### Import the app into Android Studio
 
@@ -237,6 +237,7 @@ Open `DownloadWorkManagerImpl.kt` in `commonMain`. Replace the two `// 5.1 Repla
 
 ```kotlin
 class DownloadWorkManagerImpl : DownloadWorkManager {
+  // 10.1 Replace the line below with code from the codelab to download the PlanDefinition too.
   private val urls = ArrayDeque(listOf("Patient"))
 
   override suspend fun getNextRequest(): DownloadRequest? {
@@ -551,7 +552,7 @@ val patient = extracted.copy(id = patientId)
 
 The starter already runs `registerPatient()` in a coroutine. If the code fails, it shows the error as a message. When the code finishes, it reloads the patient list.
 
-Run the app and register a patient. The new patient appears in the list. Tap **Sync** to upload it, then open `http://localhost:8080/fhir/Patient` in a browser to see it on the FHIR server.
+Run the app and register a patient. The new patient appears in the list, unless the search field filters it out. Tap **Sync** to upload it, then open `http://localhost:8080/fhir/Patient` in a browser to see it on the FHIR server.
 
 ## Step 10 · Connect the workflow library to the engine
 
@@ -566,7 +567,7 @@ The FHIR server already has the PlanDefinition, from `data/registration-plan.jso
 
 ### Download the PlanDefinition
 
-Open `DownloadWorkManagerImpl.kt` and change the `urls` line as follows.
+Open `DownloadWorkManagerImpl.kt` and replace the `// 10.1` comment and the `urls` line below it with the following code.
 
 ```kotlin
 // 10.1 Download the PlanDefinition and ActivityDefinitions too
