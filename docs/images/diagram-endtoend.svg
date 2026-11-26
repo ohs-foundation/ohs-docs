@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1950 480" width="1950" height="480" role="img" aria-labelledby="etTitle etDesc">
   <title id="etTitle">End-to-end digital health platform architecture</title>
-  <desc id="etDesc">Frontline mobile clients sync through the Info Gateway, which mediates requests to a central FHIR server. FHIR Data Pipes streams transactional data from the FHIR server into an analytical warehouse using SQL-on-FHIR view definitions, powering indicator dashboards for programme reporting.</desc>
+  <desc id="etDesc">Frontline mobile clients sync through the Info Gateway, which mediates requests to a central FHIR server. FHIR Data Pipes extracts transactional data from the FHIR server on a schedule into an analytical warehouse using SQL-on-FHIR view definitions, powering indicator dashboards for programme reporting.</desc>
 
   <style>
     :root, svg {

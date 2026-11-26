@@ -108,5 +108,5 @@ Once finished, return to Superset, click the dashboard menu, and select **Refres
 
 ## Where to go next
 
-- Learn how to author custom schema projections in the [Streaming Analytics with SQL-on-FHIR Tutorial](/tutorials-and-codelabs/sql-on-fhir-analytics/).
+- Learn how to author custom schema projections in the [Analytics with SQL-on-FHIR Tutorial](/tutorials-and-codelabs/sql-on-fhir-analytics/).
 - Connect cloud datasets in [Create GCP FHIR Store and BigQuery Dataset](/tutorials-and-codelabs/data-pipes-gcp-fhirstore/).

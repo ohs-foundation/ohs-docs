@@ -23,7 +23,7 @@ OHS Player is an open source reference toolkit under active development. This pa
 | Client Application | Cross-platform builds on Android, iOS, desktop, and web rendering screens dynamically from FHIR configurations |
 | Sync and Offline Persistence | On-device SQLite storage through the multiplatform FHIR engine, with sign-in over OAuth 2.0 with PKCE and FHIR sync through the Info Gateway |
 | Form Data Capture | Rendering Structured Data Capture (SDC) questionnaires with real-time FHIRPath evaluation and template-based extraction |
-| Streaming Analytics | Continuous extraction of transactional FHIR records into PostgreSQL via SQL-on-FHIR pipelines with Superset dashboards |
+| Reference Analytics | Hourly extraction of transactional FHIR records into PostgreSQL via SQL-on-FHIR pipelines with Superset dashboards |
 
 ## Active development areas
 

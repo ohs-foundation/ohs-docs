@@ -1,7 +1,7 @@
 ---
 id: get-started
 title: Build and Quickstart
-description: A guided step-by-step path to deploy reference infrastructure, administer care teams, run frontline clients, and stream analytics.
+description: A guided step-by-step path to deploy reference infrastructure, administer care teams, run frontline clients, and set up analytics.
 slug: /get-started/
 sidebar_label: Quickstart
 sidebar_position: 20
@@ -12,7 +12,7 @@ repository: ohs-player
 
 ## The end-to-end builder journey
 
-The fastest way to get started building with FHIR is to spin up the OHS Player reference implementation. It provides a clear, sequential path from bringing up local infrastructure to running multiplatform client applications and streaming analytics dashboards.
+The fastest way to get started building with FHIR is to spin up the OHS Player reference implementation. It provides a clear, sequential path from bringing up local infrastructure to running multiplatform client applications and analytics dashboards.
 
 Alternatively, if you are looking for component-specific examples, individual SDK integrations, or form authoring guides, explore [Tutorials and codelabs](/tutorials-and-codelabs/).
 
@@ -23,7 +23,7 @@ By completing this quickstart, you will have a running local healthcare system w
 - **A live backend infrastructure** with PostgreSQL, Keycloak identity, an un-forked HAPI FHIR server, and Info Gateway.
 - **An administrative organisation structure** with health facilities, practitioner roles, and care teams managed through the Web Admin Portal.
 - **A multiplatform frontline client** capturing clinical encounters offline on mobile or desktop and syncing them through the gateway.
-- **A streaming analytical pipeline** transforming FHIR resources into relational schemas powering live Apache Superset dashboards.
+- **A scheduled analytical pipeline** transforming FHIR resources into relational schemas powering Apache Superset dashboards.
 
 [Watch the 10-minute video demonstration ↗](https://youtu.be/GMqFtlKE5kQ?si=z0I0JHLg6EyxIwst)
 

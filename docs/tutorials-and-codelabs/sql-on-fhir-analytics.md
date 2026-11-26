@@ -1,6 +1,6 @@
 ---
 id: sql-on-fhir-analytics
-title: Tutorial · Streaming Analytics with SQL-on-FHIR
+title: Tutorial · Analytics with SQL-on-FHIR
 description: Transform hierarchical FHIR data into relational database schemas with ViewDefinitions and build Apache Superset dashboards.
 slug: /tutorials-and-codelabs/sql-on-fhir-analytics/
 sidebar_label: SQL-on-FHIR Analytics Tutorial
@@ -12,7 +12,7 @@ repository: analytics
 
 ## Overview
 
-In this tutorial, you will define declarative SQL-on-FHIR `ViewDefinition` resources to flatten complex, nested FHIR JSON documents into relational database tables, run FHIR Data Pipes streaming, and build real-time population health charts in Apache Superset.
+In this tutorial, you will define declarative SQL-on-FHIR `ViewDefinition` resources to flatten complex, nested FHIR JSON documents into relational database tables, run FHIR Data Pipes, and build population health charts in Apache Superset.
 
 ## Prerequisites
 
@@ -43,9 +43,9 @@ Create a declarative `ViewDefinition` file that projects fields from FHIR `Obser
 }
 ```
 
-## Step 2 · Run FHIR Data Pipes streaming
+## Step 2 · Run FHIR Data Pipes
 
-Deploy the analytics profile within the reference infrastructure to start continuous batch extraction.
+Deploy the analytics profile within the reference infrastructure to start the pipeline controller, which runs the pipeline on a schedule.
 
 ```sh
 cd ohs-player-reference-infrastructure
