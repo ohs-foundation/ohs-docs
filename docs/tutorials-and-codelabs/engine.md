@@ -14,7 +14,7 @@ repository: kotlin-fhir-engine
 
 ### What you will build
 
-In this codelab, you build a Kotlin Multiplatform app with the Kotlin FHIR Engine. Your app uses the engine to download FHIR resources from a FHIR server, and to upload any local changes to the server. You then add a registration form with Kotlin FHIR Data Capture, and use the Kotlin FHIR Workflow library to propose the first tasks for each new patient. The same code runs on Android, iOS, Desktop (JVM) and Web (Wasm).
+In this codelab, you build a Kotlin Multiplatform app using the [KMP FHIR SDK](/fhir-foundations/kmp-fhir-sdk/). Your app uses Kotlin FHIR Engine to download FHIR resources from a FHIR server and upload local changes back to the server. You then add a registration form with Kotlin FHIR Data Capture, and use Kotlin FHIR Workflow to propose the first tasks for each new patient. The same code runs on Android, iOS, Desktop (JVM) and Web (Wasm).
 
 ### What you will learn
 
@@ -29,12 +29,11 @@ In this codelab, you build a Kotlin Multiplatform app with the Kotlin FHIR Engin
 ### What you will need
 
 - Docker with Docker Compose ([get Docker](https://docs.docker.com/get-docker/))
-- A recent version of [Android Studio](https://developer.android.com/studio)
-- The [Android Emulator](https://developer.android.com/studio/run/emulator) or a physical Android device running Android 8.0 (API 26) or later
-- JDK 21
+- JDK 21 (sufficient to run the Desktop JVM and Web Wasm targets from the terminal)
+- [Android Studio](https://developer.android.com/studio) and the [Android Emulator](https://developer.android.com/studio/run/emulator) or a physical Android 8.0 (API 26)+ device if you want to run the Android target
 - A Mac with [Xcode](https://developer.apple.com/xcode/) 26 or later if you also want to run the iOS app
 - The sample code
-- Basic knowledge of Kotlin and [Jetpack Compose](https://developer.android.com/compose)
+- Basic knowledge of Kotlin and [Compose Multiplatform](https://www.jetbrains.com/compose-multiplatform/)
 
 This codelab is focused on the [Kotlin FHIR Engine](https://github.com/ohs-foundation/kotlin-fhir-engine), with a short look at [Kotlin FHIR Data Capture](https://github.com/ohs-foundation/kotlin-fhir-data-capture) and [Kotlin FHIR Workflow](https://github.com/ohs-foundation/kotlin-fhir-workflow) at the end. Concepts and code that are not relevant to these libraries are glossed over and provided for you to copy and paste. If you have not built a Kotlin Multiplatform app before, start by [creating your first Compose Multiplatform app](https://www.jetbrains.com/help/kotlin-multiplatform-dev/compose-multiplatform-create-first-app.html).
 

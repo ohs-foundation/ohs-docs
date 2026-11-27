@@ -1,6 +1,6 @@
 ---
 title: Platform support
-description: Which Kotlin Multiplatform targets each FHIR Foundations library publishes artifacts for.
+description: Which Kotlin Multiplatform targets the Core Libraries and KMP FHIR SDK publish artifacts for.
 slug: /fhir-foundations/platform-support/
 sidebar_position: 20
 guide_type: Technical reference
@@ -12,7 +12,7 @@ source_label: OHS Foundation on GitHub ↗
 
 ## Support matrix
 
-The four repositories target different platform sets, so check this table before assuming the whole stack runs where your app does. A check means the repository's latest release publishes a Maven Central artifact for that target, and a cross means it does not.
+The Core Libraries and [KMP FHIR SDK](/fhir-foundations/kmp-fhir-sdk/) target different platform sets, so check this table before assuming the whole stack runs where your app does. A check means the repository's latest release publishes a Maven Central artifact for that target, and a cross means it does not.
 
 | Target | FHIR | FHIRPath | Engine | Data Capture |
 | --- | --- | --- | --- | --- |
@@ -20,7 +20,7 @@ The four repositories target different platform sets, so check this table before
 | JVM (desktop, server) | ✓ | ✓ | ✓ | ✓ |
 | iOS device (`iosArm64`) | ✓ | ✓ | ✓ | ✓ |
 | iOS simulator, Apple Silicon | ✓ | ✓ | ✓ | ✓ |
-| iOS simulator, Intel (`iosX64`) | ✗ | ✗ | ✗ | ✓ |
+| iOS simulator, Intel (`iosX64`) | ✗ | ✗ | ✗ | ✗ |
 | JS (browser) | ✓ | ✓ | ✓ | ✓ |
 | Wasm JS (browser) | ✓ | ✓ | ✓ | ✓ |
 | Wasm WASI | ✓ | ✓ | ✗ | ✗ |
@@ -43,7 +43,15 @@ Bounded by its storage layer. The engine persists with Room for Kotlin Multiplat
 
 ### Kotlin FHIR Data Capture
 
-The only repository in the pillar that ships `iosX64`, because Compose Multiplatform supports it. Wasm WASI is explicitly unsupported, since no UI toolkit exists there. Android requires minSdk 26.
+Targets Android (`minSdk 26`), JVM, `iosArm64`, `iosSimulatorArm64`, JS, and Wasm JS. Intel iOS simulator (`iosX64`) targets were dropped after `2.0.0-alpha02`, and Wasm WASI is explicitly unsupported because no Compose UI toolkit exists there.
+
+### Kotlin FHIR Workflow
+
+The `2.0.0-alpha01` companion targets Android (`minSdk 26`), Desktop JVM, `iosArm64`, `iosSimulatorArm64`, and Node `wasmJs`. It omits `iosX64` because `kotlin-fhir` and `kotlin-fhirpath` do not publish that target.
+
+### Kotlin FHIR Knowledge
+
+The `2.0.0-alpha01` companion targets Android (`minSdk 26`), Desktop JVM, `iosArm64`, `iosSimulatorArm64`, JS, and Wasm JS. Package downloading and gzip extraction run on non-web targets (`Android`, `iOS`, `Desktop JVM`).
 
 ## Reading the repositories
 

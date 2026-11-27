@@ -69,6 +69,7 @@ const config = {
           { from: "/docs/ohs-player", to: "/" },
           { from: "/docs/contributing", to: "/resources/" },
           { from: "/docs/android-fhir-sdk", to: "/fhir-foundations/android-fhir/" },
+          { from: "/docs/kmp-fhir-sdk", to: "/fhir-foundations/kmp-fhir-sdk/" },
           { from: "/docs/fhir-app-examples", to: "/" },
           { from: "/docs/fhir-data-pipes", to: "/fhir-foundations/fhir-data-pipes/" },
           { from: "/docs/fhir-gateway", to: "/fhir-foundations/info-gateway/" },

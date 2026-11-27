@@ -30,17 +30,18 @@ Declarative `ViewDefinition` resources flatten nested FHIR JSON hierarchies into
 - **Reference** is the [SQL-on-FHIR v2 Specification](https://sql-on-fhir.org/).
 
 ### 4. OpenID Connect and OAuth 2.0
-Centralized identity, role tokens, and single sign-on across mobile clients, web portals, and gateway reverse proxies are managed via OAuth 2.0.
+Centralized identity, role tokens, and single sign-on across multiplatform clients, web portals, and gateway reverse proxies are managed via OAuth 2.0.
 
 ## Required developer toolchain
 
 | Tool | Recommended version | Required for |
 | --- | --- | --- |
 | Docker Engine & Compose | Docker 24+, Compose v2 | Running the reference infrastructure topology |
-| JDK | JDK 21+ | Building backend gateway extensions and Kotlin Multiplatform apps |
+| JDK | JDK 21+ | Building backend gateway extensions and Kotlin Multiplatform apps (Desktop and Web Wasm) |
 | Node.js & pnpm | As set in the [Portal quickstart](https://github.com/ohs-foundation/ohs-player-reference-web-portal/blob/main/docs/QUICKSTART.md) | Working on the Web Portal source |
-| Android Studio | Latest stable | Developing and debugging Android frontline client targets |
-| Xcode | Latest stable (macOS only) | Building and testing iOS frontline client targets |
+| Modern web browser | Chrome, Edge, Firefox, or Safari | Running WebAssembly browser clients with OPFS offline storage |
+| Android Studio | Latest stable | Optional unless developing and debugging Android targets |
+| Xcode | Latest stable (macOS only) | Optional unless building and testing iOS targets |
 
 ## Where to go next
 

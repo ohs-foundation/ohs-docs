@@ -92,6 +92,30 @@ const repositories = {
       {repository: "kotlin-fhirpath", relationship: "Evaluates SDC expressions such as enablement and calculated values."},
     ],
   },
+  "kotlin-fhir-workflow": {
+    label: "Kotlin FHIR Workflow",
+    url: "https://github.com/ohs-foundation/kotlin-fhir-workflow",
+    role: "Kotlin Multiplatform workflow patterns including PlanDefinition $apply care-plan generation.",
+    dependencies: [
+      {repository: "kotlin-fhir", relationship: "Produces CarePlan and Task resources."},
+      {repository: "kotlin-fhirpath", relationship: "Evaluates PlanDefinition conditions."},
+      {repository: "kotlin-fhir-engine", relationship: "Persists patient data and generated workflow tasks."},
+    ],
+  },
+  "kotlin-fhir-knowledge": {
+    label: "Kotlin FHIR Knowledge",
+    url: "https://github.com/ohs-foundation/kotlin-fhir-knowledge",
+    role: "On-device FHIR R4 NPM package installation and canonical resource resolution.",
+    dependencies: [
+      {repository: "kotlin-fhir", relationship: "Decodes and indexes R4 knowledge artifacts."},
+    ],
+  },
+  "android-fhir": {
+    label: "Android FHIR SDK",
+    url: "https://github.com/ohs-foundation/android-fhir",
+    role: "Maintenance-mode native Android FHIR libraries for existing Android View applications.",
+    dependencies: [],
+  },
   "configuration-ig": {
     label: "Player Configuration IG",
     url: "https://github.com/ohs-foundation/player-reference-ig",

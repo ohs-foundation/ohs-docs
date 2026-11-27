@@ -27,7 +27,7 @@ It is the component most of the Open Health Stack converges on, and the one an i
 
 ## The libraries underneath
 
-The app is an assembly of the OHS foundational libraries rather than a monolith. This is the clearest illustration of what Pillar 1 gives Pillar 2.
+The app is an assembly of the [KMP FHIR SDK](/fhir-foundations/kmp-fhir-sdk/) and core FHIR Foundations libraries rather than a monolith. This is the clearest illustration of what Pillar 1 gives Pillar 2.
 
 ![The FHIR Foundations stack showing how Kotlin Multiplatform SDKs (Data Capture and Engine) layer over Kotlin FHIRPath and Kotlin FHIR models.](../../images/fhir-foundations-architecture.svg)
 
@@ -38,7 +38,7 @@ The app is an assembly of the OHS foundational libraries rather than a monolith.
 | [`kotlin-fhir-engine`](https://github.com/ohs-foundation/kotlin-fhir-engine) | On-device storage, search, and sync with a FHIR server |
 | [`kotlin-fhir-data-capture`](https://github.com/ohs-foundation/kotlin-fhir-data-capture) | Questionnaire rendering and extraction |
 
-These are the Kotlin Multiplatform generation of the libraries, which is what lets one application target four platforms. They are also earlier in their release cycle than the Android-only generation they replace. [What you can do today](/ohs-player/what-you-can-do-today/) sets out what that means.
+These libraries form the [KMP FHIR SDK](/fhir-foundations/kmp-fhir-sdk/), which is what lets one application target four platforms. See [Versions and compatibility](/fhir-foundations/versions/) for the pinned releases used by `player-reference`, and [What you can do today](/ohs-player/what-you-can-do-today/) for current capabilities.
 
 Between the libraries and the application sits [Player Client](https://github.com/ohs-foundation/player-client), the library that turns configuration into screens, and the [Configuration IG](/ohs-player/configuration-ig/), which is the configuration it reads.
 

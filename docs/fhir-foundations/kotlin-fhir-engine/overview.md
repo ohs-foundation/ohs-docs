@@ -11,7 +11,7 @@ repository: kotlin-fhir-engine
 
 ## What it is
 
-Kotlin FHIR Engine is the storage-and-sync layer of the FHIR Foundations stack. It is a Kotlin Multiplatform SDK for building offline-capable healthcare applications on FHIR R4. It persists resources on the device, indexes them for typed search, records local edits as a change log, and synchronizes both directions with a remote FHIR server.
+Kotlin FHIR Engine is the storage-and-sync layer of the [Kotlin Multiplatform (KMP) FHIR SDK](/fhir-foundations/kmp-fhir-sdk/) under FHIR Foundations. It is a Kotlin Multiplatform SDK for building offline-capable healthcare applications on FHIR R4. It persists resources on the device, indexes them for typed search, records local edits as a change log, and synchronizes both directions with a remote FHIR server.
 
 It is the Kotlin Multiplatform successor to the engine from the Android FHIR SDK, and the same programming model now runs on Android, iOS, desktop JVM, and the browser.
 
@@ -29,7 +29,7 @@ Call `FhirEngineProvider.init(configuration, context)` once at startup and `Fhir
 
 ## What it is not
 
-- **Not encrypted storage.** Data at rest is unencrypted. Setting `enableEncryptionIfSupported = true` throws `IllegalArgumentException`. The flag exists to preserve call sites for when encryption is implemented.
+- **Encryption is Android-only.** Setting `enableEncryption = true` in `FhirEngineConfiguration` encrypts the SQLite database with SQLCipher on Android. On iOS, desktop, and web, `FhirEngineProvider.init` throws `UnsupportedOperationException` rather than silently storing data unencrypted. The in-memory database used when `testMode = true` is not encrypted.
 - **Not a scheduler outside Android.** Android gets WorkManager integration (`FhirSyncWorker`, one-time and periodic sync). On iOS you schedule via `BGTaskScheduler`, and on desktop and web your app decides when to run sync. The library supplies the sync execution, not the timer.
 - **Not a complete download policy.** What to fetch from the server is your decision. You implement `DownloadWorkManager` (or use the shipped resource-parameters-based one) rather than inheriting a default.
 - **R4 only.** No R4B or R5.

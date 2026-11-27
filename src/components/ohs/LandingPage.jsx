@@ -76,8 +76,9 @@ function PillarsSection() {
             <Link to="/fhir-foundations/">FHIR Foundations</Link>
           </h3>
           <p>
-            Unbundled Kotlin Multiplatform core libraries, on-device SQLite storage,
-            typed search parameters, and structured questionnaire rendering.
+            Unbundled Kotlin Multiplatform core libraries and the Kotlin
+            Multiplatform (KMP) FHIR SDK for on-device SQLite storage, typed
+            search, sync, and structured questionnaire rendering.
           </p>
           <Link className="ohs-pillar-cta" to="/fhir-foundations/">
             Explore FHIR Foundations <span>→</span>

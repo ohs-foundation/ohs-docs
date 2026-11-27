@@ -16,7 +16,9 @@ Here you can find guided tutorials and hands-on codelabs to help engineering tea
 
 Each module focuses on a concrete technical capability, complete with prerequisites, runnable code snippets, and expected outcomes.
 
-## Client SDKs
+## KMP FHIR SDK
+
+Learn the core storage, sync, and form-capture layers of the [Kotlin Multiplatform (KMP) FHIR SDK](/fhir-foundations/kmp-fhir-sdk/) across Android, iOS, desktop, and web.
 
 | Learning module | Type | What you build | Link |
 | --- | --- | --- | --- |
@@ -58,6 +60,6 @@ Each module focuses on a concrete technical capability, complete with prerequisi
 
 ## Suggested progression by role
 
-- **Mobile and frontend developers** can begin with the [FHIR Engine Codelab](/tutorials-and-codelabs/engine/) and proceed to the [Data Capture Codelab](/tutorials-and-codelabs/data-capture/).
+- **Multiplatform, mobile, and web developers** can begin with the [FHIR Engine Codelab](/tutorials-and-codelabs/engine/) and proceed to the [Data Capture Codelab](/tutorials-and-codelabs/data-capture/).
 - **Backend and DevOps engineers** can explore [Info Gateway Getting Started](/tutorials-and-codelabs/info-gateway-getting-started/), [Run Info Gateway in Docker](/tutorials-and-codelabs/info-gateway-docker/), [Create an Access Checker Plugin](/tutorials-and-codelabs/info-gateway-access-checker/), or try the [Gateway Security Codelab](/tutorials-and-codelabs/gateway-access-rules/).
 - **Health informaticians and data analysts** can progress through [Streaming Analytics with SQL-on-FHIR](/tutorials-and-codelabs/sql-on-fhir-analytics/), [Analytics Test Servers Setup](/tutorials-and-codelabs/data-pipes-test-servers/), [Single Machine Analytics Deployment](/tutorials-and-codelabs/data-pipes-single-machine/), and [Parquet Visualization in Superset](/tutorials-and-codelabs/data-pipes-superset/).

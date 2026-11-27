@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 880" width="1400" height="880" role="img" aria-labelledby="ffTitle ffDesc">
   <title id="ffTitle">FHIR Foundations architecture</title>
-  <desc id="ffDesc">Kotlin FHIR Data Capture and Kotlin FHIR Engine are client-side SDKs. Both depend on Kotlin FHIRPath for expression evaluation and on Kotlin FHIR for the data model. Kotlin FHIRPath itself navigates the Kotlin FHIR data model, the base of the pillar.</desc>
+  <desc id="ffDesc">Kotlin FHIR Data Capture and Kotlin FHIR Engine are client-side KMP FHIR SDK libraries. Both depend on Kotlin FHIRPath for expression evaluation and on Kotlin FHIR for the data model. Kotlin FHIRPath itself navigates the Kotlin FHIR data model, the base of the pillar.</desc>
 
   <style>
     :root, svg {
@@ -46,7 +46,7 @@
   <!-- ══════════ SDK BAND ══════════ -->
   <rect x="120" y="64" width="1160" height="260" rx="20"
         fill="none" stroke="var(--line)" stroke-width="2.2" stroke-dasharray="9 8" opacity=".75"/>
-  <text class="band" x="150" y="104">SDKS</text>
+  <text class="band" x="150" y="104">KMP FHIR SDK</text>
 
   <g>
     <rect class="f-fill" x="180" y="138" width="440" height="150" rx="14"/>

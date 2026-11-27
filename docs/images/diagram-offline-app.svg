@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 640" width="1400" height="640" role="img" aria-labelledby="oaTitle oaDesc">
-  <title id="oaTitle">Offline FHIR mobile application architecture</title>
-  <desc id="oaDesc">The mobile app contains the Structured Data Capture library for rendering forms, the FHIR Engine for local SQLite storage and search, and the Workflow library for on-device CQL clinical decision support. The FHIR Engine synchronizes with a standard FHIR server over REST once connectivity is available.</desc>
+  <title id="oaTitle">Offline FHIR multiplatform application architecture</title>
+  <desc id="oaDesc">The multiplatform app contains the Structured Data Capture library for rendering forms, the FHIR Engine for local SQLite storage and search, and the Workflow library for FHIRPath clinical decision support and care plans. The FHIR Engine synchronizes with a standard FHIR server over REST once connectivity is available.</desc>
 
   <style>
     :root, svg {
@@ -50,7 +50,7 @@
   <!-- container -->
   <rect x="140" y="120" width="420" height="410" rx="20" fill="none" stroke="var(--line)" stroke-width="2.2" stroke-dasharray="9 8" opacity=".75"/>
 
-  <text class="lbl" x="350" y="64">Mobile app</text>
+  <text class="lbl" x="350" y="64">Multiplatform app</text>
   <text class="sub" x="350" y="90">Android &#183; iOS &#183; Desktop &#183; Web</text>
 
   <text class="lbl-s" x="1080" y="64">FHIR server</text>
@@ -70,7 +70,7 @@
   <g>
     <rect class="f-fill" x="170" y="410" width="360" height="90" rx="12"/>
     <text class="cht" x="192" y="448">Workflow</text>
-    <text class="chs" x="192" y="474">on-device CQL clinical decision support</text>
+    <text class="chs" x="192" y="474">FHIRPath workflows and care plans</text>
   </g>
 
   <!-- cylinder -->

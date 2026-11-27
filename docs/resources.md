@@ -15,7 +15,7 @@ Each Open Health Stack component is maintained in its own dedicated repository. 
 
 ### FHIR Foundations repositories
 
-The core libraries and client SDKs provide the multiplatform foundation for working with FHIR data.
+The Core Libraries, [KMP FHIR SDK](https://github.com/orgs/ohs-foundation/repositories?q=topic:kmp-fhir-sdk), and back-end services provide the multiplatform foundation for working with FHIR data.
 
 | Repository | Role |
 | --- | --- |
@@ -23,6 +23,11 @@ The core libraries and client SDKs provide the multiplatform foundation for work
 | [kotlin-fhirpath](https://github.com/ohs-foundation/kotlin-fhirpath) | FHIRPath expression engine for Kotlin |
 | [kotlin-fhir-engine](https://github.com/ohs-foundation/kotlin-fhir-engine) | On-device persistence, search, and server synchronization |
 | [kotlin-fhir-data-capture](https://github.com/ohs-foundation/kotlin-fhir-data-capture) | Questionnaire rendering and data capture |
+| [kotlin-fhir-workflow](https://github.com/ohs-foundation/kotlin-fhir-workflow) | Clinical workflow patterns and `PlanDefinition/$apply` |
+| [kotlin-fhir-knowledge](https://github.com/ohs-foundation/kotlin-fhir-knowledge) | On-device FHIR NPM package installation and canonical lookup |
+| [android-fhir](https://github.com/ohs-foundation/android-fhir) | Native Android FHIR libraries (Maintenance) |
+| [fhir-gateway](https://github.com/ohs-foundation/fhir-gateway) | Authentication proxy and granular FHIR access control |
+| [fhir-data-pipes](https://github.com/ohs-foundation/fhir-data-pipes) | SQL-on-FHIR extraction and analytical pipelines |
 
 ### OHS Player reference toolkit
 

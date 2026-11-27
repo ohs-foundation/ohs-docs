@@ -157,6 +157,11 @@
       "searchIndexed": true
     },
     {
+      "id": "kmp-fhir-sdk-overview",
+      "path": "/ohs-docs/fhir-foundations/kmp-fhir-sdk/",
+      "searchIndexed": true
+    },
+    {
       "id": "fhir-foundations-platform-support",
       "path": "/ohs-docs/fhir-foundations/platform-support/",
       "searchIndexed": true

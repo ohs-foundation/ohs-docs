@@ -26,8 +26,8 @@ Open Health Stack is a collection of open-source tools, shared libraries, and re
 Unbundled Kotlin Multiplatform libraries and client SDKs that can be imported independently into any project.
 
 - **Core FHIR libraries** provide type-safe models (`fhir-model`) across Android, iOS, desktop, and web for FHIR R4, R4B, and R5, with an architecture ready for future releases including FHIR R6, alongside Kotlin FHIRPath (`fhir-path`) for deterministic clinical logic.
-- **Kotlin Multiplatform FHIR SDK** provides on-device SQLite storage, search, bidirectional synchronization, and Structured Data Capture (SDC) forms.
-- **Android FHIR SDK** provides native Android libraries for offline storage, sync, and form rendering.
+- **Kotlin Multiplatform (KMP) FHIR SDK** provides on-device SQLite storage (`fhir-engine`), Structured Data Capture forms (`fhir-data-capture`), clinical workflows (`fhir-workflow`), and knowledge package resolution (`fhir-knowledge`) across Android, iOS, desktop, and web. Explore the [KMP FHIR SDK overview](/fhir-foundations/kmp-fhir-sdk/).
+- **Android FHIR SDK (Maintenance)** provides legacy native Android libraries for existing Android View apps needing offline storage, sync, and on-device CQL. Explore [Android FHIR SDK](/fhir-foundations/android-fhir/).
 - **Back-end services** include Info Gateway (`fhir-gateway`) and FHIR Data Pipes for reverse proxy authentication and batch SQL-on-FHIR pipelines.
 
 ### Pillar 2 for OHS Player reference toolkit

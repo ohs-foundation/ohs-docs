@@ -13,7 +13,7 @@ repository: kotlin-fhirpath
 
 Kotlin FHIRPath runs FHIRPath expressions against FHIR resources in Kotlin. It works on the resource classes from [Kotlin FHIR](/fhir-foundations/kotlin-fhir/), for FHIR R4, R4B, and R5. It runs on Android, iOS, the JVM, and the web.
 
-FHIRPath is the expression language that FHIR uses for search parameters, invariants, and questionnaire logic. [Kotlin FHIR Engine](/fhir-foundations/kotlin-fhir-engine/) uses this library to index resources for search, and [Kotlin FHIR Data Capture](/fhir-foundations/kotlin-fhir-data-capture/) uses it for questionnaire behavior. You can also use it on its own.
+FHIRPath is the expression language that FHIR uses for search parameters, invariants, and questionnaire logic. Within the [KMP FHIR SDK](/fhir-foundations/kmp-fhir-sdk/), [Kotlin FHIR Engine](/fhir-foundations/kotlin-fhir-engine/) uses this library to index resources for search, and [Kotlin FHIR Data Capture](/fhir-foundations/kotlin-fhir-data-capture/) uses it for questionnaire behavior. You can also use it on its own.
 
 ## What you get
 

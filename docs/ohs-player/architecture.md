@@ -21,7 +21,7 @@ The diagram illustrates three primary layers within the reference environment.
 
 ## Foundational building blocks
 
-Open Health Stack provides unbundled open source building blocks that can be imported independently into any digital health project.
+Open Health Stack provides unbundled open source building blocks that can be imported independently into any digital health project. The Client App consumes the [Kotlin Multiplatform (KMP) FHIR SDK](/fhir-foundations/kmp-fhir-sdk/) through `player-client`.
 
 ![The FHIR Foundations stack showing how Kotlin FHIR Data Capture and Kotlin FHIR Engine layer on top of Kotlin FHIRPath and Kotlin FHIR data model.](../images/fhir-foundations-architecture.svg)
 
@@ -54,7 +54,7 @@ Neither client application connects directly to the underlying FHIR server. Thei
 
 ## How data flows
 
-1. **Frontline data entry** occurs on mobile devices using Kotlin FHIR Engine for on-device SQLite storage and offline operation.
+1. **Frontline data entry** occurs on mobile, desktop, and browser clients using Kotlin FHIR Engine for local SQLite storage (including browser OPFS) and offline operation.
 2. **Synchronization** transmits FHIR resource bundles through the gateway to the central FHIR server upon network connectivity.
 3. **Administrative management** in the Web Admin Portal stores organisation, facility, and practitioner records directly as FHIR resources.
 4. **Analytical transformation** reads transactional FHIR resources and applies SQL-on-FHIR view definitions via FHIR Data Pipes, writing flattened relational tables into PostgreSQL.

@@ -14,7 +14,7 @@ repository: kotlin-fhir-data-capture
 
 ### What you will build
 
-In this codelab, you build a Kotlin Multiplatform app with the Kotlin FHIR Data Capture library. Your app uses the library to render and process FHIR Questionnaires and responses. The same code runs on Android, iOS, Desktop (JVM) and Web (Wasm and JS).
+In this codelab, you build a Kotlin Multiplatform app using the Kotlin FHIR Data Capture library in the [KMP FHIR SDK](/fhir-foundations/kmp-fhir-sdk/). Your app uses the library to render and process FHIR Questionnaires and responses. The same code runs on Android, iOS, Desktop (JVM) and Web (Wasm and JS).
 
 ### What you will learn
 
@@ -25,11 +25,11 @@ In this codelab, you build a Kotlin Multiplatform app with the Kotlin FHIR Data 
 
 ### What you will need
 
-- A recent version of [Android Studio](https://developer.android.com/studio)
-- The [Android Emulator](https://developer.android.com/studio/run/emulator) or a physical Android device
+- JDK 21 (sufficient to run the Desktop JVM and Web Wasm/JS targets from the terminal)
+- [Android Studio](https://developer.android.com/studio) and the [Android Emulator](https://developer.android.com/studio/run/emulator) or a physical Android device if you want to run the Android target
 - A Mac with [Xcode](https://developer.apple.com/xcode/) if you also want to run the iOS app
 - The sample code
-- Basic knowledge of Kotlin and [Jetpack Compose](https://developer.android.com/compose)
+- Basic knowledge of Kotlin and [Compose Multiplatform](https://www.jetbrains.com/compose-multiplatform/)
 
 This codelab is focused on [Kotlin FHIR Data Capture](https://github.com/ohs-foundation/kotlin-fhir-data-capture). Concepts and code that are not relevant to the library are glossed over and provided for you to copy and paste. If you have not built a Kotlin Multiplatform app before, start by [creating your first Compose Multiplatform app](https://www.jetbrains.com/help/kotlin-multiplatform-dev/compose-multiplatform-create-first-app.html).
 
@@ -263,7 +263,7 @@ println("response: ${json.encodeToString(questionnaireResponse)}")
 
 The `questionnaireResponse` passed to `submitQuestionnaire()` is a Kotlin FHIR `QuestionnaireResponse`, which you can use directly or with other Kotlin FHIR libraries. This codelab encodes it to a JSON string so that you can read it in the log. The `println` output appears in Logcat on Android, the Xcode console on iOS, the terminal on Desktop and the browser console on Web.
 
-Run the app, answer the questions and tap **Submit**. Search Logcat for `response:` to see the QuestionnaireResponse.
+Run the app, answer the questions and tap **Submit**. Check your log output (Logcat on Android, terminal on Desktop, Xcode console on iOS, or browser console on Web) for `response` to see the QuestionnaireResponse.
 
 ## Step 6 · Extract FHIR resources from a QuestionnaireResponse
 
@@ -323,7 +323,7 @@ private fun submitQuestionnaire(
 }
 ```
 
-Run the app, submit the questionnaire and search Logcat for `extraction result:` to see the Bundle.
+Run the app, submit the questionnaire and check your log output (Logcat on Android, terminal on Desktop, Xcode console on iOS, or browser console on Web) for `extraction result` to see the Bundle.
 
 ## Step 7 · Congratulations
 

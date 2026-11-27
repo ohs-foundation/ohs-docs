@@ -24,8 +24,8 @@ Add the engine to a Kotlin Multiplatform or Android project, initialize it, and 
 kotlin {
   sourceSets {
     commonMain.dependencies {
-      implementation("dev.ohs.fhir:fhir-engine:2.0.0-alpha02")
-      implementation("dev.ohs.fhir:fhir-model-r4:1.0.0-beta05")
+      implementation("dev.ohs.fhir:fhir-engine:2.0.0-alpha05")
+      implementation("dev.ohs.fhir:fhir-model-r4:1.0.0-rc03")
     }
   }
 }
@@ -80,7 +80,7 @@ All of these are suspend functions, so call them from a coroutine. Every local m
 - **Desktop** uses `~/.fhir-engine`, unless you set `storageDirectory` in the configuration.
 - **Browser** uses the origin-private file system (OPFS).
 
-Data is stored unencrypted on all platforms.
+On Android, setting `enableEncryption = true` in `FhirEngineConfiguration` encrypts the local database with SQLCipher. On iOS, desktop, and browser targets, data is stored unencrypted and passing `enableEncryption = true` throws `UnsupportedOperationException`.
 
 ## Checkpoint
 
