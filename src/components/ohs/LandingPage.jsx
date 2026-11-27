@@ -1,8 +1,10 @@
 import React, { useEffect, useRef, useState } from "react";
 import Link from "@docusaurus/Link";
 import { useDoc } from "@docusaurus/plugin-content-docs/client";
+import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import SearchBar from "@theme/SearchBar";
 import Brand from "./Brand";
+import { formatLastUpdated } from "@site/src/utils/formatTimestamp.mjs";
 
 function LandingHeader() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -123,13 +125,21 @@ function PillarsSection() {
   );
 }
 
-function Footer() {
+function Footer({ siteLastUpdated }) {
   return (
     <footer className="ohs-footer">
       <div className="ohs-footer-inner">
         <div>
           <Brand />
           <p>Documentation for Open Health Stack components, libraries, and reference toolkits.</p>
+          {siteLastUpdated && (
+            <p className="ohs-footer-updated">
+              Last updated{" "}
+              <time dateTime={siteLastUpdated.iso}>
+                {siteLastUpdated.dateTimeLabel}
+              </time>
+            </p>
+          )}
         </div>
         <div className="ohs-footer-links">
           <Link to="/why-ohs/">About Open Health Stack</Link>
@@ -149,6 +159,10 @@ function Footer() {
 /** Shared shell. Editorial content is supplied by docs/landing.md. */
 export default function LandingPage({ children }) {
   const { metadata, frontMatter } = useDoc();
+  const { siteConfig } = useDocusaurusContext();
+  const siteLastUpdated = formatLastUpdated(
+    siteConfig.customFields?.siteLastUpdatedAt,
+  );
   useEffect(() => {
     document.documentElement.setAttribute("data-docs-ready", "true");
   }, []);
@@ -194,7 +208,7 @@ export default function LandingPage({ children }) {
         <PillarsSection />
         <article className="ohs-landing-content">{children}</article>
       </main>
-      <Footer />
+      <Footer siteLastUpdated={siteLastUpdated} />
     </div>
   );
 }

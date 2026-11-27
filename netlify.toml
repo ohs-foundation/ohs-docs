@@ -2,7 +2,7 @@
 # serves at / (docs.ohs.foundation) while GitHub Pages keeps /ohs-docs/.
 
 [build]
-  command = "npm run build"
+  command = "node tools/scripts/ensure-git-history.mjs && npm run build"
   publish = "build"
 
 [build.environment]

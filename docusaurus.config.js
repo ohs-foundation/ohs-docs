@@ -1,5 +1,23 @@
+const { execFileSync } = require("node:child_process");
+
 const isNetlify =
   process.env.NETLIFY === "true" || process.env.NETLIFY === "1";
+
+function getSiteLastUpdatedAt() {
+  try {
+    const iso = execFileSync("git", ["log", "-1", "--format=%cI"], {
+      cwd: __dirname,
+      encoding: "utf8",
+      stdio: ["ignore", "pipe", "ignore"],
+    }).trim();
+    if (iso && !Number.isNaN(Date.parse(iso))) {
+      return new Date(iso).toISOString();
+    }
+  } catch {
+    // Fall back to build time when git metadata is unavailable.
+  }
+  return new Date().toISOString();
+}
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
@@ -13,6 +31,9 @@ const config = {
   trailingSlash: true,
   organizationName: "ohs-foundation",
   projectName: "ohs-docs",
+  customFields: {
+    siteLastUpdatedAt: getSiteLastUpdatedAt(),
+  },
   onBrokenLinks: "throw",
   onBrokenAnchors: "ignore",
   markdown: { hooks: { onBrokenMarkdownLinks: "throw" } },
@@ -27,7 +48,7 @@ const config = {
           sidebarPath: "./sidebars.js",
           editUrl: undefined,
           showLastUpdateAuthor: false,
-          showLastUpdateTime: false,
+          showLastUpdateTime: true,
         },
         blog: false,
         theme: { customCss: "./src/css/custom.css" },

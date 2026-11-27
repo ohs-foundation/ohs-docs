@@ -6,6 +6,7 @@ import DocSidebarItems from "@theme/DocSidebarItems";
 import SearchBar from "@theme/SearchBar";
 import Brand from "./Brand";
 import { repositoryFor } from "@site/src/data/playerRepositories";
+import { formatLastUpdated } from "@site/src/utils/formatTimestamp.mjs";
 
 /**
  * Tracks the heading currently under the guide topbar. The theme's own
@@ -263,6 +264,7 @@ export default function GuideShell({ children }) {
     window.setTimeout(() => menuButton.current?.focus(), 0);
   }
   const repository = repositoryFor(frontMatter.repository);
+  const lastUpdated = formatLastUpdated(metadata.lastUpdatedAt);
   return (
     <div className="ohs-guide-page" id="top">
       <GuideHeader
@@ -297,11 +299,25 @@ export default function GuideShell({ children }) {
             </div>
             <h1>{metadata.title}</h1>
             <p>{metadata.description}</p>
-            {frontMatter.release_tag && (
+            {(frontMatter.release_tag || lastUpdated) && (
               <div className="ohs-page-meta">
-                <span>
-                  <b>STATUS</b> {frontMatter.release_tag}
-                </span>
+                {frontMatter.release_tag && (
+                  <span>
+                    <b>STATUS</b> {frontMatter.release_tag}
+                  </span>
+                )}
+                {lastUpdated && (
+                  <span className="ohs-last-updated">
+                    <b>UPDATED</b>{" "}
+                    <time
+                      dateTime={lastUpdated.iso}
+                      itemProp="dateModified"
+                      title={lastUpdated.dateTimeLabel}
+                    >
+                      {lastUpdated.dateLabel}
+                    </time>
+                  </span>
+                )}
               </div>
             )}
           </header>
