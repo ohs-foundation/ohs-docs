@@ -77,12 +77,12 @@
     <text class="item-d" x="104" y="179">Kotlin FHIR data models &amp; FHIRPath logic</text>
 
     <circle cx="88" cy="224" r="4" fill="var(--found)"/>
-    <text class="item-t" x="104" y="229">Kotlin Multiplatform FHIR SDK</text>
+    <text class="item-t" x="104" y="229">Kotlin Multiplatform (KMP) FHIR SDK</text>
     <text class="item-d" x="104" y="249">Engine persistence, sync, and SDC forms</text>
 
     <circle cx="88" cy="294" r="4" fill="var(--found)"/>
-    <text class="item-t" x="104" y="299">Android FHIR SDK</text>
-    <text class="item-d" x="104" y="319">Native Jetpack libraries for Android</text>
+    <text class="item-t" x="104" y="299">Android FHIR SDK (Maintenance)</text>
+    <text class="item-d" x="104" y="319">Native Android View libraries</text>
 
     <circle cx="88" cy="364" r="4" fill="var(--found)"/>
     <text class="item-t" x="104" y="369">Back-End Services</text>

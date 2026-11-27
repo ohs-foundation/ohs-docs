@@ -22,7 +22,7 @@ secondary_action:
 | --- | --- | --- |
 | Understand strategic benefits and capabilities | Read the executive briefing and explore capability architecture | [Why Open Health Stack](/why-ohs/) |
 | Evaluate adoption pathways and integration patterns | Compare unbundled SDK adoption with full reference toolkit adaptation | [Adoption pathways](/overview/solutions-and-pathways/) |
-| Build mobile or multiplatform client applications | Integrate Kotlin FHIR, on-device SQLite storage, and questionnaire capture | [FHIR Foundations](/fhir-foundations/) |
+| Build cross-platform FHIR apps with the KMP FHIR SDK | Integrate the KMP FHIR SDK and core [FHIR Foundations](/fhir-foundations/) libraries across Android, iOS, desktop, and web | [KMP FHIR SDK](/fhir-foundations/kmp-fhir-sdk/) |
 | Launch the reference environment locally | Spin up HAPI FHIR, Keycloak, Gateway, and Analytics with Docker Compose | [Get started with Player](/get-started/) |
 | Explore architecture and data flow | Review end-to-end gateway routing, access control, and SQL-on-FHIR analytics | [The architecture](/ohs-player/architecture/) |
 | Access tutorials and codelabs | Follow step-by-step developer guides and code recipes | [Tutorials and codelabs](/tutorials-and-codelabs/) |

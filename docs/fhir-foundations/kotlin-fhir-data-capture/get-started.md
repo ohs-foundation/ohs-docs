@@ -25,8 +25,8 @@ Add the SDK to a Compose Multiplatform (or Android Compose) project and render a
 kotlin {
   sourceSets {
     commonMain.dependencies {
-      implementation("dev.ohs.fhir:fhir-data-capture:2.0.0-alpha02")
-      implementation("dev.ohs.fhir:fhir-model:1.0.0-beta05")
+      implementation("dev.ohs.fhir:fhir-data-capture:2.0.0-alpha05")
+      implementation("dev.ohs.fhir:fhir-model-r4:1.0.0-rc03")
     }
   }
 }

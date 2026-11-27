@@ -11,7 +11,7 @@ repository: ohs-player
 
 ## Which piece does what
 
-Player is five components built on the Open Health Stack's foundational libraries. This is the lookup for which one provides a capability, and what it is built on.
+Player is five components built on the Open Health Stack's foundational libraries and [KMP FHIR SDK](/fhir-foundations/kmp-fhir-sdk/). This is the lookup for which one provides a capability, and what it is built on.
 
 | To do this | Player component | Built on |
 | --- | --- | --- |

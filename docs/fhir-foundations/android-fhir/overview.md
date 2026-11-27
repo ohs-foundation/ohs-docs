@@ -12,6 +12,9 @@ source_label: android-fhir on GitHub ↗
 
 ## What it is
 
+> **Maintenance status**  
+> The Android FHIR SDK is in **Maintenance** mode. For new Android and cross-platform applications across Android, iOS, desktop, and web, use the active [Kotlin Multiplatform (KMP) FHIR SDK](/fhir-foundations/kmp-fhir-sdk/).
+
 The Android FHIR SDK is a set of Kotlin libraries for building offline-capable, mobile-first healthcare applications on Android using the HL7 FHIR standard.
 
 The SDK was developed in close collaboration with the World Health Organization to support [WHO SMART Guidelines](https://www.who.int/teams/digital-health-and-innovation/smart-guidelines), which are based on the [FHIR Clinical Guidelines Implementation Guide](http://build.fhir.org/ig/HL7/cqf-recommendations/index.html).
@@ -61,8 +64,20 @@ The Workflow library executes clinical logic and manages personalized care deliv
 
 The Knowledge Manager library deploys and indexes FHIR definitional resources (such as `Questionnaire`, `ValueSet`, `Library`, and `PlanDefinition` resources) packaged within Implementation Guides, making them available to the SDC and Workflow engines with optimal runtime performance.
 
+## Migrating to the KMP FHIR SDK
+
+Teams already running apps on the Android FHIR SDK do not have to start over. Both stacks target HL7 FHIR R4, so clinical definitions built on standard FHIR `Questionnaire` resources, Structured Data Capture (SDC) rules, FHIRPath expressions, and FHIR server sync carry over into the [KMP FHIR SDK](/fhir-foundations/kmp-fhir-sdk/).
+
+Migration can proceed step by step. Existing Android modules can stay in place while you move shared data models, logic, persistence, and forms onto the `dev.ohs.fhir` Maven Central artifacts (replacing the older `com.google.android.fhir` and `com.google.fhir` coordinates listed in [Versions and compatibility](/fhir-foundations/versions/#earlier-coordinates)).
+
+Keep three differences in mind while planning a migration.
+
+- **Compose Multiplatform UI** replaces the Android Views form renderer in [Kotlin FHIR Data Capture](/fhir-foundations/kotlin-fhir-data-capture/).
+- **Database encryption** via SQLCipher in [Kotlin FHIR Engine](/fhir-foundations/kotlin-fhir-engine/) (`enableEncryption = true`) is supported on Android only.
+- **Clinical reasoning** in `kotlin-fhir-workflow` (`PlanDefinition/$apply`) uses built-in FHIRPath evaluation and accepts a custom evaluator if your guidelines depend on CQL.
+
 ## Next steps
 
-- Explore [Tutorials & Codelabs](/tutorials-and-codelabs/) for step-by-step mobile implementation guides.
-- Learn about the multiplatform evolution in [Kotlin FHIR Engine](/fhir-foundations/kotlin-fhir-engine/) and [Kotlin FHIR Data Capture](/fhir-foundations/kotlin-fhir-data-capture/).
-- Visit the [android-fhir repository on GitHub](https://github.com/ohs-foundation/android-fhir) for release notes and sample applications.
+- Start with the active [Kotlin Multiplatform (KMP) FHIR SDK](/fhir-foundations/kmp-fhir-sdk/) and its [Engine](/fhir-foundations/kotlin-fhir-engine/) and [Data Capture](/fhir-foundations/kotlin-fhir-data-capture/) guides.
+- Follow the multiplatform [Manage FHIR Resources Codelab](/tutorials-and-codelabs/engine/) and [Data Capture Codelab](/tutorials-and-codelabs/data-capture/).
+- Visit the [android-fhir repository on GitHub](https://github.com/ohs-foundation/android-fhir) for maintenance releases and existing Android sample applications.

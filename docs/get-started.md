@@ -22,7 +22,7 @@ By completing this quickstart, you will have a running local healthcare system w
 
 - **A live backend infrastructure** with PostgreSQL, Keycloak identity, an un-forked HAPI FHIR server, and Info Gateway.
 - **An administrative organisation structure** with health facilities, practitioner roles, and care teams managed through the Web Admin Portal.
-- **A multiplatform frontline client** capturing clinical encounters offline on mobile or desktop and syncing them through the gateway.
+- **A multiplatform frontline client** capturing clinical encounters offline on mobile, desktop, or web and syncing them through the gateway.
 - **A streaming analytical pipeline** transforming FHIR resources into relational schemas powering live Apache Superset dashboards.
 
 [Watch the 10-minute video demonstration ↗](https://youtu.be/GMqFtlKE5kQ?si=z0I0JHLg6EyxIwst)
@@ -35,8 +35,8 @@ The environment builds the gateway and the Portal inside containers, so you do n
 | --- | --- | --- |
 | Docker Engine and Compose | Docker 24+, Compose v2 | The whole environment |
 | Git and Bash | Standard tools | Cloning and the environment scripts |
-| JDK | 21+ | Building the Client App |
-| Android Studio or Xcode | Current | Android and iOS targets |
+| JDK | 21+ | Building and running the Client App (including Desktop and Web Wasm targets) |
+| Android Studio or Xcode | Current | Optional unless building Android or iOS targets |
 
 On Windows use WSL, because the environment scripts do not run under native `cmd.exe` or PowerShell.
 

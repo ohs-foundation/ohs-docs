@@ -11,7 +11,7 @@ repository: kotlin-fhir-data-capture
 
 ## What it is
 
-Kotlin FHIR Data Capture turns a FHIR Questionnaire into a working, validated form. Hand it a Questionnaire's JSON and it renders the questions with Material 3 components, applies the Questionnaire's behavior for skip logic, calculated values, and answer options, validates the answers, and returns a `QuestionnaireResponse`. It implements FHIR's Structured Data Capture (SDC) patterns for R4, built on Compose Multiplatform so the same form code runs on Android, iOS, desktop, and the browser.
+Kotlin FHIR Data Capture is the Structured Data Capture forms layer of the [Kotlin Multiplatform (KMP) FHIR SDK](/fhir-foundations/kmp-fhir-sdk/). Hand it a FHIR Questionnaire's JSON and it renders the questions with Material 3 components, applies the Questionnaire's behavior for skip logic, calculated values, and answer options, validates the answers, and returns a `QuestionnaireResponse`. It implements FHIR's Structured Data Capture (SDC) patterns for R4, built on Compose Multiplatform so the same form code runs on Android, iOS, desktop, and the browser.
 
 It is the Kotlin Multiplatform successor to the Android FHIR SDK's data-capture library, rebuilt from Android Views onto Compose.
 

@@ -17,11 +17,11 @@ Open Health Stack is designed to accommodate different digital health contexts, 
 
 ## Pathway A for unbundled SDK and client adoption
 
-Engineering teams with established mobile, web, or backend applications can adopt individual Open Health Stack libraries without adopting the full reference stack.
+Engineering teams with established mobile, desktop, web, or backend applications can adopt individual Open Health Stack libraries and the [Kotlin Multiplatform (KMP) FHIR SDK](/fhir-foundations/kmp-fhir-sdk/) without adopting the full reference stack.
 
 - **Kotlin FHIR and FHIRPath** provide type-safe FHIR data models and clinical logic evaluation for any Kotlin Multiplatform project.
 - **Kotlin FHIR Engine** provides local SQLite-based offline storage, typed search, and background synchronization against standard FHIR endpoints.
-- **Kotlin FHIR Data Capture** renders structured clinical questionnaires with Jetpack Compose Multiplatform across Android, iOS, desktop, and web.
+- **Kotlin FHIR Data Capture** renders structured clinical questionnaires with Compose Multiplatform across Android, iOS, desktop, and web.
 - **Info Gateway and FHIR Data Pipes** provide reverse proxy authentication and batch analytical pipelines for backend infrastructure.
 
 This pathway is ideal for organisations that already have a functioning clinical app and want to upgrade to multiplatform FHIR compliance or add robust offline sync.
@@ -30,7 +30,7 @@ This pathway is ideal for organisations that already have a functioning clinical
 
 For national health authorities, non-governmental organisations, and digital health entrepreneurs building new platforms, the OHS Player reference composition provides an end-to-end baseline.
 
-- Frontline mobile client app for community health workers and nurses
+- Multiplatform frontline client app across Android, iOS, desktop, and web for community health workers and nurses
 - Web administration portal for managing users, roles, organisations, and locations
 - Reference gateway backend with authentication and custom access rules
 - Reference analytics pipeline with automated SQL-on-FHIR extraction and Superset dashboards
@@ -64,15 +64,15 @@ Open Health Stack is designed to be complementary to existing digital health inv
 | DHIS2 national aggregate reporting | FHIR Data Pipes flattens encounters into indicator tables, and workflow tools like OpenFn submit monthly payloads |
 | OpenMRS or hospital EHRs | Info Gateway routes client synchronization requests directly to standard FHIR module endpoints |
 | National Master Patient Index | Gateway authentication plugins verify and map patient identifiers across regional health registries |
-| Keycloak or enterprise IAM | Unified OpenID Connect and OAuth2 single sign-on across mobile apps and web portals |
+| Keycloak or enterprise IAM | Unified OpenID Connect and OAuth2 single sign-on across client apps and web portals |
 
 ## How to choose your pathway
 
 | If your primary goal is to | Recommended pathway | Where to start |
 | --- | --- | --- |
-| Add offline FHIR storage to an existing mobile app | Pathway A (Client SDKs) | [Kotlin FHIR Engine](/fhir-foundations/kotlin-fhir-engine/) |
+| Add offline FHIR storage to an existing client app | Pathway A (KMP FHIR SDK) | [KMP FHIR SDK](/fhir-foundations/kmp-fhir-sdk/) |
 | Launch a complete community health solution | Pathway B (OHS Player) | [Get started with Player](/get-started/) |
 | Generate aggregate reports from FHIR databases | Pathway C (Analytics Hub) | [Reference Analytics](/components/reference-analytics/) |
 | Advance safe, effective AI for global health | Pathway D (AI Commons) | [AI Commons initiatives](/why-ohs/#pillar-3-for-ai-commons-active) |
-| Connect mobile workers to an existing national EHR | Pathway E (Coexistence) | [The architecture](/ohs-player/architecture/) |
+| Connect frontline workers to an existing national EHR | Pathway E (Coexistence) | [The architecture](/ohs-player/architecture/) |
 | Explore reference solution architectures | Solution Architecture Samples | [Architecture samples and use cases](/overview/architecture-samples/) |

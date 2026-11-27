@@ -14,7 +14,7 @@ repository: ohs-player
 
 OHS Player is the reference toolkit representing Pillar 02 of the [Open Health Stack](https://ohs.foundation/projects).
 
-While [FHIR Foundations](/fhir-foundations/) provides the independent core libraries and SDKs for building FHIR-native software, OHS Player demonstrates how those unbundled building blocks (such as Kotlin FHIR libraries, Info Gateway, and SQL-on-FHIR pipelines) assemble into a complete, end-to-end digital health application stack.
+While [FHIR Foundations](/fhir-foundations/) provides the independent core libraries and [KMP FHIR SDK](/fhir-foundations/kmp-fhir-sdk/) for building FHIR-native software, OHS Player demonstrates how those unbundled building blocks (such as the KMP FHIR SDK libraries, Info Gateway, and SQL-on-FHIR pipelines) assemble into a complete, end-to-end digital health application stack.
 
 In addition to integrating foundational components, OHS Player adds reference libraries and tools for declarative configuration, a web administration portal, and out-of-the-box analytics dashboards.
 
@@ -24,7 +24,7 @@ Every part of OHS Player is runnable open source software designed to be evaluat
 
 | Audience | Role and goals |
 | --- | --- |
-| **Evaluators** | Exploring what the Open Health Stack ecosystem provides across mobile, backend, and analytics layers in a live running environment. |
+| **Evaluators** | Exploring what the Open Health Stack ecosystem provides across multiplatform client, backend, and analytics layers in a live running environment. |
 | **Implementers** | Building on Open Health Stack components who need reference architecture patterns, sample configurations, and deployment blueprints. |
 | **Builders & Developers** | Extending gateway endpoints, creating custom UI renderers, or contributing to the core open source repositories. |
 
@@ -58,7 +58,7 @@ Most everyday adaptations happen simply by updating standard FHIR configuration 
 
 When a programme requires capabilities beyond standard declarative configuration, developers can extend the codebase or connect into the wider digital health ecosystem.
 
-- **Custom UI renderers** add new Jetpack Compose renderers for specialized user interface widgets.
+- **Custom UI renderers** add new Compose Multiplatform renderers for specialized user interface widgets.
 - **Gateway plugins** implement custom Info Gateway REST endpoints, auth plugins, or interceptors.
 - **Digital health ecosystem & Global Goods** seamlessly connect with digital public goods and enterprise systems across the health ecosystem, including [OpenMRS](https://openmrs.org/), [DHIS2](https://dhis2.org/), [OpenHIE](https://ohie.org/) architecture patterns, Keycloak identity services, and cloud FHIR repositories.
 

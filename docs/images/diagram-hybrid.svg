@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1700 980" width="1700" height="980" role="img" aria-labelledby="hyTitle hyDesc">
   <title id="hyTitle">Hybrid and non-FHIR coexistence architecture</title>
-  <desc id="hyDesc">Two coexistence patterns. In the first, non-FHIR data collectors are harmonized into FHIR resources using tools like OpenFn or custom pipelines, then processed by FHIR Data Pipes into aggregate dashboards. In the second, a FHIR-native mobile app syncs to a FHIR server, and an integration adapter routes transactions into legacy hospital systems and national registries.</desc>
+  <desc id="hyDesc">Two coexistence patterns. In the first, non-FHIR data collectors are harmonized into FHIR resources using tools like OpenFn or custom pipelines, then processed by FHIR Data Pipes into aggregate dashboards. In the second, a FHIR-native KMP app syncs to a FHIR server, and an integration adapter routes transactions into legacy hospital systems and national registries.</desc>
 
   <style>
     :root, svg {
@@ -118,8 +118,8 @@
   <rect x="40" y="480" width="1620" height="380" rx="20" fill="none" stroke="var(--line)" stroke-width="2.2" stroke-dasharray="9 8" opacity=".75"/>
   <text class="band" x="70" y="520">PATTERN 2 &#183; FHIR APP TO NON-FHIR BACKENDS</text>
 
-  <!-- FHIR-native mobile app -->
-  <text class="lbl-f" x="150" y="810">FHIR-native mobile app</text>
+  <!-- FHIR-native KMP app -->
+  <text class="lbl-f" x="150" y="810">FHIR-native KMP app</text>
   <text class="sub" x="150" y="834">offline care delivery</text>
   <g transform="translate(120,667)">
     <rect class="p-fill" x="0" y="0" width="60" height="106" rx="11"/>

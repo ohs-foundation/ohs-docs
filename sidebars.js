@@ -93,36 +93,52 @@ const sidebars = {
           items: [
             {
               type: "category",
-              label: "Kotlin FHIR Engine (Storage & Sync)",
+              label: "Kotlin Multiplatform (KMP) FHIR SDK",
               collapsible: true,
-              collapsed: true,
+              collapsed: false,
               link: {
                 type: "doc",
-                id: "fhir-foundations/kotlin-fhir-engine/overview",
+                id: "fhir-foundations/kmp-fhir-sdk/overview",
               },
               items: [
-                "fhir-foundations/kotlin-fhir-engine/get-started",
-                "fhir-foundations/kotlin-fhir-engine/persist-and-search",
-                "fhir-foundations/kotlin-fhir-engine/synchronization",
-                "fhir-foundations/kotlin-fhir-engine/web-targets",
+                {
+                  type: "category",
+                  label: "Kotlin FHIR Engine (Storage & Sync)",
+                  collapsible: true,
+                  collapsed: true,
+                  link: {
+                    type: "doc",
+                    id: "fhir-foundations/kotlin-fhir-engine/overview",
+                  },
+                  items: [
+                    "fhir-foundations/kotlin-fhir-engine/get-started",
+                    "fhir-foundations/kotlin-fhir-engine/persist-and-search",
+                    "fhir-foundations/kotlin-fhir-engine/synchronization",
+                    "fhir-foundations/kotlin-fhir-engine/web-targets",
+                  ],
+                },
+                {
+                  type: "category",
+                  label: "Kotlin FHIR Data Capture (SDC Forms)",
+                  collapsible: true,
+                  collapsed: true,
+                  link: {
+                    type: "doc",
+                    id: "fhir-foundations/kotlin-fhir-data-capture/overview",
+                  },
+                  items: [
+                    "fhir-foundations/kotlin-fhir-data-capture/get-started",
+                    "fhir-foundations/kotlin-fhir-data-capture/render-a-questionnaire",
+                    "fhir-foundations/kotlin-fhir-data-capture/customize-and-extend",
+                  ],
+                },
               ],
             },
             {
-              type: "category",
-              label: "Kotlin FHIR Data Capture (SDC Forms)",
-              collapsible: true,
-              collapsed: true,
-              link: {
-                type: "doc",
-                id: "fhir-foundations/kotlin-fhir-data-capture/overview",
-              },
-              items: [
-                "fhir-foundations/kotlin-fhir-data-capture/get-started",
-                "fhir-foundations/kotlin-fhir-data-capture/render-a-questionnaire",
-                "fhir-foundations/kotlin-fhir-data-capture/customize-and-extend",
-              ],
+              type: "doc",
+              id: "fhir-foundations/android-fhir/overview",
+              label: "Android FHIR SDK (Maintenance)",
             },
-            "fhir-foundations/android-fhir/overview",
           ],
         },
         {
@@ -201,7 +217,7 @@ const sidebars = {
       items: [
         {
           type: "category",
-          label: "Client SDKs",
+          label: "KMP FHIR SDK",
           collapsible: true,
           collapsed: false,
           items: [

@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1950 480" width="1950" height="480" role="img" aria-labelledby="etTitle etDesc">
   <title id="etTitle">End-to-end digital health platform architecture</title>
-  <desc id="etDesc">Frontline mobile clients sync through the Info Gateway, which mediates requests to a central FHIR server. FHIR Data Pipes streams transactional data from the FHIR server into an analytical warehouse using SQL-on-FHIR view definitions, powering indicator dashboards for programme reporting.</desc>
+  <desc id="etDesc">Frontline multiplatform clients sync through the Info Gateway, which mediates requests to a central FHIR server. FHIR Data Pipes streams transactional data from the FHIR server into an analytical warehouse using SQL-on-FHIR view definitions, powering indicator dashboards for programme reporting.</desc>
 
   <style>
     :root, svg {
@@ -49,9 +49,9 @@
 
   <rect class="bg" x="0" y="0" width="1950" height="480"/>
 
-  <!-- Mobile clients -->
-  <text class="lbl-f" x="100" y="360">Mobile clients</text>
-  <text class="sub" x="100" y="384">offline-first apps</text>
+  <!-- Frontline clients -->
+  <text class="lbl-f" x="100" y="360">Client apps</text>
+  <text class="sub" x="100" y="384">offline-first multiplatform</text>
   <g transform="translate(70,205)">
     <rect class="p-fill" x="0" y="0" width="60" height="106" rx="11"/>
     <rect x="16" y="14" width="28" height="6" rx="3" fill="var(--found)" opacity=".45"/>

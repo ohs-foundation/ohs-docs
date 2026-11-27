@@ -21,8 +21,8 @@ OHS Player is an open source reference toolkit under active development. This pa
 | Reference Backend | Custom gateway endpoints for users, groups, roles, location hierarchies, practitioner details, and bulk CSV ingestion |
 | Web Admin Portal | OpenID Connect sign-in, user and role management, facility hierarchy configuration, and FHIR resource browsing |
 | Client Application | Cross-platform builds on Android, iOS, desktop, and web rendering screens dynamically from FHIR configurations |
-| Sync and Offline Persistence | On-device SQLite storage through the multiplatform FHIR engine, with sign-in over OAuth 2.0 with PKCE and FHIR sync through the Info Gateway |
-| Form Data Capture | Rendering Structured Data Capture (SDC) questionnaires with real-time FHIRPath evaluation and template-based extraction |
+| Sync and Offline Persistence | On-device SQLite storage through the [KMP FHIR SDK](/fhir-foundations/kmp-fhir-sdk/) (`kotlin-fhir-engine`), with sign-in over OAuth 2.0 with PKCE and FHIR sync through the Info Gateway |
+| Form Data Capture | Rendering Structured Data Capture (SDC) questionnaires with `kotlin-fhir-data-capture`, real-time FHIRPath evaluation, and template-based extraction |
 | Streaming Analytics | Continuous extraction of transactional FHIR records into PostgreSQL via SQL-on-FHIR pipelines with Superset dashboards |
 
 ## Active development areas
@@ -34,7 +34,7 @@ OHS Player is an open source reference toolkit under active development. This pa
 
 ## Evaluation criteria
 
-- **Strong fit** for teams building new FHIR-native health software, requiring offline-first frontline tools across mobile and desktop, or seeking to eliminate proprietary vendor lock-in.
+- **Strong fit** for teams building new FHIR-native health software, requiring offline-first frontline tools across mobile, desktop, and web, or seeking to eliminate proprietary vendor lock-in.
 - **Implementation considerations** include planning for production infrastructure provisioning, organizational access policies, and clinical content authoring tailored to local health guidelines.
 
 ## Where to go next

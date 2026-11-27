@@ -53,9 +53,9 @@ These features are not implemented in 1.0.0-beta06. Calling a missing function t
 | `toInteger()`, `convertsToInteger()`, `toDecimal()`, and `convertsToDecimal()` | Do not accept `Long` values |
 | `toDecimal()` on a string | Can lose precision for numbers with many digits |
 | `toQuantity(unit)` on a number | Ignores the unit and uses `'1'` |
-| `ceiling()`, `floor()`, and `truncate()` | Do not accept quantities |
+| `ceiling()`, `floor()`, `round()`, and `truncate()` | Do not accept quantities |
 | `<`, `<=`, `>`, and `>=` on quantities | Need the units to match after conversion |
-| `as` | Matches the exact type only, not subtypes |
+| `as` and `ofType()` | Match the exact type only, not subtypes |
 | `=` on resources | Compares the whole resource, not only the `id` |
 
 [Troubleshooting](/fhir-foundations/kotlin-fhirpath/troubleshooting/) has workarounds for the ones you are most likely to meet.

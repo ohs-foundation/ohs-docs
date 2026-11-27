@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 747" width="1400" height="747" role="img" aria-labelledby="ssTitle ssDesc">
   <title id="ssTitle">Open Health Stack solution samples</title>
-  <desc id="ssDesc">Five solution samples. Sample 1, offline mobile apps, Android and multiplatform structured data capture apps. Sample 2, privacy and sync proxy, Info Gateway with SMART-on-FHIR. Sample 3, analytics pipelines, scalable SQL-on-FHIR pipelines. Sample 4, end-to-end platform, a complete mobile-to-analytics stack. Sample 5, hybrid and non-FHIR coexistence architectures, data harmonization pipelines and non-FHIR backend integration adapters.</desc>
+  <desc id="ssDesc">Five solution samples. Sample 1, offline multiplatform apps powered by the KMP FHIR SDK across Android, iOS, desktop, and web. Sample 2, privacy and sync proxy, Info Gateway with SMART-on-FHIR. Sample 3, analytics pipelines, scalable SQL-on-FHIR pipelines. Sample 4, end-to-end platform, a complete client-to-analytics stack. Sample 5, hybrid and non-FHIR coexistence architectures, data harmonization pipelines and non-FHIR backend integration adapters.</desc>
 
   <style>
     :root, svg {
@@ -39,9 +39,9 @@
       <circle cx="0" cy="8" r="1.6" fill="#FFFFFF" stroke="none"/>
     </g>
     <text class="kicker" x="100" y="50">SAMPLE 1</text>
-    <text class="title" x="100" y="90">Offline Mobile Apps</text>
-    <text class="desc" x="32" y="150">Android and multiplatform structured</text>
-    <text class="desc" x="32" y="180">data capture apps</text>
+    <text class="title" x="100" y="90">Offline Multiplatform Apps</text>
+    <text class="desc" x="32" y="150">KMP FHIR SDK apps for Android, iOS,</text>
+    <text class="desc" x="32" y="180">desktop, and web</text>
   </g>
 
   <!-- Sample 2 -->
@@ -84,7 +84,7 @@
     </g>
     <text class="kicker" x="100" y="50">SAMPLE 4</text>
     <text class="title" x="100" y="90">End-to-End Platform</text>
-    <text class="desc" x="32" y="150">Complete mobile-to-analytics stack</text>
+    <text class="desc" x="32" y="150">Complete client-to-analytics stack</text>
   </g>
 
   <!-- Sample 5 -->

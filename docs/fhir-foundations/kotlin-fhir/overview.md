@@ -11,7 +11,7 @@ repository: kotlin-fhir
 
 ## What it is
 
-Kotlin FHIR is the HL7 FHIR data model as Kotlin classes. It is the base of the FHIR Foundations stack. Every resource and data type is generated from the FHIR specification, and each class comes with a serializer that reads and writes FHIR JSON. FHIR R4, R4B, and R5 each have their own artifact.
+Kotlin FHIR is the HL7 FHIR data model as Kotlin classes. It is the base of the FHIR Foundations stack and the [KMP FHIR SDK](/fhir-foundations/kmp-fhir-sdk/). Every resource and data type is generated from the FHIR specification, and each class comes with a serializer that reads and writes FHIR JSON. FHIR R4, R4B, and R5 each have their own artifact.
 
 The library has no logging, networking, XML, or platform-specific dependencies. This is why it runs on Android, iOS, JVM, JavaScript, Wasm, macOS, and Linux. Its only runtime dependencies are `kotlinx-serialization`, `kotlinx-datetime`, and the `bignum` arbitrary-precision number library.
 
