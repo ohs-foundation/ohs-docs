@@ -1,8 +1,13 @@
 import assert from "node:assert/strict";
 import { readdir, readFile } from "node:fs/promises";
+import { createRequire } from "node:module";
 import { join } from "node:path";
 import test from "node:test";
 import { outputRoot, pathExists, siteRoot } from "../scripts/shared.mjs";
+
+const require = createRequire(import.meta.url);
+const { baseUrl } = require(join(siteRoot, "docusaurus.config.js"));
+const expectedAiCommonsHref = `href="${baseUrl}why-ohs/#pillar-3-for-ai-commons-active"`;
 
 async function collectFiles(directory, extensions) {
   const results = [];
@@ -117,9 +122,9 @@ test("built HTML renders Active badge, anchor, and key AI Commons initiatives", 
   ]);
 
   assert.match(indexHtml, /ohs-release-active">Active</);
-  assert.match(
-    indexHtml,
-    /href="\/ohs-docs\/why-ohs\/#pillar-3-for-ai-commons-active"/,
+  assert.ok(
+    indexHtml.includes(expectedAiCommonsHref),
+    `index built HTML missing ${expectedAiCommonsHref}`,
   );
   assert.doesNotMatch(indexHtml, /AI Commons \(Launching\)/);
 
@@ -151,9 +156,9 @@ test("built HTML renders Active badge, anchor, and key AI Commons initiatives", 
     }
   }
 
-  assert.match(
-    pathwaysHtml,
-    /href="\/ohs-docs\/why-ohs\/#pillar-3-for-ai-commons-active"/,
+  assert.ok(
+    pathwaysHtml.includes(expectedAiCommonsHref),
+    `solutions-and-pathways built HTML missing ${expectedAiCommonsHref}`,
   );
   for (const requiredText of [
     "gHBench",

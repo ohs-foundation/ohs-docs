@@ -1,0 +1,9 @@
+# Netlify sets NETLIFY=true automatically during builds so docusaurus.config.js
+# serves at / (docs.ohs.foundation) while GitHub Pages keeps /ohs-docs/.
+
+[build]
+  command = "npm run build"
+  publish = "build"
+
+[build.environment]
+  NODE_VERSION = "24.18.0"

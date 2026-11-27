@@ -1,3 +1,4 @@
+import { createRequire } from "node:module";
 import { readdir, readFile } from "node:fs/promises";
 import { join, relative, sep } from "node:path";
 import {
@@ -7,6 +8,9 @@ import {
   siteRoot,
   toolsRoot,
 } from "./shared.mjs";
+
+const require = createRequire(import.meta.url);
+const { baseUrl } = require(join(siteRoot, "docusaurus.config.js"));
 
 if (!(await pathExists(outputRoot)))
   throw new Error("Build output is missing; run build first.");
@@ -42,8 +46,19 @@ async function walk(directory) {
 }
 await walk(outputRoot);
 
+function routeSlug(canonicalPath) {
+  return canonicalPath.replace(/^\/ohs-docs/, "") || "/";
+}
+
+function activeRoutePath(canonicalPath) {
+  const slug = routeSlug(canonicalPath);
+  return baseUrl === "/" ? slug : `${baseUrl}${slug.replace(/^\//, "")}`;
+}
+
 function emittedPath(target) {
-  const relativeTarget = target.slice("/ohs-docs/".length);
+  const relativeTarget = target.startsWith(baseUrl)
+    ? target.slice(baseUrl.length)
+    : target.replace(/^\/+/, "");
   return target.endsWith("/") ? `${relativeTarget}index.html` : relativeTarget;
 }
 
@@ -57,40 +72,45 @@ function visibleText(html) {
 }
 
 for (const route of contract.routes) {
-  const htmlFile = emittedPath(route.path);
+  const slug = routeSlug(route.path);
+  const activePath = activeRoutePath(route.path);
+  const htmlFile = emittedPath(activePath);
   if (!emittedFiles.has(htmlFile))
-    throw new Error(`Missing emitted route: ${route.path}`);
+    throw new Error(`Missing emitted route: ${activePath}`);
   const html = await readFile(join(outputRoot, htmlFile), "utf8");
 
   if (/(ReferenceError:|exports is not defined|error boundary)/i.test(html))
     throw new Error(
-      `Static output for ${route.path} contains a server-rendering error.`,
+      `Static output for ${activePath} contains a server-rendering error.`,
     );
 
   // The shared shell must not swallow the page. Both checks derive from the
   // page's own frontmatter, so no copy is duplicated in the contract.
-  const expectedTitle = titleBySlug.get(route.path.replace("/ohs-docs", ""));
+  const expectedTitle = titleBySlug.get(slug);
   if (expectedTitle && !html.includes(`>${expectedTitle}<`))
     throw new Error(
-      `Static output for ${route.path} does not render its title "${expectedTitle}".`,
+      `Static output for ${activePath} does not render its title "${expectedTitle}".`,
     );
   const bodyLength = visibleText(html).length;
   if (bodyLength < 400)
     throw new Error(
-      `Static output for ${route.path} rendered only ${bodyLength} characters of content; the shell may have dropped the document.`,
+      `Static output for ${activePath} rendered only ${bodyLength} characters of content; the shell may have dropped the document.`,
     );
 
   for (const match of html.matchAll(/(?:href|src)=["']([^"'#?]+)["']/g)) {
     const target = match[1];
-    if (
-      /^(https?:|mailto:|data:)/.test(target) ||
-      !target.startsWith("/ohs-docs/")
-    )
+    if (/^(https?:|mailto:|data:)/.test(target) || target.startsWith("//"))
+      continue;
+    if (baseUrl === "/" && target.startsWith("/ohs-docs/"))
+      throw new Error(
+        `Unexpected GitHub Pages prefix ${target} in Netlify build on ${activePath}.`,
+      );
+    if (!target.startsWith(baseUrl))
       continue;
     const requiredPath = emittedPath(target);
     if (!emittedFiles.has(requiredPath))
       throw new Error(
-        `Missing or incorrectly cased internal reference ${target} from ${route.path}.`,
+        `Missing or incorrectly cased internal reference ${target} from ${activePath}.`,
       );
   }
 }
@@ -99,13 +119,14 @@ const searchIndex = await readJson(`${outputRoot}/search-index.json`);
 const documents = searchIndex.flatMap((entry) => entry.documents ?? []);
 for (const route of contract.routes) {
   if (route.searchIndexed === false) continue;
+  const activePath = activeRoutePath(route.path);
   const hasIndexedContent = documents.some(
-    (entry) => entry.u === route.path && (entry.t || entry.b?.length),
+    (entry) => entry.u === activePath && (entry.t || entry.b?.length),
   );
   if (!hasIndexedContent)
-    throw new Error(`Search index has no usable document for ${route.path}.`);
+    throw new Error(`Search index has no usable document for ${activePath}.`);
 }
 
 console.log(
-  `Smoke-tested ${contract.routes.length} routes: emitted output, rendered content, internal references, and search index.`,
+  `Smoke-tested ${contract.routes.length} routes (baseUrl=${baseUrl}): emitted output, rendered content, internal references, and search index.`,
 );
