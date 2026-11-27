@@ -1,10 +1,15 @@
+const isNetlify =
+  process.env.NETLIFY === "true" || process.env.NETLIFY === "1";
+
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: "Open Health Stack",
   tagline: "Evaluate, assemble, and adapt the OHS Player reference toolkit",
   favicon: "assets/favicon.svg",
-  url: "https://ohs-foundation.github.io",
-  baseUrl: "/ohs-docs/",
+  url: isNetlify
+    ? (process.env.URL || "https://docs.ohs.foundation").replace(/\/+$/, "")
+    : "https://ohs-foundation.github.io",
+  baseUrl: isNetlify ? "/" : "/ohs-docs/",
   trailingSlash: true,
   organizationName: "ohs-foundation",
   projectName: "ohs-docs",
