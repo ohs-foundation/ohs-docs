@@ -72,7 +72,10 @@ test("netlify.toml configures build command, publish dir, and pinned Node versio
   const expectedNode = expectedRuntime.node.replace(/^v/, "");
 
   assert.match(content, /^\[build\]/m);
-  assert.match(content, /^\s*command\s*=\s*"npm run build"/m);
+  assert.match(
+    content,
+    /^\s*command\s*=\s*"node tools\/scripts\/ensure-git-history\.mjs && npm run build"/m,
+  );
   assert.match(content, /^\s*publish\s*=\s*"build"/m);
   assert.match(content, /^\[build\.environment\]/m);
   assert.match(

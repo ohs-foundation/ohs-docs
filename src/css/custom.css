@@ -734,6 +734,7 @@ a { color: inherit; }
 .ohs-footer .ohs-brand { color: #fff; }
 .ohs-footer .ohs-brand-name small { color: oklch(0.67 0.01 210); }
 .ohs-footer p { max-width: 330px; color: oklch(0.68 0.01 210); font-size: 0.82rem; line-height: 1.5; }
+.ohs-footer .ohs-footer-updated { max-width: none; margin: 12px 0 0; color: oklch(0.76 0.01 210); font-family: "IBM Plex Mono", monospace; font-size: 0.72rem; }
 .ohs-footer-links { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px 24px; align-content: center; }
 .ohs-footer-links a { font-size: 0.82rem; text-decoration: none; }
 .ohs-footer-links a:hover { color: #fff; }
